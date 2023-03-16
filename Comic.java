@@ -60,4 +60,14 @@ public class Comic {
     public List<String> getPrincipleCharacters() {
         return principleCharacters;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Comic)){
+            return false;
+        }
+
+        Comic otherComic = (Comic)(obj);
+        return this.seriesTitle.equals(otherComic.seriesTitle) && this.volumeNumber == otherComic.volumeNumber && this.issueNumber.equals(otherComic.issueNumber);
+    }
 }
