@@ -9,15 +9,20 @@ public class PersonalCollection {
     //private List<Observer> observers;
 
     public Comic getComicInCollection(String comicName){
+        for(Comic comicsInList: Comics){
+            if(comicsInList.getSeriesTitle().equals(comicName)){
+                return comicsInList;
+            }
+        }
         return null;
     }
 
     public void setSort(CollectionSorter sorter){
-
+        this.sorter = sorter;
     }
 
     public void setSearch(CollectionSearcher searcher){
-        
+        this.searcher = searcher;
     }
 
     public void editSlab(Comic comic){
@@ -33,11 +38,7 @@ public class PersonalCollection {
     }
 
     public void removeComic(Comic comic){
-        for(Comic comicsInList: Comics){
-            if(comicsInList.equals(comic)){
-                Comics.remove(comicsInList);
-            }
-        }
+        Comics.remove(comic);
     }
 
     public void notifyObserver(){
