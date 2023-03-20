@@ -32,4 +32,37 @@ public class PersonalCollection {
             observer.handle();
         }
     }
+
+    public Comic getComicInCollection(String comicName){
+        for(Comic comicsInList: comics){
+            if(comicsInList.getSeriesTitle().equals(comicName)){
+                return comicsInList;
+            }
+        }
+        return null;
+    }
+
+    public void setSort(CollectionSorter sorter){
+        this.sorter = sorter;
+    }
+
+    public void setSearch(CollectionSearcher searcher){
+        this.searcher = searcher;
+    }
+
+    public void editSlab(Comic comic){
+
+    }
+
+    public void editGrade(Comic comic){
+
+    }
+
+    public void addComic(Comic comic){
+        comics.add(comic);
+    }
+
+    public void removeComic(Comic comic){
+        comics.remove(comic);
+    }
 }
