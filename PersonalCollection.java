@@ -1,7 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * This class represents the collection of comics the user has
@@ -19,16 +16,10 @@ public class PersonalCollection {
     private List<PersonalCollectionObserver> observers;
 
     public PersonalCollection() {
-
+        
     }
 
     private void initializeComics() {
-        File file = new File(comicFile);
-        try(Scanner s = new Scanner(file)){
-            
-        } catch(FileNotFoundException e) {
-            System.out.println("File not found.");
-        }
 
     }
 

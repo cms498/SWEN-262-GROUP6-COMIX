@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchByCreators implements CollectionSearcher{
@@ -10,8 +11,33 @@ public class SearchByCreators implements CollectionSearcher{
     
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'search'");
+        List<Comic> searchComics = new ArrayList<>();
+        if(this.exactMatch) {
+            for(Comic comic : comics) {
+                boolean add = false;
+                for(Creator creator : comic.getCreators()) {
+                    if(searchTerm.equals(creator.getName())) {
+                        add = true;
+                    }
+                }
+                if(add) {
+                    searchComics.add(comic);
+                }
+            }
+        } else {
+            for(Comic comic : comics) {
+                boolean add = false;
+                for(Creator creator : comic.getCreators()) {
+                    if(creator.getName().contains(searchTerm)) {
+                        add = true;
+                    }
+                }
+                if(add) {
+                    searchComics.add(comic);
+                }
+            }
+        }
+        return searchComics;
     }
     
 }
