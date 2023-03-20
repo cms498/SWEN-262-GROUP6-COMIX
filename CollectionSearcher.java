@@ -1,5 +1,5 @@
 import java.util.List;
 
 public interface CollectionSearcher {
-    public void search(List<Comic> comics);
+    public List<Comic> search(List<Comic> comics, String searchTerm);
 }
