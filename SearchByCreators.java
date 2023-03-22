@@ -22,6 +22,7 @@ public class SearchByCreators implements CollectionSearcher{
                 }
                 if(add) {
                     searchComics.add(comic);
+                    add = false;
                 }
             }
         } else {
