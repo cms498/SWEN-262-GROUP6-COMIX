@@ -4,6 +4,7 @@ import java.util.List;
 public class Comic {
     private Publisher publisher;
     private String seriesTitle;
+    private String storyTitle;
     private int volumeNumber;
     private String issueNumber;
     private String publicationDate;
@@ -12,11 +13,12 @@ public class Comic {
     private double value; // optional
     private List<String> principleCharacters; // optional
 
-    public Comic(Publisher publisher, String seriesTitle, int volumeNumber,
+    public Comic(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
             String issueNumber, String publicationDate, List<Creator> creators,
             String description, double value, List<String> principleCharacters) {
         this.publisher = publisher;
         this.seriesTitle = seriesTitle;
+        this.storyTitle = storyTitle;
         this.volumeNumber = volumeNumber;
         this.issueNumber = issueNumber;
         this.publicationDate = publicationDate;
@@ -32,6 +34,10 @@ public class Comic {
 
     public String getSeriesTitle() {
         return seriesTitle;
+    }
+
+    public String getStoryTitle() {
+        return storyTitle;
     }
 
     public int getVolumeNumber() {
