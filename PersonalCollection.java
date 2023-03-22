@@ -51,7 +51,7 @@ public class PersonalCollection {
     }
 
     public void editSlab(Comic comic){
-
+        
     }
 
     public void editGrade(Comic comic){

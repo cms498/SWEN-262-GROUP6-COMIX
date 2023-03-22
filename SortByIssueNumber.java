@@ -4,7 +4,6 @@ public class SortByIssueNumber implements CollectionSorter{
 
     @Override
     public void sort(List<Comic> comics) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sort'");
+        comics.sort((Comic c1, Comic c2) -> c1.getIssueNumber().compareTo(c2.getIssueNumber()));
     }
 }
