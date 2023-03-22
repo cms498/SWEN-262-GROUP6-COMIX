@@ -14,13 +14,13 @@ public class SearchByTitle implements CollectionSearcher{
         List<Comic> searchComics = new ArrayList<>();
         if(this.exactMatch) {
             for(Comic comic : comics) {
-                if(searchTerm.equals(comic.getSeriesTitle())) {
+                if(searchTerm.equals(comic.getStoryTitle())) {
                     searchComics.add(comic);
                 }
             }
         } else {
             for(Comic comic : comics) {
-                if(comic.getSeriesTitle().contains(searchTerm)) {
+                if(comic.getStoryTitle().contains(searchTerm)) {
                     searchComics.add(comic);
                 }
             }
