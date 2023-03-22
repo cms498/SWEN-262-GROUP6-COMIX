@@ -1,6 +1,7 @@
+package src;
 import java.util.List;
 
-public class SearchByTitle implements CollectionSearcher{
+public class SearchByDescription implements CollectionSearcher{
 
     @Override
     public void search(List<Comic> comics) {
