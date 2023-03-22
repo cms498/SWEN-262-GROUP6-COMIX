@@ -19,11 +19,11 @@ public class SortByVolume implements CollectionSorter{
         Creator second = new Creator("CREATOR2");
 
         List<Comic> comics = new ArrayList<>();
-        Comic firstComic = new Comic(null, "FIRST", 2, null, null, cList, null, 0, null);
-        Comic secondComic = new Comic(null, "SECOND", 1, null, null, cList, null, 0, null);
+        Comic firstComic = new Comic(null, "SERIES 1", null, 1, null, null, cList, null, 0, null);
+        Comic secondComic = new Comic(null, "SERIES 2", null, 2, null, null, cList, null, 0, null);
 
-        comics.add(firstComic);
         comics.add(secondComic);
+        comics.add(firstComic);
 
         SortByVolume sort = new SortByVolume();
         System.out.println(comics.get(0).getSeriesTitle()); //pre sorted
