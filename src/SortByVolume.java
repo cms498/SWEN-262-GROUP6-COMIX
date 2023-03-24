@@ -1,37 +1,34 @@
 package src;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
-import javax.print.event.PrintEvent;
+
 
 public class SortByVolume implements CollectionSorter{
 
     @Override
-    public void sort(List<Comic> comics) {
-       comics.sort((Comic c1, Comic c2) -> c1.getVolumeNumber() > c2.getVolumeNumber() ? 1 : -1);
+    public List<Comic> sort(List<Comic> comics) {
+        List<Comic> sorted = new ArrayList<Comic>();
+
+        for (int i = 0; i < comics.size(); i++) {
+            Comic comic = comics.get(i);
+            if (sorted.size() == 0) {
+                sorted.add(comic);
+            } else {
+                for (int j = 0; j < sorted.size(); j++) {
+                    Comic sortedComic = sorted.get(j);
+                    if (comic.getVolumeNumber() < sortedComic.getVolumeNumber()) {
+                        sorted.add(j, comic);
+                        break;
+                    } else if (j == sorted.size() - 1) {
+                        sorted.add(comic);
+                        break;
+                    }
+                }
+            }
+        }
+
+        return sorted;
     }
     
-    public static void main(String[] args) {
-        //test sort by volume
-        List<Creator> cList = new ArrayList<>();
-        Creator first = new Creator("CREATOR1");
-        Creator second = new Creator("CREATOR2");
-
-        List<Comic> comics = new ArrayList<>();
-        Comic firstComic = new Comic(null, "SERIES 1", null, 1, null, null, cList, null, 0, null);
-        Comic secondComic = new Comic(null, "SERIES 2", null, 2, null, null, cList, null, 0, null);
-
-        comics.add(secondComic);
-        comics.add(firstComic);
-
-        SortByVolume sort = new SortByVolume();
-        System.out.println(comics.get(0).getSeriesTitle()); //pre sorted
-        System.out.println(comics.get(1).getSeriesTitle());
-
-        sort.sort(comics);
-        System.out.println(comics.get(0).getSeriesTitle());
-        System.out.println(comics.get(1).getSeriesTitle());
-
-    }
 }
