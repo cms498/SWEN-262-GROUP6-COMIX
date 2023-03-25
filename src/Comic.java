@@ -64,6 +64,10 @@ public class Comic {
         return value;
     }
 
+    public void setValue(double value) {
+        this.value = value;
+    }
+
     public List<String> getPrincipleCharacters() {
         return principleCharacters;
     }

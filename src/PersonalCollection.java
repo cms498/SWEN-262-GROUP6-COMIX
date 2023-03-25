@@ -9,7 +9,7 @@ public class PersonalCollection {
 
     private final String comicFile = "personalCollection.csv";
 
-    private int value;
+    private double value;
     private int numberOfIssues;
     private List<Comic> comics;
     private CollectionSorter sorter;
@@ -55,8 +55,15 @@ public class PersonalCollection {
         
     }
 
-    public void editGrade(Comic comic){
-
+    public void editGrade(Comic comic, int grade){
+        double newValue = grade;
+        if(grade == 1){
+            newValue = comic.getValue()*(grade/100);
+        }
+        else{
+            newValue = Math.log10(grade)*comic.getValue();
+        }
+        comic.setValue(newValue);
     }
 
     public void addComic(Comic comic){
