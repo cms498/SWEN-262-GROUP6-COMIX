@@ -12,6 +12,7 @@ public class Comic {
     private String description; // optional
     private double value; // optional
     private List<String> principleCharacters; // optional
+    private boolean isGraded;
 
     public Comic(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
             String issueNumber, String publicationDate, List<Creator> creators,
@@ -26,6 +27,7 @@ public class Comic {
         this.description = description;
         this.value = value;
         this.principleCharacters = principleCharacters;
+        this.isGraded = false;
     }
 
     public Publisher getPublisher() {
@@ -70,5 +72,13 @@ public class Comic {
 
     public List<String> getPrincipleCharacters() {
         return principleCharacters;
+    }
+
+    public boolean getIsGraded(){
+        return isGraded;
+    }
+
+    public void setIsGraded(boolean isGraded){
+        this.isGraded = isGraded; 
     }
 }

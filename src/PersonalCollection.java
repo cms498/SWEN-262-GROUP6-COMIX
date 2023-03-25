@@ -52,7 +52,9 @@ public class PersonalCollection {
     }
 
     public void editSlab(Comic comic){
-        
+        if(comic.getIsGraded() == true){
+            comic.setValue(comic.getValue()*2);
+        }
     }
 
     public void editGrade(Comic comic, int grade){
