@@ -22,18 +22,9 @@ public class test {
         creators.add(creator);
         creators.add(creator2);
 
-        List<String> principleCharactersSpiderman = new ArrayList<String>();
-        principleCharactersSpiderman.add("Spiderman");
-        principleCharactersSpiderman.add("Green Goblin");
-        principleCharactersSpiderman.add("Venom");
-
-        List<String> principleCharactersBatman = new ArrayList<String>();
-        principleCharactersBatman.add("Batman");
-        principleCharactersBatman.add("Joker");
-
-        Comic comics = new Comic(publisher, "Spider-Man", "SPIDER_MAN_TITLE", 0, "2", "1/2/2019", creators, "A good book", 26.08, principleCharactersSpiderman);
-        Comic comics2 = new Comic(publisher2, "Batman", "BATMAN", 1, "1", "2/7/2020", creators, "MID", 0, principleCharactersBatman);
-        Comic comics3 = new Comic(publisher, "ANT_MAN", "ANT_MAN", 2, "3", "2/8/2020", creators, "also very mid", 0, null);
+        Comic comics = new Comic(publisher, "Spider-Man", "SPIDER_MAN_TITLE", 0, "2", "1/2/2019", creators, "A good book", 26.08);
+        Comic comics2 = new Comic(publisher2, "Batman", "BATMAN", 1, "1", "2/7/2020", creators, "MID", 0);
+        Comic comics3 = new Comic(publisher, "ANT_MAN", "ANT_MAN", 2, "3", "2/8/2020", creators, "also very mid", 0);
 
 
         List<Comic> comicList = new ArrayList<Comic>();
