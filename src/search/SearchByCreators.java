@@ -1,5 +1,9 @@
+package src.search;
 import java.util.ArrayList;
 import java.util.List;
+
+import src.Comic;
+import src.Creator;
 
 public class SearchByCreators implements CollectionSearcher{
 
@@ -22,7 +26,6 @@ public class SearchByCreators implements CollectionSearcher{
                 }
                 if(add) {
                     searchComics.add(comic);
-                    add = false;
                 }
             }
         } else {

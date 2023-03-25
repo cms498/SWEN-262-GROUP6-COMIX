@@ -1,31 +1,40 @@
+package src.search;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchByTitle implements CollectionSearcher{
+import src.Comic;
+
+public class SearchByDescription implements CollectionSearcher{
 
     private boolean exactMatch;
 
-    public SearchByTitle(boolean exactMatch) {
-        this.exactMatch = exactMatch;
+    public SearchByDescription(boolean exactMatch) {
+         this.exactMatch = exactMatch;
     }
-    
+
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
         List<Comic> searchComics = new ArrayList<>();
         if(this.exactMatch) {
             for(Comic comic : comics) {
-                if(searchTerm.equals(comic.getStoryTitle())) {
+                if(searchTerm.equals(comic.getDescription())) {
                     searchComics.add(comic);
                 }
             }
         } else {
             for(Comic comic : comics) {
-                if(comic.getStoryTitle().contains(searchTerm)) {
+                if(comic.getDescription().contains(searchTerm)) {
                     searchComics.add(comic);
                 }
             }
         }
         return searchComics;
+    }
+
+    @Override
+    public List<Comic> databaseSearch(String filename, String searchTerm) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'databaseSearch'");
     }
     
 }
