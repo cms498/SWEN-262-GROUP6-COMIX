@@ -21,12 +21,13 @@ public class SearchByCreators implements CollectionSearcher{
      */
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
+        searchTerm = searchTerm.toLowerCase();
         List<Comic> searchComics = new ArrayList<>();
         if(this.exactMatch) {
             for(Comic comic : comics) {
                 boolean add = false;
                 for(Creator creator : comic.getCreators()) {
-                    if(searchTerm.equals(creator.getName())) {
+                    if(searchTerm.equals(creator.getName().toLowerCase())) {
                         add = true;
                     }
                 }
@@ -38,7 +39,7 @@ public class SearchByCreators implements CollectionSearcher{
             for(Comic comic : comics) {
                 boolean add = false;
                 for(Creator creator : comic.getCreators()) {
-                    if(creator.getName().contains(searchTerm)) {
+                    if(creator.getName().toLowerCase().contains(searchTerm)) {
                         add = true;
                     }
                 }

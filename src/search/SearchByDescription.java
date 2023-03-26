@@ -14,16 +14,17 @@ public class SearchByDescription implements CollectionSearcher{
 
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
+        searchTerm = searchTerm.toLowerCase();
         List<Comic> searchComics = new ArrayList<>();
         if(this.exactMatch) {
             for(Comic comic : comics) {
-                if(searchTerm.equals(comic.getDescription())) {
+                if(searchTerm.equals(comic.getDescription().toLowerCase())) {
                     searchComics.add(comic);
                 }
             }
         } else {
             for(Comic comic : comics) {
-                if(comic.getDescription().contains(searchTerm)) {
+                if(comic.getDescription().toLowerCase().contains(searchTerm)) {
                     searchComics.add(comic);
                 }
             }
