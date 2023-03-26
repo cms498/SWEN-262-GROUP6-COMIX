@@ -8,7 +8,6 @@ import java.util.List;
 
 import src.Comic;
 import src.Creator;
-import src.Publisher;
 
 /*
  * A implementation of Collection Searcher
@@ -56,7 +55,8 @@ public class SearchByCreators implements CollectionSearcher{
 
     
     /** 
-     * Searches the given filename (which)
+     * Searches the database for any comics having a creator with
+     * the matching search term
      * @param filename
      * @param searchTerm
      * @return List<Comic>
@@ -71,10 +71,13 @@ public class SearchByCreators implements CollectionSearcher{
             String line = br.readLine(); //skipping a line
             while((line = br.readLine()) != null) {
                 String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-                String[] creatorSplit = split[8].split(" | ");
+                if(split.length == 9) {
+                    String[] creatorSplit = split[8].split(" \\| ");
                 for(int i = 0; i < creatorSplit.length; i++) {
+                    String creator = creatorSplit[i].replace("\"", "");
                     if(exactMatch) {
-                        if(searchTerm.equals(creatorSplit[i].toLowerCase())) {
+                        if(searchTerm.equals(creator.toLowerCase())) {
+                            System.out.println("Verified match");
                             searchComics.add(generateComic(split));
                         }
                     } else {
@@ -83,12 +86,21 @@ public class SearchByCreators implements CollectionSearcher{
                         }
                     }
                 }
-                br.close();
+                }
             }
+            br.close();
+            return searchComics;
         } catch (IOException e){
             System.out.println("Invalid filename.");
         }
         return searchComics;
     }
 
+    public static void main(String[] args) {
+        SearchByCreators sbc = new SearchByCreators(true);
+        List<Comic> comics = sbc.databaseSearch("Karl Kesel");
+        for(Comic comic: comics) {
+            System.out.println(comic.getStoryTitle());
+        }
+    }
 }

@@ -124,5 +124,16 @@ public class SearchByDescriptionTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void exactMatchSearchDatabase() {
+        List<Comic> expected = new ArrayList<>();
+        String searchTerm = "Stephanie Hans Cover";
+        SearchByDescription testing = new SearchByDescription(true);
+
+        List<Comic> actual = testing.databaseSearch(searchTerm);
+
+        assertEquals(expected, actual);
+    }
     
 }

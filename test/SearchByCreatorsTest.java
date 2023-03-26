@@ -126,4 +126,14 @@ public class SearchByCreatorsTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void exactMatchSearchDatabase() {
+        SearchByCreators testing = new SearchByCreators(true);
+        List<Comic> expected = new ArrayList<>();
+
+        List<Comic> actual = testing.databaseSearch("Karl Kesel");
+
+        assertEquals(expected, actual);
+    }
 }

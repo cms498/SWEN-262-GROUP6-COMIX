@@ -1,6 +1,8 @@
 package src.search;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import src.Comic;
 import src.Creator;
@@ -24,20 +26,20 @@ public interface CollectionSearcher {
      */
     public default Comic generateComic(String[] comicData) {
         if(comicData.length == 9) {
-            String[] creatorSplit = comicData[8].split(" | ");
+            String[] creatorSplit = comicData[8].split(" \\| ");
             List<Creator> creators = new ArrayList<>();
             for(int i = 0; i < creatorSplit.length; i++) {
-                creators.add(new Creator(creatorSplit[i]));
+                String creatorName = creatorSplit[i].replace("\"", "");
+                creators.add(new Creator(creatorName));
             }
             Publisher publisher = new Publisher(comicData[4]);
-            String[] volumeSplit = comicData[0].split(",");
-            int volumeNumber;
-            if(volumeSplit.length == 1) {
-                volumeNumber = 0;
-            } else {
-                volumeNumber = Integer.parseInt(volumeSplit[1]);
+            int volumeNumber = 0;
+            Pattern pattern = Pattern.compile ("\\d+");
+            Matcher matcher = pattern.matcher(comicData[0]);
+            if(matcher.find()) {
+                volumeNumber = Integer.parseInt(matcher.group());
             }
-            return new Comic(publisher, comicData[0], comicData[2], volumeNumber, comicData[1], comicData[5], creators, comicData[3], 0);
+            return new Comic(publisher, comicData[0].replace("\"", ""), comicData[2].replace("\"", ""), volumeNumber, comicData[1], comicData[5], creators, comicData[3], 0);
         } else {
             System.out.println("Faulty line String[] given.");
             return null;
