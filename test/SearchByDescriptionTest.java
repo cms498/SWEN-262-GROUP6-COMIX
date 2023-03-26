@@ -11,9 +11,9 @@ import src.Publisher;
 import src.search.SearchByDescription;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.platform.commons.annotation.Testable;
 
+@Testable
 public class SearchByDescriptionTest {
 
     /** 

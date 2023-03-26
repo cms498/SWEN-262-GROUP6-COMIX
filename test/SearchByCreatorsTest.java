@@ -11,12 +11,10 @@ import src.Publisher;
 import src.search.SearchByCreators;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.platform.commons.annotation.Testable;
 
 @Testable
 public class SearchByCreatorsTest {
-    
     
     /** 
      * setup method that creates a list of comics for each test to use
