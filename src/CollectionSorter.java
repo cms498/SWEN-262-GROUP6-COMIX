@@ -2,5 +2,6 @@ package src;
 import java.util.List;
 
 public interface CollectionSorter {
-    public void sort(List<Comic> comics);
+    public List<Comic> sort(List<Comic> comics);
+
 }
