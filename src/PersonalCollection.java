@@ -1,4 +1,7 @@
+package src;
 import java.util.List;
+
+import src.search.CollectionSearcher;
 
 /**
  * This class represents the collection of comics the user has

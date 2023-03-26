@@ -1,3 +1,4 @@
+package src;
 import java.util.List;
 
 public class Comic {
@@ -10,11 +11,10 @@ public class Comic {
     private List<Creator> creators; // optional
     private String description; // optional
     private double value; // optional
-    private List<String> principleCharacters; // optional
 
     public Comic(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
             String issueNumber, String publicationDate, List<Creator> creators,
-            String description, double value, List<String> principleCharacters) {
+            String description, double value) {
         this.publisher = publisher;
         this.seriesTitle = seriesTitle;
         this.storyTitle = storyTitle;
@@ -24,7 +24,6 @@ public class Comic {
         this.creators = creators;
         this.description = description;
         this.value = value;
-        this.principleCharacters = principleCharacters;
     }
 
     public Publisher getPublisher() {
@@ -63,7 +62,19 @@ public class Comic {
         return value;
     }
 
-    public List<String> getPrincipleCharacters() {
-        return principleCharacters;
+    @Override 
+    public boolean equals(Object o) {
+        if(o instanceof Comic) {
+            Comic other = (Comic)o;
+            return this.publisher.equals(other.publisher) &&
+                this.seriesTitle.equals(other.seriesTitle) &&
+                this.storyTitle.equals(other.storyTitle) &&
+                this.volumeNumber == other.volumeNumber &&
+                this.issueNumber.equals(other.issueNumber) &&
+                this.creators.equals(other.creators) &&
+                this.description.equals(other.description) &&
+                this.value == other.value;
+        }
+        return false;
     }
 }

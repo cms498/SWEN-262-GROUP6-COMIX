@@ -13,6 +13,12 @@ public class SearchByCreators implements CollectionSearcher{
         this.exactMatch = exactMatch;
     }
     
+    
+    /** 
+     * @param comics
+     * @param searchTerm
+     * @return List<Comic>
+     */
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
         List<Comic> searchComics = new ArrayList<>();
@@ -42,6 +48,19 @@ public class SearchByCreators implements CollectionSearcher{
             }
         }
         return searchComics;
+    }
+
+
+    
+    /** 
+     * @param filename
+     * @param searchTerm
+     * @return List<Comic>
+     */
+    @Override
+    public List<Comic> databaseSearch(String filename, String searchTerm) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'databaseSearch'");
     }
     
 }
