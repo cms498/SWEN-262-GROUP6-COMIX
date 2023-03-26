@@ -27,6 +27,5 @@ public class SortByIssueNumber implements CollectionSorter{
         }
 
         return sorted;
-        
     }
 }

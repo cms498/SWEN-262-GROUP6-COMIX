@@ -9,4 +9,13 @@ public class Creator {
     public String getName() {
         return name;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof Creator) {
+            Creator other = (Creator)o;
+            return this.name.equals(other.name);
+        }
+        return false;
+    }
 }

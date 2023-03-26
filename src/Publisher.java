@@ -9,4 +9,13 @@ public class Publisher {
     public String getName() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof Publisher) {
+            Publisher other = (Publisher)o;
+            return this.name.equals(other.name);
+        }
+        return false;
+    }
 }
