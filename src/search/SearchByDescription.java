@@ -82,5 +82,9 @@ public class SearchByDescription implements CollectionSearcher{
         }
         return searchComics;
     }
+
+    public void setExactMatch(boolean exactMatch) {
+        this.exactMatch = exactMatch;
+    }
     
 }

@@ -18,6 +18,7 @@ public interface CollectionSearcher {
 
     public List<Comic> search(List<Comic> comics, String searchTerm);
     public List<Comic> databaseSearch(String searchTerm);
+    public void setExactMatch(boolean exact);
 
     /*
      * Helper method that will generate a method from the COMIC_DATABASE csv

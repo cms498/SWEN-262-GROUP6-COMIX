@@ -96,6 +96,10 @@ public class SearchByCreators implements CollectionSearcher{
         return searchComics;
     }
 
+    public void setExactMatch(boolean exactMatch) {
+        this.exactMatch = exactMatch;
+    }
+
     public static void main(String[] args) {
         SearchByCreators sbc = new SearchByCreators(true);
         List<Comic> comics = sbc.databaseSearch("Karl Kesel");

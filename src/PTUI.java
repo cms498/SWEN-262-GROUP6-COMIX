@@ -28,7 +28,7 @@ public class PTUI {
         String DataBaseSearchCommand = "\u001B[32m>>To search the database -> <search database>, <search type>, <term>, <exact or partial>";
         String PersonalCollectionSortCommand = "\u001B[33m>>To sort your personal collection -> <sort>, <sort type>";
         String AddComicFROMDBtoPersonalCollection = "\u001B[34m>>To add comic from the database to your personal collection -> <add from database>, <exact comic name>";
-        String AddComicManuallytoPersonalCollection = "\u001B[35m>>To add a comic manually to your personal collection-> <add>, <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value>";
+        String AddComicManuallytoPersonalCollection = "\u001B[35m>>To add a comic manually to your personal collection-> <add>, <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value> <creator1, creator2, ...>";
         String EditComicInPersonalCollection = "\u001B[36m>>To edit a comic in your personal collection -> <edit>, <exact comic name>, <field to be edited>, <new value>";
         String GradeComicPersonalCollection = "\u001B[37m>>To grade a comic in your personal collection -> <grade>, <exact comic name>, <value 1 to 10>";
         String ComicSlab = "\u001B[33m>>To slab a graded comic -> <slab>, <exact comic name>\u001B[0m";
@@ -51,8 +51,8 @@ public class PTUI {
 
         HashMap<String, CollectionSearcher> searchOptions = new HashMap<>();
         searchOptions.put("title", new SearchByTitle(false));
-        searchOptions.put("description", new SearchByCreators(false));
-        searchOptions.put("creators", new SearchByDescription(false));
+        searchOptions.put("description", new SearchByDescription(false));
+        searchOptions.put("creators", new SearchByCreators(false));
 
         HashMap<String, CollectionSorter> sortOptions = new HashMap<>();
         sortOptions.put("volume", new SortByVolume());
@@ -60,38 +60,73 @@ public class PTUI {
         sortOptions.put("issue number", new SortByIssueNumber());
         sortOptions.put("title", new SortByTitle());
 
-
         while (!result.equals("quit")) {
-            personalCollection.initializeComics();
+            try {
+                personalCollection.initializeComics();
 
-            String[] multiResult = result.split(", ");
+                String[] multiResult = result.split(", ");
 
-            if (multiResult[0].equals("search collection")) {
-                if (multiResult[3].equals("exact")) {
-                    searchOptions.put(multiResult[1], new SearchByTitle(true));
+                String command = multiResult[0];
+
+                if (command.equals("search collection")) {
+                    if (multiResult[3].equals("exact")) {
+                        searchOptions.get(multiResult[1]).setExactMatch(true);
+                    } else {
+                        searchOptions.get(multiResult[1]).setExactMatch(false);
+                    }
+                    personalCollection.setSearch(searchOptions.get(multiResult[1]));
+                    System.out.println(personalCollection.doSearch(multiResult[2]));
                 }
-                personalCollection.setSearch(searchOptions.get(multiResult[1]));
-                System.out.println(personalCollection.doSearch(multiResult[2]));
-            }
 
-            if(multiResult[0].equals("search database")){
-                if (multiResult[3].equals("exact")) {
-                    searchOptions.put(multiResult[1], new SearchByTitle(true));
+                if (command.equals("search database")) {
+                    if (multiResult[3].equals("exact")) {
+                        searchOptions.get(multiResult[1]).setExactMatch(true);
+                    } else {
+                        searchOptions.get(multiResult[1]).setExactMatch(false);
+                    }
+                    personalCollection.setSearch(searchOptions.get(multiResult[1]));
+                    System.out.println(personalCollection.doDatabaseSearch(multiResult[2]));
                 }
-                personalCollection.setSearch(searchOptions.get(multiResult[1]));
-                System.out.println(personalCollection.doDatabaseSearch(multiResult[2]));
+
+                if (command.equals("sort collection")) {
+                    personalCollection.setSort(sortOptions.get(multiResult[1]));
+                    System.out.println(personalCollection.doSort());
+                }
+
+                if (command.equals("add from database")) {
+                    personalCollection.addComicByDataBase(multiResult[1]);
+                    personalCollection.convertBackToJson();
+                }
+
+                if (command.equals("add")) {
+                    personalCollection.addComicManually(multiResult[6], multiResult[1], multiResult[4],
+                            Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], multiResult[9],
+                            multiResult[5], multiResult[8]);
+                    personalCollection.convertBackToJson();
+                }
+
+                if(command.equals("edit")){
+
+                }
+
+                if(command.equals("grade")){
+
+                }
+
+                if(command.equals("slab")){
+                    
+                }
+
+                if (command.equals("lc")) {
+                    System.out.println(commands);
+                    result = scanner.nextLine();
+                    continue;
+                }
+            } catch (Exception e) {
+                System.out
+                        .println("Incorrect format, commands should be comma seperated, type LC to view all commands");
             }
 
-            if(multiResult[0].equals("sort collection")){
-                personalCollection.setSort(sortOptions.get(multiResult[1]));
-                System.out.println(personalCollection.doSort());
-            }
-
-            if (result.equals("lc")) {
-                System.out.println(commands);
-                result = scanner.nextLine();
-                continue;
-            }
             result = scanner.nextLine();
         }
 

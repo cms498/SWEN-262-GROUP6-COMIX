@@ -41,6 +41,7 @@ public class PersonalCollection {
 
     //converts from JSON to a list of comics
     public void initializeComics() {
+        this.comics = new ArrayList<>();
         try{
             BufferedReader br = new BufferedReader(new FileReader(comicFile));
             String line = "";
@@ -213,7 +214,7 @@ public class PersonalCollection {
     public void addComicByDataBase(String storyTitle){
         //initializes the 'searcher' variable to the SearchByTitle class. Also sets the variable to only look for exact matches only 
         searcher = new SearchByTitle(true);
-        List<Comic> initialSearch = searcher.databaseSearch(storyTitle);
+        List<Comic> initialSearch = searcher.databaseSearch(storyTitle.toLowerCase());
 
         //if there's a comic that exists within the initialSearch list, then add it to their personal collection list
         if(initialSearch.size() != 0){
