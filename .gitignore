@@ -10,7 +10,8 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
-.vscode
+.vscode/*
+!.vscode/settings.json
 *.suo
 *.ntvs*
 *.njsproj
