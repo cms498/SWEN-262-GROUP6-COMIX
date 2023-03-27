@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -269,6 +270,53 @@ public class PersonalCollection {
         else{
             System.out.println(storyTitle + " doesn't exist within your personal collection");
         }
+    }
+
+    public void editComic(String storyTitle, String field, String newValue){
+        Comic comic = getComicInCollection(storyTitle);
+        String command = field.replaceAll("\\s", "").toLowerCase();
+        switch (command) {
+            case "publisher":
+                comic.setPublisher(newValue);
+                break;
+            case "seriestitle":
+                comic.setSeriesTitle(newValue);
+                break;
+            case "storytitle":
+                comic.setStoryTitle(newValue);
+                break;
+            case "volumenumber":
+                int newValue2 = Integer.parseInt(newValue);
+                comic.setVolumeNumber(newValue2);
+                break;
+            case "issuenumber":
+                comic.setIssueNumber(newValue);
+                break;
+            case "publicationdate":
+                comic.setPublicationDate(newValue);
+                break;
+            case "creator":
+                List<Creator> newCreators = new ArrayList<>();
+                String[] creators =  newValue.split(",");
+                for (String string : creators) {
+                    newCreators.add(new Creator(string));
+                }
+                comic.setCreators(newCreators);
+                break;
+            case "description":
+                comic.setDescription(newValue);
+                break;
+            case "value":
+                double newDouble = Double.parseDouble(newValue);
+                DecimalFormat dfZero = new DecimalFormat("0.00");
+                double finalValue = Double.parseDouble(dfZero.format(newDouble));
+                comic.setValue(finalValue);
+                break;
+            default:
+                System.out.println("please input a valid field");
+                break;
+        }
+
     }
 
 }
