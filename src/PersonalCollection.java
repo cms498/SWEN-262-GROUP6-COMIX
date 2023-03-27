@@ -193,23 +193,23 @@ public class PersonalCollection {
         return comics;
     }
 
-    public void editSlab(Comic comic){
-        Comic comicInCollection = getComicInCollection(comic.getStoryTitle());
-        if(comicInCollection.getIsGraded() == true){
-            comicInCollection.setValue(comicInCollection.getValue()*2);
+    public void editSlab(String storyTitle){
+        Comic comic = getComicInCollection(storyTitle);
+        if(comic.getIsGraded() == true){
+            comic.setValue(comic.getValue()*2);
         }
     }
 
-    public void editGrade(Comic comic, int grade){
-        Comic comicInCollection = getComicInCollection(comic.getStoryTitle());
+    public void editGrade(String storyTitle, int grade){
+        Comic comic = getComicInCollection(storyTitle);
         double newValue = grade;
         if(grade == 1){
-            newValue = comicInCollection.getValue()*(grade/100);
+            newValue = comic.getValue()*(grade/100);
         }
         else{
-            newValue = Math.log10(grade)*comicInCollection.getValue();
+            newValue = Math.log10(grade)*comic.getValue();
         }
-        comicInCollection.setValue(newValue);
+        comic.setValue(newValue);
     }
 
     //adds comics from the database by user input (user inputs only the story title here) 
@@ -270,4 +270,5 @@ public class PersonalCollection {
             System.out.println(storyTitle + " doesn't exist within your personal collection");
         }
     }
+
 }
