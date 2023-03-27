@@ -8,14 +8,14 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
-import src.CollectionSorter;
 import src.Comic;
 import src.Creator;
 import src.Publisher;
-import src.SortByDate;
-import src.SortByIssueNumber;
-import src.SortByTitle;
-import src.SortByVolume;
+import src.sort.CollectionSorter;
+import src.sort.SortByDate;
+import src.sort.SortByIssueNumber;
+import src.sort.SortByTitle;
+import src.sort.SortByVolume;
 
 
 public class SortTest {

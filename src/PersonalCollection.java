@@ -2,6 +2,7 @@ package src;
 
 import src.search.CollectionSearcher;
 import src.search.SearchByTitle;
+import src.sort.CollectionSorter;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -148,6 +149,18 @@ public class PersonalCollection {
 
     public void setSearch(CollectionSearcher searcher){
         this.searcher = searcher;
+    }
+
+    public List<Comic> doSearch(String searchTerm){
+        return this.searcher.search(comics, searchTerm);
+    }
+
+    public List<Comic> doDatabaseSearch(String searchTerm){
+        return this.searcher.databaseSearch(searchTerm);
+    }
+
+    public List<Comic> doSort(){
+        return this.sorter.sort(comics);
     }
 
     public List<Comic> getComics(){

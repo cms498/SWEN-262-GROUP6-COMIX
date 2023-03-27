@@ -1,8 +1,10 @@
-package src;
+package src.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SortByDate implements CollectionSorter{
+import src.Comic;
+
+public class SortByIssueNumber implements CollectionSorter{
 
     @Override
     public List<Comic> sort(List<Comic> comics) {
@@ -15,7 +17,7 @@ public class SortByDate implements CollectionSorter{
             } else {
                 for (int j = 0; j < sorted.size(); j++) {
                     Comic sortedComic = sorted.get(j);
-                    if (comic.getPublicationDate().compareTo(sortedComic.getPublicationDate()) < 0) {
+                    if (comic.getIssueNumber().charAt(0) < sortedComic.getIssueNumber().charAt(0)) {
                         sorted.add(j, comic);
                         break;
                     } else if (j == sorted.size() - 1) {
@@ -27,7 +29,5 @@ public class SortByDate implements CollectionSorter{
         }
 
         return sorted;
-
     }
-    
 }

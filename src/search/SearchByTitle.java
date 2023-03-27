@@ -34,13 +34,13 @@ public class SearchByTitle implements CollectionSearcher{
         List<Comic> searchComics = new ArrayList<>();
         if(this.exactMatch) {
             for(Comic comic : comics) {
-                if(searchTerm.equals(comic.getStoryTitle().toLowerCase())) {
+                if(searchTerm.equals(comic.getSeriesTitle().toLowerCase())) {
                     searchComics.add(comic);
                 }
             }
         } else {
             for(Comic comic : comics) {
-                if(comic.getStoryTitle().toLowerCase().contains(searchTerm)) {
+                if(comic.getSeriesTitle().toLowerCase().contains(searchTerm)) {
                     searchComics.add(comic);
                 }
             }
