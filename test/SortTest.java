@@ -1,4 +1,4 @@
-package src;
+package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,8 +8,17 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
+import src.Comic;
+import src.Creator;
+import src.Publisher;
+import src.sort.CollectionSorter;
+import src.sort.SortByDate;
+import src.sort.SortByIssueNumber;
+import src.sort.SortByTitle;
+import src.sort.SortByVolume;
 
-public class test {
+
+public class SortTest {
     
     @BeforeEach
     public List<Comic> setUp() {

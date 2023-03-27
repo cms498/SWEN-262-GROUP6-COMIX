@@ -64,6 +64,21 @@ public class Comic {
         return value;
     }
 
+    @Override 
+    public boolean equals(Object o) {
+        if(o instanceof Comic) {
+            Comic other = (Comic)o;
+            return this.publisher.equals(other.publisher) &&
+                this.seriesTitle.equals(other.seriesTitle) &&
+                this.storyTitle.equals(other.storyTitle) &&
+                this.volumeNumber == other.volumeNumber &&
+                this.issueNumber.equals(other.issueNumber) &&
+                this.creators.equals(other.creators) &&
+                this.description.equals(other.description) &&
+                this.value == other.value;
+        }
+        return false;
+    }
     public void setValue(double value) {
         this.value = value;
     }
@@ -74,5 +89,11 @@ public class Comic {
 
     public void setIsGraded(boolean isGraded){
         this.isGraded = isGraded; 
+    }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "{publisher: " + publisher + ", seriestitle: " + seriesTitle + ", storytitle: " + storyTitle + ", volumenumber: " + volumeNumber + ", value: " + value + ", creators: " + creators + ", description: " + description + ", issuenumber: " + issueNumber + "}"; 
     }
 }
