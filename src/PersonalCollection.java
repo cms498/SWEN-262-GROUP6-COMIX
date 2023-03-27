@@ -19,7 +19,7 @@ public class PersonalCollection {
     public PersonalCollection() {
         
     }
-
+    
     private void initializeComics() {
 
     }
