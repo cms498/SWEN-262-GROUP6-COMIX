@@ -33,7 +33,10 @@ public class PersonalCollection {
     private List<PersonalCollectionObserver> observers;
 
     public PersonalCollection() {
+        value = 0.0;
+        numberOfIssues = 0;
         comics = new ArrayList<>();
+        observers = new ArrayList<>();
     }
 
     //converts from JSON to a list of comics
@@ -149,6 +152,28 @@ public class PersonalCollection {
 
     public void setSearch(CollectionSearcher searcher){
         this.searcher = searcher;
+    }
+
+    //updates the total collection value
+    public void updateCollectionValue(){
+        double tempValue = 0.0;
+        for(Comic comic: comics){
+            tempValue += comic.getValue();
+        }
+        value = tempValue;
+    }
+
+    //updates the total number of comics within the collection list
+    public void updateCollectionIssues(){
+        numberOfIssues = comics.size();
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public int getNumberOfIssues() {
+        return numberOfIssues;
     }
 
     public List<Comic> doSearch(String searchTerm){
