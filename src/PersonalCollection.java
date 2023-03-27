@@ -35,10 +35,6 @@ public class PersonalCollection {
     public PersonalCollection() {
         comics = new ArrayList<>();
     }
-<<<<<<< HEAD
-    
-    private void initializeComics() {
-=======
 
     //converts from JSON to a list of comics
     public void initializeComics() {
@@ -79,7 +75,6 @@ public class PersonalCollection {
             System.out.println("Invalid filename");
         }
     }
->>>>>>> 6df80e7645a97f8da45370d397a71771f9117c91
 
     //clears Json file for when the user starts updating their information
     public void clearJson(){
