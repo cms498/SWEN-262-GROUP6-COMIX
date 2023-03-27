@@ -90,4 +90,10 @@ public class Comic {
     public void setIsGraded(boolean isGraded){
         this.isGraded = isGraded; 
     }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "{publisher: " + publisher + ", seriestitle: " + seriesTitle + ", storytitle: " + storyTitle + ", volumenumber: " + volumeNumber + ", value: " + value + ", creators: " + creators + ", description: " + description + ", issuenumber: " + issueNumber + "}"; 
+    }
 }
