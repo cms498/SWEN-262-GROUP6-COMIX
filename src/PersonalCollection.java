@@ -35,6 +35,7 @@ public class PersonalCollection {
         comics = new ArrayList<>();
     }
 
+    //converts from JSON to a list of comics
     public void initializeComics() {
         try{
             BufferedReader br = new BufferedReader(new FileReader(comicFile));
@@ -64,7 +65,6 @@ public class PersonalCollection {
                     }
                 }
                 catch (ParseException e) {
-                    // TODO Auto-generated catch block
                     System.out.println("Invalid filename2");
                 }
             }
@@ -75,6 +75,7 @@ public class PersonalCollection {
         }
     }
 
+    //clears Json file for when the user starts updating their information
     public void clearJson(){
         try {
             JSONObject jsonObject = new JSONObject();
@@ -90,7 +91,7 @@ public class PersonalCollection {
         }
     }
     
-
+    //converts from list to json
     public void convertBackToJson(){
         JSONArray jsonArray = new JSONArray();
         for(Comic comic: comics){

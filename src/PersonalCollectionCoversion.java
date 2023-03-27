@@ -1,6 +1,6 @@
 package src;
 
-public class Main {
+public class PersonalCollectionCoversion {
     public static void main(String[] args) {
         PersonalCollection collection = new PersonalCollection();
         collection.initializeComics();
