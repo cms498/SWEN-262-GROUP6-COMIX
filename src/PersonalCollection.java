@@ -194,20 +194,22 @@ public class PersonalCollection {
     }
 
     public void editSlab(Comic comic){
-        if(comic.getIsGraded() == true){
-            comic.setValue(comic.getValue()*2);
+        Comic comicInCollection = getComicInCollection(comic.getStoryTitle());
+        if(comicInCollection.getIsGraded() == true){
+            comicInCollection.setValue(comicInCollection.getValue()*2);
         }
     }
 
     public void editGrade(Comic comic, int grade){
+        Comic comicInCollection = getComicInCollection(comic.getStoryTitle());
         double newValue = grade;
         if(grade == 1){
-            newValue = comic.getValue()*(grade/100);
+            newValue = comicInCollection.getValue()*(grade/100);
         }
         else{
-            newValue = Math.log10(grade)*comic.getValue();
+            newValue = Math.log10(grade)*comicInCollection.getValue();
         }
-        comic.setValue(newValue);
+        comicInCollection.setValue(newValue);
     }
 
     //adds comics from the database by user input (user inputs only the story title here) 
