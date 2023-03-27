@@ -15,6 +15,8 @@ import src.sort.SortByVolume;
 
 public class PTUI {
 
+
+
     public static void main(String[] args) {
 
         String[] comix = {
@@ -32,18 +34,18 @@ public class PTUI {
         };
         System.out.println("\n\n");
         for (String line : comix) {
-            System.out.println("\033[1;93m"+line);
+            System.out.println("\t\t\t"+"\033[1;93m"+line);
         }
 
            
 
 
-        System.out.println("\033[0m"+ "\n\n\033[41m" + "***********************************************************************"
+        System.out.println("\033[0m"+ "\n\n\033[41m" + "\t\t\t***********************************************************************"
                 + "\033[0m");
-        System.out.println("Welcome to COMIX! Maintain your own personal collection here!\033[1;31m\033[0m\n"
-                + "To see a list and format of all commands type \033[4;37m<lc>\033[0m"
-                + "\nType out all commands in the \033[4;37mproper format\033[0m to properly execute them\n"
-                + "\033[41m" + "***********************************************************************" + "\033[0m");
+        System.out.println("\t\t\t\033[41m*\033[0m Welcome to COMIX! Maintain your own personal collection here!       \033[41m*\033[0m\n"
+                + "\t\t\t\033[41m*\033[0m To see a list and format of all commands type \033[4;37m<lc>\033[0m                  \033[41m*\033[0m"
+                + "\n\t\t\t\033[41m*\033[0m Type out all commands in the \033[4;37mproper format\033[0m to properly execute them \033[41m*\033[0m\n"
+                + "\033[41m" + "\t\t\t***********************************************************************" + "\033[0m");
 
         String quitter = "\033[1;90m>>To end the application -> \"quit\"\u001B[0m";
         String PersonalCollectionSearchCommand = "\033[1;90m\u001B[31m>>To search your personal collection -> \"search collection\", <search type>, <term>, <exact or partial>";
