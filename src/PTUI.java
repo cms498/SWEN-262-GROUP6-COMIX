@@ -1,6 +1,7 @@
 package src;
 
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
 import src.search.CollectionSearcher;
@@ -15,7 +16,12 @@ import src.sort.SortByVolume;
 
 public class PTUI {
 
-
+    private static final String RED_COLOR_CODE = "\033[31m";
+    private static final String GREEN_COLOR_CODE = "\033[32m";
+    private static final String BLUE_COLOR_CODE = "\033[34m";
+    private static final String YELLOW_COLOR_CODE = "\033[33m";
+    private static final String RESET_COLOR_CODE = "\033[0m";
+    private static final String[] CODES = {RED_COLOR_CODE, GREEN_COLOR_CODE, BLUE_COLOR_CODE, YELLOW_COLOR_CODE};
 
     public static void main(String[] args) {
 
@@ -32,10 +38,11 @@ public class PTUI {
             "'-|--------------' || '--------------' || '--------------' || '--------------' || '--------------|-",
             "  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'"
         };
-        System.out.println("\n\n");
+
         for (String line : comix) {
-            System.out.println("\t\t\t"+"\033[1;93m"+line);
+            System.out.println("\t\t\t"+CODES[new Random().nextInt(CODES.length)] + line);
         }
+        System.out.println(RESET_COLOR_CODE);
 
            
 
