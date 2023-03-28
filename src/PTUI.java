@@ -21,50 +21,51 @@ public class PTUI {
     private static final String BLUE_COLOR_CODE = "\033[34m";
     private static final String YELLOW_COLOR_CODE = "\033[33m";
     private static final String RESET_COLOR_CODE = "\033[0m";
-    private static final String[] CODES = {RED_COLOR_CODE, GREEN_COLOR_CODE, BLUE_COLOR_CODE, YELLOW_COLOR_CODE};
+    private static final String[] CODES = { RED_COLOR_CODE, GREEN_COLOR_CODE, BLUE_COLOR_CODE, YELLOW_COLOR_CODE };
 
     public static void main(String[] args) {
 
         String[] comix = {
-            " .----------------.  .----------------.  .----------------.  .----------------.  .----------------. ",
-            "| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |",
-            "| |     ______   | || |     ____     | || | ____    ____ | || |     _____    | || |  ____  ____  | |",
-            "| |   .' ___  |  | || |   .'    `.   | || ||_   \\  /   _|| || |    |_   _|   | || | |_  _||_  _| | |",
-            "| |  / .'   \\_|  | || |  /  .--.  \\  | || |  |   \\/   |  | || |      | |     | || |   \\ \\  / /   | |",
-            "| |  | |         | || |  | |    | |  | || |  | |\\  /| |  | || |      | |     | || |    > `' <    | |",
-            "| |  \\ `.___.'\\  | || |  \\  `--'  /  | || | _| |_\\/_| |_ | || |     _| |_    | || |  _/ /'`\\ \\_  | |",
-            "| |   `._____.'  | || |   `.____.'   | || ||_____||_____|| || |    |_____|   | || | |____||____| | |",
-            "| |              | || |              | || |              | || |              | || |              | |",
-            "'-|--------------' || '--------------' || '--------------' || '--------------' || '--------------|-",
-            "  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'"
+                " .----------------.  .----------------.  .----------------.  .----------------.  .----------------. ",
+                "| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |",
+                "| |     ______   | || |     ____     | || | ____    ____ | || |     _____    | || |  ____  ____  | |",
+                "| |   .' ___  |  | || |   .'    `.   | || ||_   \\  /   _|| || |    |_   _|   | || | |_  _||_  _| | |",
+                "| |  / .'   \\_|  | || |  /  .--.  \\  | || |  |   \\/   |  | || |      | |     | || |   \\ \\  / /   | |",
+                "| |  | |         | || |  | |    | |  | || |  | |\\  /| |  | || |      | |     | || |    > `' <    | |",
+                "| |  \\ `.___.'\\  | || |  \\  `--'  /  | || | _| |_\\/_| |_ | || |     _| |_    | || |  _/ /'`\\ \\_  | |",
+                "| |   `._____.'  | || |   `.____.'   | || ||_____||_____|| || |    |_____|   | || | |____||____| | |",
+                "| |              | || |              | || |              | || |              | || |              | |",
+                "'-|--------------' || '--------------' || '--------------' || '--------------' || '--------------|-",
+                "  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'"
         };
 
         for (String line : comix) {
-            System.out.println("\t\t\t"+CODES[new Random().nextInt(CODES.length)] + line);
+            System.out.println("\t\t\t" + CODES[new Random().nextInt(CODES.length)] + line);
         }
         System.out.println(RESET_COLOR_CODE);
 
-           
-
-
-        System.out.println("\033[0m"+ "\n\n\033[41m" + "\t\t\t\t***********************************************************************"
+        System.out.println("\033[0m" + "\n\n\033[41m"
+                + "\t\t\t\t***********************************************************************"
                 + "\033[0m");
-        System.out.println("\t\t\t\t\033[41m*\033[0m Welcome to COMIX! Maintain your own personal collection here!       \033[41m*\033[0m\n"
-                + "\t\t\t\t\033[41m*\033[0m To see a list and format of all commands type \033[4;37m<lc>\033[0m                  \033[41m*\033[0m"
-                + "\n\t\t\t\t\033[41m*\033[0m Type out all commands in the \033[4;37mproper format\033[0m to properly execute them \033[41m*\033[0m\n"
-                + "\033[41m" + "\t\t\t\t***********************************************************************" + "\033[0m");
+        System.out.println(
+                "\t\t\t\t\033[41m*\033[0m Welcome to COMIX! Maintain your own personal collection here!       \033[41m*\033[0m\n"
+                        + "\t\t\t\t\033[41m*\033[0m To see a list and format of all commands type \033[4;37m<lc>\033[0m                  \033[41m*\033[0m"
+                        + "\n\t\t\t\t\033[41m*\033[0m Type out all commands in the \033[4;37mproper format\033[0m to properly execute them \033[41m*\033[0m\n"
+                        + "\033[41m" + "\t\t\t\t***********************************************************************"
+                        + "\033[0m");
 
         String quitter = "\033[1;90m>>To end the application -> \"quit\"\u001B[0m";
         String PersonalCollectionSearchCommand = "\033[1;90m\u001B[31m>>To search your personal collection -> \"search collection\", <search type>, <term>, <exact or partial>";
         String DataBaseSearchCommand = "\u001B[32m>>To search the database -> <search database>, \"search type\", <term>, <exact or partial>";
         String PersonalCollectionSortCommand = "\u001B[33m>>To sort your personal collection -> \"sort\", <sort type>";
         String AddComicFROMDBtoPersonalCollection = "\u001B[34m>>To add comic from the database to your personal collection -> \"add from database>\", <exact comic name>";
-        String AddComicManuallytoPersonalCollection = "\u001B[35m>>To add a comic manually to your personal collection-> \"add\", <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value> <creator1, creator2, ...>";
+        String AddComicManuallytoPersonalCollection = "\u001B[35m>>To add a comic manually to your personal collection-> \"add\", <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value> <[creator1, creator2, ...]>";
         String EditComicInPersonalCollection = "\u001B[36m>>To edit a comic in your personal collection -> \"edit\", <exact comic name>, <field to be edited>, <new value>";
         String GradeComicPersonalCollection = "\u001B[37m>>To grade a comic in your personal collection -> \"grade\", <exact comic name>, <value 1 to 10>";
         String ComicSlab = "\u001B[33m>>To slab a graded comic -> \"slab\", <exact comic name>\u001B[0m";
+        String RemoveComic = "\033[1;90m>>To remove a comic from the personal colection -> \"remove\", <exact comic name>\u001B[0m";
 
-        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 quitter,
                 PersonalCollectionSearchCommand,
                 DataBaseSearchCommand,
@@ -73,7 +74,8 @@ public class PTUI {
                 AddComicManuallytoPersonalCollection,
                 EditComicInPersonalCollection,
                 GradeComicPersonalCollection,
-                ComicSlab);
+                ComicSlab,
+                RemoveComic);
 
         Scanner scanner = new Scanner(System.in);
         String result = scanner.nextLine();
@@ -136,16 +138,23 @@ public class PTUI {
                     personalCollection.convertBackToJson();
                 }
 
-                if(command.equals("edit")){
-
+                if (command.equals("edit")) {
+                    personalCollection.editComic(multiResult[1], multiResult[2], multiResult[3]);
+                    personalCollection.convertBackToJson();
                 }
 
-                if(command.equals("grade")){
-
+                if (command.equals("grade")) {
+                    personalCollection.editGrade(multiResult[1], Integer.parseInt(multiResult[2]));
+                    personalCollection.convertBackToJson();
                 }
 
-                if(command.equals("slab")){
-                    
+                if (command.equals("slab")) {
+                    personalCollection.editSlab(multiResult[1]);
+                }
+
+                if (command.equals("remove")) {
+                    personalCollection.removeComic(multiResult[1]);
+                    personalCollection.convertBackToJson();
                 }
 
                 if (command.equals("lc")) {

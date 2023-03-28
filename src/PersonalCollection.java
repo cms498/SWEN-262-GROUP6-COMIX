@@ -65,8 +65,8 @@ public class PersonalCollection {
                             creatorsList.add(new Creator(creator));
                         }
                         String description = (String) jsonObject.get("description");
-                        long value = (Long) jsonObject.get("value");
-                        Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber, publicationDate, creatorsList, description, (double) value);
+                        Double value = (Double) jsonObject.get("value");
+                        Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber, publicationDate, creatorsList, description, value);
                         comics.add(comic);
                     }
                 }
