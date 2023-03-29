@@ -5,9 +5,15 @@ import src.search.SearchByTitle;
 import src.sort.CollectionSorter;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +50,11 @@ public class PersonalCollection {
     public void initializeComics() {
         this.comics = new ArrayList<>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader(comicFile));
-            String line = "";
-            while((line = br.readLine()) != null) {
                 JSONParser parser = new JSONParser();
                 try{
-                    JSONArray jsonArray = (JSONArray) parser.parse(line);
+                    File file = new File(comicFile);
+                    FileReader reader = new FileReader(file);
+                    JSONArray jsonArray = (JSONArray) parser.parse(reader);
                     for(int i = 0; i < jsonArray.size(); i++){
                         JSONObject jsonObject = (JSONObject) jsonArray.get(i);
                         Publisher publisher = new Publisher((String) jsonObject.get("publisher"));
@@ -65,7 +70,7 @@ public class PersonalCollection {
                             creatorsList.add(new Creator(creator));
                         }
                         String description = (String) jsonObject.get("description");
-                        Double value = (Double) jsonObject.get("value");
+                        double value = (Double) jsonObject.get("value");
                         Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber, publicationDate, creatorsList, description, value);
                         comics.add(comic);
                     }
@@ -73,8 +78,6 @@ public class PersonalCollection {
                 catch (ParseException e) {
                     System.out.println("Invalid filename2");
                 }
-            }
-            br.close();
         }
         catch(IOException e){
             System.out.println("Invalid filename");
@@ -100,8 +103,8 @@ public class PersonalCollection {
     //converts from list to json
     public void convertBackToJson(){
         JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = new JSONObject();
         for(Comic comic: comics){
-            JSONObject jsonObject = new JSONObject();
             jsonObject.put("publisher", (String) comic.getPublisher().getName());
             jsonObject.put("seriestitle", (String) comic.getSeriesTitle());
             jsonObject.put("storytitle", (String) comic.getStoryTitle());
@@ -118,7 +121,7 @@ public class PersonalCollection {
             }
             jsonObject.put("creators", (String) creators);
             jsonObject.put("description", (String) comic.getDescription());
-            jsonObject.put("value", (int) comic.getValue());
+            jsonObject.put("value", (Double) comic.getValue());
             jsonArray.add(jsonObject);
         }
         try (FileWriter fileWriter = new FileWriter(comicFile)) {
