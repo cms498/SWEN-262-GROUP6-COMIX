@@ -4,16 +4,10 @@ import src.search.CollectionSearcher;
 import src.search.SearchByTitle;
 import src.sort.CollectionSorter;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +15,6 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -150,36 +143,6 @@ public class PersonalCollection {
           } catch (IOException e) {
             e.printStackTrace();
         }
-
-        /* 
-        JSONArray jsonArray = new JSONArray();
-        for(Comic comic: comics){
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("publisher", (String) comic.getPublisher().getName());
-            jsonObject.put("seriestitle", (String) comic.getSeriesTitle());
-            jsonObject.put("storytitle", (String) comic.getStoryTitle());
-            jsonObject.put("volumenumber", (int) comic.getVolumeNumber());
-            jsonObject.put("issuenumber", (String) comic.getIssueNumber());
-            jsonObject.put("publicationdate", (String) comic.getPublicationDate());
-            List<Creator> creatorList = comic.getCreators();
-            String creators = "";
-            for(int i = 0; i < creatorList.size(); i++){
-                creators = creators + creatorList.get(i);
-                if(i < creatorList.size()-1){
-                    creators = creators + ",";
-                }
-            }
-            jsonObject.put("creators", (String) creators);
-            jsonObject.put("description", (String) comic.getDescription());
-            jsonObject.put("value", (Double) comic.getValue());
-            jsonArray.add(jsonObject);
-        }
-        try (FileWriter fileWriter = new FileWriter(comicFile)) {
-            JSONValue.writeJSONString(jsonArray, fileWriter);
-          } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
           
     }
 
