@@ -103,8 +103,8 @@ public class PersonalCollection {
     //converts from list to json
     public void convertBackToJson(){
         JSONArray jsonArray = new JSONArray();
-        JSONObject jsonObject = new JSONObject();
         for(Comic comic: comics){
+            JSONObject jsonObject = new JSONObject();
             jsonObject.put("publisher", (String) comic.getPublisher().getName());
             jsonObject.put("seriestitle", (String) comic.getSeriesTitle());
             jsonObject.put("storytitle", (String) comic.getStoryTitle());
