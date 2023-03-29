@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.text.View;
+
 import src.search.CollectionSearcher;
 import src.search.SearchByCreators;
 import src.search.SearchByDescription;
@@ -54,18 +56,19 @@ public class PTUI {
                         + "\033[41m" + "\t\t\t\t***********************************************************************"
                         + "\033[0m");
 
-        String quitter = "\033[1;90m>>To end the application -> \"quit\"\u001B[0m";
-        String PersonalCollectionSearchCommand = "\033[1;90m\u001B[31m>>To search your personal collection -> \"search collection\", <search type>, <term>, <exact or partial>";
-        String DataBaseSearchCommand = "\u001B[32m>>To search the database -> <search database>, \"search type\", <term>, <exact or partial>";
-        String PersonalCollectionSortCommand = "\u001B[33m>>To sort your personal collection -> \"sort\", <sort type>";
-        String AddComicFROMDBtoPersonalCollection = "\u001B[34m>>To add comic from the database to your personal collection -> \"add from database>\", <exact comic name>";
-        String AddComicManuallytoPersonalCollection = "\u001B[35m>>To add a comic manually to your personal collection-> \"add\", <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value> <[creator1, creator2, ...]>";
-        String EditComicInPersonalCollection = "\u001B[36m>>To edit a comic in your personal collection -> \"edit\", <exact comic name>, <field to be edited>, <new value>";
-        String GradeComicPersonalCollection = "\u001B[37m>>To grade a comic in your personal collection -> \"grade\", <exact comic name>, <value 1 to 10>";
-        String ComicSlab = "\u001B[33m>>To slab a graded comic -> \"slab\", <exact comic name>\u001B[0m";
-        String RemoveComic = "\033[1;90m>>To remove a comic from the personal colection -> \"remove\", <exact comic name>\u001B[0m";
+        String quitter = ">>To end the application -> \"quit\"";
+        String PersonalCollectionSearchCommand = ">>To search your personal collection -> \"search collection\", <search type>, <term>, <exact or partial>";
+        String DataBaseSearchCommand = ">>To search the database -> <search database>, \"search type\", <term>, <exact or partial>";
+        String PersonalCollectionSortCommand = ">>To sort your personal collection -> \"sort\", <sort type>";
+        String AddComicFROMDBtoPersonalCollection = ">>To add comic from the database to your personal collection -> \"add from database>\", <exact comic name>";
+        String AddComicManuallytoPersonalCollection = ">>To add a comic manually to your personal collection-> \"add\", <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value> <[creator1, creator2, ...]>";
+        String EditComicInPersonalCollection = ">>To edit a comic in your personal collection -> \"edit\", <exact comic name>, <field to be edited>, <new value>";
+        String GradeComicPersonalCollection = ">>To grade a comic in your personal collection -> \"grade\", <exact comic name>, <value 1 to 10>";
+        String ComicSlab = ">>To slab a graded comic -> \"slab\", <exact comic name>";
+        String RemoveComic = ">>To remove a comic from the personal colection -> \"remove\", <exact comic name>";
+        String viewBooks = ">>To view your personal collection -> \"view\"";
 
-        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 quitter,
                 PersonalCollectionSearchCommand,
                 DataBaseSearchCommand,
@@ -75,7 +78,8 @@ public class PTUI {
                 EditComicInPersonalCollection,
                 GradeComicPersonalCollection,
                 ComicSlab,
-                RemoveComic);
+                RemoveComic,
+                viewBooks);
 
         Scanner scanner = new Scanner(System.in);
         String result = scanner.nextLine();
@@ -157,14 +161,17 @@ public class PTUI {
                     personalCollection.convertBackToJson();
                 }
 
+                if(command.equals("view")){
+                    personalCollection.PrettyPrintDatabase();
+                }
+
                 if (command.equals("lc")) {
                     System.out.println(commands);
                     result = scanner.nextLine();
                     continue;
                 }
             } catch (Exception e) {
-                System.out
-                        .println("Incorrect format, commands should be comma seperated, type LC to view all commands");
+                System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
             }
 
             result = scanner.nextLine();
