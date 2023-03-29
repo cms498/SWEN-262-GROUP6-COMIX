@@ -102,6 +102,56 @@ public class PersonalCollection {
     
     //converts from list to json
     public void convertBackToJson(){
+        StringBuilder json = new StringBuilder();
+        json.append("[\n");
+        for(int i = 0; i < comics.size(); i++){
+            json.append("   {\n");
+            json.append("       \"").append("seriestitle").append("\": ");
+            json.append("\"").append(comics.get(i).getSeriesTitle()).append("\",\n");
+            json.append("       \"").append("issuenumber").append("\": ");
+            json.append("\"").append(comics.get(i).getIssueNumber()).append("\",\n");
+            json.append("       \"").append("storytitle").append("\": ");
+            json.append("\"").append(comics.get(i).getStoryTitle()).append("\",\n");
+            List<Creator> creatorList = comics.get(i).getCreators();
+            String creators = "";
+            for(int j = 0; j < creatorList.size(); j++){
+                creators = creators + creatorList.get(j);
+                if(j < creatorList.size()-1){
+                    creators = creators + ",";
+                }
+            }
+            json.append("       \"").append("creators").append("\": ");
+            json.append("\"").append(creators).append("\",\n");
+            json.append("       \"").append("publisher").append("\": ");
+            json.append("\"").append(comics.get(i).getPublisher()).append("\",\n");
+            json.append("       \"").append("description").append("\": ");
+            json.append("\"").append(comics.get(i).getDescription()).append("\",\n");
+            json.append("       \"").append("value").append("\": ");
+            String valueString = String.format("%.2f", comics.get(i).getValue());
+            json.append(Double.valueOf(valueString)).append(",\n");
+
+            json.append("       \"").append("volumenumber").append("\": ");
+            json.append(comics.get(i).getVolumeNumber()).append(",\n");
+
+            json.append("       \"").append("publicationdate").append("\": ");
+            json.append("\"").append(comics.get(i).getPublicationDate()).append("\"\n");
+            
+            if(i < comics.size() - 1){
+                json.append("   },\n");
+            }
+            else{
+                json.append("   }\n");
+            }
+        }
+        json.append("]");
+        String jsonString = json.toString();
+        try (FileWriter fileWriter = new FileWriter(comicFile)) {
+            fileWriter.write(jsonString);
+          } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        /* 
         JSONArray jsonArray = new JSONArray();
         for(Comic comic: comics){
             JSONObject jsonObject = new JSONObject();
@@ -128,7 +178,9 @@ public class PersonalCollection {
             JSONValue.writeJSONString(jsonArray, fileWriter);
           } catch (IOException e) {
             e.printStackTrace();
-          }
+        }
+        */
+          
     }
 
     public void register(PersonalCollectionObserver observer) {
