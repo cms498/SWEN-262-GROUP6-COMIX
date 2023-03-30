@@ -1,6 +1,7 @@
 package src;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -99,7 +100,33 @@ public class PTUI {
                         searchOptions.get(multiResult[1]).setExactMatch(false);
                     }
                     personalCollection.setSearch(searchOptions.get(multiResult[1]));
-                    System.out.println(personalCollection.doSearch(multiResult[2], multiResult[4]));
+                    List<Comic> listy = (personalCollection.doSearch(multiResult[2], multiResult[4]));
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("\033[1m"); // Bold formatting
+                    sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s", "Publisher", "Series Title", "Story Title", "Description" ,"Volume Number", "Issue Number", "Publication Date", "Value", "Graded"));
+                    sb.append("\033[0m\n"); // Reset formatting to default and add new line
+                    sb.append("_".repeat(175)); // Underscores
+                    sb.append(System.lineSeparator());
+                
+                    for (Comic comic : listy) {
+                        if(comic.getSeriesTitle().length() > 20){
+                            comic.setSeriesTitle(comic.getSeriesTitle().substring(0, 17) + "...");
+                        }
+                
+                        if(comic.getStoryTitle().length() > 20){
+                            comic.setStoryTitle(comic.getStoryTitle().substring(0, 17) + "...");
+                        }
+            
+                        if(comic.getDescription().length() > 20){
+                            comic.setDescription(comic.getDescription().substring(0, 17) + "...");
+                        }
+            
+                        sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s", comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getDescription() ,comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(), comic.getIsGraded()));
+                        sb.append(System.lineSeparator());
+                        sb.append("_".repeat(175)); // Underscores            
+                        sb.append(System.lineSeparator());
+                    }
+                    System.out.println("\n\n"+sb.toString());
                 }
 
                 else if (command.equals("search database")) {
