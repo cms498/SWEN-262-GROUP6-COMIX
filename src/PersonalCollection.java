@@ -363,4 +363,77 @@ public class PersonalCollection {
         }
         System.out.println("\n\n"+sb.toString());
     }
+
+    public void viewSeriesTitle() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\033[1m"); // Bold formatting
+        sb.append(String.format("%-20s", "Series Title"));
+        sb.append("\033[0m\n"); // Reset formatting to default and add new line
+        sb.append("_".repeat(20)); // Underscores
+        sb.append(System.lineSeparator());
+
+        for (Comic comic : comics) {
+            sb.append(String.format("%-20s", comic.getSeriesTitle()));
+            sb.append(System.lineSeparator());
+            sb.append("_".repeat(20)); // Underscores
+            sb.append(System.lineSeparator());
+        }
+
+        // return sb.toString();
+        System.out.println(sb.toString());
+    }
+
+    public void viewVolumeNumber() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\033[1m"); // Bold formatting
+        sb.append(String.format("%-20s", "Volume Number"));
+        sb.append("\033[0m\n"); // Reset formatting to default and add new line
+        sb.append("_".repeat(20)); // Underscores
+        sb.append(System.lineSeparator());
+
+        for (Comic comic : comics) {
+            sb.append(String.format("%-20s", comic.getVolumeNumber()));
+            sb.append(System.lineSeparator());
+            sb.append("_".repeat(20)); // Underscores
+            sb.append(System.lineSeparator());
+        }
+        System.out.println(sb.toString());
+
+    }
+
+    public void viewIssueNumber() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\033[1m"); // Bold formatting
+        sb.append(String.format("%-20s", "Issue Number"));
+        sb.append("\033[0m\n"); // Reset formatting to default and add new line
+        sb.append("_".repeat(20)); // Underscores
+        sb.append(System.lineSeparator());
+
+        for (Comic comic : comics) {
+            sb.append(String.format("%-20s", comic.getIssueNumber()));
+            sb.append(System.lineSeparator());
+            sb.append("_".repeat(20)); // Underscores
+            sb.append(System.lineSeparator());
+        }
+        System.out.println(sb.toString());
+
+    }
+
+    public void viewPublisher() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\033[1m"); // Bold formatting
+        sb.append(String.format("%-20s", "Publisher"));
+        sb.append("\033[0m\n"); // Reset formatting to default and add new line
+        sb.append("_".repeat(20)); // Underscores
+        sb.append(System.lineSeparator());
+
+        for (Comic comic : comics) {
+            sb.append(String.format("%-20s", comic.getPublisher()));
+            sb.append(System.lineSeparator());
+            sb.append("_".repeat(20)); // Underscores
+            sb.append(System.lineSeparator());
+        }
+
+        System.out.println(sb.toString());
+    }
 }

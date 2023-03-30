@@ -120,6 +120,10 @@ public class PTUI {
                         if(comic.getDescription().length() > 20){
                             comic.setDescription(comic.getDescription().substring(0, 17) + "...");
                         }
+
+                        if(comic.getPublisher().toString().length() > 20){
+                            comic.setPublisher(comic.getPublisher().toString().substring(0, 17) + "...");
+                        }
             
                         sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s", comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getDescription() ,comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(), comic.getIsGraded()));
                         sb.append(System.lineSeparator());
@@ -171,7 +175,24 @@ public class PTUI {
                 }
 
                 else if(command.equals("view")){
-                    personalCollection.PrettyPrintDatabase();
+                    String type = multiResult[1];
+                    switch (type) {
+                        case "publisher":
+                            personalCollection.viewPublisher();
+                            break;
+                        case "series":
+                            personalCollection.viewSeriesTitle();
+                            break;
+                        case "volume":
+                            personalCollection.viewVolumeNumber();
+                            break;
+                        case "issue":
+                            personalCollection.viewIssueNumber();
+                            break;
+                        case "collection":
+                        personalCollection.PrettyPrintDatabase();
+                            break;
+                    }
                 }
 
                 else if (command.equals("lc")) {
@@ -182,7 +203,8 @@ public class PTUI {
                     System.out.println("Command not recognized");
                 }
             } catch (Exception e) {
-                System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
+                e.printStackTrace();
+                // System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
             }
 
             result = scanner.nextLine();
