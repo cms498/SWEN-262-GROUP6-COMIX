@@ -347,7 +347,7 @@ public class PersonalCollection {
 	public void PrettyPrintDatabase() {
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
-        sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s", "Publisher", "Series Title", "Story Title", "Description" ,"Volume Number", "Issue Number", "Publication Date", "Value", "Graded"));
+        sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-10s | %-10s  | %-20s | %-10s| %-10s| %-10s", "Publisher", "Series Title", "Story Title", "Description" ,"Volume Number", "Issue Number", "Publication Date", "Value", "Graded", "Slabbed"));
         sb.append("\033[0m\n"); // Reset formatting to default and add new line
         sb.append("_".repeat(175)); // Underscores
         sb.append(System.lineSeparator());
@@ -365,7 +365,7 @@ public class PersonalCollection {
                 comic.setDescription(comic.getDescription().substring(0, 17) + "...");
             }
 
-            sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s", comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getDescription() ,comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(), comic.getIsGraded()));
+            sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-10s    | %-10s    | %-20s | %-10s| %-10s| %-10s", comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getDescription() ,comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(), comic.getIsGraded(), comic.getIsSlabbed()));
             sb.append(System.lineSeparator());
             sb.append("_".repeat(175)); // Underscores            
             sb.append(System.lineSeparator());
@@ -373,76 +373,50 @@ public class PersonalCollection {
         System.out.println("\n\n"+sb.toString());
     }
 
-    public void viewSeriesTitle() {
+    public void prettyPrintHelper(String type){
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
-        sb.append(String.format("%-20s", "Series Title"));
+        sb.append(String.format("%-20s", type));
         sb.append("\033[0m\n"); // Reset formatting to default and add new line
         sb.append("_".repeat(20)); // Underscores
         sb.append(System.lineSeparator());
 
         for (Comic comic : comics) {
-            sb.append(String.format("%-20s", comic.getSeriesTitle()));
+            if(type.equals("Series Title")){
+                sb.append(String.format("%-20s", comic.getSeriesTitle()));
+            }
+            else if(type.equals("Volume Number")){
+                sb.append(String.format("%-20s", comic.getVolumeNumber()));
+            }
+            else if(type.equals("Issue Number")){
+                sb.append(String.format("%-20s", comic.getIssueNumber()));
+            }
+            else if(type.equals("Publisher")){
+                sb.append(String.format("%-20s", comic.getPublisher()));
+            }
+
             sb.append(System.lineSeparator());
             sb.append("_".repeat(20)); // Underscores
             sb.append(System.lineSeparator());
         }
 
-        // return sb.toString();
-        System.out.println(sb.toString());
+        System.out.println("\n\n"+sb.toString());
+    }
+
+
+    public void viewSeriesTitle() {
+        prettyPrintHelper("Series Title");
     }
 
     public void viewVolumeNumber() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\033[1m"); // Bold formatting
-        sb.append(String.format("%-20s", "Volume Number"));
-        sb.append("\033[0m\n"); // Reset formatting to default and add new line
-        sb.append("_".repeat(20)); // Underscores
-        sb.append(System.lineSeparator());
-
-        for (Comic comic : comics) {
-            sb.append(String.format("%-20s", comic.getVolumeNumber()));
-            sb.append(System.lineSeparator());
-            sb.append("_".repeat(20)); // Underscores
-            sb.append(System.lineSeparator());
-        }
-        System.out.println(sb.toString());
-
+        prettyPrintHelper("Volume Number");
     }
 
     public void viewIssueNumber() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\033[1m"); // Bold formatting
-        sb.append(String.format("%-20s", "Issue Number"));
-        sb.append("\033[0m\n"); // Reset formatting to default and add new line
-        sb.append("_".repeat(20)); // Underscores
-        sb.append(System.lineSeparator());
-
-        for (Comic comic : comics) {
-            sb.append(String.format("%-20s", comic.getIssueNumber()));
-            sb.append(System.lineSeparator());
-            sb.append("_".repeat(20)); // Underscores
-            sb.append(System.lineSeparator());
-        }
-        System.out.println(sb.toString());
-
+        prettyPrintHelper("Issue Number");
     }
 
     public void viewPublisher() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\033[1m"); // Bold formatting
-        sb.append(String.format("%-20s", "Publisher"));
-        sb.append("\033[0m\n"); // Reset formatting to default and add new line
-        sb.append("_".repeat(20)); // Underscores
-        sb.append(System.lineSeparator());
-
-        for (Comic comic : comics) {
-            sb.append(String.format("%-20s", comic.getPublisher()));
-            sb.append(System.lineSeparator());
-            sb.append("_".repeat(20)); // Underscores
-            sb.append(System.lineSeparator());
-        }
-
-        System.out.println(sb.toString());
+        prettyPrintHelper("Publisher");
     }
 }
