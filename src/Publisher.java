@@ -21,7 +21,6 @@ public class Publisher {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return name;
     }
 }
