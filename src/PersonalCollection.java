@@ -219,9 +219,13 @@ public class PersonalCollection {
 
     public void editSlab(String storyTitle){
         Comic comic = getComicInCollection(storyTitle);
-        if(comic.getIsGraded() == true){
+        if(comic.getIsGraded() == true && comic.getIsSlabbed() == false){
             comic.setIsSlabbed(true);
             comic.setValue(comic.getValue()*2);
+        } else if (comic.getIsSlabbed() == true){
+            System.out.println("You can't slab a comic again");
+        } else {
+            System.out.println("You cant slab a non graded comic");
         }
     }
 
@@ -235,6 +239,7 @@ public class PersonalCollection {
             newValue = Math.log10(grade)*comic.getValue();
         }
         comic.setValue(newValue);
+        comic.setIsGraded(true);
     }
 
     //adds comics from the database by user input (user inputs only the story title here) 
@@ -335,6 +340,16 @@ public class PersonalCollection {
                 DecimalFormat dfZero = new DecimalFormat("0.00");
                 double finalValue = Double.parseDouble(dfZero.format(newDouble));
                 comic.setValue(finalValue);
+                break;
+            case "grade":
+                if(newValue.equals("true")){
+                    comic.setIsGraded(true);
+                } else {
+                    comic.setIsGraded(false);
+                }
+                break;
+            case "slab":
+                editSlab(storyTitle);
                 break;
             default:
                 System.out.println("please input a valid field");

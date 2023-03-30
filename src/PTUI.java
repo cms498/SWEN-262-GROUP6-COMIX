@@ -167,6 +167,7 @@ public class PTUI {
 
                 else if (command.equals("slab")) {
                     personalCollection.editSlab(multiResult[1]);
+                    personalCollection.convertBackToJson();
                 }
 
                 else if (command.equals("remove")) {
