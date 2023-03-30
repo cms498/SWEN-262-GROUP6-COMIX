@@ -356,6 +356,8 @@ public class PersonalCollection {
             }
             sb.append(String.format("%-20s | %-20s | %-20s | %-20s | %-20s | %-20s | %-10s| %-10s", comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(), comic.getIsGraded()));
             sb.append(System.lineSeparator());
+            sb.append("____________________________________________________________________________________________________________________________________________________________"); // Underscores
+            sb.append(System.lineSeparator());
         }
         System.out.println("\n\n"+sb.toString());
     }
