@@ -206,8 +206,8 @@ public class PTUI {
                     System.out.println("Command not recognized");
                 }
             } catch (Exception e) {
-                e.printStackTrace();
-                // System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
+                // e.printStackTrace();
+                System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
             }
 
             result = scanner.nextLine();
