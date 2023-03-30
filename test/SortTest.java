@@ -31,15 +31,17 @@ public class SortTest {
         creators.add(creator);
         creators.add(creator2);
 
-        Comic comics = new Comic(publisher, "Spider-Man", "SPIDER_MAN_TITLE", 0, "2", "1/2/2019", creators, "A good book", 26.08);
-        Comic comics2 = new Comic(publisher2, "Batman", "BATMAN", 1, "1", "2/7/2020", creators, "MID", 0);
-        Comic comics3 = new Comic(publisher, "ANT_MAN", "ANT_MAN", 2, "3", "2/8/2020", creators, "also very mid", 0);
+        Comic comic = new Comic(publisher, "Spider-Man", "SPIDER_MAN_TITLE", 0, "2", "1/2/2019", creators, "A good book", 26.08, false, false);
+        Comic comic2 = new Comic(publisher2, "Batman", "BATMAN", 1, "1", "2/7/2020", creators, "MID", 0, false, false);
+        Comic comic3 = new Comic(publisher, "ANT_MAN", "ANT_MAN", 2, "3", "2/8/2020", creators, "also very mid", 0, false, false);
+      
+
 
 
         List<Comic> comicList = new ArrayList<Comic>();
-        comicList.add(comics);
-        comicList.add(comics2);
-        comicList.add(comics3);
+        comicList.add(comic);
+        comicList.add(comic2);
+        comicList.add(comic3);
         return comicList;
     }
 

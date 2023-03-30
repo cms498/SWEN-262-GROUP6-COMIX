@@ -8,7 +8,9 @@
        "description": "The Caped Crusader battles a secret society that has controlled Gotham City for centuries.",
        "value": 10.99,
        "volumenumber": 2,
-       "publicationdate": "November 2011"
+       "publicationdate": "November 2011",
+       "isGraded": false,
+       "isSlabbed": false
    },
    {
        "seriestitle": "Spider-Man",
@@ -19,7 +21,9 @@
        "description": "The origin story of the web-slinging hero as he battles his arch-nemesis, the Green Goblin.",
        "value": 100.0,
        "volumenumber": 1,
-       "publicationdate": "March 1963"
+       "publicationdate": "March 1963",
+       "isGraded": false,
+       "isSlabbed": false
    },
    {
        "seriestitle": "The Walking Dead",
@@ -30,7 +34,9 @@
        "description": "A small town sheriff wakes up from a coma to find that the world has been overrun by zombies.",
        "value": 25.0,
        "volumenumber": 1,
-       "publicationdate": "October 2003"
+       "publicationdate": "October 2003",
+       "isGraded": false,
+       "isSlabbed": false
    },
    {
        "seriestitle": "X-Men",
@@ -41,7 +47,9 @@
        "description": "The story of a group of mutants who band together to fight for the future of their kind.",
        "value": 500.0,
        "volumenumber": 1,
-       "publicationdate": "September 1963"
+       "publicationdate": "September 1963",
+       "isGraded": false,
+       "isSlabbed": false
    },
    {
        "seriestitle": "Watchmen",
@@ -52,7 +60,9 @@
        "description": "A group of retired superheroes investigate the murder of one of their own and uncover a conspiracy.",
        "value": 50.0,
        "volumenumber": 1,
-       "publicationdate": "September 1986"
+       "publicationdate": "September 1986",
+       "isGraded": false,
+       "isSlabbed": false
    },
    {
        "seriestitle": "Saga",
@@ -63,7 +73,9 @@
        "description": "A young family tries to survive in a war-torn galaxy while being pursued by their enemies.",
        "value": 15.0,
        "volumenumber": 1,
-       "publicationdate": "March 2012"
+       "publicationdate": "March 2012",
+       "isGraded": false,
+       "isSlabbed": false
    },
    {
        "seriestitle": "Sandman",
@@ -74,7 +86,9 @@
        "description": "The Lord of Dreams, also known as the Sandman, escapes captivity and embarks on a journey to reclaim his realm.",
        "value": 75.0,
        "volumenumber": 2,
-       "publicationdate": "January 1989"
+       "publicationdate": "January 1989",
+       "isGraded": false,
+       "isSlabbed": false
    },
    {
        "seriestitle": "Spawn",
@@ -85,7 +99,9 @@
        "description": "A murdered soldier is brought back to life by the devil to serve as a Hellspawn, and must come to terms with his new existence.",
        "value": 20.0,
        "volumenumber": 1,
-       "publicationdate": "May 1992"
+       "publicationdate": "May 1992",
+       "isGraded": false,
+       "isSlabbed": false
    },
    {
        "seriestitle": "Batman: The Dark Knight Returns",
@@ -96,7 +112,9 @@
        "description": "An aging Batman comes out of retirement to save Gotham City from a gang of violent criminals.",
        "value": 30.0,
        "volumenumber": 1,
-       "publicationdate": "February 1986"
+       "publicationdate": "February 1986",
+       "isGraded": false,
+       "isSlabbed": false
    },
    {
        "seriestitle": "Hellboy",
@@ -107,6 +125,8 @@
        "description": "A demon summoned to Earth by Nazis is raised by a kind professor and becomes a paranormal investigator.",
        "value": 40.0,
        "volumenumber": 1,
-       "publicationdate": "March 1994"
+       "publicationdate": "March 1994",
+       "isGraded": false,
+       "isSlabbed": false
    }
 ]

@@ -72,7 +72,9 @@ public class PersonalCollection {
                         }
                         String description = (String) jsonObject.get("description");
                         double value = (Double) jsonObject.get("value");
-                        Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber, publicationDate, creatorsList, description, value);
+                        Boolean isGraded = (Boolean) jsonObject.get("isGraded");
+                        Boolean isSlabbed = (Boolean) jsonObject.get("isSlabbed");
+                        Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber, publicationDate, creatorsList, description, value, isGraded, isSlabbed);
                         comics.add(comic);
                     }
                 }
@@ -135,7 +137,13 @@ public class PersonalCollection {
             json.append(comics.get(i).getVolumeNumber()).append(",\n");
 
             json.append("       \"").append("publicationdate").append("\": ");
-            json.append("\"").append(comics.get(i).getPublicationDate()).append("\"\n");
+            json.append("\"").append(comics.get(i).getPublicationDate()).append("\",\n");
+
+            json.append("       \"").append("isGraded").append("\": ");
+            json.append(comics.get(i).getIsGraded()).append(",\n");
+
+            json.append("       \"").append("isSlabbed").append("\": ");
+            json.append(comics.get(i).getIsSlabbed()).append("\n");
             
             if(i < comics.size() - 1){
                 json.append("   },\n");
@@ -212,6 +220,7 @@ public class PersonalCollection {
     public void editSlab(String storyTitle){
         Comic comic = getComicInCollection(storyTitle);
         if(comic.getIsGraded() == true){
+            comic.setIsSlabbed(true);
             comic.setValue(comic.getValue()*2);
         }
     }
@@ -269,7 +278,7 @@ public class PersonalCollection {
         }
 
         //adds new comic object to their personal collection
-        comics.add(new Comic(new Publisher(publisher), seriesTitle, storyTitle, volumeNumber, issueNumber, publicationDate, creatorsList, description, valueNumber));
+        comics.add(new Comic(new Publisher(publisher), seriesTitle, storyTitle, volumeNumber, issueNumber, publicationDate, creatorsList, description, valueNumber, false, false));
         System.out.println(storyTitle + " has been successfully added to your personal collection");
     }
 

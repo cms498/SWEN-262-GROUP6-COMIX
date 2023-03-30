@@ -1,6 +1,7 @@
 package src;
 import java.util.List;
 
+
 public class Comic {
     private Publisher publisher;
     private String seriesTitle;
@@ -12,10 +13,11 @@ public class Comic {
     private String description; // optional
     private double value; // optional
     private boolean isGraded;
+    private boolean isSlabbed;
 
     public Comic(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
             String issueNumber, String publicationDate, List<Creator> creators,
-            String description, double value) {
+            String description, double value, boolean isGraded, boolean isSlabbed) {
         this.publisher = publisher;
         this.seriesTitle = seriesTitle;
         this.storyTitle = storyTitle;
@@ -25,7 +27,8 @@ public class Comic {
         this.creators = creators;
         this.description = description;
         this.value = value;
-        this.isGraded = false;
+        this.isGraded = isGraded;
+        this.isSlabbed = isSlabbed;
     }
 
     public Publisher getPublisher() {
@@ -127,8 +130,16 @@ public class Comic {
         this.isGraded = isGraded;
     }
 
+    public boolean getIsSlabbed(){
+        return isSlabbed;
+    }
+
+    public void setIsSlabbed(boolean isSlabbed){
+        this.isSlabbed = isSlabbed;
+    }
+
     @Override
     public String toString() {
-        return "{publisher: " + publisher + ", seriestitle: " + seriesTitle + ", storytitle: " + storyTitle + ", volumenumber: " + volumeNumber + ", value: " + value + ", creators: " + creators + ", description: " + description + ", issuenumber: " + issueNumber + "}";
+        return "{publisher: " + publisher + ", seriestitle: " + seriesTitle + ", storytitle: " + storyTitle + ", volumenumber: " + volumeNumber + ", value: " + value + ", creators: " + creators + ", description: " + description + ", issuenumber: " + issueNumber + ", isGraded: " + isGraded + ", isSlabbed: "+ isSlabbed + "}";
     }
 }
