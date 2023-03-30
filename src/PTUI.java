@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
-import javax.swing.text.View;
 
 import src.search.CollectionSearcher;
 import src.search.SearchByCreators;
@@ -115,7 +114,7 @@ public class PTUI {
                     System.out.println(personalCollection.doSearch(multiResult[2]));
                 }
 
-                if (command.equals("search database")) {
+                else if (command.equals("search database")) {
                     if (multiResult[3].equals("exact")) {
                         searchOptions.get(multiResult[1]).setExactMatch(true);
                     } else {
@@ -125,50 +124,54 @@ public class PTUI {
                     System.out.println(personalCollection.doDatabaseSearch(multiResult[2]));
                 }
 
-                if (command.equals("sort collection")) {
+                else if (command.equals("sort collection")) {
                     personalCollection.setSort(sortOptions.get(multiResult[1]));
                     System.out.println(personalCollection.doSort());
                 }
 
-                if (command.equals("add from database")) {
+                else if (command.equals("add from database")) {
                     personalCollection.addComicByDataBase(multiResult[1]);
                     personalCollection.convertBackToJson();
                 }
 
-                if (command.equals("add")) {
+                else if (command.equals("add")) {
                     personalCollection.addComicManually(multiResult[6], multiResult[1], multiResult[4],
                             Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], multiResult[9],
                             multiResult[5], multiResult[8]);
                     personalCollection.convertBackToJson();
                 }
 
-                if (command.equals("edit")) {
+                else if (command.equals("edit")) {
                     personalCollection.editComic(multiResult[1], multiResult[2], multiResult[3]);
                     personalCollection.convertBackToJson();
                 }
 
-                if (command.equals("grade")) {
+                else if (command.equals("grade")) {
                     personalCollection.editGrade(multiResult[1], Integer.parseInt(multiResult[2]));
                     personalCollection.convertBackToJson();
                 }
 
-                if (command.equals("slab")) {
+                else if (command.equals("slab")) {
                     personalCollection.editSlab(multiResult[1]);
                 }
 
-                if (command.equals("remove")) {
+                else if (command.equals("remove")) {
                     personalCollection.removeComic(multiResult[1]);
                     personalCollection.convertBackToJson();
                 }
 
-                if(command.equals("view")){
+                else if(command.equals("view")){
                     personalCollection.PrettyPrintDatabase();
                 }
 
-                if (command.equals("lc")) {
+                else if (command.equals("lc")) {
                     System.out.println(commands);
                     result = scanner.nextLine();
                     continue;
+                }
+
+                else {
+                    System.out.println("Command not recognized");
                 }
             } catch (Exception e) {
                 System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
