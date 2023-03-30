@@ -192,6 +192,9 @@ public class PTUI {
                         case "collection":
                         personalCollection.PrettyPrintDatabase();
                             break;
+                        default:
+                            System.out.println("Command not recognized, your options are: publisher, series, volume, issue, collection");
+                            break;
                     }
                 }
 
