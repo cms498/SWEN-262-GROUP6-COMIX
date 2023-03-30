@@ -3,6 +3,10 @@ package src;
 import src.search.CollectionSearcher;
 import src.search.SearchByTitle;
 import src.sort.CollectionSorter;
+import src.sort.SortByDate;
+import src.sort.SortByIssueNumber;
+import src.sort.SortByTitle;
+import src.sort.SortByVolume;
 
 import java.io.File;
 import java.io.FileReader;
@@ -10,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -30,13 +35,16 @@ public class PersonalCollection {
     private List<Comic> comics;
     private CollectionSorter sorter;
     private CollectionSearcher searcher;
-    private List<PersonalCollectionObserver> observers;
+    private HashMap<String, CollectionSorter> sortOptions = new HashMap<>();
 
     public PersonalCollection() {
         value = 0.0;
         numberOfIssues = 0;
         comics = new ArrayList<>();
-        observers = new ArrayList<>();
+        sortOptions.put("volume", new SortByVolume());
+        sortOptions.put("date", new SortByDate());
+        sortOptions.put("issue number", new SortByIssueNumber());
+        sortOptions.put("title", new SortByTitle());
     }
 
     //converts from JSON to a list of comics
@@ -146,16 +154,6 @@ public class PersonalCollection {
           
     }
 
-    public void register(PersonalCollectionObserver observer) {
-        this.observers.add(observer);
-    }
-
-    private void handle() {
-        for(PersonalCollectionObserver observer: this.observers) {
-            observer.handle();
-        }
-    }
-
     public Comic getComicInCollection(String comicName){
         comicName = comicName.toLowerCase();
         for(Comic comicsInList: comics){
@@ -196,17 +194,16 @@ public class PersonalCollection {
         return numberOfIssues;
     }
 
-    public List<Comic> doSearch(String searchTerm){
-        return this.searcher.search(comics, searchTerm);
+    public List<Comic> doSearch(String searchTerm, String sortType){
+        List<Comic> searchComics = this.searcher.search(comics, searchTerm);
+        setSort(sortOptions.get(sortType));
+        return this.sorter.sort(searchComics);
     }
 
     public List<Comic> doDatabaseSearch(String searchTerm){
         return this.searcher.databaseSearch(searchTerm);
     }
 
-    public List<Comic> doSort(){
-        return this.sorter.sort(comics);
-    }
 
     public List<Comic> getComics(){
         return comics;
@@ -366,6 +363,4 @@ public class PersonalCollection {
         }
         System.out.println("\n\n"+sb.toString());
     }
-    
-
 }

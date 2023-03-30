@@ -9,11 +9,6 @@ import src.search.CollectionSearcher;
 import src.search.SearchByCreators;
 import src.search.SearchByDescription;
 import src.search.SearchByTitle;
-import src.sort.CollectionSorter;
-import src.sort.SortByDate;
-import src.sort.SortByIssueNumber;
-import src.sort.SortByTitle;
-import src.sort.SortByVolume;
 
 public class PTUI {
 
@@ -56,9 +51,8 @@ public class PTUI {
                         + "\033[0m");
 
         String quitter = ">>To end the application -> \"quit\"";
-        String PersonalCollectionSearchCommand = ">>To search your personal collection -> \"search collection\", <search type>, <term>, <exact or partial>";
+        String PersonalCollectionSearchCommand = ">>To search your personal collection -> \"search collection\", <search type>, <term>, <exact or partial>. <sort type>";
         String DataBaseSearchCommand = ">>To search the database -> <search database>, \"search type\", <term>, <exact or partial>";
-        String PersonalCollectionSortCommand = ">>To sort your personal collection -> \"sort\", <sort type>";
         String AddComicFROMDBtoPersonalCollection = ">>To add comic from the database to your personal collection -> \"add from database>\", <exact comic name>";
         String AddComicManuallytoPersonalCollection = ">>To add a comic manually to your personal collection-> \"add\", <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value> <[creator1, creator2, ...]>";
         String EditComicInPersonalCollection = ">>To edit a comic in your personal collection -> \"edit\", <exact comic name>, <field to be edited>, <new value>";
@@ -67,11 +61,10 @@ public class PTUI {
         String RemoveComic = ">>To remove a comic from the personal colection -> \"remove\", <exact comic name>";
         String viewBooks = ">>To view your personal collection -> \"view\"";
 
-        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 quitter,
                 PersonalCollectionSearchCommand,
                 DataBaseSearchCommand,
-                PersonalCollectionSortCommand,
                 AddComicFROMDBtoPersonalCollection,
                 AddComicManuallytoPersonalCollection,
                 EditComicInPersonalCollection,
@@ -90,11 +83,6 @@ public class PTUI {
         searchOptions.put("description", new SearchByDescription(false));
         searchOptions.put("creators", new SearchByCreators(false));
 
-        HashMap<String, CollectionSorter> sortOptions = new HashMap<>();
-        sortOptions.put("volume", new SortByVolume());
-        sortOptions.put("date", new SortByDate());
-        sortOptions.put("issue number", new SortByIssueNumber());
-        sortOptions.put("title", new SortByTitle());
 
         while (!result.equals("quit")) {
             try {
@@ -111,7 +99,7 @@ public class PTUI {
                         searchOptions.get(multiResult[1]).setExactMatch(false);
                     }
                     personalCollection.setSearch(searchOptions.get(multiResult[1]));
-                    System.out.println(personalCollection.doSearch(multiResult[2]));
+                    System.out.println(personalCollection.doSearch(multiResult[2], multiResult[4]));
                 }
 
                 else if (command.equals("search database")) {
@@ -122,11 +110,6 @@ public class PTUI {
                     }
                     personalCollection.setSearch(searchOptions.get(multiResult[1]));
                     System.out.println(personalCollection.doDatabaseSearch(multiResult[2]));
-                }
-
-                else if (command.equals("sort collection")) {
-                    personalCollection.setSort(sortOptions.get(multiResult[1]));
-                    System.out.println(personalCollection.doSort());
                 }
 
                 else if (command.equals("add from database")) {
@@ -166,8 +149,6 @@ public class PTUI {
 
                 else if (command.equals("lc")) {
                     System.out.println(commands);
-                    result = scanner.nextLine();
-                    continue;
                 }
 
                 else {
