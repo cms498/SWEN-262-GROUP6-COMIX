@@ -77,6 +77,7 @@ public class PTUI {
                 viewBooks);
 
         Scanner scanner = new Scanner(System.in);
+        System.out.print(">>");
         String result = scanner.nextLine();
 
         PersonalCollection personalCollection = new PersonalCollection();
@@ -211,10 +212,10 @@ public class PTUI {
                     System.out.println("Command not recognized");
                 }
             } catch (Exception e) {
-                e.printStackTrace();
-                // System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
+                System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
             }
 
+            System.out.print(">>");
             result = scanner.nextLine();
         }
 
