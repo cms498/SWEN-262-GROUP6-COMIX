@@ -4,7 +4,7 @@ import src.search.CollectionSearcher;
 import src.search.SearchByTitle;
 import src.sort.CollectionSorter;
 
-import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,7 +15,6 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -44,12 +43,11 @@ public class PersonalCollection {
     public void initializeComics() {
         this.comics = new ArrayList<>();
         try{
-            BufferedReader br = new BufferedReader(new FileReader(comicFile));
-            String line = "";
-            while((line = br.readLine()) != null) {
                 JSONParser parser = new JSONParser();
                 try{
-                    JSONArray jsonArray = (JSONArray) parser.parse(line);
+                    File file = new File(comicFile);
+                    FileReader reader = new FileReader(file);
+                    JSONArray jsonArray = (JSONArray) parser.parse(reader);
                     for(int i = 0; i < jsonArray.size(); i++){
                         JSONObject jsonObject = (JSONObject) jsonArray.get(i);
                         Publisher publisher = new Publisher((String) jsonObject.get("publisher"));
@@ -65,16 +63,14 @@ public class PersonalCollection {
                             creatorsList.add(new Creator(creator));
                         }
                         String description = (String) jsonObject.get("description");
-                        long value = (Long) jsonObject.get("value");
-                        Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber, publicationDate, creatorsList, description, (double) value);
+                        double value = (Double) jsonObject.get("value");
+                        Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber, publicationDate, creatorsList, description, value);
                         comics.add(comic);
                     }
                 }
                 catch (ParseException e) {
                     System.out.println("Invalid filename2");
                 }
-            }
-            br.close();
         }
         catch(IOException e){
             System.out.println("Invalid filename");
@@ -99,33 +95,55 @@ public class PersonalCollection {
     
     //converts from list to json
     public void convertBackToJson(){
-        JSONArray jsonArray = new JSONArray();
-        for(Comic comic: comics){
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("publisher", (String) comic.getPublisher().getName());
-            jsonObject.put("seriestitle", (String) comic.getSeriesTitle());
-            jsonObject.put("storytitle", (String) comic.getStoryTitle());
-            jsonObject.put("volumenumber", (int) comic.getVolumeNumber());
-            jsonObject.put("issuenumber", (String) comic.getIssueNumber());
-            jsonObject.put("publicationdate", (String) comic.getPublicationDate());
-            List<Creator> creatorList = comic.getCreators();
+        StringBuilder json = new StringBuilder();
+        json.append("[\n");
+        for(int i = 0; i < comics.size(); i++){
+            json.append("   {\n");
+            json.append("       \"").append("seriestitle").append("\": ");
+            json.append("\"").append(comics.get(i).getSeriesTitle()).append("\",\n");
+            json.append("       \"").append("issuenumber").append("\": ");
+            json.append("\"").append(comics.get(i).getIssueNumber()).append("\",\n");
+            json.append("       \"").append("storytitle").append("\": ");
+            json.append("\"").append(comics.get(i).getStoryTitle()).append("\",\n");
+            List<Creator> creatorList = comics.get(i).getCreators();
             String creators = "";
-            for(int i = 0; i < creatorList.size(); i++){
-                creators = creators + creatorList.get(i);
-                if(i < creatorList.size()-1){
+            for(int j = 0; j < creatorList.size(); j++){
+                creators = creators + creatorList.get(j);
+                if(j < creatorList.size()-1){
                     creators = creators + ",";
                 }
             }
-            jsonObject.put("creators", (String) creators);
-            jsonObject.put("description", (String) comic.getDescription());
-            jsonObject.put("value", (int) comic.getValue());
-            jsonArray.add(jsonObject);
+            json.append("       \"").append("creators").append("\": ");
+            json.append("\"").append(creators).append("\",\n");
+            json.append("       \"").append("publisher").append("\": ");
+            json.append("\"").append(comics.get(i).getPublisher()).append("\",\n");
+            json.append("       \"").append("description").append("\": ");
+            json.append("\"").append(comics.get(i).getDescription()).append("\",\n");
+            json.append("       \"").append("value").append("\": ");
+            String valueString = String.format("%.2f", comics.get(i).getValue());
+            json.append(Double.valueOf(valueString)).append(",\n");
+
+            json.append("       \"").append("volumenumber").append("\": ");
+            json.append(comics.get(i).getVolumeNumber()).append(",\n");
+
+            json.append("       \"").append("publicationdate").append("\": ");
+            json.append("\"").append(comics.get(i).getPublicationDate()).append("\"\n");
+            
+            if(i < comics.size() - 1){
+                json.append("   },\n");
+            }
+            else{
+                json.append("   }\n");
+            }
         }
+        json.append("]");
+        String jsonString = json.toString();
         try (FileWriter fileWriter = new FileWriter(comicFile)) {
-            JSONValue.writeJSONString(jsonArray, fileWriter);
+            fileWriter.write(jsonString);
           } catch (IOException e) {
             e.printStackTrace();
-          }
+        }
+          
     }
 
     public void register(PersonalCollectionObserver observer) {
@@ -318,5 +336,29 @@ public class PersonalCollection {
         }
 
     }
+
+    //add an underscore after the header of each column
+	public void PrettyPrintDatabase() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\033[1m"); // Bold formatting
+        sb.append(String.format("%-20s | %-20s | %-20s | %-20s | %-20s | %-20s | %-10s| %-10s", "Publisher", "Series Title", "Story Title", "Volume Number", "Issue Number", "Publication Date", "Value", "Graded"));
+        sb.append("\033[0m\n"); // Reset formatting to default and add new line
+        sb.append("____________________________________________________________________________________________________________________________________________________________"); // Underscores
+        sb.append(System.lineSeparator());
+    
+        for (Comic comic : comics) {
+            if(comic.getSeriesTitle().length() > 20){
+                comic.setSeriesTitle(comic.getSeriesTitle().substring(0, 17) + "...");
+            }
+    
+            if(comic.getStoryTitle().length() > 20){
+                comic.setStoryTitle(comic.getStoryTitle().substring(0, 17) + "...");
+            }
+            sb.append(String.format("%-20s | %-20s | %-20s | %-20s | %-20s | %-20s | %-10s| %-10s", comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(), comic.getIsGraded()));
+            sb.append(System.lineSeparator());
+        }
+        System.out.println("\n\n"+sb.toString());
+    }
+    
 
 }

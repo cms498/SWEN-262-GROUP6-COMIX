@@ -1,6 +1,5 @@
 package src;
 import java.util.List;
-import java.util.Properties;
 
 public class Comic {
     private Publisher publisher;
