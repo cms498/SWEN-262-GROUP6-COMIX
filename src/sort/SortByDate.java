@@ -17,7 +17,6 @@ import java.util.Date;
 public class SortByDate implements CollectionSorter{
 
     public int compareDates(Object obj1, Object obj2) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         
         String dateStr1 = getDateFromObject(obj1); // helper function to get date string from object
         String dateStr2 = getDateFromObject(obj2);
