@@ -223,7 +223,7 @@ public class PersonalCollection {
         Comic comic = getComicInCollection(storyTitle);
         double newValue = grade;
         if(grade == 1){
-            newValue = comic.getValue()*(grade/100);
+            newValue = comic.getValue()*(0.10);
         }
         else{
             newValue = Math.log10(grade)*comic.getValue();
