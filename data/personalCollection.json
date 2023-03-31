@@ -22,8 +22,8 @@
        "value": 100.0,
        "volumenumber": 1,
        "publicationdate": "Mar 1963",
-       "isGraded": false,
-       "isSlabbed": false
+       "isGraded": true,
+       "isSlabbed": true
    },
    {
        "seriestitle": "The Walking Dead",
@@ -61,7 +61,7 @@
        "value": 50.0,
        "volumenumber": 1,
        "publicationdate": "Sep 1986",
-       "isGraded": false,
+       "isGraded": true,
        "isSlabbed": false
    },
    {
@@ -74,8 +74,8 @@
        "value": 15.0,
        "volumenumber": 6,
        "publicationdate": "Mar 2012",
-       "isGraded": false,
-       "isSlabbed": false
+       "isGraded": true,
+       "isSlabbed": true
    },
    {
        "seriestitle": "Sandman",
@@ -126,7 +126,7 @@
        "value": 40.0,
        "volumenumber": 1,
        "publicationdate": "Mar 1994",
-       "isGraded": false,
+       "isGraded": true,
        "isSlabbed": false
    }
 ]

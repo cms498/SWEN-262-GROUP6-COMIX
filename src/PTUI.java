@@ -9,6 +9,8 @@ import java.util.Scanner;
 import src.search.CollectionSearcher;
 import src.search.SearchByCreators;
 import src.search.SearchByDescription;
+import src.search.SearchByGrade;
+import src.search.SearchBySlab;
 import src.search.SearchByTitle;
 
 public class PTUI {
@@ -83,6 +85,8 @@ public class PTUI {
         searchOptions.put("title", new SearchByTitle(false));
         searchOptions.put("description", new SearchByDescription(false));
         searchOptions.put("creators", new SearchByCreators(false));
+        searchOptions.put("graded", new SearchByGrade(false));
+        searchOptions.put("slabbed", new SearchBySlab(false));
 
 
         while (!result.equals("quit")) {
