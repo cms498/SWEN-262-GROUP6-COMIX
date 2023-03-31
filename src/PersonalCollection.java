@@ -3,6 +3,10 @@ package src;
 import src.search.CollectionSearcher;
 import src.search.SearchByTitle;
 import src.sort.CollectionSorter;
+import src.sort.SortByDate;
+import src.sort.SortByIssueNumber;
+import src.sort.SortByTitle;
+import src.sort.SortByVolume;
 
 import java.io.File;
 import java.io.FileReader;
@@ -10,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -30,13 +35,16 @@ public class PersonalCollection {
     private List<Comic> comics;
     private CollectionSorter sorter;
     private CollectionSearcher searcher;
-    private List<PersonalCollectionObserver> observers;
+    private HashMap<String, CollectionSorter> sortOptions = new HashMap<>();
 
     public PersonalCollection() {
         value = 0.0;
         numberOfIssues = 0;
         comics = new ArrayList<>();
-        observers = new ArrayList<>();
+        sortOptions.put("volume", new SortByVolume());
+        sortOptions.put("date", new SortByDate());
+        sortOptions.put("issue number", new SortByIssueNumber());
+        sortOptions.put("title", new SortByTitle());
     }
 
     //converts from JSON to a list of comics
@@ -64,7 +72,9 @@ public class PersonalCollection {
                         }
                         String description = (String) jsonObject.get("description");
                         double value = (Double) jsonObject.get("value");
-                        Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber, publicationDate, creatorsList, description, value);
+                        Boolean isGraded = (Boolean) jsonObject.get("isGraded");
+                        Boolean isSlabbed = (Boolean) jsonObject.get("isSlabbed");
+                        Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber, publicationDate, creatorsList, description, value, isGraded, isSlabbed);
                         comics.add(comic);
                     }
                 }
@@ -127,7 +137,13 @@ public class PersonalCollection {
             json.append(comics.get(i).getVolumeNumber()).append(",\n");
 
             json.append("       \"").append("publicationdate").append("\": ");
-            json.append("\"").append(comics.get(i).getPublicationDate()).append("\"\n");
+            json.append("\"").append(comics.get(i).getPublicationDate()).append("\",\n");
+
+            json.append("       \"").append("isGraded").append("\": ");
+            json.append(comics.get(i).getIsGraded()).append(",\n");
+
+            json.append("       \"").append("isSlabbed").append("\": ");
+            json.append(comics.get(i).getIsSlabbed()).append("\n");
             
             if(i < comics.size() - 1){
                 json.append("   },\n");
@@ -144,16 +160,6 @@ public class PersonalCollection {
             e.printStackTrace();
         }
           
-    }
-
-    public void register(PersonalCollectionObserver observer) {
-        this.observers.add(observer);
-    }
-
-    private void handle() {
-        for(PersonalCollectionObserver observer: this.observers) {
-            observer.handle();
-        }
     }
 
     public Comic getComicInCollection(String comicName){
@@ -196,17 +202,16 @@ public class PersonalCollection {
         return numberOfIssues;
     }
 
-    public List<Comic> doSearch(String searchTerm){
-        return this.searcher.search(comics, searchTerm);
+    public List<Comic> doSearch(String searchTerm, String sortType){
+        List<Comic> searchComics = this.searcher.search(comics, searchTerm);
+        setSort(sortOptions.get(sortType));
+        return this.sorter.sort(searchComics);
     }
 
     public List<Comic> doDatabaseSearch(String searchTerm){
         return this.searcher.databaseSearch(searchTerm);
     }
 
-    public List<Comic> doSort(){
-        return this.sorter.sort(comics);
-    }
 
     public List<Comic> getComics(){
         return comics;
@@ -214,8 +219,13 @@ public class PersonalCollection {
 
     public void editSlab(String storyTitle){
         Comic comic = getComicInCollection(storyTitle);
-        if(comic.getIsGraded() == true){
+        if(comic.getIsGraded() == true && comic.getIsSlabbed() == false){
+            comic.setIsSlabbed(true);
             comic.setValue(comic.getValue()*2);
+        } else if (comic.getIsSlabbed() == true){
+            System.out.println("You can't slab a comic again");
+        } else {
+            System.out.println("You cant slab a non graded comic");
         }
     }
 
@@ -223,12 +233,13 @@ public class PersonalCollection {
         Comic comic = getComicInCollection(storyTitle);
         double newValue = grade;
         if(grade == 1){
-            newValue = comic.getValue()*(grade/100);
+            newValue = comic.getValue()*(0.10);
         }
         else{
             newValue = Math.log10(grade)*comic.getValue();
         }
         comic.setValue(newValue);
+        comic.setIsGraded(true);
     }
 
     //adds comics from the database by user input (user inputs only the story title here) 
@@ -272,7 +283,7 @@ public class PersonalCollection {
         }
 
         //adds new comic object to their personal collection
-        comics.add(new Comic(new Publisher(publisher), seriesTitle, storyTitle, volumeNumber, issueNumber, publicationDate, creatorsList, description, valueNumber));
+        comics.add(new Comic(new Publisher(publisher), seriesTitle, storyTitle, volumeNumber, issueNumber, publicationDate, creatorsList, description, valueNumber, false, false));
         System.out.println(storyTitle + " has been successfully added to your personal collection");
     }
 
@@ -330,6 +341,16 @@ public class PersonalCollection {
                 double finalValue = Double.parseDouble(dfZero.format(newDouble));
                 comic.setValue(finalValue);
                 break;
+            case "grade":
+                if(newValue.equals("true")){
+                    comic.setIsGraded(true);
+                } else {
+                    comic.setIsGraded(false);
+                }
+                break;
+            case "slab":
+                editSlab(storyTitle);
+                break;
             default:
                 System.out.println("please input a valid field");
                 break;
@@ -341,9 +362,9 @@ public class PersonalCollection {
 	public void PrettyPrintDatabase() {
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
-        sb.append(String.format("%-20s | %-20s | %-20s | %-20s | %-20s | %-20s | %-10s| %-10s", "Publisher", "Series Title", "Story Title", "Volume Number", "Issue Number", "Publication Date", "Value", "Graded"));
+        sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-10s | %-10s  | %-20s | %-10s| %-10s| %-10s", "Publisher", "Series Title", "Story Title", "Description" ,"Volume Number", "Issue Number", "Publication Date", "Value", "Graded", "Slabbed"));
         sb.append("\033[0m\n"); // Reset formatting to default and add new line
-        sb.append("____________________________________________________________________________________________________________________________________________________________"); // Underscores
+        sb.append("_".repeat(175)); // Underscores
         sb.append(System.lineSeparator());
     
         for (Comic comic : comics) {
@@ -354,11 +375,63 @@ public class PersonalCollection {
             if(comic.getStoryTitle().length() > 20){
                 comic.setStoryTitle(comic.getStoryTitle().substring(0, 17) + "...");
             }
-            sb.append(String.format("%-20s | %-20s | %-20s | %-20s | %-20s | %-20s | %-10s| %-10s", comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(), comic.getIsGraded()));
+
+            if(comic.getDescription().length() > 20){
+                comic.setDescription(comic.getDescription().substring(0, 17) + "...");
+            }
+
+            sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-10s    | %-10s    | %-20s | %-10s| %-10s| %-10s", comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getDescription() ,comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(), comic.getIsGraded(), comic.getIsSlabbed()));
+            sb.append(System.lineSeparator());
+            sb.append("_".repeat(175)); // Underscores            
             sb.append(System.lineSeparator());
         }
         System.out.println("\n\n"+sb.toString());
     }
-    
 
+    public void prettyPrintHelper(String type){
+        StringBuilder sb = new StringBuilder();
+        sb.append("\033[1m"); // Bold formatting
+        sb.append(String.format("%-20s", type));
+        sb.append("\033[0m\n"); // Reset formatting to default and add new line
+        sb.append("_".repeat(20)); // Underscores
+        sb.append(System.lineSeparator());
+
+        for (Comic comic : comics) {
+            if(type.equals("Series Title")){
+                sb.append(String.format("%-20s", comic.getSeriesTitle()));
+            }
+            else if(type.equals("Volume Number")){
+                sb.append(String.format("%-20s", comic.getVolumeNumber()));
+            }
+            else if(type.equals("Issue Number")){
+                sb.append(String.format("%-20s", comic.getIssueNumber()));
+            }
+            else if(type.equals("Publisher")){
+                sb.append(String.format("%-20s", comic.getPublisher()));
+            }
+
+            sb.append(System.lineSeparator());
+            sb.append("_".repeat(20)); // Underscores
+            sb.append(System.lineSeparator());
+        }
+
+        System.out.println("\n\n"+sb.toString());
+    }
+
+
+    public void viewSeriesTitle() {
+        prettyPrintHelper("Series Title");
+    }
+
+    public void viewVolumeNumber() {
+        prettyPrintHelper("Volume Number");
+    }
+
+    public void viewIssueNumber() {
+        prettyPrintHelper("Issue Number");
+    }
+
+    public void viewPublisher() {
+        prettyPrintHelper("Publisher");
+    }
 }

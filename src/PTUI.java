@@ -1,20 +1,17 @@
 package src;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import javax.swing.text.View;
 
 import src.search.CollectionSearcher;
 import src.search.SearchByCreators;
 import src.search.SearchByDescription;
+import src.search.SearchByGrade;
+import src.search.SearchBySlab;
 import src.search.SearchByTitle;
-import src.sort.CollectionSorter;
-import src.sort.SortByDate;
-import src.sort.SortByIssueNumber;
-import src.sort.SortByTitle;
-import src.sort.SortByVolume;
 
 public class PTUI {
 
@@ -57,9 +54,8 @@ public class PTUI {
                         + "\033[0m");
 
         String quitter = ">>To end the application -> \"quit\"";
-        String PersonalCollectionSearchCommand = ">>To search your personal collection -> \"search collection\", <search type>, <term>, <exact or partial>";
+        String PersonalCollectionSearchCommand = ">>To search your personal collection -> \"search collection\", <search type>, <term>, <exact or partial>. <sort type>";
         String DataBaseSearchCommand = ">>To search the database -> <search database>, \"search type\", <term>, <exact or partial>";
-        String PersonalCollectionSortCommand = ">>To sort your personal collection -> \"sort\", <sort type>";
         String AddComicFROMDBtoPersonalCollection = ">>To add comic from the database to your personal collection -> \"add from database>\", <exact comic name>";
         String AddComicManuallytoPersonalCollection = ">>To add a comic manually to your personal collection-> \"add\", <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value> <[creator1, creator2, ...]>";
         String EditComicInPersonalCollection = ">>To edit a comic in your personal collection -> \"edit\", <exact comic name>, <field to be edited>, <new value>";
@@ -68,11 +64,10 @@ public class PTUI {
         String RemoveComic = ">>To remove a comic from the personal colection -> \"remove\", <exact comic name>";
         String viewBooks = ">>To view your personal collection -> \"view\"";
 
-        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 quitter,
                 PersonalCollectionSearchCommand,
                 DataBaseSearchCommand,
-                PersonalCollectionSortCommand,
                 AddComicFROMDBtoPersonalCollection,
                 AddComicManuallytoPersonalCollection,
                 EditComicInPersonalCollection,
@@ -90,12 +85,9 @@ public class PTUI {
         searchOptions.put("title", new SearchByTitle(false));
         searchOptions.put("description", new SearchByDescription(false));
         searchOptions.put("creators", new SearchByCreators(false));
+        searchOptions.put("graded", new SearchByGrade(false));
+        searchOptions.put("slabbed", new SearchBySlab(false));
 
-        HashMap<String, CollectionSorter> sortOptions = new HashMap<>();
-        sortOptions.put("volume", new SortByVolume());
-        sortOptions.put("date", new SortByDate());
-        sortOptions.put("issue number", new SortByIssueNumber());
-        sortOptions.put("title", new SortByTitle());
 
         while (!result.equals("quit")) {
             try {
@@ -112,10 +104,40 @@ public class PTUI {
                         searchOptions.get(multiResult[1]).setExactMatch(false);
                     }
                     personalCollection.setSearch(searchOptions.get(multiResult[1]));
-                    System.out.println(personalCollection.doSearch(multiResult[2]));
+                    List<Comic> listy = (personalCollection.doSearch(multiResult[2], multiResult[4]));
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("\033[1m"); // Bold formatting
+                    sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s", "Publisher", "Series Title", "Story Title", "Description" ,"Volume Number", "Issue Number", "Publication Date", "Value", "Graded"));
+                    sb.append("\033[0m\n"); // Reset formatting to default and add new line
+                    sb.append("_".repeat(175)); // Underscores
+                    sb.append(System.lineSeparator());
+                
+                    for (Comic comic : listy) {
+                        if(comic.getSeriesTitle().length() > 20){
+                            comic.setSeriesTitle(comic.getSeriesTitle().substring(0, 17) + "...");
+                        }
+                
+                        if(comic.getStoryTitle().length() > 20){
+                            comic.setStoryTitle(comic.getStoryTitle().substring(0, 17) + "...");
+                        }
+            
+                        if(comic.getDescription().length() > 20){
+                            comic.setDescription(comic.getDescription().substring(0, 17) + "...");
+                        }
+
+                        if(comic.getPublisher().toString().length() > 20){
+                            comic.setPublisher(comic.getPublisher().toString().substring(0, 17) + "...");
+                        }
+            
+                        sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s", comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getDescription() ,comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(), comic.getIsGraded()));
+                        sb.append(System.lineSeparator());
+                        sb.append("_".repeat(175)); // Underscores            
+                        sb.append(System.lineSeparator());
+                    }
+                    System.out.println("\n\n"+sb.toString());
                 }
 
-                if (command.equals("search database")) {
+                else if (command.equals("search database")) {
                     if (multiResult[3].equals("exact")) {
                         searchOptions.get(multiResult[1]).setExactMatch(true);
                     } else {
@@ -125,53 +147,72 @@ public class PTUI {
                     System.out.println(personalCollection.doDatabaseSearch(multiResult[2]));
                 }
 
-                if (command.equals("sort collection")) {
-                    personalCollection.setSort(sortOptions.get(multiResult[1]));
-                    System.out.println(personalCollection.doSort());
-                }
-
-                if (command.equals("add from database")) {
+                else if (command.equals("add from database")) {
                     personalCollection.addComicByDataBase(multiResult[1]);
                     personalCollection.convertBackToJson();
                 }
 
-                if (command.equals("add")) {
+                else if (command.equals("add")) {
                     personalCollection.addComicManually(multiResult[6], multiResult[1], multiResult[4],
                             Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], multiResult[9],
                             multiResult[5], multiResult[8]);
                     personalCollection.convertBackToJson();
                 }
 
-                if (command.equals("edit")) {
+                else if (command.equals("edit")) {
                     personalCollection.editComic(multiResult[1], multiResult[2], multiResult[3]);
                     personalCollection.convertBackToJson();
                 }
 
-                if (command.equals("grade")) {
+                else if (command.equals("grade")) {
                     personalCollection.editGrade(multiResult[1], Integer.parseInt(multiResult[2]));
                     personalCollection.convertBackToJson();
                 }
 
-                if (command.equals("slab")) {
+                else if (command.equals("slab")) {
                     personalCollection.editSlab(multiResult[1]);
+                    personalCollection.convertBackToJson();
                 }
 
-                if (command.equals("remove")) {
+                else if (command.equals("remove")) {
                     personalCollection.removeComic(multiResult[1]);
                     personalCollection.convertBackToJson();
                 }
 
-                if(command.equals("view")){
-                    personalCollection.PrettyPrintDatabase();
+                else if(command.equals("view")){
+                    String type = multiResult[1];
+                    switch (type) {
+                        case "publisher":
+                            personalCollection.viewPublisher();
+                            break;
+                        case "series":
+                            personalCollection.viewSeriesTitle();
+                            break;
+                        case "volume":
+                            personalCollection.viewVolumeNumber();
+                            break;
+                        case "issue":
+                            personalCollection.viewIssueNumber();
+                            break;
+                        case "collection":
+                        personalCollection.PrettyPrintDatabase();
+                            break;
+                        default:
+                            System.out.println("Command not recognized, your options are: publisher, series, volume, issue, collection");
+                            break;
+                    }
                 }
 
-                if (command.equals("lc")) {
+                else if (command.equals("lc")) {
                     System.out.println(commands);
-                    result = scanner.nextLine();
-                    continue;
+                }
+
+                else {
+                    System.out.println("Command not recognized");
                 }
             } catch (Exception e) {
-                System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
+                e.printStackTrace();
+                // System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
             }
 
             result = scanner.nextLine();

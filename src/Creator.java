@@ -21,7 +21,6 @@ public class Creator {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return name;
     }
 }
