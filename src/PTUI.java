@@ -11,7 +11,7 @@ import src.search.SearchByCreators;
 import src.search.SearchByDescription;
 import src.search.SearchByGrade;
 import src.search.SearchBySlab;
-import src.search.SearchByTitle;
+import src.search.SearchByStoryTitle;
 
 public class PTUI {
 
@@ -83,7 +83,7 @@ public class PTUI {
         PersonalCollection personalCollection = new PersonalCollection();
 
         HashMap<String, CollectionSearcher> searchOptions = new HashMap<>();
-        searchOptions.put("title", new SearchByTitle(false));
+        searchOptions.put("title", new SearchByStoryTitle(false));
         searchOptions.put("description", new SearchByDescription(false));
         searchOptions.put("creators", new SearchByCreators(false));
         searchOptions.put("graded", new SearchByGrade(false));

@@ -14,6 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -74,7 +75,12 @@ public class PersonalCollection {
                         double value = (Double) jsonObject.get("value");
                         Boolean isGraded = (Boolean) jsonObject.get("isGraded");
                         Boolean isSlabbed = (Boolean) jsonObject.get("isSlabbed");
-                        Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber, publicationDate, creatorsList, description, value, isGraded, isSlabbed);
+                        String signatures = (String) jsonObject.get("signatures");
+                        //work in progress
+                        String[] signaturesArr = signatures.strip().split(",");
+                        List<String> signatureList = Arrays.asList(signaturesArr);
+                        Boolean authenticated = (Boolean) jsonObject.get("authenticated");
+                        Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber, publicationDate, creatorsList, description, value, isGraded, isSlabbed, signatureList, authenticated);
                         comics.add(comic);
                     }
                 }
@@ -285,7 +291,7 @@ public class PersonalCollection {
         }
 
         //adds new comic object to their personal collection
-        comics.add(new Comic(new Publisher(publisher), seriesTitle, storyTitle, volumeNumber, issueNumber, publicationDate, creatorsList, description, valueNumber, false, false));
+        comics.add(new Comic(new Publisher(publisher), seriesTitle, storyTitle, volumeNumber, issueNumber, publicationDate, creatorsList, description, valueNumber, false, false, new ArrayList<>(), false));
         System.out.println(storyTitle + " has been successfully added to your personal collection");
     }
 
