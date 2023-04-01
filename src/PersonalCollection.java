@@ -219,10 +219,9 @@ public class PersonalCollection {
 
     public void editSlab(String storyTitle){
         Comic comic = getComicInCollection(storyTitle);
-        double oldValue = comic.getValue();
         if(comic.getIsGraded() == true && comic.getIsSlabbed() == false){
             comic.setIsSlabbed(true);
-            comic.setValue((comic.getValue()*2)+oldValue);
+            comic.setValue((comic.getValue()*2));
         } else if (comic.getIsSlabbed() == true){
             System.out.println("You can't slab a comic again");
         } else {
