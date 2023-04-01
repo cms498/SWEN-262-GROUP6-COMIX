@@ -3,6 +3,10 @@ import java.util.List;
 
 
 public class Comic {
+
+    public final double SIGNED_VALUE_BOOST = .05;
+    public final double AUTHENTICEATED_VALUE_BOOST = .2;
+
     private Publisher publisher;
     private String seriesTitle;
     private String storyTitle;
@@ -14,10 +18,13 @@ public class Comic {
     private double value; // optional
     private boolean isGraded;
     private boolean isSlabbed;
+    private List<String> signatures;
+    private boolean authenticated;
 
     public Comic(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
             String issueNumber, String publicationDate, List<Creator> creators,
-            String description, double value, boolean isGraded, boolean isSlabbed) {
+            String description, double value, boolean isGraded, boolean isSlabbed, 
+            List<String> signatures, boolean authenticated) {
         this.publisher = publisher;
         this.seriesTitle = seriesTitle;
         this.storyTitle = storyTitle;
@@ -29,6 +36,8 @@ public class Comic {
         this.value = value;
         this.isGraded = isGraded;
         this.isSlabbed = isSlabbed;
+        this.signatures = signatures;
+        this.authenticated = authenticated;
     }
 
     public Publisher getPublisher() {
@@ -47,7 +56,6 @@ public class Comic {
     public void setSeriesTitle(String seriesTitle) {
         this.seriesTitle = seriesTitle;
     }
-
 
     public String getStoryTitle() {
         return storyTitle;
@@ -141,5 +149,15 @@ public class Comic {
     @Override
     public String toString() {
         return "{publisher: " + publisher + ", seriestitle: " + seriesTitle + ", storytitle: " + storyTitle + ", volumenumber: " + volumeNumber + ", value: " + value + ", creators: " + creators + ", description: " + description + ", issuenumber: " + issueNumber + ", isGraded: " + isGraded + ", isSlabbed: "+ isSlabbed + "}";
+    }
+
+    public void sign(String signedBy) {
+        this.signatures.add(signedBy);
+    }
+
+    public void authenticate(boolean authenticated) {
+        if(this.signatures.size() > 0) {
+            this.authenticated = authenticated;
+        }
     }
 }
