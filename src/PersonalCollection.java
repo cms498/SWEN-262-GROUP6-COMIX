@@ -1,7 +1,7 @@
 package src;
 
 import src.search.CollectionSearcher;
-import src.search.SearchByTitle;
+import src.search.SearchBySeriesTitle;
 import src.sort.CollectionSorter;
 import src.sort.SortByDate;
 import src.sort.SortByIssueNumber;
@@ -245,7 +245,7 @@ public class PersonalCollection {
     //adds comics from the database by user input (user inputs only the story title here) 
     public void addComicByDataBase(String storyTitle){
         //initializes the 'searcher' variable to the SearchByTitle class. Also sets the variable to only look for exact matches only 
-        searcher = new SearchByTitle(true);
+        searcher = new SearchBySeriesTitle(true);
         List<Comic> initialSearch = searcher.databaseSearch(storyTitle.toLowerCase());
 
         //if there's a comic that exists within the initialSearch list, then add it to their personal collection list
