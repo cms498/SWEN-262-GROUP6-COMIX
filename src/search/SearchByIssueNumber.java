@@ -18,8 +18,20 @@ public class SearchByIssueNumber implements CollectionSearcher{
     }
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'search'");
+        searchTerm = searchTerm.toLowerCase();
+        List<Comic> searchComics = new ArrayList<>();
+        for(Comic comic: comics) {
+            if(exactMatch) {
+                if(comic.getIssueNumber().toLowerCase().equals(searchTerm)) {
+                    searchComics.add(comic);
+                }
+            } else {
+                if(comic.getIssueNumber().toLowerCase().contains(searchTerm)) {
+                    searchComics.add(comic);
+                }
+            }
+        }
+        return searchComics;
     }
 
     @Override

@@ -21,8 +21,13 @@ import src.sort.SortByVolume;
 public class SortTest {
     
     @BeforeEach
+    /** 
+     * setup method that creates a list of comics for each test to use
+     * @return List<Comic>
+     */
     public List<Comic> setUp() {
         List<Creator> creators = new ArrayList<Creator>();
+        List<Creator> creatorSingle = new ArrayList<Creator>();
         Publisher publisher = new Publisher("Marvel");
         Publisher publisher2 = new Publisher("DC");
 
@@ -30,18 +35,22 @@ public class SortTest {
         Creator creator2 = new Creator("Jack Kirby");
         creators.add(creator);
         creators.add(creator2);
+        Creator creator3 = new Creator("Aaron Kuder");
+        creatorSingle.add(creator3);
 
-        Comic comic = new Comic(publisher, "Spider-Man", "SPIDER_MAN_TITLE", 0, "2", "Jan 2, 2019", creators, "A good book", 26.08, false, false);
-        Comic comic2 = new Comic(publisher2, "Batman", "BATMAN", 1, "1", "Jan 7, 2020", creators, "MID", 0, false, false);
-        Comic comic3 = new Comic(publisher, "ANT_MAN", "ANT_MAN", 2, "3", "Jan 8, 2020", creators, "also very mid", 0, false, false);
-      
+        List<String> signatures = new ArrayList<>();
 
+        Comic comic = new Comic(publisher, "Spider-Man", "SPIDER_MAN_TITLE", 0, "2", "1/2/2019", creators, "A good book", 26.08, false, false, signatures, false);
+        Comic comic2 = new Comic(publisher2, "Batman", "BATMAN", 1, "1", "2/7/2020", creators, "MID", 0, false, false, signatures, false);
+        Comic comic3 = new Comic(publisher, "ANT_MAN", "ANT_MAN", 2, "3", "2/8/2020", creators, "also very mid", 0, false, false, signatures, false);
+        Comic comic4 = new Comic(publisher2, "Action Comics", "Monster", 2, "26A", "12/4/2013", creatorSingle, "A classic.", 0, false, false, signatures, false); 
 
 
         List<Comic> comicList = new ArrayList<Comic>();
         comicList.add(comic);
         comicList.add(comic2);
         comicList.add(comic3);
+        comicList.add(comic4);
         return comicList;
     }
 
