@@ -40,7 +40,7 @@ public interface CollectionSearcher {
             if(matcher.find()) {
                 volumeNumber = Integer.parseInt(matcher.group());
             }
-            return new Comic(publisher, comicData[0].replace("\"", ""), comicData[2].replace("\"", ""), volumeNumber, comicData[1], comicData[5], creators, comicData[3], 0, false, false);
+            return new Comic(publisher, comicData[0].replace("\"", ""), comicData[2].replace("\"", ""), volumeNumber, comicData[1], comicData[5], creators, comicData[3], 0, false, false, new ArrayList<>(), false);
         } else {
             System.out.println("Faulty line String[] given.");
             return null;

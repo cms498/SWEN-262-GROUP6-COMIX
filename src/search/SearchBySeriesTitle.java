@@ -12,11 +12,11 @@ import src.Comic;
  * A implementation of Collection Searcher
  * Searches comics by comparing titles and the search term
  */
-public class SearchByTitle implements CollectionSearcher{
+public class SearchBySeriesTitle implements CollectionSearcher{
 
     private boolean exactMatch;
 
-    public SearchByTitle(boolean exactMatch) {
+    public SearchBySeriesTitle(boolean exactMatch) {
         this.exactMatch = exactMatch;
     }
     
