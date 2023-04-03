@@ -5,10 +5,10 @@ import java.util.List;
 
 import src.Comic;
 
-public class SearchByAuthenticated implements CollectionSearcher{
+public class SearchBySignedComics implements CollectionSearcher{
     private boolean exactMatch;
 
-    public SearchByAuthenticated(boolean exactMatch) {
+    public SearchBySignedComics(boolean exactMatch) {
         this.exactMatch = exactMatch;
     }
 
@@ -16,20 +16,22 @@ public class SearchByAuthenticated implements CollectionSearcher{
     public List<Comic> search(List<Comic> comics, String searchTerm) {
         searchTerm = searchTerm.toLowerCase();
         List<Comic> searchComics = new ArrayList<>();
+        
         if (this.exactMatch) {
             for (Comic comic : comics) {
-                if (searchTerm.equals(Boolean.toString(comic.getIsAuthenticated()))) {
+                if (searchTerm.equals(Boolean.toString(comic.getSignatures().size() > 0))) {
                     searchComics.add(comic);
                 }
             }
         } else {
             for (Comic comic : comics) {
-                if (Boolean.toString(comic.getIsAuthenticated()).toLowerCase().contains(searchTerm)) {
+                if (Boolean.toString(comic.getSignatures().size() > 0).toLowerCase().contains(searchTerm)) {
                     searchComics.add(comic);
                 }
+                
             }
         }
-        return searchComics;
+            return searchComics;
     }
 
     @Override
