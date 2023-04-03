@@ -166,4 +166,12 @@ public class Comic {
             this.authenticated = authenticated;
         }
     }
+
+    public List<String> getSignatures() {
+        return signatures;
+    }
+
+    public boolean getIsAuthenticated(){
+        return authenticated;
+    }
 }
