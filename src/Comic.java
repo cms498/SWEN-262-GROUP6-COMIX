@@ -40,6 +40,12 @@ public class Comic {
         this.authenticated = authenticated;
     }
 
+    public Comic(String seriesTitle, int volumeNumber, String issueRange){
+        this.seriesTitle = seriesTitle;
+        this.volumeNumber = volumeNumber;
+        this.issueNumber = issueRange;
+    }
+
     public Publisher getPublisher() {
         return publisher;
     }
