@@ -10,7 +10,9 @@
        "volumenumber": 2,
        "publicationdate": "Nov 2011",
        "isGraded": false,
-       "isSlabbed": false
+       "isSlabbed": false,
+       "signatures": "",
+       "authenticated": false
    },
    {
        "seriestitle": "Spider-Man",
@@ -23,7 +25,9 @@
        "volumenumber": 1,
        "publicationdate": "Mar 1963",
        "isGraded": true,
-       "isSlabbed": true
+       "isSlabbed": true,
+       "signatures": "",
+       "authenticated": false
    },
    {
        "seriestitle": "The Walking Dead",
@@ -36,7 +40,9 @@
        "volumenumber": 3,
        "publicationdate": "Oct 2003",
        "isGraded": false,
-       "isSlabbed": false
+       "isSlabbed": false,
+       "signatures": "",
+       "authenticated": false
    },
    {
        "seriestitle": "X-Men",
@@ -49,7 +55,9 @@
        "volumenumber": 1,
        "publicationdate": "Sep 1963",
        "isGraded": false,
-       "isSlabbed": false
+       "isSlabbed": false,
+       "signatures": "",
+       "authenticated": false
    },
    {
        "seriestitle": "Watchmen",
@@ -62,7 +70,9 @@
        "volumenumber": 1,
        "publicationdate": "Sep 1986",
        "isGraded": true,
-       "isSlabbed": false
+       "isSlabbed": false,
+       "signatures": "",
+       "authenticated": false
    },
    {
        "seriestitle": "Saga",
@@ -75,7 +85,9 @@
        "volumenumber": 6,
        "publicationdate": "Mar 2012",
        "isGraded": true,
-       "isSlabbed": true
+       "isSlabbed": true,
+       "signatures": "",
+       "authenticated": false
    },
    {
        "seriestitle": "Sandman",
@@ -88,7 +100,9 @@
        "volumenumber": 2,
        "publicationdate": "Jan 1989",
        "isGraded": false,
-       "isSlabbed": false
+       "isSlabbed": false,
+       "signatures": "",
+       "authenticated": false
    },
    {
        "seriestitle": "Spawn",
@@ -101,7 +115,9 @@
        "volumenumber": 9,
        "publicationdate": "May 1992",
        "isGraded": false,
-       "isSlabbed": false
+       "isSlabbed": false,
+       "signatures": "",
+       "authenticated": false
    },
    {
        "seriestitle": "Batman: The Dark Knight Returns",
@@ -114,7 +130,9 @@
        "volumenumber": 1,
        "publicationdate": "Feb 1986",
        "isGraded": false,
-       "isSlabbed": false
+       "isSlabbed": false,
+       "signatures": "",
+       "authenticated": false
    },
    {
        "seriestitle": "Hellboy",
@@ -127,6 +145,8 @@
        "volumenumber": 1,
        "publicationdate": "Mar 1994",
        "isGraded": true,
-       "isSlabbed": false
+       "isSlabbed": false,
+       "signatures": "",
+       "authenticated": false
    }
 ]
