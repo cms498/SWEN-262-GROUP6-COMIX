@@ -265,22 +265,25 @@ public class PersonalCollection implements iPersonalCollection {
 
     // adds comics from the database by user input (user inputs only the story title
     // here)
-    public void addComicByDataBase(String storyTitle) {
+    public void addComicByDataBase(String seriesTitle, int volumeNumber, String issueNumber) {
         // initializes the 'searcher' variable to the SearchByTitle class. Also sets the
         // variable to only look for exact matches only
         searcher = new SearchBySeriesTitle(true);
-        List<Comic> initialSearch = searcher.databaseSearch(storyTitle.toLowerCase());
-
+        List<Comic> initialSearch = searcher.databaseSearch(seriesTitle.toLowerCase());
         // if there's a comic that exists within the initialSearch list, then add it to
         // their personal collection list
         if (initialSearch.size() != 0) {
-            comics.add(initialSearch.get(0));
-            System.out.println(storyTitle + " has been successfully added to your personal collection");
+            //for(Comic comic: initialSearch){
+                //if(comic.getIssueNumber().equals(issueNumber) && comic.getVolumeNumber() == volumeNumber){
+                    comics.add(initialSearch.get(0));
+                    System.out.println(seriesTitle + " has been successfully added to your personal collection");
+                //}
+           // }
         }
 
         // otherwise print out error message
         else {
-            System.out.println(storyTitle + " doesn't exist in comic database");
+            System.out.println(seriesTitle + " doesn't exist in comic database");
         }
         this.convertBackToJson();
     }

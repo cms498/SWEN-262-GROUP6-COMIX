@@ -147,9 +147,9 @@ public class PersonalCollectionProxy implements iPersonalCollection {
     }
 
     @Override
-    public void addComicByDataBase(String storyTitle) {
+    public void addComicByDataBase(String seriesTitle, int volumeNumber, String issueNumber) {
         if (guestMode == false) {
-            collection.addComicByDataBase(storyTitle);
+            collection.addComicByDataBase(seriesTitle, volumeNumber, issueNumber);
         } else {
             System.out.println("Log in to have access to this feature");
         }

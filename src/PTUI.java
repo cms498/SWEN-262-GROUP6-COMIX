@@ -55,7 +55,7 @@ public class PTUI {
         String quitter = ">>To end the application -> \"quit\"";
         String PersonalCollectionSearchCommand = ">>To search your personal collection -> \"search collection\", <search type>, <term>, <exact or partial>. <sort type>";
         String DataBaseSearchCommand = ">>To search the database -> <search database>, \"search type\", <term>, <exact or partial>";
-        String AddComicFROMDBtoPersonalCollection = ">>To add comic from the database to your personal collection -> \"add from database>\", <exact comic name>";
+        String AddComicFROMDBtoPersonalCollection = ">>To add comic from the database to your personal collection -> \"add from database\", <series>, <volume>, <issue>";
         String AddComicManuallytoPersonalCollection = ">>To add a comic manually to your personal collection-> \"add\", <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value> <[creator1, creator2, ...]>";
         String EditComicInPersonalCollection = ">>To edit a comic in your personal collection -> \"edit\", <exact comic name>, <field to be edited>, <new value>";
         String GradeComicPersonalCollection = ">>To grade a comic in your personal collection -> \"grade\", <exact comic name>, <value 1 to 10>";
@@ -157,7 +157,7 @@ public class PTUI {
                 }
 
                 else if (command.equals("add from database")) {
-                    personalCollection.addComicByDataBase(multiResult[1]);
+                    personalCollection.addComicByDataBase(multiResult[1], Integer.parseInt(multiResult[3]), multiResult[2]);
                 }
 
                 else if (command.equals("add")) {

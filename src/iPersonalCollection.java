@@ -21,7 +21,7 @@ public interface iPersonalCollection {
     public List<Comic> getComics();
     public void editSlab(String storyTitle);
     public void editGrade(String storyTitle, int grade);
-    public void addComicByDataBase(String storyTitle);
+    public void addComicByDataBase(String storyTitle, int volumeNumber, String issueNumber);
     public void addComicManually(String publisher, String seriesTitle, String storyTitle, int volumeNumber, String issueNumber, String publicationDate, String creators, String description, String value);
     public void removeComic(String storyTitle);
     public void editComic(String storyTitle, String field, String newValue);
