@@ -33,13 +33,14 @@ public interface CollectionSearcher {
                 String creatorName = creatorSplit[i].replace("\"", "");
                 creators.add(new Creator(creatorName));
             }
-            Publisher publisher = new Publisher(comicData[4]);
+            Publisher publisher = new Publisher(comicData[4].replace("\"", ""));
             int volumeNumber = 0;
             String[] seriesAndVolume = comicData[0].replace("\"", "").split(", Vol.");
             if(seriesAndVolume.length > 1) {
                 volumeNumber = Integer.parseInt(seriesAndVolume[1]);
             }
-            return new Comic(publisher, seriesAndVolume[0], comicData[2].replace("\"", ""), volumeNumber, comicData[1], comicData[5], creators, comicData[3], 0, false, false, new ArrayList<>(), false);
+            return new Comic(publisher, seriesAndVolume[0], comicData[2].replace("\"", ""), volumeNumber, comicData[1].replace("\"", ""), 
+                comicData[5].replace("\"", ""), creators, comicData[3].replace("\"", ""), 0, false, false, new ArrayList<>(), false);
         } else {
             System.out.println("Faulty line String[] given.");
             return null;
