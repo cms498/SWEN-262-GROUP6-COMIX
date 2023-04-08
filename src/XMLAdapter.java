@@ -38,11 +38,5 @@ public class XMLAdapter implements ExporterInterface{
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        XMLAdapter adapter = new XMLAdapter();
-        adapter.export();
-    }
-    
+    }    
 }
