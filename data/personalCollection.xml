@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<comics>
+	<comic>
+		<publisher>DC Comics</publisher>
+		<seriesTitle>Batman</seriesTitle>
+		<storyTitle>The Court of Owls</storyTitle>
+		<volumeNumber>2</volumeNumber>
+		<value>10.99</value>
+		<creators>[Scott Snyder,  Greg Capullo,  Jonathan Glapion]</creators>
+		<description>The Caped Crusader battles a secret society that has controlled Gotham City for centuries.</description>
+		<issueNumber>3</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>Spider-Man</seriesTitle>
+		<storyTitle>The Amazing Spider-Man</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>100.0</value>
+		<creators>[Stan Lee,  Steve Ditko]</creators>
+		<description>The origin story of the web-slinging hero as he battles his arch-nemesis, the Green Goblin.</description>
+		<issueNumber>1</issueNumber>
+		<isGraded>true</isGraded>
+		<isSlabbed>true</isSlabbed>
+	</comic>
+	<comic>
+		<publisher>Image Comics</publisher>
+		<seriesTitle>The Walking Dead</seriesTitle>
+		<storyTitle>Days Gone Bye</storyTitle>
+		<volumeNumber>3</volumeNumber>
+		<value>25.0</value>
+		<creators>[Robert Kirkman,  Tony Moore]</creators>
+		<description>A small town sheriff wakes up from a coma to find that the world has been overrun by zombies.</description>
+		<issueNumber>1</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>X-Men</seriesTitle>
+		<storyTitle>The Uncanny X-Men</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>500.0</value>
+		<creators>[Stan Lee,  Jack Kirby]</creators>
+		<description>The story of a group of mutants who band together to fight for the future of their kind.</description>
+		<issueNumber>6</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+	</comic>
+	<comic>
+		<publisher>DC Comics</publisher>
+		<seriesTitle>Watchmen</seriesTitle>
+		<storyTitle>At Midnight, All the Agents...</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>50.0</value>
+		<creators>[Alan Moore,  Dave Gibbons]</creators>
+		<description>A group of retired superheroes investigate the murder of one of their own and uncover a conspiracy.</description>
+		<issueNumber>1</issueNumber>
+		<isGraded>true</isGraded>
+		<isSlabbed>false</isSlabbed>
+	</comic>
+	<comic>
+		<publisher>Image Comics</publisher>
+		<seriesTitle>Saga</seriesTitle>
+		<storyTitle>Chapter One</storyTitle>
+		<volumeNumber>6</volumeNumber>
+		<value>15.0</value>
+		<creators>[Brian K. Vaughan,  Fiona Staples]</creators>
+		<description>A young family tries to survive in a war-torn galaxy while being pursued by their enemies.</description>
+		<issueNumber>2</issueNumber>
+		<isGraded>true</isGraded>
+		<isSlabbed>true</isSlabbed>
+	</comic>
+	<comic>
+		<publisher>DC Comics</publisher>
+		<seriesTitle>Sandman</seriesTitle>
+		<storyTitle>Sleep of the Just</storyTitle>
+		<volumeNumber>2</volumeNumber>
+		<value>75.0</value>
+		<creators>[Neil Gaiman,  Sam Kieth,  Mike Dringenberg]</creators>
+		<description>The Lord of Dreams, also known as the Sandman, escapes captivity and embarks on a journey to reclaim his realm.</description>
+		<issueNumber>1</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+	</comic>
+	<comic>
+		<publisher>Image Comics</publisher>
+		<seriesTitle>Spawn</seriesTitle>
+		<storyTitle>Questions</storyTitle>
+		<volumeNumber>9</volumeNumber>
+		<value>20.0</value>
+		<creators>[Todd McFarlane]</creators>
+		<description>A murdered soldier is brought back to life by the devil to serve as a Hellspawn, and must come to terms with his new existence.</description>
+		<issueNumber>1</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+	</comic>
+	<comic>
+		<publisher>DC Comics</publisher>
+		<seriesTitle>Batman: The Dark Knight Returns</seriesTitle>
+		<storyTitle>Book One: The Dark Knight Returns</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>30.0</value>
+		<creators>[Frank Miller]</creators>
+		<description>An aging Batman comes out of retirement to save Gotham City from a gang of violent criminals.</description>
+		<issueNumber>2</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+	</comic>
+	<comic>
+		<publisher>Dark Horse Comics</publisher>
+		<seriesTitle>Hellboy</seriesTitle>
+		<storyTitle>Seed of Destruction Part 1</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>40.0</value>
+		<creators>[Mike Mignola]</creators>
+		<description>A demon summoned to Earth by Nazis is raised by a kind professor and becomes a paranormal investigator.</description>
+		<issueNumber>1</issueNumber>
+		<isGraded>true</isGraded>
+		<isSlabbed>false</isSlabbed>
+	</comic>
+</comics>

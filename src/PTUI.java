@@ -5,13 +5,16 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-
 import src.search.CollectionSearcher;
 import src.search.SearchByCreators;
 import src.search.SearchByDescription;
 import src.search.SearchByGrade;
-import src.search.SearchBySlab;
 import src.search.SearchBySeriesTitle;
+import src.search.SearchBySlab;
+<<<<<<< HEAD
+import src.search.SearchBySeriesTitle;
+=======
+>>>>>>> 6a8f51e7b39b1b2726008fcd2cf6a3684184d304
 
 public class PTUI {
 
@@ -62,9 +65,10 @@ public class PTUI {
         String GradeComicPersonalCollection = ">>To grade a comic in your personal collection -> \"grade\", <exact comic name>, <value 1 to 10>";
         String ComicSlab = ">>To slab a graded comic -> \"slab\", <exact comic name>";
         String RemoveComic = ">>To remove a comic from the personal colection -> \"remove\", <exact comic name>";
-        String viewBooks = ">>To view your personal collection -> \"view\"";
+        String viewBooks = ">>To view your personal collection -> \"view\", <category>";
+        String logIn = ">>To log in and have more features - > login";
 
-        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 quitter,
                 PersonalCollectionSearchCommand,
                 DataBaseSearchCommand,
@@ -74,21 +78,25 @@ public class PTUI {
                 GradeComicPersonalCollection,
                 ComicSlab,
                 RemoveComic,
-                viewBooks);
+                viewBooks,
+                logIn);
 
         Scanner scanner = new Scanner(System.in);
         System.out.print(">>");
         String result = scanner.nextLine();
 
-        PersonalCollection personalCollection = new PersonalCollection();
+        iPersonalCollection personalCollection = new PersonalCollectionProxy(true);
 
         HashMap<String, CollectionSearcher> searchOptions = new HashMap<>();
+<<<<<<< HEAD
         searchOptions.put("title", new SearchBySeriesTitle(false));
+=======
+        searchOptions.put("series title", new SearchBySeriesTitle(false));
+>>>>>>> 6a8f51e7b39b1b2726008fcd2cf6a3684184d304
         searchOptions.put("description", new SearchByDescription(false));
         searchOptions.put("creators", new SearchByCreators(false));
         searchOptions.put("graded", new SearchByGrade(false));
         searchOptions.put("slabbed", new SearchBySlab(false));
-
 
         while (!result.equals("quit")) {
             try {
@@ -108,34 +116,42 @@ public class PTUI {
                     List<Comic> listy = (personalCollection.doSearch(multiResult[2], multiResult[4]));
                     StringBuilder sb = new StringBuilder();
                     sb.append("\033[1m"); // Bold formatting
-                    sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s", "Publisher", "Series Title", "Story Title", "Description" ,"Volume Number", "Issue Number", "Publication Date", "Value", "Graded"));
+                    sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s",
+                            "Publisher", "Series Title", "Story Title", "Description", "Volume Number", "Issue Number",
+                            "Publication Date", "Value", "Graded"));
                     sb.append("\033[0m\n"); // Reset formatting to default and add new line
                     sb.append("_".repeat(175)); // Underscores
                     sb.append(System.lineSeparator());
-                
-                    for (Comic comic : listy) {
-                        if(comic.getSeriesTitle().length() > 20){
-                            comic.setSeriesTitle(comic.getSeriesTitle().substring(0, 17) + "...");
-                        }
-                
-                        if(comic.getStoryTitle().length() > 20){
-                            comic.setStoryTitle(comic.getStoryTitle().substring(0, 17) + "...");
-                        }
-            
-                        if(comic.getDescription().length() > 20){
-                            comic.setDescription(comic.getDescription().substring(0, 17) + "...");
-                        }
 
-                        if(comic.getPublisher().toString().length() > 20){
-                            comic.setPublisher(comic.getPublisher().toString().substring(0, 17) + "...");
+                    if (listy != null) {
+                        for (Comic comic : listy) {
+                            if (comic.getSeriesTitle().length() > 20) {
+                                comic.setSeriesTitle(comic.getSeriesTitle().substring(0, 17) + "...");
+                            }
+
+                            if (comic.getStoryTitle().length() > 20) {
+                                comic.setStoryTitle(comic.getStoryTitle().substring(0, 17) + "...");
+                            }
+
+                            if (comic.getDescription().length() > 20) {
+                                comic.setDescription(comic.getDescription().substring(0, 17) + "...");
+                            }
+
+                            if (comic.getPublisher().toString().length() > 20) {
+                                comic.setPublisher(comic.getPublisher().toString().substring(0, 17) + "...");
+                            }
+
+                            sb.append(
+                                    String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s",
+                                            comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(),
+                                            comic.getDescription(), comic.getVolumeNumber(), comic.getIssueNumber(),
+                                            comic.getPublicationDate(), comic.getValue(), comic.getIsGraded()));
+                            sb.append(System.lineSeparator());
+                            sb.append("_".repeat(175)); // Underscores
+                            sb.append(System.lineSeparator());
                         }
-            
-                        sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s", comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getDescription() ,comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(), comic.getIsGraded()));
-                        sb.append(System.lineSeparator());
-                        sb.append("_".repeat(175)); // Underscores            
-                        sb.append(System.lineSeparator());
+                        System.out.println("\n\n" + sb.toString());
                     }
-                    System.out.println("\n\n"+sb.toString());
                 }
 
                 else if (command.equals("search database")) {
@@ -150,37 +166,31 @@ public class PTUI {
 
                 else if (command.equals("add from database")) {
                     personalCollection.addComicByDataBase(multiResult[1]);
-                    personalCollection.convertBackToJson();
                 }
 
                 else if (command.equals("add")) {
                     personalCollection.addComicManually(multiResult[6], multiResult[1], multiResult[4],
                             Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], multiResult[9],
                             multiResult[5], multiResult[8]);
-                    personalCollection.convertBackToJson();
                 }
 
                 else if (command.equals("edit")) {
                     personalCollection.editComic(multiResult[1], multiResult[2], multiResult[3]);
-                    personalCollection.convertBackToJson();
                 }
 
                 else if (command.equals("grade")) {
                     personalCollection.editGrade(multiResult[1], Integer.parseInt(multiResult[2]));
-                    personalCollection.convertBackToJson();
                 }
 
                 else if (command.equals("slab")) {
                     personalCollection.editSlab(multiResult[1]);
-                    personalCollection.convertBackToJson();
                 }
 
                 else if (command.equals("remove")) {
                     personalCollection.removeComic(multiResult[1]);
-                    personalCollection.convertBackToJson();
                 }
 
-                else if(command.equals("view")){
+                else if (command.equals("view")) {
                     String type = multiResult[1];
                     switch (type) {
                         case "publisher":
@@ -196,7 +206,7 @@ public class PTUI {
                             personalCollection.viewIssueNumber();
                             break;
                         case "collection":
-                        personalCollection.PrettyPrintDatabase();
+                            personalCollection.PrettyPrintDatabase();
                             break;
                         default:
                             System.out.println("Command not recognized, your options are: publisher, series, volume, issue, collection");
@@ -208,10 +218,15 @@ public class PTUI {
                     System.out.println(commands);
                 }
 
+                else if (command.equals("login")) {
+                    personalCollection.setGuestMode(false);
+                }
+
                 else {
                     System.out.println("Command not recognized");
                 }
             } catch (Exception e) {
+                e.printStackTrace();
                 System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
             }
 

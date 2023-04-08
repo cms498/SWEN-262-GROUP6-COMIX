@@ -154,7 +154,7 @@ public class Comic {
 
     @Override
     public String toString() {
-        return "{publisher: " + publisher + ", seriestitle: " + seriesTitle + ", storytitle: " + storyTitle + ", volumenumber: " + volumeNumber + ", value: " + value + ", creators: " + creators + ", description: " + description + ", issuenumber: " + issueNumber + ", isGraded: " + isGraded + ", isSlabbed: "+ isSlabbed + "}";
+        return "\""+publisher + "\"," +seriesTitle + "\"," +storyTitle + "\"," +volumeNumber + "\"," +value + "\"," +creators + "\"," +description + "\"," +issueNumber + "\"," + isGraded + "\"," +isSlabbed + "\"";
     }
 
     public void sign(String signedBy) {
