@@ -201,8 +201,7 @@ public class PTUI {
                             personalCollection.PrettyPrintDatabase();
                             break;
                         default:
-                            System.out.println(
-                                    "Command not recognized, your options are: publisher, series, volume, issue, collection");
+                            System.out.println("Command not recognized, your options are: publisher, series, volume, issue, collection");
                             break;
                     }
                 }
@@ -220,8 +219,7 @@ public class PTUI {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out
-                        .println("Incorrect format, commands should be comma seperated, type LC to view all commands");
+                System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
             }
 
             System.out.print(">>");
