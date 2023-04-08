@@ -157,7 +157,7 @@ public class PTUI {
                 }
 
                 else if (command.equals("add from database")) {
-                    personalCollection.addComicByDataBase(multiResult[1], Integer.parseInt(multiResult[3]), multiResult[2]);
+                    personalCollection.addComicByDataBase(multiResult[1], Integer.parseInt(multiResult[2]), multiResult[3]);
                 }
 
                 else if (command.equals("add")) {

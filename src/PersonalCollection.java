@@ -273,12 +273,12 @@ public class PersonalCollection implements iPersonalCollection {
         // if there's a comic that exists within the initialSearch list, then add it to
         // their personal collection list
         if (initialSearch.size() != 0) {
-            //for(Comic comic: initialSearch){
-                //if(comic.getIssueNumber().equals(issueNumber) && comic.getVolumeNumber() == volumeNumber){
+            for(Comic comic: initialSearch){
+                if(comic.getIssueNumber().equals(issueNumber) && comic.getVolumeNumber() == volumeNumber){
                     comics.add(initialSearch.get(0));
                     System.out.println(seriesTitle + " has been successfully added to your personal collection");
-                //}
-           // }
+                }
+            }
         }
 
         // otherwise print out error message
