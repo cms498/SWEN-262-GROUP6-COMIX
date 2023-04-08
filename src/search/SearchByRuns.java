@@ -85,8 +85,11 @@ public class SearchByRuns implements CollectionSearcher{
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line = br.readLine();
+            br.readLine();
+            br.readLine();
             //reads the database file to find the comic series with a run of 12 or more issues
             while((line = br.readLine()) != null) {
+                System.out.println(line);
                 String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                 Comic comic = generateComic(split);
                 addToInitialComics(comicSeriesIssueRanges, comic);
