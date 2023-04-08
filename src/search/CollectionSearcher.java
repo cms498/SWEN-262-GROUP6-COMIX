@@ -39,7 +39,8 @@ public interface CollectionSearcher {
             if(seriesAndVolume.length > 1) {
                 volumeNumber = Integer.parseInt(seriesAndVolume[1]);
             }
-            return new Comic(publisher, seriesAndVolume[0], comicData[2].replace("\"", ""), volumeNumber, comicData[1], comicData[5], creators, comicData[3], 0, false, false, new ArrayList<>(), false);
+            return new Comic(publisher, seriesAndVolume[0], comicData[2].replace("\"", ""), volumeNumber, comicData[1], 
+                comicData[5], creators, comicData[3], 0, false, false, new ArrayList<>(), false);
         } else {
             System.out.println("Faulty line String[] given.");
             return null;
