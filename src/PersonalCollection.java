@@ -275,7 +275,7 @@ public class PersonalCollection implements iPersonalCollection {
         if (initialSearch.size() != 0) {
             for(Comic comic: initialSearch){
                 if(comic.getIssueNumber().equals(issueNumber) && comic.getVolumeNumber() == volumeNumber){
-                    comics.add(initialSearch.get(0));
+                    comics.add(comic);
                     System.out.println(seriesTitle + " has been successfully added to your personal collection");
                 }
             }

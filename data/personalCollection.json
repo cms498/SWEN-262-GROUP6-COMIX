@@ -148,5 +148,20 @@
        "isSlabbed": false,
        "signatures": "",
        "authenticated": false
+   },
+   {
+       "seriestitle": "9-11",
+       "issuenumber": "1",
+       "storytitle": "Artists Respond",
+       "creators": "John K. Snyder III,Alan Moore,Terry Anderson",
+       "publisher": "DC Comics",
+       "description": "",
+       "value": 0.0,
+       "volumenumber": 0,
+       "publicationdate": "Jan 2002",
+       "isGraded": false,
+       "isSlabbed": false,
+       "signatures": "",
+       "authenticated": false
    }
 ]
