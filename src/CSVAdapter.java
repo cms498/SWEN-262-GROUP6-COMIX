@@ -50,11 +50,5 @@ public class CSVAdapter implements ExporterInterface {
          } catch (IOException e) {
               e.printStackTrace();
          }
-    }
-
-    public static void main(String[] args) {
-        CSVAdapter adapter = new CSVAdapter();
-        adapter.export();
-    }
-   
+    }   
 }

@@ -35,12 +35,11 @@ public interface CollectionSearcher {
             }
             Publisher publisher = new Publisher(comicData[4]);
             int volumeNumber = 0;
-            Pattern pattern = Pattern.compile ("\\d+");
-            Matcher matcher = pattern.matcher(comicData[0]);
-            if(matcher.find()) {
-                volumeNumber = Integer.parseInt(matcher.group());
+            String[] seriesAndVolume = comicData[0].replace("\"", "").split(", Vol.");
+            if(seriesAndVolume.length > 1) {
+                volumeNumber = Integer.parseInt(seriesAndVolume[1]);
             }
-            return new Comic(publisher, comicData[0].replace("\"", ""), comicData[2].replace("\"", ""), volumeNumber, comicData[1], comicData[5], creators, comicData[3], 0, false, false, new ArrayList<>(), false);
+            return new Comic(publisher, seriesAndVolume[0], comicData[2].replace("\"", ""), volumeNumber, comicData[1], comicData[5], creators, comicData[3], 0, false, false, new ArrayList<>(), false);
         } else {
             System.out.println("Faulty line String[] given.");
             return null;
