@@ -11,10 +11,6 @@ import src.search.SearchByDescription;
 import src.search.SearchByGrade;
 import src.search.SearchBySeriesTitle;
 import src.search.SearchBySlab;
-<<<<<<< HEAD
-import src.search.SearchBySeriesTitle;
-=======
->>>>>>> 6a8f51e7b39b1b2726008fcd2cf6a3684184d304
 
 public class PTUI {
 
@@ -88,11 +84,7 @@ public class PTUI {
         iPersonalCollection personalCollection = new PersonalCollectionProxy(true);
 
         HashMap<String, CollectionSearcher> searchOptions = new HashMap<>();
-<<<<<<< HEAD
-        searchOptions.put("title", new SearchBySeriesTitle(false));
-=======
         searchOptions.put("series title", new SearchBySeriesTitle(false));
->>>>>>> 6a8f51e7b39b1b2726008fcd2cf6a3684184d304
         searchOptions.put("description", new SearchByDescription(false));
         searchOptions.put("creators", new SearchByCreators(false));
         searchOptions.put("graded", new SearchByGrade(false));
