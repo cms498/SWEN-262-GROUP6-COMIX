@@ -65,12 +65,13 @@ public class SearchBySeriesTitle implements CollectionSearcher{
             String line = br.readLine(); //skipping a line
             while((line = br.readLine()) != null) {
                 String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+                String[] seriesAndVolume = split[0].replace("\"", "").split(", Vol. ");
                     if(exactMatch) {
-                        if(searchTerm.equals(split[0].toLowerCase())) {
+                        if(searchTerm.equals(seriesAndVolume[0].toLowerCase())) {
                             searchComics.add(generateComic(split));
                         }
                     } else {
-                        if(split[2].toLowerCase().contains(searchTerm)) {
+                        if(seriesAndVolume[0].toLowerCase().contains(searchTerm)) {
                            searchComics.add(generateComic(split));
                         }
                     }

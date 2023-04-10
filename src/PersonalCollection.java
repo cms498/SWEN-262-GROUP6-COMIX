@@ -272,11 +272,14 @@ public class PersonalCollection implements iPersonalCollection {
         List<Comic> initialSearch = searcher.databaseSearch(seriesTitle.toLowerCase());
         // if there's a comic that exists within the initialSearch list, then add it to
         // their personal collection list
+        System.out.println(initialSearch.toString());
         if (initialSearch.size() != 0) {
             for(Comic comic: initialSearch){
-                if(comic.getIssueNumber().equals(issueNumber) && comic.getVolumeNumber() == volumeNumber){
-                    comics.add(comic);
-                    System.out.println(seriesTitle + " has been successfully added to your personal collection");
+                if(comic != null){
+                    if(comic.getIssueNumber().equals(issueNumber) && comic.getVolumeNumber() == volumeNumber){
+                        comics.add(comic);
+                        System.out.println(seriesTitle + " has been successfully added to your personal collection");
+                    }
                 }
             }
         }

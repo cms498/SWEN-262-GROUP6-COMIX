@@ -42,7 +42,7 @@ public interface CollectionSearcher {
             return new Comic(publisher, seriesAndVolume[0], comicData[2].replace("\"", ""), volumeNumber, comicData[1].replace("\"", ""), 
                 comicData[5].replace("\"", ""), creators, comicData[3].replace("\"", ""), 0, false, false, new ArrayList<>(), false);
         } else {
-            //System.out.println("Faulty line String[] given.");
+            System.out.println("Faulty line String[] given.");
             return null;
         }
     }

@@ -29,7 +29,6 @@ public class SearchByGaps implements CollectionSearcher{
     */
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
-        searchTerm = searchTerm.toLowerCase();
         Map<String, ComicIssueRange> comicSeriesIssueRanges = new HashMap<>();
         List<Comic> searchComics = new ArrayList<>();
 
