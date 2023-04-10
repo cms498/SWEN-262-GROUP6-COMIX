@@ -72,13 +72,6 @@ public class SearchByGaps implements CollectionSearcher{
                 String key = mapElement.getKey();
                 ComicIssueRange issueRange = mapElement.getValue();
                 if(key.equals(fullSeriesTitle)){
-                    if(issueRange.getMin().compareTo(comic.getIssueNumber()) == 1){
-                        issueRange.setMin(comic.getIssueNumber());
-                    }
-                    if(issueRange.getMax().compareTo(comic.getIssueNumber()) == -1){
-                        issueRange.setMax(comic.getIssueNumber());
-                    }
-                    issueRange.increaseAmount();
                     issueRange.addToAllValidIssues(comic.getIssueNumber());
                     comicSeriesIssueRanges.put(key, issueRange);
                 }

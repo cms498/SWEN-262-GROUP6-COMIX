@@ -159,7 +159,7 @@ public class Comic {
     }
 
     public String toStringRuns() {
-        return "\"" + seriesTitle + "\"" + volumeNumber + "\"" + issueNumber;
+        return "\"" + seriesTitle + "\", " + volumeNumber + ", " + issueNumber;
     }
 
     public void sign(String signedBy) {
