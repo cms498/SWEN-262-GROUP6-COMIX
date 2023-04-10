@@ -88,20 +88,25 @@ public class SearchByGaps implements CollectionSearcher{
         File file = new File(COMIC_DATABASE);
         List<String> missingIssues = new ArrayList<>();
         Set<String> validIssues = new HashSet<>();
+        double minIssueNumber = Double.parseDouble(issueRange.getMin().replaceAll("[^\\d.]+", ""));
+        double maxIssueNumber = Double.parseDouble(issueRange.getMax().replaceAll("[^\\d.]+", ""));
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line = br.readLine();
             while((line = br.readLine()) != null) {
                 String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                 Comic comic = generateComic(split);
-                if(comic.getSeriesTitle().equals(seriesTitle) && comic.getVolumeNumber() == Integer.parseInt(volumeNumber)){
-                    validIssues.add(comic.getIssueNumber());
+                if(comic != null){
+                    if(comic.getSeriesTitle().equals(seriesTitle) && comic.getVolumeNumber() == Integer.parseInt(volumeNumber)){
+                        validIssues.add(comic.getIssueNumber());
+                    }
                 }
             }
             br.close();
 
             for(String issueNumber: validIssues){
-                if(issueRange.getAllValidIssues().contains(issueNumber) == false){
+                double tempIssueNumber = Double.parseDouble(issueNumber.replaceAll("[^\\d.]+", ""));
+                if(issueRange.getAllValidIssues().contains(issueNumber) == false && minIssueNumber <= tempIssueNumber && maxIssueNumber >= tempIssueNumber){
                     missingIssues.add(issueNumber);
                 }
             }
