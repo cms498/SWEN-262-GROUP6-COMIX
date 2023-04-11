@@ -403,20 +403,5 @@
        "isSlabbed": false,
        "signatures": "",
        "authenticated": false
-   },
-   {
-       "seriestitle": "temp",
-       "issuenumber": "1A",
-       "storytitle": "temp2",
-       "creators": "sean",
-       "publisher": "nick",
-       "description": "jfhdafjkl",
-       "value": 2.0,
-       "volumenumber": 1,
-       "publicationdate": "Jan 1999",
-       "isGraded": false,
-       "isSlabbed": false,
-       "signatures": "",
-       "authenticated": false
    }
 ]
