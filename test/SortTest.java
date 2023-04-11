@@ -79,9 +79,9 @@ public class SortTest {
         CollectionSorter sorter = new SortByDate();
 
         List<Comic> sorted = sorter.sort(comics);
-        String expected = "Batman";
+        String expected = "Spider-Man";
         String actual = sorted.get(0).getSeriesTitle();
-        System.out.println(actual);
+        assertEquals(expected, actual);
     }
 
     @Test

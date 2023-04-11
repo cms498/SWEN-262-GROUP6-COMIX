@@ -151,20 +151,27 @@ public class PTUI {
 
                     if (listy != null) {
                         for (Comic comic : listy) {
-                            if (comic.getSeriesTitle().length() > 20) {
+
+                            if (comic.getSeriesTitle().length() > 20 && comic.getSeriesTitle() != null) {
                                 comic.setSeriesTitle(comic.getSeriesTitle().substring(0, 17) + "...");
                             }
 
-                            if (comic.getStoryTitle().length() > 20) {
-                                comic.setStoryTitle(comic.getStoryTitle().substring(0, 17) + "...");
+                            if(comic.getStoryTitle() != null){
+                                if (comic.getStoryTitle().length() > 20) {
+                                    comic.setStoryTitle(comic.getStoryTitle().substring(0, 17) + "...");
+                                }
                             }
 
-                            if (comic.getDescription().length() > 20) {
-                                comic.setDescription(comic.getDescription().substring(0, 17) + "...");
+                            if(comic.getDescription() != null){
+                                if (comic.getDescription().length() > 20) {
+                                    comic.setDescription((comic.getDescription().substring(0, 17) + "..."));
+                                }
                             }
 
-                            if (comic.getPublisher().toString().length() > 20) {
-                                comic.setPublisher(comic.getPublisher().toString().substring(0, 17) + "...");
+                            if(comic.getPublisher() != null){
+                                if (comic.getPublisher().toString().length() > 20) {
+                                    comic.setPublisher(comic.getPublisher().toString().substring(0, 17) + "...");
+                                }
                             }
 
                             sb.append(
@@ -182,13 +189,16 @@ public class PTUI {
                 }
 
                 else if (command.equals("search database")) {
+
                     if (multiResult[3].equals("exact")) {
                         searchOptions.get(multiResult[1]).setExactMatch(true);
                     } else {
                         searchOptions.get(multiResult[1]).setExactMatch(false);
                     }
                     personalCollection.setSearch(searchOptions.get(multiResult[1]));
-                    System.out.println(personalCollection.doDatabaseSearch(multiResult[2]));
+                    List<Comic> listy = (personalCollection.doDatabaseSearch(multiResult[2]));
+                    personalCollection.printDatabase(listy);
+
                 }
 
                 else if (command.equals("add from database")) {

@@ -33,4 +33,5 @@ public interface iPersonalCollection {
     public void viewPublisher();
     public void setGuestMode(boolean guestMode);
     public boolean isGuestMode();
+    public void printDatabase(List<Comic> comics);
 }
