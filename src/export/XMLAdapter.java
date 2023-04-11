@@ -1,7 +1,10 @@
-package src;
+package src.export;
 
 import java.io.FileWriter;
 import java.io.IOException;
+
+import src.Comic;
+import src.PersonalCollection;
 
 public class XMLAdapter implements ExporterInterface{
 

@@ -23,6 +23,10 @@ public class PersonalCollectionProxy implements iPersonalCollection {
         }
     }
 
+    public boolean isGuestMode() {
+        return guestMode;
+    }
+
     @Override
     public void initializeComics() {
         collection.initializeComics();
@@ -212,5 +216,4 @@ public class PersonalCollectionProxy implements iPersonalCollection {
     public void viewPublisher() {
         collection.viewPublisher();
     }
-
 }

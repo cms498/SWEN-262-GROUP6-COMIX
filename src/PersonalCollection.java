@@ -479,4 +479,8 @@ public class PersonalCollection implements iPersonalCollection {
     public void setGuestMode(boolean guestMode) {
         System.out.println("You are already logged in, end the program to logout");
     }
+
+    public boolean isGuestMode(){
+        return false;
+    }
 }

@@ -1,9 +1,12 @@
-package src;
+package src.export;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+
+import src.Comic;
+import src.PersonalCollection;
 
 public class CSVAdapter implements ExporterInterface {
 

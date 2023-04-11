@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import src.export.CSVAdapter;
+import src.export.ExporterInterface;
+import src.export.XMLAdapter;
 import src.search.CollectionSearcher;
 import src.search.SearchByAuthenticated;
 import src.search.SearchByCreators;
@@ -71,9 +74,10 @@ public class PTUI {
         String ComicSlab = ">>To slab a graded comic -> \"slab\", <exact comic name>";
         String RemoveComic = ">>To remove a comic from the personal colection -> \"remove\", <exact comic name>";
         String viewBooks = ">>To view your personal collection -> \"view\", <category>";
-        String logIn = ">>To log in and have more features - > login";
+        String logIn = ">>To log in and have more features -> login";
+        String export = ">>To export your personal collection into various types -> \"export\", <export format>";
 
-        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 quitter,
                 PersonalCollectionSearchCommand,
                 PersonalCollectionSearchNoExact,
@@ -85,6 +89,7 @@ public class PTUI {
                 ComicSlab,
                 RemoveComic,
                 viewBooks,
+                export,
                 logIn);
 
         Scanner scanner = new Scanner(System.in);
@@ -107,6 +112,10 @@ public class PTUI {
         searchOptions.put("authenticated", new SearchByAuthenticated(false));
         searchOptions.put("runs", new SearchByRuns(false));
         searchOptions.put("gaps", new SearchByGaps(false));
+
+        HashMap<String, ExporterInterface> exportOptions = new HashMap<>();
+        exportOptions.put("csv", new CSVAdapter());
+        exportOptions.put("xml", new XMLAdapter());
 
         while (!result.equals("quit")) {
             try {
@@ -229,6 +238,12 @@ public class PTUI {
                         default:
                             System.out.println("Command not recognized, your options are: publisher, series, volume, issue, collection");
                             break;
+                    }
+                } else if (command.equals("export")){
+                    if(personalCollection.isGuestMode()){
+                        System.out.println("Log in to access feature");
+                    } else {
+                        exportOptions.get(multiResult[1].toLowerCase()).export();
                     }
                 }
 

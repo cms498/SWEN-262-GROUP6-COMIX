@@ -32,4 +32,5 @@ public interface iPersonalCollection {
     public void viewIssueNumber();
     public void viewPublisher();
     public void setGuestMode(boolean guestMode);
+    public boolean isGuestMode();
 }
