@@ -479,4 +479,45 @@ public class PersonalCollection implements iPersonalCollection {
     public void setGuestMode(boolean guestMode) {
         System.out.println("You are already logged in, end the program to logout");
     }
+
+    @Override
+    public void printDatabase(List<Comic> comics) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\033[1m"); // Bold formatting
+        sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-10s | %-10s  | %-20s | %-10s| %-10s| %-10s",
+                "Publisher", "Series Title", "Story Title", "Description", "Volume Number", "Issue Number",
+                "Publication Date", "Value", "Graded", "Slabbed"));
+        sb.append("\033[0m\n"); // Reset formatting to default and add new line
+        sb.append("_".repeat(175)); // Underscores
+        sb.append(System.lineSeparator());
+
+        for (Comic comic : comics) {
+            if(comic != null){
+                if (comic.getSeriesTitle().length() > 20) {
+                    comic.setSeriesTitle(comic.getSeriesTitle().substring(0, 17) + "...");
+                }
+
+                if (comic.getStoryTitle().length() > 20) {
+                    comic.setStoryTitle(comic.getStoryTitle().substring(0, 17) + "...");
+                }
+
+                if (comic.getDescription().length() > 20) {
+                    comic.setDescription(comic.getDescription().substring(0, 17) + "...");
+                }
+
+                if (comic.getPublisher().toString().length() > 20) {
+                    comic.setPublisher(comic.getPublisher().toString().substring(0, 17) + "...");
+                }
+
+                sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-10s    | %-10s    | %-20s | %-10s| %-10s| %-10s",
+                        comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getDescription(),
+                        comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(),
+                        comic.getIsGraded(), comic.getIsSlabbed()));
+                sb.append(System.lineSeparator());
+                sb.append("_".repeat(175)); // Underscores
+                sb.append(System.lineSeparator());
+            }
+        }
+        System.out.println("\n\n" + sb.toString());
+    }
 }

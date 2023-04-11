@@ -213,4 +213,13 @@ public class PersonalCollectionProxy implements iPersonalCollection {
         collection.viewPublisher();
     }
 
+    @Override
+    public void printDatabase(List<Comic> comics) {
+        if (guestMode == false) {
+            collection.printDatabase(comics);
+        } else {
+            System.out.println("Log in to have access to this feature");
+        }
+    }
+
 }

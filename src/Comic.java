@@ -1,6 +1,8 @@
 package src;
 import java.util.List;
 
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+
 
 public class Comic {
 
@@ -41,9 +43,19 @@ public class Comic {
     }
 
     public Comic(String seriesTitle, int volumeNumber, String issueRange){
+        this.publisher = null;
         this.seriesTitle = seriesTitle;
+        this.storyTitle = null;
         this.volumeNumber = volumeNumber;
         this.issueNumber = issueRange;
+        this.publicationDate = null;
+        this.creators = null;
+        this.description = null;
+        this.value = 0.00;
+        this.isGraded = false;
+        this.isSlabbed = false;
+        this.signatures = null;
+        this.authenticated = false;
     }
 
     public Publisher getPublisher() {

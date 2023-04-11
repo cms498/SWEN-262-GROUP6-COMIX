@@ -17,7 +17,7 @@ public class SortByTitle implements CollectionSorter{
             } else {
                 for (int j = 0; j < sorted.size(); j++) {
                     Comic sortedComic = sorted.get(j);
-                    if (comic.getStoryTitle().compareTo(sortedComic.getStoryTitle()) < 0) {
+                    if (comic.getSeriesTitle().compareTo(sortedComic.getSeriesTitle()) < 0) {
                         sorted.add(j, comic);
                         break;
                     } else if (j == sorted.size() - 1) {
