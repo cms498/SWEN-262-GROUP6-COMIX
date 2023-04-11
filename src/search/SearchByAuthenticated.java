@@ -16,17 +16,10 @@ public class SearchByAuthenticated implements CollectionSearcher{
     public List<Comic> search(List<Comic> comics, String searchTerm) {
         searchTerm = searchTerm.toLowerCase();
         List<Comic> searchComics = new ArrayList<>();
-        if (this.exactMatch) {
-            for (Comic comic : comics) {
-                if (searchTerm.equals(Boolean.toString(comic.getIsAuthenticated()))) {
-                    searchComics.add(comic);
-                }
-            }
-        } else {
-            for (Comic comic : comics) {
-                if (Boolean.toString(comic.getIsAuthenticated()).toLowerCase().contains(searchTerm)) {
-                    searchComics.add(comic);
-                }
+
+        for (Comic comic : comics) {
+            if (comic.getIsAuthenticated()) {
+                searchComics.add(comic);
             }
         }
         return searchComics;

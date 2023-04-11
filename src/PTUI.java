@@ -6,11 +6,19 @@ import java.util.Random;
 import java.util.Scanner;
 
 import src.search.CollectionSearcher;
+import src.search.SearchByAuthenticated;
 import src.search.SearchByCreators;
 import src.search.SearchByDescription;
+import src.search.SearchByGaps;
 import src.search.SearchByGrade;
+import src.search.SearchByIssueNumber;
+import src.search.SearchByPublisher;
+import src.search.SearchByReleaseDate;
+import src.search.SearchByRuns;
 import src.search.SearchBySeriesTitle;
+import src.search.SearchBySignedComics;
 import src.search.SearchBySlab;
+import src.search.SearchByStoryTitle;
 
 public class PTUI {
 
@@ -53,7 +61,8 @@ public class PTUI {
                         + "\033[0m");
 
         String quitter = ">>To end the application -> \"quit\"";
-        String PersonalCollectionSearchCommand = ">>To search your personal collection -> \"search collection\", <search type>, <term>, <exact or partial>. <sort type>";
+        String PersonalCollectionSearchCommand = ">>To search your personal collection -> \"search collection\", <search type>, <exact or partial>, <term>, <sort type>";
+        String PersonalCollectionSearchNoExact = ">>To search for comics that has been graded, slabbed, signed, or authenticated -> \"search collection \', <search type>, <sort type>";
         String DataBaseSearchCommand = ">>To search the database -> <search database>, \"search type\", <term>, <exact or partial>";
         String AddComicFROMDBtoPersonalCollection = ">>To add comic from the database to your personal collection -> \"add from database\", <series>, <volume>, <issue>";
         String AddComicManuallytoPersonalCollection = ">>To add a comic manually to your personal collection-> \"add\", <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value> <[creator1, creator2, ...]>";
@@ -64,9 +73,10 @@ public class PTUI {
         String viewBooks = ">>To view your personal collection -> \"view\", <category>";
         String logIn = ">>To log in and have more features - > login";
 
-        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 quitter,
                 PersonalCollectionSearchCommand,
+                PersonalCollectionSearchNoExact,
                 DataBaseSearchCommand,
                 AddComicFROMDBtoPersonalCollection,
                 AddComicManuallytoPersonalCollection,
@@ -85,10 +95,18 @@ public class PTUI {
 
         HashMap<String, CollectionSearcher> searchOptions = new HashMap<>();
         searchOptions.put("series title", new SearchBySeriesTitle(false));
+        searchOptions.put("issue number", new SearchByIssueNumber(false));
+        searchOptions.put("story title", new SearchByStoryTitle(false));
+        searchOptions.put("publisher", new SearchByPublisher(false));
+        searchOptions.put("release date", new SearchByReleaseDate(false));
         searchOptions.put("description", new SearchByDescription(false));
         searchOptions.put("creators", new SearchByCreators(false));
         searchOptions.put("graded", new SearchByGrade(false));
         searchOptions.put("slabbed", new SearchBySlab(false));
+        searchOptions.put("signed", new SearchBySignedComics(false));
+        searchOptions.put("authenticated", new SearchByAuthenticated(false));
+        searchOptions.put("runs", new SearchByRuns(false));
+        searchOptions.put("gaps", new SearchByGaps(false));
 
         while (!result.equals("quit")) {
             try {
@@ -99,13 +117,20 @@ public class PTUI {
                 String command = multiResult[0];
 
                 if (command.equals("search collection")) {
-                    if (multiResult[3].equals("exact")) {
-                        searchOptions.get(multiResult[1]).setExactMatch(true);
-                    } else {
-                        searchOptions.get(multiResult[1]).setExactMatch(false);
+                    List<Comic> listy;
+                    //code for searching for graded, slabbed, signed, authenticated
+                    if(multiResult.length == 3){
+                        personalCollection.setSearch(searchOptions.get(multiResult[1]));
+                        listy = personalCollection.doSearch("true", multiResult[2]);
+                    } else { //code for every other search type
+                        if (multiResult[2].equals("exact")) {
+                            searchOptions.get(multiResult[1]).setExactMatch(true);
+                        } else {
+                            searchOptions.get(multiResult[1]).setExactMatch(false);
+                        }
+                        personalCollection.setSearch(searchOptions.get(multiResult[1]));
+                        listy = (personalCollection.doSearch(multiResult[3], multiResult[4]));
                     }
-                    personalCollection.setSearch(searchOptions.get(multiResult[1]));
-                    List<Comic> listy = (personalCollection.doSearch(multiResult[2], multiResult[4]));
                     StringBuilder sb = new StringBuilder();
                     sb.append("\033[1m"); // Bold formatting
                     sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s",
@@ -144,6 +169,7 @@ public class PTUI {
                         }
                         System.out.println("\n\n" + sb.toString());
                     }
+                
                 }
 
                 else if (command.equals("search database")) {

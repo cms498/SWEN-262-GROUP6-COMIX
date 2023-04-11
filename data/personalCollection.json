@@ -26,7 +26,7 @@
        "publicationdate": "Mar 1963",
        "isGraded": true,
        "isSlabbed": true,
-       "signatures": "",
+       "signatures": "fake signature",
        "authenticated": false
    },
    {
@@ -102,7 +102,7 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": true
    },
    {
        "seriestitle": "Spawn",

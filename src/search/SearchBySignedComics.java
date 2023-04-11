@@ -17,21 +17,13 @@ public class SearchBySignedComics implements CollectionSearcher{
         searchTerm = searchTerm.toLowerCase();
         List<Comic> searchComics = new ArrayList<>();
         
-        if (this.exactMatch) {
-            for (Comic comic : comics) {
-                if (searchTerm.equals(Boolean.toString(comic.getSignatures().size() > 0))) {
-                    searchComics.add(comic);
-                }
-            }
-        } else {
-            for (Comic comic : comics) {
-                if (Boolean.toString(comic.getSignatures().size() > 0).toLowerCase().contains(searchTerm)) {
-                    searchComics.add(comic);
-                }
-                
+        for (Comic comic : comics) {
+            if (comic.getSignatures().get(0) != "") {
+                searchComics.add(comic);
             }
         }
-            return searchComics;
+
+        return searchComics;
     }
 
     @Override
