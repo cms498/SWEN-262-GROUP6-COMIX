@@ -1,14 +1,14 @@
 package src.command;
 
 import src.Comic;
-import src.PersonalCollection;
+import src.iPersonalCollection;
 
 public class addCommand implements Command{
-    private PersonalCollection collection;
+    private iPersonalCollection collection;
     private Comic comic;
     private CommandType commandType;
 
-    public addCommand(PersonalCollection collection, Comic comic, CommandType commandType){
+    public addCommand(iPersonalCollection collection, Comic comic, CommandType commandType){
         this.collection = collection;
         this.commandType = commandType;
         this.comic = comic;
