@@ -33,7 +33,7 @@ public class SearchBySeriesTitleTest {
         Creator creator3 = new Creator("Aaron Kuder");
         creatorSingle.add(creator3);
 
-        List<String> signatures = new ArrayList<>();
+        ArrayList<String> signatures = new ArrayList<>();
 
         Comic comic = new Comic(publisher, "Spider-Man", "SPIDER_MAN_TITLE", 0, "2", "1/2/2019", creators, "A good book", 26.08, false, false, signatures, false);
         Comic comic2 = new Comic(publisher2, "Batman", "BATMAN", 1, "1", "2/7/2020", creators, "MID", 0, false, false, signatures, false);
