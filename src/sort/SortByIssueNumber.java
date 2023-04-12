@@ -1,10 +1,16 @@
+/**
+ * This class is used to sort a personal collection of comics by issues numbers, where 
+ * lower issues numbers will come first
+ */
+
 package src.sort;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import src.Comic;
 
-public class SortByIssueNumber implements CollectionSorter{
+public class SortByIssueNumber implements CollectionSorter {
 
     @Override
     public List<Comic> sort(List<Comic> comics) {

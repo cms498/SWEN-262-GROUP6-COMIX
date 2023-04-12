@@ -10,7 +10,7 @@ import java.io.IOException;
 import src.Comic;
 import src.PersonalCollection;
 
-public class XMLAdapter implements ExporterInterface{
+public class XMLAdapter implements ExporterInterface {
 
     PersonalCollection collection;
 
@@ -47,5 +47,5 @@ public class XMLAdapter implements ExporterInterface{
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }    
+    }
 }
