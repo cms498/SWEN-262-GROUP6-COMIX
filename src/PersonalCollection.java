@@ -80,9 +80,10 @@ public class PersonalCollection implements iPersonalCollection {
                     // work in progress
                     String[] signaturesArr = signatures.strip().split(",");
                     List<String> signatureList = Arrays.asList(signaturesArr);
+                    ArrayList<String> arrAigList = new ArrayList<>(signatureList);
                     Boolean authenticated = (Boolean) jsonObject.get("authenticated");
                     Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber,
-                            publicationDate, creatorsList, description, value, isGraded, isSlabbed, signatureList,
+                            publicationDate, creatorsList, description, value, isGraded, isSlabbed, arrAigList,
                             authenticated);
                     comics.add(comic);
                 }

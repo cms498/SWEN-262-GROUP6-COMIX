@@ -1,4 +1,5 @@
 package src;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,13 +19,13 @@ public class Comic {
     private double value; // optional
     private boolean isGraded;
     private boolean isSlabbed;
-    private List<String> signatures;
+    private ArrayList<String> signatures;
     private boolean authenticated;
 
     public Comic(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
             String issueNumber, String publicationDate, List<Creator> creators,
             String description, double value, boolean isGraded, boolean isSlabbed, 
-            List<String> signatures, boolean authenticated) {
+            ArrayList<String> signatures, boolean authenticated) {
         this.publisher = publisher;
         this.seriesTitle = seriesTitle;
         this.storyTitle = storyTitle;
