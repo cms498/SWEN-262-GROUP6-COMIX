@@ -80,9 +80,10 @@ public class PersonalCollection implements iPersonalCollection {
                     // work in progress
                     String[] signaturesArr = signatures.strip().split(",");
                     List<String> signatureList = Arrays.asList(signaturesArr);
+                    ArrayList<String> arrAigList = new ArrayList<>(signatureList);
                     Boolean authenticated = (Boolean) jsonObject.get("authenticated");
                     Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber,
-                            publicationDate, creatorsList, description, value, isGraded, isSlabbed, signatureList,
+                            publicationDate, creatorsList, description, value, isGraded, isSlabbed, arrAigList,
                             authenticated);
                     comics.add(comic);
                 }
@@ -335,6 +336,30 @@ public class PersonalCollection implements iPersonalCollection {
             System.out.println(storyTitle + " has been successfully removed from your personal collection");
         }
         // otherwise print out error message
+        else {
+            System.out.println(storyTitle + " doesn't exist within your personal collection");
+        }
+        this.convertBackToJson();
+    }
+
+    public void authenticate(String storyTitle){
+        Comic comic = getComicInCollection(storyTitle);
+        if (comic != null) {
+            comic.authenticate(true);
+            comic.setValue(comic.getValue() * 1.2);
+        }
+        else {
+            System.out.println(storyTitle + " doesn't exist within your personal collection");
+        }
+        this.convertBackToJson();
+    }
+
+    public void sign(String storyTitle, String signature){
+        Comic comic = getComicInCollection(storyTitle);
+        if (comic != null) {
+            comic.sign(signature);
+            comic.setValue(comic.getValue() * 1.05);
+        }
         else {
             System.out.println(storyTitle + " doesn't exist within your personal collection");
         }

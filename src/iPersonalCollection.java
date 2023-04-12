@@ -35,4 +35,6 @@ public interface iPersonalCollection {
     public boolean isGuestMode();
     public void printDatabase(List<Comic> comics);
     public void addComic(Comic comic);
+    public void authenticate(String storyTitle);
+    public void sign(String storyTitle, String signature);
 }

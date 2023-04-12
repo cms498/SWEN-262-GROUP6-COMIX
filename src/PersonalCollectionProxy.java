@@ -230,9 +230,22 @@ public class PersonalCollectionProxy implements iPersonalCollection {
     public void addComic(Comic comic) {
         if (guestMode == false) {
             collection.addComic(comic);
+        }
+    }
+    public void authenticate(String storyTitle){
+        if(guestMode == false){
+            collection.authenticate(storyTitle);
         } else {
             System.out.println("Log in to have access to this feature");
         }
     }
 
+    @Override
+    public void sign(String storyTitle, String signature){
+        if(guestMode == false){
+            collection.sign(storyTitle, signature);
+        } else {
+            System.out.println("Log in to have access to this feature");
+        }
+    }
 }
