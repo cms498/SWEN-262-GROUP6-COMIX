@@ -1,8 +1,6 @@
 package src;
 import java.util.List;
 
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-
 
 public class Comic {
 

@@ -341,6 +341,30 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
+    public void authenticate(String storyTitle){
+        Comic comic = getComicInCollection(storyTitle);
+        if (comic != null) {
+            comic.authenticate(true);
+            comic.setValue(comic.getValue() * 1.2);
+        }
+        else {
+            System.out.println(storyTitle + " doesn't exist within your personal collection");
+        }
+        this.convertBackToJson();
+    }
+
+    public void sign(String storyTitle, String signature){
+        Comic comic = getComicInCollection(storyTitle);
+        if (comic != null) {
+            comic.sign(signature);
+            comic.setValue(comic.getValue() * 1.05);
+        }
+        else {
+            System.out.println(storyTitle + " doesn't exist within your personal collection");
+        }
+        this.convertBackToJson();
+    }
+
     public void editComic(String storyTitle, String field, String newValue) {
         Comic comic = getComicInCollection(storyTitle);
         String command = field.replaceAll("\\s", "").toLowerCase();

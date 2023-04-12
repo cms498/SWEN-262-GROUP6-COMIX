@@ -73,11 +73,13 @@ public class PTUI {
         String GradeComicPersonalCollection = ">>To grade a comic in your personal collection -> \"grade\", <exact comic name>, <value 1 to 10>";
         String ComicSlab = ">>To slab a graded comic -> \"slab\", <exact comic name>";
         String RemoveComic = ">>To remove a comic from the personal colection -> \"remove\", <exact comic name>";
+        String AuthenticateComic = ">>To authenticate a comic -> \"authenticate\", <exact comic name>";
+        String sign = ">>To sign a comic -> \"sign\", <exact comic name>, <signature>";
         String viewBooks = ">>To view your personal collection -> \"view\", <category>";
         String logIn = ">>To log in and have more features -> login";
         String export = ">>To export your personal collection into various types -> \"export\", <export format>";
 
-        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 quitter,
                 PersonalCollectionSearchCommand,
                 PersonalCollectionSearchNoExact,
@@ -88,6 +90,8 @@ public class PTUI {
                 GradeComicPersonalCollection,
                 ComicSlab,
                 RemoveComic,
+                sign,
+                AuthenticateComic,
                 viewBooks,
                 export,
                 logIn);
@@ -227,6 +231,14 @@ public class PTUI {
                     personalCollection.removeComic(multiResult[1]);
                 }
 
+                else if (command.equals("authenticate")){
+                    personalCollection.authenticate(multiResult[1]);
+                }
+
+                else if (command.equals("sign")){
+                    personalCollection.sign(multiResult[1], multiResult[2]);
+                }
+
                 else if (command.equals("view")) {
                     String type = multiResult[1];
                     switch (type) {
@@ -249,7 +261,9 @@ public class PTUI {
                             System.out.println("Command not recognized, your options are: publisher, series, volume, issue, collection");
                             break;
                     }
-                } else if (command.equals("export")){
+                } 
+                
+                else if (command.equals("export")){
                     if(personalCollection.isGuestMode()){
                         System.out.println("Log in to access feature");
                     } else {
