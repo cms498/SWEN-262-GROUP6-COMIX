@@ -556,4 +556,32 @@ public class PersonalCollection implements iPersonalCollection {
         System.out.println(comic.getStoryTitle() + " has been successfully added to your personal collection");
         this.convertBackToJson();
     }
+
+    public void ungradeComic(Comic comic, int grade){
+        if(comic.getIsGraded()){
+            Comic comicNew = getComicInCollection(comic.getStoryTitle());
+            double oldValue = comicNew.getValue();
+            double newValue = grade;
+
+            if (grade == 1) {
+                newValue = comicNew.getValue() * (0.10);
+            } else {
+                newValue = Math.log10(grade) * comicNew.getValue();
+            }
+            unslabComic(comicNew);
+            comicNew.setValue(- newValue + oldValue);
+            comicNew.setIsGraded(false);
+            this.convertBackToJson();
+        }
+    }
+
+    public void unslabComic(Comic comic){
+        if(comic.getIsSlabbed() && comic.getIsGraded()){
+            comic.setIsSlabbed(false);
+            comic.setValue((comic.getValue()/2.0));
+            System.out.println(comic.getStoryTitle() + " has been successfully unslabbed");
+            this.convertBackToJson();
+        }
+    }
+
 }
