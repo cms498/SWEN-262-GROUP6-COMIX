@@ -27,4 +27,9 @@ public class addCommand implements Command{
     public void setComic(Comic comic) {
         this.comic = comic;
     }
+    
+    @Override
+    public void undo() {
+        collection.removeComic(comic.getStoryTitle());
+    }
 }
