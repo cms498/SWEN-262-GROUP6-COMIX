@@ -524,4 +524,11 @@ public class PersonalCollection implements iPersonalCollection {
         }
         System.out.println("\n\n" + sb.toString());
     }
+
+    @Override
+    public void addComic(Comic comic) {
+        comics.add(comic);
+        System.out.println(comic.getStoryTitle() + " has been successfully added to your personal collection");
+        this.convertBackToJson();
+    }
 }
