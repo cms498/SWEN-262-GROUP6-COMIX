@@ -19,8 +19,12 @@ public class addCommand implements Command{
         if(commandType == CommandType.ADD_MANUALLY){
             collection.addComicManually(comic.getPublisher().toString(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getCreators().toString(), comic.getDescription(), comic.getValue() + "");
         }
-        else{
+        else if (commandType == CommandType.ADD_DATABASE){
             collection.addComicByDataBase(comic.getSeriesTitle(), comic.getVolumeNumber(), comic.getIssueNumber());
         }
+    }
+
+    public void setComic(Comic comic) {
+        this.comic = comic;
     }
 }

@@ -1,10 +1,13 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import src.command.CommandType;
+import src.command.addCommand;
 import src.export.CSVAdapter;
 import src.export.ExporterInterface;
 import src.export.XMLAdapter;
@@ -131,11 +134,11 @@ public class PTUI {
 
                 if (command.equals("search collection")) {
                     List<Comic> listy;
-                    //code for searching for graded, slabbed, signed, authenticated
-                    if(multiResult.length == 3){
+                    // code for searching for graded, slabbed, signed, authenticated
+                    if (multiResult.length == 3) {
                         personalCollection.setSearch(searchOptions.get(multiResult[1]));
                         listy = personalCollection.doSearch("true", multiResult[2]);
-                    } else { //code for every other search type
+                    } else { // code for every other search type
                         if (multiResult[2].equals("exact")) {
                             searchOptions.get(multiResult[1]).setExactMatch(true);
                         } else {
@@ -160,19 +163,19 @@ public class PTUI {
                                 comic.setSeriesTitle(comic.getSeriesTitle().substring(0, 17) + "...");
                             }
 
-                            if(comic.getStoryTitle() != null){
+                            if (comic.getStoryTitle() != null) {
                                 if (comic.getStoryTitle().length() > 20) {
                                     comic.setStoryTitle(comic.getStoryTitle().substring(0, 17) + "...");
                                 }
                             }
 
-                            if(comic.getDescription() != null){
+                            if (comic.getDescription() != null) {
                                 if (comic.getDescription().length() > 20) {
                                     comic.setDescription((comic.getDescription().substring(0, 17) + "..."));
                                 }
                             }
 
-                            if(comic.getPublisher() != null){
+                            if (comic.getPublisher() != null) {
                                 if (comic.getPublisher().toString().length() > 20) {
                                     comic.setPublisher(comic.getPublisher().toString().substring(0, 17) + "...");
                                 }
@@ -189,7 +192,7 @@ public class PTUI {
                         }
                         System.out.println("\n\n" + sb.toString());
                     }
-                
+
                 }
 
                 else if (command.equals("search database")) {
@@ -206,13 +209,29 @@ public class PTUI {
                 }
 
                 else if (command.equals("add from database")) {
-                    personalCollection.addComicByDataBase(multiResult[1], Integer.parseInt(multiResult[2]), multiResult[3]);
+                    addCommand adder = new addCommand(personalCollection,
+                            new Comic(multiResult[1], Integer.parseInt(multiResult[3]), multiResult[2]),
+                            CommandType.ADD_DATABASE);
+                    adder.execute();
                 }
 
                 else if (command.equals("add")) {
-                    personalCollection.addComicManually(multiResult[6], multiResult[1], multiResult[4],
-                            Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], multiResult[9],
-                            multiResult[5], multiResult[8]);
+                    List<Creator> creatorsList = new ArrayList<>();
+                    String creators = multiResult[9];
+                    creators = creators.substring(1, creators.length() - 1);
+                    String[] creatorArr = creators.split(",");
+                    for (String creatorName : creatorArr) {
+                        creatorsList.add(new Creator(creatorName));
+                    }
+                    addCommand adder = new addCommand(personalCollection,
+                            new Comic(new Publisher(multiResult[6]), multiResult[1], multiResult[4],
+                                    Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], creatorsList,
+                                    multiResult[5], Double.parseDouble(multiResult[8]), false, false, null, false),
+                            CommandType.ADD_MANUALLY);
+                    adder.execute();
+                    // personalCollection.addComicManually(multiResult[6], multiResult[1], multiResult[4],
+                    //         Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], multiResult[9],
+                    //         multiResult[5], multiResult[8]);
                 }
 
                 else if (command.equals("edit")) {
@@ -231,11 +250,11 @@ public class PTUI {
                     personalCollection.removeComic(multiResult[1]);
                 }
 
-                else if (command.equals("authenticate")){
+                else if (command.equals("authenticate")) {
                     personalCollection.authenticate(multiResult[1]);
                 }
 
-                else if (command.equals("sign")){
+                else if (command.equals("sign")) {
                     personalCollection.sign(multiResult[1], multiResult[2]);
                 }
 
@@ -258,13 +277,14 @@ public class PTUI {
                             personalCollection.PrettyPrintDatabase();
                             break;
                         default:
-                            System.out.println("Command not recognized, your options are: publisher, series, volume, issue, collection");
+                            System.out.println(
+                                    "Command not recognized, your options are: publisher, series, volume, issue, collection");
                             break;
                     }
-                } 
-                
-                else if (command.equals("export")){
-                    if(personalCollection.isGuestMode()){
+                }
+
+                else if (command.equals("export")) {
+                    if (personalCollection.isGuestMode()) {
                         System.out.println("Log in to access feature");
                     } else {
                         exportOptions.get(multiResult[1].toLowerCase()).export();
@@ -284,7 +304,8 @@ public class PTUI {
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                System.out.println("Incorrect format, commands should be comma seperated, type LC to view all commands");
+                System.out
+                        .println("Incorrect format, commands should be comma seperated, type LC to view all commands");
             }
 
             System.out.print(">>");
