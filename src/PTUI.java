@@ -68,7 +68,7 @@ public class PTUI {
         String PersonalCollectionSearchNoExact = ">>To search for comics that has been graded, slabbed, signed, or authenticated -> \"search collection \', <search type>, <sort type>";
         String DataBaseSearchCommand = ">>To search the database -> <search database>, \"search type\", <term>, <exact or partial>";
         String AddComicFROMDBtoPersonalCollection = ">>To add comic from the database to your personal collection -> \"add from database\", <series>, <volume>, <issue>";
-        String AddComicManuallytoPersonalCollection = ">>To add a comic manually to your personal collection-> \"add\", <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value> <[creator1, creator2, ...]>";
+        String AddComicManuallytoPersonalCollection = ">>To add a comic manually to your personal collection-> \"add\", <series>, <issue>, <volume>, <title>, <description>, <publisher>, <release date>, <value>, <[creator1, creator2, ...]>";
         String EditComicInPersonalCollection = ">>To edit a comic in your personal collection -> \"edit\", <exact comic name>, <field to be edited>, <new value>";
         String GradeComicPersonalCollection = ">>To grade a comic in your personal collection -> \"grade\", <exact comic name>, <value 1 to 10>";
         String ComicSlab = ">>To slab a graded comic -> \"slab\", <exact comic name>";
