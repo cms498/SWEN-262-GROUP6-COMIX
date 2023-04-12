@@ -2,5 +2,6 @@ package src.command;
 
 public enum CommandType {
     ADD_DATABASE,
-    ADD_MANUALLY
+    ADD_MANUALLY,
+    REMOVE
 }

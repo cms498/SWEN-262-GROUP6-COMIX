@@ -23,4 +23,9 @@ public class addCommand implements Command{
             collection.addComicByDataBase(comic.getSeriesTitle(), comic.getVolumeNumber(), comic.getIssueNumber());
         }
     }
+
+    @Override
+    public void undo() {
+        collection.removeComic(comic.getStoryTitle());
+    }
 }
