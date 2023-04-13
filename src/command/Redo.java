@@ -7,8 +7,8 @@ public class Redo implements Command{
     private Stack<Command> redoStack;
     private Undo undo;
 
-    public Redo(Stack<Command> redoStack) {
-        this.redoStack = redoStack;
+    public Redo() {
+        this.redoStack = new Stack<>();
         this.undo = null;
     }
 
@@ -18,6 +18,8 @@ public class Redo implements Command{
             Command command = redoStack.pop();
             command.execute();
             undo.addCommand(command);
+        } else {
+            System.out.println("No commands to redo");
         }
     }
 
@@ -28,6 +30,10 @@ public class Redo implements Command{
 
     public void addCommand(Command command) {
         redoStack.push(command);
+    }
+
+    public void setUndo(Undo undo) {
+        this.undo = undo;
     }
     
 }

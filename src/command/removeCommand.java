@@ -1,5 +1,6 @@
 package src.command;
 
+import src.Comic;
 import src.iPersonalCollection;
 
 /*
@@ -9,11 +10,13 @@ public class removeCommand implements Command{
     private iPersonalCollection collection;
     private String comicName;
     private CommandType commandType;
+    private Comic comic;
 
     public removeCommand(iPersonalCollection collection) {
         this.collection = collection;
         this.comicName = null;
         this.commandType = null;
+        this.comic = null;
     }
 
     
@@ -23,6 +26,7 @@ public class removeCommand implements Command{
      */
     public void setComic(String comicName) {
         this.comicName = comicName;
+        this.comic = this.collection.getComicInCollection(comicName);
     }
 
     
@@ -51,7 +55,7 @@ public class removeCommand implements Command{
      */
     public void undo() {
         if(commandType == CommandType.REMOVE) {
-            collection.addComic(collection.getComicInCollection(comicName));
+            collection.addComic(comic);
         }
     }
 }

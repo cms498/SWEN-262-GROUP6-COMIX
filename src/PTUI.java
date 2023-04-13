@@ -7,6 +7,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 import src.command.CommandType;
+import src.command.Redo;
+import src.command.Undo;
 import src.command.addCommand;
 import src.command.removeCommand;
 import src.export.CSVAdapter;
@@ -82,8 +84,10 @@ public class PTUI {
         String viewBooks = ">>To view your personal collection -> \"view\", <category>";
         String logIn = ">>To log in and have more features -> login";
         String export = ">>To export your personal collection into various types -> \"export\", <export format>";
+        String undo = ">>To Undo a command done on the personal collection -> \"undo \"";
+        String redo = ">>To redo a previously undone command -> \"redo\"";
 
-        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+        String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 quitter,
                 PersonalCollectionSearchCommand,
                 PersonalCollectionSearchNoExact,
@@ -98,6 +102,8 @@ public class PTUI {
                 AuthenticateComic,
                 viewBooks,
                 export,
+                undo,
+                redo,
                 logIn);
 
         Scanner scanner = new Scanner(System.in);
@@ -124,6 +130,11 @@ public class PTUI {
         HashMap<String, ExporterInterface> exportOptions = new HashMap<>();
         exportOptions.put("csv", new CSVAdapter());
         exportOptions.put("xml", new XMLAdapter());
+
+        Undo undoStack = new Undo();
+        Redo redoStack = new Redo();
+        undoStack.setRedo(redoStack);
+        redoStack.setUndo(undoStack);
 
         while (!result.equals("quit")) {
             try {
@@ -214,6 +225,7 @@ public class PTUI {
                             new Comic(multiResult[1], Integer.parseInt(multiResult[3]), multiResult[2]),
                             CommandType.ADD_DATABASE);
                     adder.execute();
+                    undoStack.addCommand(adder);
                 }
 
                 else if (command.equals("add")) {
@@ -230,9 +242,7 @@ public class PTUI {
                                     multiResult[5], Double.parseDouble(multiResult[8]), false, false, new ArrayList<String>(), false),
                             CommandType.ADD_MANUALLY);
                     adder.execute();
-                    // personalCollection.addComicManually(multiResult[6], multiResult[1], multiResult[4],
-                    //         Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], multiResult[9],
-                    //         multiResult[5], multiResult[8]);
+                    undoStack.addCommand(adder);
                 }
 
                 else if (command.equals("edit")) {
@@ -252,7 +262,7 @@ public class PTUI {
                     removeCommand.setComic(multiResult[1]);
                     removeCommand.setCommandType(CommandType.REMOVE);
                     removeCommand.execute();
-                    //personalCollection.removeComic(multiResult[1]);
+                    undoStack.addCommand(removeCommand);
                 }
 
                 else if (command.equals("authenticate")) {
@@ -294,6 +304,14 @@ public class PTUI {
                     } else {
                         exportOptions.get(multiResult[1].toLowerCase()).export();
                     }
+                }
+
+                else if(command.equals("undo")){
+                    undoStack.execute();
+                }
+
+                else if(command.equals("redo")){
+                    redoStack.execute();
                 }
 
                 else if (command.equals("lc")) {

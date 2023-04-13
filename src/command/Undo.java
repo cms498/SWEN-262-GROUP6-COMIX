@@ -7,8 +7,8 @@ public class Undo implements Command{
     private Stack<Command> undoStack;
     private Redo redo;
 
-    public Undo(Stack<Command> undoStack) {
-        this.undoStack = undoStack;
+    public Undo() {
+        this.undoStack = new Stack<>();
         this.redo = null;
     }
 
@@ -18,6 +18,8 @@ public class Undo implements Command{
             Command command = undoStack.pop();
             command.undo();
             redo.addCommand(command);
+        } else {
+            System.out.println("No commands to undo");
         }
     }
 
