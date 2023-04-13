@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import src.command.CommandType;
 import src.command.addCommand;
+import src.command.removeCommand;
 import src.export.CSVAdapter;
 import src.export.ExporterInterface;
 import src.export.XMLAdapter;
@@ -226,7 +227,7 @@ public class PTUI {
                     addCommand adder = new addCommand(personalCollection,
                             new Comic(new Publisher(multiResult[6]), multiResult[1], multiResult[4],
                                     Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], creatorsList,
-                                    multiResult[5], Double.parseDouble(multiResult[8]), false, false, null, false),
+                                    multiResult[5], Double.parseDouble(multiResult[8]), false, false, new ArrayList<String>(), false),
                             CommandType.ADD_MANUALLY);
                     adder.execute();
                     // personalCollection.addComicManually(multiResult[6], multiResult[1], multiResult[4],
@@ -247,7 +248,11 @@ public class PTUI {
                 }
 
                 else if (command.equals("remove")) {
-                    personalCollection.removeComic(multiResult[1]);
+                    removeCommand removeCommand = new removeCommand(personalCollection);
+                    removeCommand.setComic(multiResult[1]);
+                    removeCommand.setCommandType(CommandType.REMOVE);
+                    removeCommand.execute();
+                    //personalCollection.removeComic(multiResult[1]);
                 }
 
                 else if (command.equals("authenticate")) {
