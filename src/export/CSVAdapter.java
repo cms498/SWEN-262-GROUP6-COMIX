@@ -25,9 +25,10 @@ public class CSVAdapter implements ExporterInterface {
               File file = new File("data/personalCollection.csv");
               FileWriter writer = new FileWriter(file);
               //        return publisher + "," +seriesTitle + "," +storyTitle + "," +volumeNumber + "," +value + "," +creators + "," +description + "," +issueNumber + "," + isGraded + "," +isSlabbed;
-                writer.write("Publisher, Series Title, Story Title, Volume Number, Value, Creators, Description, Issue Number, Is Graded, Is Slabbed \n");
+                writer.write("Publisher, Series Title, Story Title, Volume Number, Value, Creators, Description, Issue Number, Is Graded, Is Slabbed, Signatures, Authenticated \n");
                 for (Comic comic : comics) {
                     String fixer = "";
+                    String signatures = "";
                     if (comic.getPublisher().toString().contains(",")) {
                         comic.setPublisher("\"" + comic.getPublisher() + "\"");
                     }
@@ -47,11 +48,22 @@ public class CSVAdapter implements ExporterInterface {
                         fixer = comic.getCreators().toString();
                     }
 
-                    writer.write(comic.getPublisher() + "," + comic.getSeriesTitle() + "," + comic.getStoryTitle() + "," + comic.getVolumeNumber() + "," + comic.getValue() + "," + fixer + "," + comic.getDescription() + "," + comic.getIssueNumber() + "," + comic.getIsGraded() + "," + comic.getIsSlabbed() + "\n");
+                    if(comic.getSignatures().toString().contains(",")) {
+                        signatures = comic.getSignatures().toString().replace(", ", " | ");
+                    } else {
+                        signatures = comic.getSignatures().toString();
+                    }
+
+                    writer.write(comic.getPublisher() + "," + comic.getSeriesTitle() + "," + comic.getStoryTitle() + "," + comic.getVolumeNumber() + "," + comic.getValue() + "," + fixer + "," + comic.getDescription() + "," + comic.getIssueNumber() + "," + comic.getIsGraded() + "," + comic.getIsSlabbed() + ","+ signatures+ "," + comic.getIsAuthenticated() +"\n");
                 }
               writer.close();
          } catch (IOException e) {
               e.printStackTrace();
          }
-    }   
+    }
+
+    public static void main(String[] args) {
+        CSVAdapter adapter = new CSVAdapter();
+        adapter.export();
+    }
 }
