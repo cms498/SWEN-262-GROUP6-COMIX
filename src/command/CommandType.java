@@ -14,5 +14,7 @@ public enum CommandType {
     EDIT_CREATOR,
     EDIT_VALUE,
     EDIT_GRADE,
-    EDIT_SLAB
+    EDIT_SLAB,
+    EDIT_AUTHENTICATED,
+    EDIT_SIGNATURES
 }

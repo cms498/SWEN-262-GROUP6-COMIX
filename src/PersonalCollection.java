@@ -261,6 +261,7 @@ public class PersonalCollection implements iPersonalCollection {
         }
         comic.setValue(newValue + oldValue);
         comic.setIsGraded(true);
+        comic.setGradeNumber(grade);
         this.convertBackToJson();
     }
 
@@ -407,14 +408,18 @@ public class PersonalCollection implements iPersonalCollection {
                 comic.setValue(finalValue);
                 break;
             case "grade":
-                if (newValue.equals("true")) {
-                    comic.setIsGraded(true);
+                if (comic.getIsGraded() == false) {
+                    editGrade(storyTitle, Integer.parseInt(newValue));
                 } else {
-                    comic.setIsGraded(false);
+                    ungradeComic(comic, Integer.parseInt(newValue));
                 }
                 break;
             case "slab":
-                editSlab(storyTitle);
+                if(comic.getIsSlabbed() == false){
+                    editSlab(storyTitle);
+                }else{
+                    unslabComic(comic);
+                }
                 break;
             default:
                 System.out.println("please input a valid field");
@@ -571,6 +576,7 @@ public class PersonalCollection implements iPersonalCollection {
             unslabComic(comicNew);
             comicNew.setValue(- newValue + oldValue);
             comicNew.setIsGraded(false);
+            comicNew.setGradeNumber(0);
             this.convertBackToJson();
         }
     }

@@ -13,6 +13,7 @@ public class Comic {
     private String storyTitle;
     private int volumeNumber;
     private String issueNumber;
+    private int gradeNumber; //udpate
     private String publicationDate;
     private List<Creator> creators; // optional
     private String description; // optional
@@ -39,6 +40,7 @@ public class Comic {
         this.isSlabbed = isSlabbed;
         this.signatures = signatures;
         this.authenticated = authenticated;
+        this.gradeNumber = 0;
     }
 
     public Comic(String seriesTitle, int volumeNumber, String issueRange){
@@ -55,6 +57,7 @@ public class Comic {
         this.isSlabbed = false;
         this.signatures = null;
         this.authenticated = false;
+        this.gradeNumber = 0; 
     }
 
     public Publisher getPublisher() {
@@ -124,6 +127,14 @@ public class Comic {
 
     public double getValue() {
         return value;
+    }
+
+    public void setGradeNumber(int grade){
+        this.gradeNumber = grade;
+    }
+
+    public int getGradeNumber(){
+        return gradeNumber;
     }
 
     public void setValue(double value) {

@@ -40,7 +40,22 @@ public class editCommand implements Command{
             collection.editComic(comic.getStoryTitle(), "publicationdate", newComic.getPublicationDate());
         }
         if(commandType == CommandType.EDIT_CREATOR){
-            collection.editComic(comic.getStoryTitle(), "creator", null);
+            collection.editComic(comic.getStoryTitle(), "creator", newComic.getCreators().toString());
+        }
+        if(commandType == CommandType.EDIT_VALUE){
+            collection.editComic(comic.getSeriesTitle(), "value", newComic.getValue()+"");
+        }
+        if(commandType == CommandType.EDIT_SLAB){
+            collection.editComic(comic.getStoryTitle(), "slab", newComic.getIsSlabbed()+"");
+        }
+        if(commandType == CommandType.EDIT_GRADE){
+            collection.editComic(comic.getStoryTitle(), "grade", newComic.getGradeNumber()+"");
+        }
+        if(commandType == CommandType.EDIT_SIGNATURES){
+            
+        }
+        if(commandType == CommandType.EDIT_AUTHENTICATED){
+
         }
 
         
