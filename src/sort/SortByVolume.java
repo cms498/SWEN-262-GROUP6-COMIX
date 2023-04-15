@@ -1,4 +1,10 @@
+/**
+ * This class is used to sort a personal collection by volume number,
+ * lower volume numbers will come before larger ones
+ */
+
 package src.sort;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -6,9 +12,7 @@ import java.util.List;
 
 import src.Comic;
 
-
-
-public class SortByVolume implements CollectionSorter{
+public class SortByVolume implements CollectionSorter {
 
     @Override
     public List<Comic> sort(List<Comic> comics) {
@@ -19,8 +23,7 @@ public class SortByVolume implements CollectionSorter{
                 return Integer.compare(c1.getVolumeNumber(), c2.getVolumeNumber());
             }
         });
+
         return sorted;
     }
-    
-    
 }

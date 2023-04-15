@@ -1,3 +1,7 @@
+/**
+ * This class is the adapter from a personal collection to an xml file
+ */
+
 package src.export;
 
 import java.io.FileWriter;
@@ -6,7 +10,7 @@ import java.io.IOException;
 import src.Comic;
 import src.PersonalCollection;
 
-public class XMLAdapter implements ExporterInterface{
+public class XMLAdapter implements ExporterInterface {
 
     PersonalCollection collection;
 
@@ -15,7 +19,9 @@ public class XMLAdapter implements ExporterInterface{
         this.collection.initializeComics();
     }
 
-    //this class will be used to export the data to an XML file
+    /**
+     * This method is called by the user, and is when the exporting will take place
+     */
     @Override
     public void export() {
         try {

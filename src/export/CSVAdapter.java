@@ -1,3 +1,7 @@
+/**
+ * This class represents the adapter for converting the personal collecton into a csv file
+ */
+
 package src.export;
 
 import java.io.File;
@@ -17,6 +21,10 @@ public class CSVAdapter implements ExporterInterface {
         this.collection.initializeComics();
     }
 
+    /**
+     * This method is where the conversion happens between a list of comics into a
+     * csv file,
+     */
     @Override
     public void export() {
        List<Comic> comics = collection.getComics();
