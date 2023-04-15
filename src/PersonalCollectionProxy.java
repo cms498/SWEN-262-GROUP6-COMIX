@@ -261,9 +261,20 @@ public class PersonalCollectionProxy implements iPersonalCollection {
             collection.addComic(comic);
         }
     }
+
+    @Override
     public void authenticate(String storyTitle){
         if(guestMode == false){
             collection.authenticate(storyTitle);
+        } else {
+            System.out.println("Log in to have access to this feature");
+        }
+    }
+
+    @Override
+    public void unauthenticateComic(Comic comic){
+        if(guestMode == false){
+            collection.unauthenticateComic(comic);
         } else {
             System.out.println("Log in to have access to this feature");
         }

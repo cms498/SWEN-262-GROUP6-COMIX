@@ -40,4 +40,5 @@ public interface iPersonalCollection {
     public Comic getComicInCollection2(String seriesTitle, int volumeNumber, String issueNumber);
     public void ungradeComic(Comic comic, int grade);
     public void unslabComic(Comic comic);
+    public void unauthenticateComic(Comic comic);
 }

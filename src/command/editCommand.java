@@ -49,9 +49,6 @@ public class editCommand implements Command{
         if(field.equals("grade")){
             oldValue = comic.getGradeNumber()+"";
         }
-        if(field.equals("slab")){
-            oldValue = comic.getIsSlabbed()+"";
-        }
     }
 
     @Override

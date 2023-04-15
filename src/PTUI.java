@@ -9,8 +9,10 @@ import java.util.Scanner;
 import src.command.Redo;
 import src.command.Undo;
 import src.command.addCommand;
+import src.command.authenticateCommand;
 import src.command.editCommand;
 import src.command.removeCommand;
+import src.command.slabCommand;
 import src.export.CSVAdapter;
 import src.export.ExporterInterface;
 import src.export.XMLAdapter;
@@ -88,23 +90,12 @@ public class PTUI {
         String redo = ">>To redo a previously undone command -> \"redo\"";
 
         String commands = String.format("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
-                quitter,
-                PersonalCollectionSearchCommand,
-                PersonalCollectionSearchNoExact,
-                DataBaseSearchCommand,
-                AddComicFROMDBtoPersonalCollection,
-                AddComicManuallytoPersonalCollection,
-                EditComicInPersonalCollection,
-                GradeComicPersonalCollection,
-                ComicSlab,
-                RemoveComic,
-                sign,
-                AuthenticateComic,
-                viewBooks,
-                export,
-                undo,
-                redo,
-                logIn);
+                quitter, PersonalCollectionSearchCommand, PersonalCollectionSearchNoExact,
+                DataBaseSearchCommand, AddComicFROMDBtoPersonalCollection,
+                AddComicManuallytoPersonalCollection, EditComicInPersonalCollection,
+                GradeComicPersonalCollection, ComicSlab, RemoveComic,
+                sign, AuthenticateComic, viewBooks, export,
+                undo, redo, logIn);
 
         Scanner scanner = new Scanner(System.in);
         System.out.print(">>");
@@ -239,14 +230,16 @@ public class PTUI {
                     addCommand adder = new addCommand(personalCollection,
                             new Comic(new Publisher(multiResult[6]), multiResult[1], multiResult[4],
                                     Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], creatorsList,
-                                    multiResult[5], Double.parseDouble(multiResult[8]), false, false, new ArrayList<String>(), false),
+                                    multiResult[5], Double.parseDouble(multiResult[8]), false, false,
+                                    new ArrayList<String>(), false),
                             command);
                     adder.execute();
                     undoStack.addCommand(adder);
                 }
 
                 else if (command.equals("edit")) {
-                    editCommand editor = new editCommand(personalCollection, multiResult[1], multiResult[2], multiResult[3], command);
+                    editCommand editor = new editCommand(personalCollection, multiResult[1], multiResult[2],
+                            multiResult[3], command);
                     editor.execute();
                     undoStack.addCommand(editor);
                 }
@@ -256,7 +249,13 @@ public class PTUI {
                 }
 
                 else if (command.equals("slab")) {
-                    personalCollection.editSlab(multiResult[1]);
+                    slabCommand slabCommand = new slabCommand(personalCollection, multiResult[1], command);
+                    try {
+                        slabCommand.execute();
+                    } catch (Exception e) {
+                        
+                    }
+                    undoStack.addCommand(slabCommand);
                 }
 
                 else if (command.equals("remove")) {
@@ -266,7 +265,13 @@ public class PTUI {
                 }
 
                 else if (command.equals("authenticate")) {
-                    personalCollection.authenticate(multiResult[1]);
+                    authenticateCommand authenticateCommand = new authenticateCommand(personalCollection, multiResult[1], command);
+                    try {
+                        authenticateCommand.execute();
+                    } catch (Exception e) {
+                        
+                    }
+                    undoStack.addCommand(authenticateCommand);
                 }
 
                 else if (command.equals("sign")) {
@@ -306,11 +311,11 @@ public class PTUI {
                     }
                 }
 
-                else if(command.equals("undo")){
+                else if (command.equals("undo")) {
                     undoStack.execute();
                 }
 
-                else if(command.equals("redo")){
+                else if (command.equals("redo")) {
                     redoStack.execute();
                 }
 

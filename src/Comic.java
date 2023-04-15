@@ -201,4 +201,8 @@ public class Comic {
     public boolean getIsAuthenticated(){
         return authenticated;
     }
+
+    public void setIsAuthenticated(boolean authenticated){
+        this.authenticated = authenticated;
+    }
 }

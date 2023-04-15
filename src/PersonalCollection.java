@@ -356,7 +356,7 @@ public class PersonalCollection implements iPersonalCollection {
 
     public void authenticate(String storyTitle){
         Comic comic = getComicInCollection(storyTitle);
-        if (comic != null) {
+        if (!comic.getSignatures().isEmpty()) {
             comic.authenticate(true);
             comic.setValue(comic.getValue() * 1.2);
         }
@@ -594,11 +594,21 @@ public class PersonalCollection implements iPersonalCollection {
 
     public void unslabComic(Comic comic){
         if(comic.getIsSlabbed() && comic.getIsGraded()){
-            comic.setIsSlabbed(false);
-            comic.setValue((comic.getValue()/2.0));
-            System.out.println(comic.getStoryTitle() + " has been successfully unslabbed");
+            Comic comicInCollection = this.getComicInCollection(comic.getStoryTitle());
+            comicInCollection.setIsSlabbed(false);
+            comicInCollection.setValue((comicInCollection.getValue()/2.0));
+            System.out.println(comicInCollection.getStoryTitle() + " has been successfully unslabbed");
             this.convertBackToJson();
         }
     }
 
+    public void unauthenticateComic(Comic comic){
+        if(!comic.getSignatures().isEmpty()){
+            Comic comicInCollection = this.getComicInCollection(comic.getStoryTitle());
+            comicInCollection.setIsAuthenticated(false);
+            comicInCollection.setValue(comicInCollection.getValue() / 1.2);
+            System.out.println(comicInCollection.getStoryTitle() + " has been successfully unauthenticated");
+            this.convertBackToJson();
+        }
+    }
 }
