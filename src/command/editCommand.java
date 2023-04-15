@@ -22,32 +22,36 @@ public class editCommand implements Command {
 
         // The oldValue variable is used here to stored the existing comic attritube
         // that the user wants to edit.
-        if (field.equals("publisher")) {
-            oldValue = comic.getPublisher().toString();
-        }
-        if (field.equals("series title")) {
-            oldValue = comic.getSeriesTitle();
-        }
-        if (field.equals("story title")) {
-            oldValue = comic.getStoryTitle();
-        }
-        if (field.equals("volume number")) {
-            oldValue = comic.getVolumeNumber() + "";
-        }
-        if (field.equals("issue number")) {
-            oldValue = comic.getIssueNumber();
-        }
-        if (field.equals("publication date")) {
-            oldValue = comic.getPublicationDate();
-        }
-        if (field.equals("creator")) {
-            oldValue = comic.getCreators().toString();
-        }
-        if (field.equals("description")) {
-            oldValue = comic.getDescription();
-        }
-        if (field.equals("value")) {
-            oldValue = comic.getValue() + "";
+        try {
+            if (field.equals("publisher")) {
+                oldValue = comic.getPublisher().toString();
+            }
+            if (field.equals("series title")) {
+                oldValue = comic.getSeriesTitle();
+            }
+            if (field.equals("story title")) {
+                oldValue = comic.getStoryTitle();
+            }
+            if (field.equals("volume number")) {
+                oldValue = comic.getVolumeNumber() + "";
+            }
+            if (field.equals("issue number")) {
+                oldValue = comic.getIssueNumber();
+            }
+            if (field.equals("publication date")) {
+                oldValue = comic.getPublicationDate();
+            }
+            if (field.equals("creator")) {
+                oldValue = comic.getCreators().toString();
+            }
+            if (field.equals("description")) {
+                oldValue = comic.getDescription();
+            }
+            if (field.equals("value")) {
+                oldValue = comic.getValue() + "";
+            }
+        } catch (Exception e) {
+
         }
     }
 

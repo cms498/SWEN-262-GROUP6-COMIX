@@ -27,7 +27,11 @@ public class gradeCommand implements Command {
      * command once they have undone it.
      */
     public void execute() {
-        this.difference = this.collection.editGrade(comic.getStoryTitle(), gradeNumber);
+        try {
+            this.difference = this.collection.editGrade(comic.getStoryTitle(), gradeNumber);
+        } catch (Exception e) {
+            
+        }
     }
 
     @Override

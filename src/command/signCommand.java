@@ -25,7 +25,11 @@ public class signCommand implements Command {
      * command once they have undone it.
      */
     public void execute() {
-        this.collection.sign(comic.getStoryTitle(), this.signature);
+        try {
+            this.collection.sign(comic.getStoryTitle(), this.signature);
+        } catch (Exception e) {
+            
+        }
     }
 
     @Override
