@@ -36,6 +36,7 @@ public class XMLAdapter implements ExporterInterface{
                 write.write("\t\t<isSlabbed>" + comic.getIsSlabbed() + "</isSlabbed>\n");
                 write.write("\t\t<isSigned>" + comic.getSignatures() + "</isSigned>\n");
                 write.write("\t\t<isAuthenticated>" + comic.getIsAuthenticated() + "</isAuthenticated>\n");
+                write.write("\t\t<gradeNumber>" + comic.getGradeNumber() + "</gradeNumber>\n");
                 write.write("\t</comic>\n");
             }
             write.write("</comics>");

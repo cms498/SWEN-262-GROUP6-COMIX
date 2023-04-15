@@ -25,7 +25,7 @@ public class CSVAdapter implements ExporterInterface {
               File file = new File("data/personalCollection.csv");
               FileWriter writer = new FileWriter(file);
               //        return publisher + "," +seriesTitle + "," +storyTitle + "," +volumeNumber + "," +value + "," +creators + "," +description + "," +issueNumber + "," + isGraded + "," +isSlabbed;
-                writer.write("Publisher, Series Title, Story Title, Volume Number, Value, Creators, Description, Issue Number, Is Graded, Is Slabbed, Signatures, Authenticated \n");
+                writer.write("Publisher, Series Title, Story Title, Volume Number, Value, Creators, Description, Issue Number, Is Graded, Is Slabbed, Signatures, Authenticated, grade Number \n");
                 for (Comic comic : comics) {
                     String fixer = "";
                     String signatures = "";
@@ -54,7 +54,7 @@ public class CSVAdapter implements ExporterInterface {
                         signatures = comic.getSignatures().toString();
                     }
 
-                    writer.write(comic.getPublisher() + "," + comic.getSeriesTitle() + "," + comic.getStoryTitle() + "," + comic.getVolumeNumber() + "," + comic.getValue() + "," + fixer + "," + comic.getDescription() + "," + comic.getIssueNumber() + "," + comic.getIsGraded() + "," + comic.getIsSlabbed() + ","+ signatures+ "," + comic.getIsAuthenticated() +"\n");
+                    writer.write(comic.getPublisher() + "," + comic.getSeriesTitle() + "," + comic.getStoryTitle() + "," + comic.getVolumeNumber() + "," + comic.getValue() + "," + fixer + "," + comic.getDescription() + "," + comic.getIssueNumber() + "," + comic.getIsGraded() + "," + comic.getIsSlabbed() + ","+ signatures+ "," + comic.getIsAuthenticated() + "," + comic.getGradeNumber() +"\n");
                 }
               writer.close();
          } catch (IOException e) {

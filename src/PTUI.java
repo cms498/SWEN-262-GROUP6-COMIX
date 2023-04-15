@@ -11,6 +11,7 @@ import src.command.Undo;
 import src.command.addCommand;
 import src.command.authenticateCommand;
 import src.command.editCommand;
+import src.command.gradeCommand;
 import src.command.removeCommand;
 import src.command.slabCommand;
 import src.export.CSVAdapter;
@@ -231,7 +232,7 @@ public class PTUI {
                             new Comic(new Publisher(multiResult[6]), multiResult[1], multiResult[4],
                                     Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], creatorsList,
                                     multiResult[5], Double.parseDouble(multiResult[8]), false, false,
-                                    new ArrayList<String>(), false),
+                                    new ArrayList<String>(), false, 0),
                             command);
                     adder.execute();
                     undoStack.addCommand(adder);
@@ -245,7 +246,9 @@ public class PTUI {
                 }
 
                 else if (command.equals("grade")) {
-                    personalCollection.editGrade(multiResult[1], Integer.parseInt(multiResult[2]));
+                    gradeCommand grader = new gradeCommand(personalCollection, multiResult[1], Integer.parseInt(multiResult[2]));
+                    grader.execute();
+                    undoStack.addCommand(grader);
                 }
 
                 else if (command.equals("slab")) {

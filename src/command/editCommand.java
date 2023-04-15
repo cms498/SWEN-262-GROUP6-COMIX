@@ -45,10 +45,6 @@ public class editCommand implements Command{
         if(field.equals("value")){
             oldValue = comic.getValue()+"";
         }
-        //don't know if to put in seperate class or leave it here yet
-        if(field.equals("grade")){
-            oldValue = comic.getGradeNumber()+"";
-        }
     }
 
     @Override

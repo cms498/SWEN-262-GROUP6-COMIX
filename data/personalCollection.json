@@ -12,7 +12,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "Spider-Man",
@@ -27,7 +28,8 @@
        "isGraded": true,
        "isSlabbed": true,
        "signatures": "fake signature",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Walking Dead",
@@ -42,7 +44,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "X-Men",
@@ -57,7 +60,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "Watchmen",
@@ -72,7 +76,8 @@
        "isGraded": true,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "Saga",
@@ -87,7 +92,8 @@
        "isGraded": true,
        "isSlabbed": true,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "Sandman",
@@ -102,7 +108,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": true
+       "authenticated": true,
+       "gradenumber": 0
    },
    {
        "seriestitle": "Spawn",
@@ -117,7 +124,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "Batman: The Dark Knight Returns",
@@ -132,7 +140,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "Hellboy",
@@ -147,7 +156,8 @@
        "isGraded": true,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "9-11",
@@ -162,7 +172,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -177,7 +188,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -192,7 +204,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -207,7 +220,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -222,7 +236,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -237,7 +252,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -252,7 +268,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -267,7 +284,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -282,7 +300,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -297,7 +316,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -312,7 +332,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -327,7 +348,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -342,7 +364,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -357,7 +380,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -372,7 +396,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -387,7 +412,8 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    },
    {
        "seriestitle": "The Incredible Hulk",
@@ -402,6 +428,7 @@
        "isGraded": false,
        "isSlabbed": false,
        "signatures": "",
-       "authenticated": false
+       "authenticated": false,
+       "gradenumber": 0
    }
 ]

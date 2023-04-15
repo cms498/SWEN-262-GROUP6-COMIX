@@ -82,9 +82,10 @@ public class PersonalCollection implements iPersonalCollection {
                     List<String> signatureList = Arrays.asList(signaturesArr);
                     ArrayList<String> arrAigList = new ArrayList<>(signatureList);
                     Boolean authenticated = (Boolean) jsonObject.get("authenticated");
+                    long gradeNumber = (Long) jsonObject.get("gradenumber");
                     Comic comic = new Comic(publisher, seriesTitle, storyTitle, (int) volumeNumber, issueNumber,
                             publicationDate, creatorsList, description, value, isGraded, isSlabbed, arrAigList,
-                            authenticated);
+                            authenticated, (int) gradeNumber);
                     comics.add(comic);
                 }
             } catch (ParseException e) {
@@ -131,6 +132,7 @@ public class PersonalCollection implements iPersonalCollection {
                 }
             }
             List<String> signaturesList = comics.get(i).getSignatures();
+            signaturesList.removeAll(Arrays.asList("", null));
             String signatures = "";
             for (int k = 0; k < signaturesList.size(); k++) {
                 signatures = signatures + signaturesList.get(k);
@@ -164,7 +166,10 @@ public class PersonalCollection implements iPersonalCollection {
             json.append("\"").append(signatures).append("\",\n");
 
             json.append("       \"").append("authenticated").append("\": ");
-            json.append(comics.get(i).getIsAuthenticated()).append("\n");
+            json.append(comics.get(i).getIsAuthenticated()).append(",\n");
+
+            json.append("       \"").append("gradenumber").append("\": ");
+            json.append(comics.get(i).getGradeNumber()).append("\n");
 
             if (i < comics.size() - 1) {
                 json.append("   },\n");
@@ -260,7 +265,7 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
-    public void editGrade(String storyTitle, int grade) {
+    public double editGrade(String storyTitle, int grade) {
         Comic comic = getComicInCollection(storyTitle);
         double oldValue = comic.getValue();
         double newValue = grade;
@@ -274,6 +279,7 @@ public class PersonalCollection implements iPersonalCollection {
         comic.setIsGraded(true);
         comic.setGradeNumber(grade);
         this.convertBackToJson();
+        return newValue;
     }
 
     // adds comics from the database by user input (user inputs only the story title
@@ -332,7 +338,7 @@ public class PersonalCollection implements iPersonalCollection {
 
         // adds new comic object to their personal collection
         comics.add(new Comic(new Publisher(publisher), seriesTitle, storyTitle, volumeNumber, issueNumber,
-                publicationDate, creatorsList, description, valueNumber, false, false, new ArrayList<>(), false));
+                publicationDate, creatorsList, description, valueNumber, false, false, new ArrayList<>(), false, 0));
         System.out.println(storyTitle + " has been successfully added to your personal collection");
         this.convertBackToJson();
     }
@@ -573,19 +579,13 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
-    public void ungradeComic(Comic comic, int grade){
+    public void ungradeComic(Comic comic, double difference){
         if(comic.getIsGraded()){
             Comic comicNew = getComicInCollection(comic.getStoryTitle());
             double oldValue = comicNew.getValue();
-            double newValue = grade;
-
-            if (grade == 1) {
-                newValue = comicNew.getValue() * (0.10);
-            } else {
-                newValue = Math.log10(grade) * comicNew.getValue();
-            }
+            
             unslabComic(comicNew);
-            comicNew.setValue(- newValue + oldValue);
+            comicNew.setValue(oldValue - difference);
             comicNew.setIsGraded(false);
             comicNew.setGradeNumber(0);
             this.convertBackToJson();

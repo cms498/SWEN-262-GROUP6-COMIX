@@ -26,7 +26,7 @@ public class Comic {
     public Comic(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
             String issueNumber, String publicationDate, List<Creator> creators,
             String description, double value, boolean isGraded, boolean isSlabbed, 
-            ArrayList<String> signatures, boolean authenticated) {
+            ArrayList<String> signatures, boolean authenticated, int gradeNumber) {
         this.publisher = publisher;
         this.seriesTitle = seriesTitle;
         this.storyTitle = storyTitle;
@@ -40,7 +40,7 @@ public class Comic {
         this.isSlabbed = isSlabbed;
         this.signatures = signatures;
         this.authenticated = authenticated;
-        this.gradeNumber = 0;
+        this.gradeNumber = gradeNumber;
     }
 
     public Comic(String seriesTitle, int volumeNumber, String issueRange){
@@ -52,7 +52,7 @@ public class Comic {
         this.publicationDate = null;
         this.creators = null;
         this.description = null;
-        this.value = 0.00;
+        this.value = 1.0;
         this.isGraded = false;
         this.isSlabbed = false;
         this.signatures = null;

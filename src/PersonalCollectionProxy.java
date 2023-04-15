@@ -71,9 +71,9 @@ public class PersonalCollectionProxy implements iPersonalCollection {
     }
 
     @Override
-    public void ungradeComic(Comic comic, int grade) {
+    public void ungradeComic(Comic comic, double difference) {
         if(guestMode == false){
-            collection.ungradeComic(comic, grade);;
+            collection.ungradeComic(comic, difference);
         } else {
             System.out.println("Log in to have access to this feature");
         }
@@ -171,11 +171,12 @@ public class PersonalCollectionProxy implements iPersonalCollection {
     }
 
     @Override
-    public void editGrade(String storyTitle, int grade) {
+    public double editGrade(String storyTitle, int grade) {
         if (guestMode == false) {
-            collection.editGrade(storyTitle, grade);
+            return collection.editGrade(storyTitle, grade);
         } else {
             System.out.println("Log in to have access to this feature");
+            return 0.0;
         }
     }
 
