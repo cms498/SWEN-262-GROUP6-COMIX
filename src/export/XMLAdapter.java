@@ -1,7 +1,3 @@
-/**
- * This class is the adapter from a personal collection to an xml file
- */
-
 package src.export;
 
 import java.io.FileWriter;
@@ -10,9 +6,12 @@ import java.io.IOException;
 import src.Comic;
 import src.PersonalCollection;
 
+/**
+ * This class is the adapter from a personal collection to an xml file
+ */
 public class XMLAdapter implements ExporterInterface {
 
-    PersonalCollection collection;
+    private PersonalCollection collection;
 
     public XMLAdapter() {
         this.collection = new PersonalCollection();
@@ -20,7 +19,8 @@ public class XMLAdapter implements ExporterInterface {
     }
 
     /**
-     * This method is called by the user, and is when the exporting will take place
+     * This method is responsible for converting a list of comics in an xml file
+     * the PTUI will call this method when the user calls export
      */
     @Override
     public void export() {
@@ -50,10 +50,5 @@ public class XMLAdapter implements ExporterInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        XMLAdapter adapter = new XMLAdapter();
-        adapter.export();
     }
 }
