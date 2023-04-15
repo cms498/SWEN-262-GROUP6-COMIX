@@ -34,7 +34,6 @@ import src.search.SearchByStoryTitle;
 
 public class PTUI {
 
-
     public static void main(String[] args) {
         PTUIFormatting formatter = new PTUIFormatting();
         formatter.formatting();
@@ -183,7 +182,11 @@ public class PTUI {
                 else if (command.equals("edit")) {
                     editCommand editor = new editCommand(personalCollection, multiResult[1], multiResult[2],
                             multiResult[3]);
-                    editor.execute();
+                    try {
+                        editor.execute();
+                    } catch (Exception e) {
+
+                    }
                     undoStack.addCommand(editor);
                 }
 
@@ -206,7 +209,10 @@ public class PTUI {
 
                 else if (command.equals("remove")) {
                     removeCommand removeCommand = new removeCommand(personalCollection, multiResult[1]);
-                    removeCommand.execute();
+                    try {
+                        removeCommand.execute();
+                    } catch (Exception e) {
+                    }
                     undoStack.addCommand(removeCommand);
                 }
 

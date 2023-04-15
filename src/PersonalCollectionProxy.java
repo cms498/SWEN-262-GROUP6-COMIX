@@ -65,7 +65,6 @@ public class PersonalCollectionProxy implements iPersonalCollection {
         if(guestMode == false){
             return collection.getComicInCollection2(seriesTitle, volumeNumber, issueNumber);
         } else {
-            System.out.println("Log in to have access to this feature");
             return null;
         }
     }
