@@ -18,18 +18,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class SortByDate implements CollectionSorter {
-
-    public int compareDates(Object obj1, Object obj2) throws ParseException {
-
-        String dateStr1 = getDateFromObject(obj1); // helper function to get date string from object
-        String dateStr2 = getDateFromObject(obj2);
-
-        Date date1 = parseDate(dateStr1); // helper function to parse date string into java.util.Date
-        Date date2 = parseDate(dateStr2);
-
-        return date1.compareTo(date2); // compare dates using compareTo method
-    }
-
     /**
      * Converts a comic objects publication date into a date, there are three
      * options for formatting when passed in.
@@ -66,23 +54,12 @@ public class SortByDate implements CollectionSorter {
         return null;
     }
 
-    private Date parseDate(String dateStr) throws ParseException {
-        // helper function to parse date string into java.util.Date
-        Date date = null;
-        if (dateStr.matches("\\w{3} \\d{1,2}, \\d{4}")) { // check if date format is "MMM dd, yyyy"
-            DateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-            date = dateFormat.parse(dateStr);
-        } else if (dateStr.matches("\\w{3} \\d{4}")) { // check if date format is "MMM yyyy"
-            DateFormat dateFormat = new SimpleDateFormat("MMM yyyy");
-            date = dateFormat.parse(dateStr);
-        } else if (dateStr.matches("\\d{4}")) { // check if date format is "yyyy"
-            DateFormat dateFormat = new SimpleDateFormat("yyyy");
-            date = dateFormat.parse(dateStr);
-        }
-        return date;
-    }
-
     @Override
+    /**
+     * sorts a list of comics by date, earlier dates will come first
+     * this is the method the Personal collection will call when the user wants to
+     * sort out their personal collection, this is not done in place
+     */
     public List<Comic> sort(List<Comic> comics) {
         List<Comic> sorted = new ArrayList<>(comics);
 
