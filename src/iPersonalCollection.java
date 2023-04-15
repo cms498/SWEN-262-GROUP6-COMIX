@@ -37,4 +37,7 @@ public interface iPersonalCollection {
     public void addComic(Comic comic);
     public void authenticate(String storyTitle);
     public void sign(String storyTitle, String signature);
+    public Comic getComicInCollection2(String seriesTitle, int volumeNumber, String issueNumber);
+    public void ungradeComic(Comic comic, int grade);
+    public void unslabComic(Comic comic);
 }

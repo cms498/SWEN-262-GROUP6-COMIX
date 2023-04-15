@@ -192,6 +192,17 @@ public class PersonalCollection implements iPersonalCollection {
         return null;
     }
 
+    public Comic getComicInCollection2(String seriesTitle, int volumeNumber, String issueNumber){
+        seriesTitle = seriesTitle.toLowerCase();
+        issueNumber = issueNumber.toLowerCase();
+        for (Comic comicsInList : comics) {
+            if (seriesTitle.equals(comicsInList.getSeriesTitle().toLowerCase()) && volumeNumber == comicsInList.getVolumeNumber() && issueNumber.equals(comicsInList.getIssueNumber())) {
+                return comicsInList;
+            }
+        }
+        return null;
+    }
+
     public void setSort(CollectionSorter sorter) {
         this.sorter = sorter;
     }

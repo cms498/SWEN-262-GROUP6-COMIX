@@ -61,6 +61,35 @@ public class PersonalCollectionProxy implements iPersonalCollection {
     }
 
     @Override
+    public Comic getComicInCollection2(String seriesTitle, int volumeNumber, String issueNumber) {
+        if(guestMode == false){
+            return collection.getComicInCollection2(seriesTitle, volumeNumber, issueNumber);
+        } else {
+            System.out.println("Log in to have access to this feature");
+            return null;
+        }
+    }
+
+    @Override
+    public void ungradeComic(Comic comic, int grade) {
+        if(guestMode == false){
+            collection.ungradeComic(comic, grade);;
+        } else {
+            System.out.println("Log in to have access to this feature");
+        }
+        
+    }
+
+    @Override
+    public void unslabComic(Comic comic) {
+        if(guestMode == false){
+            collection.unslabComic(comic);
+        } else {
+            System.out.println("Log in to have access to this feature");
+        }
+        
+    }
+    @Override
     public void setSort(CollectionSorter sorter) {
         if (guestMode == false) {
             collection.setSort(sorter);

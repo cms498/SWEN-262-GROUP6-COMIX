@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import src.command.CommandType;
 import src.command.Redo;
 import src.command.Undo;
 import src.command.addCommand;
+import src.command.editCommand;
 import src.command.removeCommand;
 import src.export.CSVAdapter;
 import src.export.ExporterInterface;
@@ -222,8 +222,8 @@ public class PTUI {
 
                 else if (command.equals("add from database")) {
                     addCommand adder = new addCommand(personalCollection,
-                            new Comic(multiResult[1], Integer.parseInt(multiResult[3]), multiResult[2]),
-                            CommandType.ADD_DATABASE);
+                            new Comic(multiResult[1], Integer.parseInt(multiResult[2]), multiResult[3]),
+                            command);
                     adder.execute();
                     undoStack.addCommand(adder);
                 }
@@ -240,13 +240,15 @@ public class PTUI {
                             new Comic(new Publisher(multiResult[6]), multiResult[1], multiResult[4],
                                     Integer.parseInt(multiResult[3]), multiResult[2], multiResult[7], creatorsList,
                                     multiResult[5], Double.parseDouble(multiResult[8]), false, false, new ArrayList<String>(), false),
-                            CommandType.ADD_MANUALLY);
+                            command);
                     adder.execute();
                     undoStack.addCommand(adder);
                 }
 
                 else if (command.equals("edit")) {
-                    personalCollection.editComic(multiResult[1], multiResult[2], multiResult[3]);
+                    editCommand editor = new editCommand(personalCollection, multiResult[1], multiResult[2], multiResult[3], command);
+                    editor.execute();
+                    undoStack.addCommand(editor);
                 }
 
                 else if (command.equals("grade")) {
@@ -258,9 +260,7 @@ public class PTUI {
                 }
 
                 else if (command.equals("remove")) {
-                    removeCommand removeCommand = new removeCommand(personalCollection);
-                    removeCommand.setComic(multiResult[1]);
-                    removeCommand.setCommandType(CommandType.REMOVE);
+                    removeCommand removeCommand = new removeCommand(personalCollection, multiResult[1], command);
                     removeCommand.execute();
                     undoStack.addCommand(removeCommand);
                 }

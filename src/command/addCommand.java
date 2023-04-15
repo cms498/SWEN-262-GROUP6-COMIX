@@ -6,9 +6,9 @@ import src.iPersonalCollection;
 public class addCommand implements Command{
     private iPersonalCollection collection;
     private Comic comic;
-    private CommandType commandType;
+    private String commandType;
 
-    public addCommand(iPersonalCollection collection, Comic comic, CommandType commandType){
+    public addCommand(iPersonalCollection collection, Comic comic, String commandType){
         this.collection = collection;
         this.commandType = commandType;
         this.comic = comic;
@@ -16,17 +16,15 @@ public class addCommand implements Command{
 
     @Override
     public void execute() {
-        if(commandType == CommandType.ADD_MANUALLY){
-            collection.addComicManually(comic.getPublisher().toString(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getCreators().toString(), comic.getDescription(), comic.getValue() + "");
+        if(commandType.equals("add")){
+            this.collection.addComicManually(comic.getPublisher().toString(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getCreators().toString(), comic.getDescription(), comic.getValue() + "");
         }
-        else if (commandType == CommandType.ADD_DATABASE){
-            collection.addComicByDataBase(comic.getSeriesTitle(), comic.getVolumeNumber(), comic.getIssueNumber());
+        else if (commandType.equals("add from database")){
+            this.collection.addComicByDataBase(comic.getSeriesTitle(), comic.getVolumeNumber(), comic.getIssueNumber());
+            comic = collection.getComicInCollection2(comic.getSeriesTitle(), comic.getVolumeNumber(), comic.getIssueNumber());
         }
     }
 
-    public void setComic(Comic comic) {
-        this.comic = comic;
-    }
     
     @Override
     public void undo() {

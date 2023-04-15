@@ -8,34 +8,13 @@ import src.iPersonalCollection;
  */
 public class removeCommand implements Command{
     private iPersonalCollection collection;
-    private String comicName;
-    private CommandType commandType;
+    private String commandType;
     private Comic comic;
 
-    public removeCommand(iPersonalCollection collection) {
+    public removeCommand(iPersonalCollection collection, String comicName, String commandType) {
         this.collection = collection;
-        this.comicName = null;
-        this.commandType = null;
-        this.comic = null;
-    }
-
-    
-    /** 
-     * @param comic
-     * Sets the current comic that the command modifies
-     */
-    public void setComic(String comicName) {
-        this.comicName = comicName;
-        this.comic = this.collection.getComicInCollection(comicName);
-    }
-
-    
-    /** 
-     * @param commandType
-     * Sets the command type to the desired type
-     */
-    public void setCommandType(CommandType commandType) {
         this.commandType = commandType;
+        this.comic = this.collection.getComicInCollection(comicName);
     }
 
     @Override
@@ -44,8 +23,9 @@ public class removeCommand implements Command{
      * from the personal collection
      */
     public void execute() {
-        if(commandType == CommandType.REMOVE)
-        collection.removeComic(comicName);
+        if(commandType.equals("remove")){
+            collection.removeComic(comic.getStoryTitle());
+        }
     }
 
     @Override
@@ -54,7 +34,7 @@ public class removeCommand implements Command{
      * comic back into the personal collection
      */
     public void undo() {
-        if(commandType == CommandType.REMOVE) {
+        if(commandType.equals("remove")) {
             collection.addComic(comic);
         }
     }

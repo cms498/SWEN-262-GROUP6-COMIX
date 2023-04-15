@@ -6,76 +6,72 @@ import src.iPersonalCollection;
 public class editCommand implements Command{
     private iPersonalCollection collection;
     private Comic comic;
-    private Comic newComic;
-    private CommandType commandType;
+    private String field;
+    private String oldValue;
+    private String newValue;
+    private String commandType;
 
-    public editCommand(iPersonalCollection collection){
+    public editCommand(iPersonalCollection collection, String comicName, String field, String newValue, String commandType){
         this.collection = collection;
-        this.comic = null;
-        this.newComic = null;
-        this.commandType = null;
+        this.comic = collection.getComicInCollection(comicName);
+        this.field = field;
+        this.newValue = newValue;
+        this.commandType = commandType;
+
+        if(field.equals("publisher")){
+            oldValue = comic.getPublisher().toString();
+        }
+        if(field.equals("seriestitle")){
+            oldValue = comic.getSeriesTitle();
+        }
+        if(field.equals("storytitle")){
+            oldValue = comic.getStoryTitle();
+        }
+        if(field.equals("volumenumber")){
+            oldValue = comic.getVolumeNumber()+"";
+        }
+        if(field.equals("issuenumber")){
+            oldValue = comic.getIssueNumber();
+        }
+        if(field.equals("publicationdate")){
+            oldValue = comic.getPublicationDate();
+        }
+        if(field.equals("creator")){
+            oldValue = comic.getCreators().toString();
+        }
+        if(field.equals("description")){
+            oldValue = comic.getDescription();
+        }
+        if(field.equals("value")){
+            oldValue = comic.getValue()+"";
+        }
+        //don't know if to put in seperate class or leave it here yet
+        if(field.equals("grade")){
+            oldValue = comic.getGradeNumber()+"";
+        }
+        if(field.equals("slab")){
+            oldValue = comic.getIsSlabbed()+"";
+        }
     }
 
     @Override
-    public void execute() {
-        if(commandType == CommandType.EDIT_SERIES_TITLE){
-            collection.editComic(comic.getStoryTitle(), "seriestitle", newComic.getSeriesTitle());
+    public void execute() { 
+        if(field.equals("storytitle")){
+            this.collection.editComic(oldValue, field, newValue);
         }
-        if(commandType == CommandType.EDIT_STORY_TITLE){
-            collection.editComic(comic.getStoryTitle(), "storytitle", newComic.getStoryTitle());
+        else{
+            this.collection.editComic(comic.getStoryTitle(), field, newValue);
         }
-        if(commandType == CommandType.EDIT_PUBLISHER){
-            collection.editComic(comic.getStoryTitle(), "publisher",newComic.getPublisher().toString());
-        }
-        if(commandType == CommandType.EDIT_DESCRIPTION){
-            collection.editComic(comic.getStoryTitle(), "description", newComic.getDescription());
-        }
-        if(commandType == CommandType.EDIT_VOLUMENUMBER){
-            collection.editComic(comic.getStoryTitle(), "volumenumber", newComic.getVolumeNumber() + "");
-        }
-        if(commandType == CommandType.EDIT_ISSUENUMBER){
-            collection.editComic(comic.getStoryTitle(), "issuenumber", newComic.getIssueNumber());
-        }
-        if(commandType == CommandType.EDIT_PUBLICATION_DATE){
-            collection.editComic(comic.getStoryTitle(), "publicationdate", newComic.getPublicationDate());
-        }
-        if(commandType == CommandType.EDIT_CREATOR){
-            collection.editComic(comic.getStoryTitle(), "creator", newComic.getCreators().toString());
-        }
-        if(commandType == CommandType.EDIT_VALUE){
-            collection.editComic(comic.getSeriesTitle(), "value", newComic.getValue()+"");
-        }
-        if(commandType == CommandType.EDIT_SLAB){
-            collection.editComic(comic.getStoryTitle(), "slab", newComic.getIsSlabbed()+"");
-        }
-        if(commandType == CommandType.EDIT_GRADE){
-            collection.editComic(comic.getStoryTitle(), "grade", newComic.getGradeNumber()+"");
-        }
-        if(commandType == CommandType.EDIT_SIGNATURES){
-            
-        }
-        if(commandType == CommandType.EDIT_AUTHENTICATED){
-
-        }
-
-        
-    }
-
-    public void setComic(Comic comic) {
-        this.comic = comic;
-    }
-
-    public void setNewComic(Comic newComic) {
-        this.newComic = newComic;
-    }
-
-    public void setCommandType(CommandType commandType) {
-        this.commandType = commandType;
     }
 
     @Override
     public void undo() {
-        
+        if(field.equals("storytitle")){
+            this.collection.editComic(newValue, field, oldValue);
+        }
+        else{
+            this.collection.editComic(comic.getStoryTitle(), field, oldValue);
+        }
     }
 
 }
