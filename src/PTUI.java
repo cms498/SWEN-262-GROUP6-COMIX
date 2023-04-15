@@ -13,6 +13,7 @@ import src.command.authenticateCommand;
 import src.command.editCommand;
 import src.command.gradeCommand;
 import src.command.removeCommand;
+import src.command.signCommand;
 import src.command.slabCommand;
 import src.export.CSVAdapter;
 import src.export.ExporterInterface;
@@ -240,45 +241,49 @@ public class PTUI {
 
                 else if (command.equals("edit")) {
                     editCommand editor = new editCommand(personalCollection, multiResult[1], multiResult[2],
-                            multiResult[3], command);
+                            multiResult[3]);
                     editor.execute();
                     undoStack.addCommand(editor);
                 }
 
                 else if (command.equals("grade")) {
-                    gradeCommand grader = new gradeCommand(personalCollection, multiResult[1], Integer.parseInt(multiResult[2]));
+                    gradeCommand grader = new gradeCommand(personalCollection, multiResult[1],
+                            Integer.parseInt(multiResult[2]));
                     grader.execute();
                     undoStack.addCommand(grader);
                 }
 
                 else if (command.equals("slab")) {
-                    slabCommand slabCommand = new slabCommand(personalCollection, multiResult[1], command);
+                    slabCommand slabCommand = new slabCommand(personalCollection, multiResult[1]);
                     try {
                         slabCommand.execute();
                     } catch (Exception e) {
-                        
+
                     }
                     undoStack.addCommand(slabCommand);
                 }
 
                 else if (command.equals("remove")) {
-                    removeCommand removeCommand = new removeCommand(personalCollection, multiResult[1], command);
+                    removeCommand removeCommand = new removeCommand(personalCollection, multiResult[1]);
                     removeCommand.execute();
                     undoStack.addCommand(removeCommand);
                 }
 
                 else if (command.equals("authenticate")) {
-                    authenticateCommand authenticateCommand = new authenticateCommand(personalCollection, multiResult[1], command);
+                    authenticateCommand authenticateCommand = new authenticateCommand(personalCollection,
+                            multiResult[1]);
                     try {
                         authenticateCommand.execute();
                     } catch (Exception e) {
-                        
+
                     }
                     undoStack.addCommand(authenticateCommand);
                 }
 
                 else if (command.equals("sign")) {
-                    personalCollection.sign(multiResult[1], multiResult[2]);
+                    signCommand signer = new signCommand(personalCollection, multiResult[1], multiResult[2]);
+                    signer.execute();
+                    undoStack.addCommand(signer);
                 }
 
                 else if (command.equals("view")) {

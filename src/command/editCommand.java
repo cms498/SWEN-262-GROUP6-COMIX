@@ -9,14 +9,12 @@ public class editCommand implements Command{
     private String field;
     private String oldValue;
     private String newValue;
-    private String commandType;
 
-    public editCommand(iPersonalCollection collection, String comicName, String field, String newValue, String commandType){
+    public editCommand(iPersonalCollection collection, String comicName, String field, String newValue){
         this.collection = collection;
         this.comic = collection.getComicInCollection(comicName);
         this.field = field;
         this.newValue = newValue;
-        this.commandType = commandType;
 
         if(field.equals("publisher")){
             oldValue = comic.getPublisher().toString();

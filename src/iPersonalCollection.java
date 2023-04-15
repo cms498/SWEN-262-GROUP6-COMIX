@@ -41,4 +41,5 @@ public interface iPersonalCollection {
     public void ungradeComic(Comic comic, double difference);
     public void unslabComic(Comic comic);
     public void unauthenticateComic(Comic comic);
+    public void unsignComic(Comic comic, String signature);
 }

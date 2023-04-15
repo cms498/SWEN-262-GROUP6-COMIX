@@ -8,12 +8,10 @@ import src.iPersonalCollection;
  */
 public class removeCommand implements Command{
     private iPersonalCollection collection;
-    private String commandType;
     private Comic comic;
 
-    public removeCommand(iPersonalCollection collection, String comicName, String commandType) {
+    public removeCommand(iPersonalCollection collection, String comicName) {
         this.collection = collection;
-        this.commandType = commandType;
         this.comic = this.collection.getComicInCollection(comicName);
     }
 
@@ -23,9 +21,7 @@ public class removeCommand implements Command{
      * from the personal collection
      */
     public void execute() {
-        if(commandType.equals("remove")){
-            collection.removeComic(comic.getStoryTitle());
-        }
+        collection.removeComic(comic.getStoryTitle());
     }
 
     @Override
@@ -34,8 +30,6 @@ public class removeCommand implements Command{
      * comic back into the personal collection
      */
     public void undo() {
-        if(commandType.equals("remove")) {
-            collection.addComic(comic);
-        }
+        collection.addComic(comic);
     }
 }

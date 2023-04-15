@@ -611,4 +611,14 @@ public class PersonalCollection implements iPersonalCollection {
             this.convertBackToJson();
         }
     }
+
+    public void unsignComic(Comic comic, String signature){
+        if(!comic.getSignatures().isEmpty()){
+            Comic comicInCollection = this.getComicInCollection(comic.getStoryTitle());
+            comicInCollection.getSignatures().remove(comicInCollection.getSignatures().size() - 1);
+            comicInCollection.setValue(comicInCollection.getValue() / 1.05);
+            System.out.println(comicInCollection.getStoryTitle() + "has been successfully unsigned");
+            this.convertBackToJson();
+        }
+    }
 }

@@ -3,22 +3,24 @@ package src.command;
 import src.Comic;
 import src.iPersonalCollection;
 
-public class slabCommand implements Command {
+public class signCommand implements Command{
     private iPersonalCollection collection;
     private Comic comic;
+    private String signature;
 
-    public slabCommand(iPersonalCollection collection, String comicName){
+    public signCommand(iPersonalCollection collection, String comicName, String signature){
         this.collection = collection;
         this.comic = this.collection.getComicInCollection(comicName);
+        this.signature = signature;
     }
 
     @Override
     public void execute() {
-        this.collection.editSlab(comic.getStoryTitle());
+        this.collection.sign(comic.getStoryTitle(), this.signature);
     }
 
     @Override
     public void undo() {
-        this.collection.unslabComic(comic);
+        this.collection.unsignComic(comic, signature);
     }
 }

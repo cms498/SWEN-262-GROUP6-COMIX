@@ -289,4 +289,13 @@ public class PersonalCollectionProxy implements iPersonalCollection {
             System.out.println("Log in to have access to this feature");
         }
     }
+
+    @Override
+    public void unsignComic(Comic comic, String signature){
+        if(guestMode == false){
+            collection.unsignComic(comic, signature);
+        } else {
+            System.out.println("Log in to have access to this feature");
+        }
+    }
 }
