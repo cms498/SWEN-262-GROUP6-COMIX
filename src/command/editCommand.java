@@ -25,19 +25,19 @@ public class editCommand implements Command {
         if (field.equals("publisher")) {
             oldValue = comic.getPublisher().toString();
         }
-        if (field.equals("seriestitle")) {
+        if (field.equals("series title")) {
             oldValue = comic.getSeriesTitle();
         }
-        if (field.equals("storytitle")) {
+        if (field.equals("story title")) {
             oldValue = comic.getStoryTitle();
         }
-        if (field.equals("volumenumber")) {
+        if (field.equals("volume number")) {
             oldValue = comic.getVolumeNumber() + "";
         }
-        if (field.equals("issuenumber")) {
+        if (field.equals("issue number")) {
             oldValue = comic.getIssueNumber();
         }
-        if (field.equals("publicationdate")) {
+        if (field.equals("publication date")) {
             oldValue = comic.getPublicationDate();
         }
         if (field.equals("creator")) {

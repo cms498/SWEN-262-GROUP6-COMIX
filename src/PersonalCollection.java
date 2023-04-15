@@ -43,10 +43,10 @@ public class PersonalCollection implements iPersonalCollection {
         value = 0.0;
         numberOfIssues = 0;
         comics = new ArrayList<>();
-        sortOptions.put("volume", new SortByVolume());
+        sortOptions.put("volume number", new SortByVolume());
         sortOptions.put("date", new SortByDate());
         sortOptions.put("issue number", new SortByIssueNumber());
-        sortOptions.put("title", new SortByTitle());
+        sortOptions.put("series title", new SortByTitle());
     }
 
     // converts from JSON to a list of comics

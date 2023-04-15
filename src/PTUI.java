@@ -73,7 +73,8 @@ public class PTUI {
             try {
                 personalCollection.initializeComics();
 
-                String[] multiResult = result.split(", ");
+                result = result.replace(" | ", "@");
+                String[] multiResult = result.split("@");
 
                 String command = multiResult[0];
 
@@ -232,16 +233,16 @@ public class PTUI {
                         case "publisher":
                             personalCollection.viewPublisher();
                             break;
-                        case "series":
+                        case "series title":
                             personalCollection.viewSeriesTitle();
                             break;
-                        case "volume":
+                        case "volume number":
                             personalCollection.viewVolumeNumber();
                             break;
-                        case "issue":
+                        case "issue number":
                             personalCollection.viewIssueNumber();
                             break;
-                        case "collection":
+                        case "whole collection":
                             personalCollection.PrettyPrintDatabase();
                             break;
                         default:
