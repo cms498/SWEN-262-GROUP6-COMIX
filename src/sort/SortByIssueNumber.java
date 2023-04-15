@@ -26,7 +26,7 @@ public class SortByIssueNumber implements CollectionSorter {
             } else {
                 for (int j = 0; j < sorted.size(); j++) {
                     Comic sortedComic = sorted.get(j);
-                    if (comic.getIssueNumber().charAt(0) < sortedComic.getIssueNumber().charAt(0)) {
+                    if (Integer.parseInt(comic.getIssueNumber()) < Integer.parseInt(sortedComic.getIssueNumber())) {
                         sorted.add(j, comic);
                         break;
                     } else if (j == sorted.size() - 1) {
