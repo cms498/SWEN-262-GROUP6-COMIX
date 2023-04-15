@@ -35,10 +35,10 @@ public class SearchByCreatorsTest {
 
         ArrayList<String> signatures = new ArrayList<>();
 
-        Comic comic = new Comic(publisher, "Spider-Man", "SPIDER_MAN_TITLE", 0, "2", "1/2/2019", creators, "A good book", 26.08, false, false, signatures, false);
-        Comic comic2 = new Comic(publisher2, "Batman", "BATMAN", 1, "1", "2/7/2020", creators, "MID", 0, false, false, signatures, false);
-        Comic comic3 = new Comic(publisher, "ANT_MAN", "ANT_MAN", 2, "3", "2/8/2020", creators, "also very mid", 0, false, false, signatures, false);
-        Comic comic4 = new Comic(publisher2, "Action Comics", "Monster", 2, "26A", "12/4/2013", creatorSingle, "A classic.", 0, false, false, signatures, false); 
+        Comic comic = new Comic(publisher, "Spider-Man", "SPIDER_MAN_TITLE", 0, "2", "1/2/2019", creators, "A good book", 26.08, false, false, signatures, false, 0);
+        Comic comic2 = new Comic(publisher2, "Batman", "BATMAN", 1, "1", "2/7/2020", creators, "MID", 0, false, false, signatures, false, 0);
+        Comic comic3 = new Comic(publisher, "ANT_MAN", "ANT_MAN", 2, "3", "2/8/2020", creators, "also very mid", 0, false, false, signatures, false, 0);
+        Comic comic4 = new Comic(publisher2, "Action Comics", "Monster", 2, "26A", "12/4/2013", creatorSingle, "A classic.", 0, false, false, signatures, false, 0); 
 
 
         List<Comic> comicList = new ArrayList<Comic>();
