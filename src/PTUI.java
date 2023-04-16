@@ -93,6 +93,34 @@ public class PTUI {
                         personalCollection.setSearch(searchOptions.get(multiResult[1]));
                         listy = (personalCollection.doSearch(multiResult[3], multiResult[4]));
                     }
+
+                    if(multiResult[1].equals("runs") || multiResult[1].equals("gaps")) {
+                        List<String> comic_attributes = new ArrayList<>();
+                        comic_attributes.add("Series Title");
+                        comic_attributes.add("Issue Number");
+
+                        List<Comic> listy2 = new ArrayList<>();
+                        for (Comic comic : listy) {
+                            listy2.add(comic);
+                        }
+
+                       StringBuilder sb = new StringBuilder();
+                        sb.append("\033[1m"); // Bold formatting
+                        sb.append(String.format("%-20s | %-20s", "Series Title", "Issue Number"));
+                        sb.append("\033[0m\n"); // Reset formatting to default and add new line
+                        sb.append("_".repeat(45)); // Underscores
+                        sb.append(System.lineSeparator());
+
+                        for (Comic comic : listy2) {
+                            sb.append(String.format("%-20s | %-20s", comic.getSeriesTitle(), comic.getIssueNumber()));
+                            sb.append(System.lineSeparator());
+                        }
+
+                        System.out.println(sb.toString());
+
+                    }
+
+                    else{
                     StringBuilder sb = new StringBuilder();
                     sb.append("\033[1m"); // Bold formatting
                     sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-20s | %-20s | %-20s | %-10s| %-10s",
@@ -138,7 +166,7 @@ public class PTUI {
                         }
                         System.out.println("\n\n" + sb.toString());
                     }
-
+                }
                 }
 
                 else if (command.equals("search database")) {

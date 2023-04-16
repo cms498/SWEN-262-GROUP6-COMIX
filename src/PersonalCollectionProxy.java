@@ -294,4 +294,9 @@ public class PersonalCollectionProxy implements iPersonalCollection {
             System.out.println("Log in to have access to this feature");
         }
     }
+
+    @Override
+    public void dynamicPrettyPrint(List<String> comic_attributes, List<Comic> comics) {
+        collection.dynamicPrettyPrint(comic_attributes, comics);
+    }
 }
