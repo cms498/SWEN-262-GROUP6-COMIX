@@ -19,7 +19,14 @@ public class Creator {
     public String getName() {
         return name;
     }
-
+    
+    /*
+     * Compares a given object with this creator
+     * by comparing the names of each
+     * If object isn't a creator returns false
+     * 
+     * @return true if the objects are the same, false otherwise
+     */
     @Override
     /**
      * This method compares two creators and determines if they are equal,

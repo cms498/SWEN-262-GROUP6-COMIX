@@ -32,6 +32,9 @@ import src.search.SearchBySignedComics;
 import src.search.SearchBySlab;
 import src.search.SearchByStoryTitle;
 
+/*
+ * Manages the running of the entire programming, and all the interactions with the user
+ */
 public class PTUI {
 
 
@@ -55,10 +58,10 @@ public class PTUI {
         searchOptions.put("creators", new SearchByCreators(false));
         searchOptions.put("graded", new SearchByGrade(false));
         searchOptions.put("slabbed", new SearchBySlab(false));
-        searchOptions.put("signed", new SearchBySignedComics(false));
-        searchOptions.put("authenticated", new SearchByAuthenticated(false));
-        searchOptions.put("runs", new SearchByRuns(false));
-        searchOptions.put("gaps", new SearchByGaps(false));
+        searchOptions.put("signed", new SearchBySignedComics());
+        searchOptions.put("authenticated", new SearchByAuthenticated());
+        searchOptions.put("runs", new SearchByRuns());
+        searchOptions.put("gaps", new SearchByGaps());
 
         HashMap<String, ExporterInterface> exportOptions = new HashMap<>();
         exportOptions.put("csv", new CSVAdapter());

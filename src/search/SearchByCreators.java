@@ -100,11 +100,4 @@ public class SearchByCreators implements CollectionSearcher{
         this.exactMatch = exactMatch;
     }
 
-    public static void main(String[] args) {
-        SearchByCreators sbc = new SearchByCreators(true);
-        List<Comic> comics = sbc.databaseSearch("Karl Kesel");
-        for(Comic comic: comics) {
-            System.out.println(comic.getStoryTitle());
-        }
-    }
 }

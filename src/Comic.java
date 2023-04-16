@@ -3,14 +3,26 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
+/*
+ * Class that represents a single comic
+=======
 /**
  * This class is used to represent a basic comic, comics have a publisher,
  * series and story title, volume and issue number, they can be graded,
  * slabbed, signed, and authenticated to increase their overall value
+>>>>>>> a08ebab22895633efcc7ee9a9c464a5cfd735f08
  */
 public class Comic {
 
+    /*
+     * A Comic's value is boosted by 1.05 times for each signature
+     */
     public final double SIGNED_VALUE_BOOST = .05;
+
+    /*
+     * A Comic's value is boosted by 1.2 times if it is authenticated
+     */
     public final double AUTHENTICEATED_VALUE_BOOST = .2;
 
     private Publisher publisher;
@@ -48,6 +60,12 @@ public class Comic {
         this.gradeNumber = gradeNumber;
     }
 
+<<<<<<< HEAD
+    /*
+     * Overloaded constructor for if only series title, volume number, and issue range are given
+     */
+    public Comic(String seriesTitle, int volumeNumber, String issueRange){
+=======
     /**
      * Second constructor for a comic with limited fields, sets default values of
      * null
@@ -58,6 +76,7 @@ public class Comic {
      * @param issueRange
      */
     public Comic(String seriesTitle, int volumeNumber, String issueRange) {
+>>>>>>> a08ebab22895633efcc7ee9a9c464a5cfd735f08
         this.publisher = null;
         this.seriesTitle = seriesTitle;
         this.storyTitle = null;
@@ -73,11 +92,17 @@ public class Comic {
         this.authenticated = false;
         this.gradeNumber = 0;
     }
+<<<<<<< HEAD
+    
+    /** 
+     * @return Publisher
+=======
 
     /**
      * getter method for the comics publisher
      * 
      * @return comic publisher
+>>>>>>> a08ebab22895633efcc7ee9a9c464a5cfd735f08
      */
     public Publisher getPublisher() {
         return publisher;

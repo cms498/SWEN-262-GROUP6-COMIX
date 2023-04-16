@@ -5,6 +5,10 @@ import java.util.List;
 
 import src.Comic;
 
+/*
+ * A implementation of Collection Searcher
+ * Searches comics by seeing if they're slabbed
+ */
 public class SearchBySlab implements CollectionSearcher {
 
     private boolean exactMatch;
@@ -13,6 +17,12 @@ public class SearchBySlab implements CollectionSearcher {
         this.exactMatch = exactMatch;
     }
 
+    /** 
+     * Searches through the list of given comics for any comics that are slabbed
+     * @param comics
+     * @param searchTerm
+     * @return List<Comic>
+     */
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
         searchTerm = searchTerm.toLowerCase();
@@ -33,6 +43,9 @@ public class SearchBySlab implements CollectionSearcher {
         return searchComics;
     }
 
+    /*
+     * N/A
+     */
     @Override
     public List<Comic> databaseSearch(String searchTerm) {
         throw new UnsupportedOperationException("Unimplemented method 'databaseSearch'");

@@ -6,5 +6,9 @@ package src.export;
  * between json to any other type
  */
 public interface ExporterInterface {
+
+    /*
+     * Exports to the required format in that class
+     */
     public void export();
 }

@@ -5,13 +5,16 @@ import java.util.List;
 
 import src.Comic;
 
-
-/**
- * This class is used to sort a personal collection by title alphabetically,
- * where the lower letters will come before the higher letters
+/*
+ * Implements the Collection Sorter interface, and sorts the list of comics by their story title
  */
-public class SortByTitle implements CollectionSorter {
+public class SortByTitle implements CollectionSorter{
 
+    /** 
+     * Sorts the list of comics by volume number
+     * @param comics
+     * @return List<Comic>
+     */
     @Override
     /**
      * This is where the sorting will take place, this method is called by the Personal collection
