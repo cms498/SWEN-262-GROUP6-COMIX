@@ -10,7 +10,14 @@ import java.util.List;
  */
 public class Comic {
 
+    /*
+     * A Comic's value is boosted by 1.05 times for each signature
+     */
     public final double SIGNED_VALUE_BOOST = .05;
+
+    /*
+     * A Comic's value is boosted by 1.2 times if it is authenticated
+     */
     public final double AUTHENTICEATED_VALUE_BOOST = .2;
 
     private Publisher publisher;
@@ -30,7 +37,7 @@ public class Comic {
 
     public Comic(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
             String issueNumber, String publicationDate, List<Creator> creators,
-            String description, double value, boolean isGraded, boolean isSlabbed,
+            String description, double value, boolean isGraded, boolean isSlabbed, 
             ArrayList<String> signatures, boolean authenticated, int gradeNumber) {
         this.publisher = publisher;
         this.seriesTitle = seriesTitle;
@@ -73,12 +80,7 @@ public class Comic {
         this.authenticated = false;
         this.gradeNumber = 0;
     }
-
-    /**
-     * getter method for the comics publisher
-     * 
-     * @return comic publisher
-     */
+    
     public Publisher getPublisher() {
         return publisher;
     }
@@ -255,14 +257,21 @@ public class Comic {
         this.value = value;
     }
 
+    /*
+     * Compares a given object with this comic by 
+     * seeing if each of its fields matches
+     * If the object is not a Comic returns false
+     * 
+     * @return true if the objects are the same, false otherwise
+     */
     @Override
     /**
      * Determines if two comics are equal to each other
      * they are if all of their fields are the same
      */
     public boolean equals(Object o) {
-        if (o instanceof Comic) {
-            Comic other = (Comic) o;
+        if(o instanceof Comic) {
+            Comic other = (Comic)o;
             return this.publisher.equals(other.publisher) &&
                     this.seriesTitle.equals(other.seriesTitle) &&
                     this.storyTitle.equals(other.storyTitle) &&
@@ -345,7 +354,7 @@ public class Comic {
      * @param authenticated
      */
     public void authenticate(boolean authenticated) {
-        if (this.signatures.size() > 0) {
+        if(this.signatures.size() > 0) {
             this.authenticated = authenticated;
         }
     }

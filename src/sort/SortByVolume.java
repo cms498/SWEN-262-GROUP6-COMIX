@@ -1,5 +1,4 @@
 package src.sort;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,11 +12,11 @@ import src.Comic;
  */
 public class SortByVolume implements CollectionSorter {
 
-    @Override
     /**
      * This method will perform the sorting, it will be called by the personal
      * collection, this sorting is not done in place
      */
+    @Override
     public List<Comic> sort(List<Comic> comics) {
         List<Comic> sorted = new ArrayList<Comic>(comics);
         Collections.sort(sorted, new Comparator<Comic>() {
@@ -26,7 +25,8 @@ public class SortByVolume implements CollectionSorter {
                 return Integer.compare(c1.getVolumeNumber(), c2.getVolumeNumber());
             }
         });
-
         return sorted;
     }
+    
+    
 }

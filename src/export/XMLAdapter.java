@@ -6,21 +6,25 @@ import java.io.IOException;
 import src.Comic;
 import src.PersonalCollection;
 
-/**
- * This class is the adapter from a personal collection to an xml file
+/*
+ * Class that implements the Exporter Interface to converts the
+ * personal collection to a csv file
  */
-public class XMLAdapter implements ExporterInterface {
+public class XMLAdapter implements ExporterInterface{
 
     private PersonalCollection collection;
 
+    /*
+     * Constructor, gets all the comics from the current personal collection
+     */
     public XMLAdapter() {
         this.collection = new PersonalCollection();
         this.collection.initializeComics();
     }
 
-    /**
-     * This method is responsible for converting a list of comics in an xml file
-     * the PTUI will call this method when the user calls export
+    /*
+     * Gets the personal collection XML file, and writes all the
+     * current personal collection data to the file
      */
     @Override
     public void export() {

@@ -14,13 +14,10 @@ import java.util.Set;
 import src.Comic;
 import src.ComicIssueRange;
 
+/*
+ * Implementation of Collection Searcher that searches for any gaps within a series of comics
+ */
 public class SearchByGaps implements CollectionSearcher{
-    
-    private boolean exactMatch;
-
-    public SearchByGaps(boolean exactMatch){
-        this.exactMatch = exactMatch;
-    }
 
     /* This searches the user's personal collection for any series with runs of 12 or more issues and any gaps in between the runs
      * Parameters:
@@ -117,6 +114,9 @@ public class SearchByGaps implements CollectionSearcher{
         return missingIssues;
     }
 
+    /*
+     * N/A
+     */
     @Override
     public List<Comic> databaseSearch(String searchTerm) {
         throw new UnsupportedOperationException("Unimplemented method 'databaseSearch'");
@@ -124,7 +124,6 @@ public class SearchByGaps implements CollectionSearcher{
 
     @Override
     public void setExactMatch(boolean exact) {
-        this.exactMatch = exact;
     }
 }
 
