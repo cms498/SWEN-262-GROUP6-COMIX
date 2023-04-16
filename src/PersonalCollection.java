@@ -7,6 +7,7 @@ import src.sort.SortByDate;
 import src.sort.SortByIssueNumber;
 import src.sort.SortByTitle;
 import src.sort.SortByVolume;
+import test.SortTest;
 
 import java.io.File;
 import java.io.FileReader;
@@ -620,5 +621,76 @@ public class PersonalCollection implements iPersonalCollection {
             System.out.println(comicInCollection.getStoryTitle() + "has been successfully unsigned");
             this.convertBackToJson();
         }
+    }
+
+    public void dynamicPrettyPrint(List<String> comic_attributes, List<Comic> comics){
+        int valueOfcollection = 0;
+        System.out.println("\nNumber of issues: " + comics.size() + "\n" + "Value of collection: " + valueOfcollection);
+        StringBuilder sb = new StringBuilder();
+        sb.append("\033[1m"); // Bold formatting
+        for (int i= 0; i < comic_attributes.size(); i++) {
+            if(i == comic_attributes.size()){
+                sb.append(String.format("%-20s", comic_attributes.get(i)));
+                break;
+            }else{
+                sb.append(String.format("%-20s |", comic_attributes.get(i)));
+            }
+        }
+        sb.append("\033[0m\n"); // Reset formatting to default and add new line
+        sb.append("_".repeat(comic_attributes.size()*20)); // Underscores
+        sb.append(System.lineSeparator());
+
+        for (Comic comic : comics) {
+            if(comic != null){
+                if (comic.getSeriesTitle().length() > 20) {
+                    comic.setSeriesTitle(comic.getSeriesTitle().substring(0, 17) + "...");
+                }
+
+                if (comic.getStoryTitle().length() > 20) {
+                    comic.setStoryTitle(comic.getStoryTitle().substring(0, 17) + "...");
+                }
+
+                if (comic.getDescription().length() > 20) {
+                    comic.setDescription(comic.getDescription().substring(0, 17) + "...");
+                }
+
+                if (comic.getPublisher().toString().length() > 20) {
+                    comic.setPublisher(comic.getPublisher().toString().substring(0, 17) + "...");
+                }
+
+                for (int i = 0; i < comic_attributes.size(); i++) {
+                    if(comic_attributes.get(i).equals("Series Title")){
+                        sb.append(String.format("%-20s |", comic.getSeriesTitle()));
+                    } else if(comic_attributes.get(i).equals("Story Title")){
+                        sb.append(String.format("%-20s |", comic.getStoryTitle()));
+                    } else if(comic_attributes.get(i).equals("Description")){
+                        sb.append(String.format("%-20s |", comic.getDescription()));
+                    } else if(comic_attributes.get(i).equals("Volume Number")){
+                        sb.append(String.format("%-20s |", comic.getVolumeNumber()));
+                    } else if(comic_attributes.get(i).equals("Issue Number")){
+                        sb.append(String.format("%-20s |", comic.getIssueNumber()));
+                    } else if(comic_attributes.get(i).equals("Publisher")){
+                        sb.append(String.format("%-20s |", comic.getPublisher()));
+                    }
+                    else if(comic_attributes.get(i).equals("Publication Date")){
+                       sb.append(String.format("%-20s |", comic.getPublicationDate()));
+                    }
+
+                    else if(comic_attributes.get(i).equals("Value")){
+                        sb.append(String.format("%-20s |", comic.getValue()));
+                        valueOfcollection += comic.getValue();
+                    }
+
+                     else if(comic_attributes.get(i).equals("Graded")){
+                        sb.append(String.format("%-20s |", comic.getIsGraded()));
+                    }
+
+                }
+                sb.append(System.lineSeparator());
+                sb.append("_".repeat(20 * comic_attributes.size())); // Underscores
+                sb.append(System.lineSeparator());
+            }
+        }
+        System.out.println("\n\n" + sb.toString());
     }
 }
