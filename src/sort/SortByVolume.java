@@ -6,11 +6,16 @@ import java.util.List;
 
 import src.Comic;
 
-/*
- * Implements the Collection Sorter interface, and sorts the list of comics by their volume number
+/**
+ * This class is used to sort a personal collection by volume number,
+ * lower volume numbers will come before larger ones
  */
-public class SortByVolume implements CollectionSorter{
+public class SortByVolume implements CollectionSorter {
 
+    /**
+     * This method will perform the sorting, it will be called by the personal
+     * collection, this sorting is not done in place
+     */
     @Override
     public List<Comic> sort(List<Comic> comics) {
         List<Comic> sorted = new ArrayList<Comic>(comics);

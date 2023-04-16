@@ -1,4 +1,5 @@
 package src.sort;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,10 @@ public class SortByIssueNumber implements CollectionSorter{
      * @return List<Comic>
      */
     @Override
+    /**
+     * This is the method the personal collection will call when the user wants to sort a list
+     * this is not done in place
+     */
     public List<Comic> sort(List<Comic> comics) {
         List<Comic> sorted = new ArrayList<Comic>();
         for (int i = 0; i < comics.size(); i++) {
@@ -24,7 +29,7 @@ public class SortByIssueNumber implements CollectionSorter{
             } else {
                 for (int j = 0; j < sorted.size(); j++) {
                     Comic sortedComic = sorted.get(j);
-                    if (comic.getIssueNumber().charAt(0) < sortedComic.getIssueNumber().charAt(0)) {
+                    if (Integer.parseInt(comic.getIssueNumber()) < Integer.parseInt(sortedComic.getIssueNumber())) {
                         sorted.add(j, comic);
                         break;
                     } else if (j == sorted.size() - 1) {

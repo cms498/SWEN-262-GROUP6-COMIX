@@ -42,6 +42,7 @@ public class SearchByPublisher implements CollectionSearcher {
      */
     @Override
     public List<Comic> databaseSearch(String searchTerm) {
+        searchTerm = searchTerm.toLowerCase();
         List<Comic> searchComics = new ArrayList<>();
         File file = new File(COMIC_DATABASE);
         try {
@@ -50,11 +51,11 @@ public class SearchByPublisher implements CollectionSearcher {
             while((line = br.readLine()) != null) {
                 String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                     if(exactMatch) {
-                        if(searchTerm.equals(split[4])) {
+                        if(searchTerm.equals(split[4].toLowerCase())) {
                             searchComics.add(generateComic(split));
                         }
                     } else {
-                        if(split[4].contains(searchTerm)) {
+                        if(split[4].toLowerCase().contains(searchTerm)) {
                            searchComics.add(generateComic(split));
                         }
                     }

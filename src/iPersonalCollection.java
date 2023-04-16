@@ -23,7 +23,7 @@ public interface iPersonalCollection {
     public List<Comic> doDatabaseSearch(String searchTerm);
     public List<Comic> getComics();
     public void editSlab(String storyTitle);
-    public void editGrade(String storyTitle, int grade);
+    public double editGrade(String storyTitle, int grade);
     public void addComicByDataBase(String storyTitle, int volumeNumber, String issueNumber);
     public void addComicManually(String publisher, String seriesTitle, String storyTitle, int volumeNumber, String issueNumber, String publicationDate, String creators, String description, String value);
     public void removeComic(String storyTitle);
@@ -40,4 +40,9 @@ public interface iPersonalCollection {
     public void addComic(Comic comic);
     public void authenticate(String storyTitle);
     public void sign(String storyTitle, String signature);
+    public Comic getComicInCollection2(String seriesTitle, int volumeNumber, String issueNumber);
+    public void ungradeComic(Comic comic, double difference);
+    public void unslabComic(Comic comic);
+    public void unauthenticateComic(Comic comic);
+    public void unsignComic(Comic comic, String signature);
 }

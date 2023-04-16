@@ -51,11 +51,11 @@ public class SearchByReleaseDate implements CollectionSearcher{
             while((line = br.readLine()) != null) {
                 String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                     if(exactMatch) {
-                        if(searchTerm.equals(split[5])) {
+                        if(searchTerm.equals(split[5].toLowerCase())) {
                             searchComics.add(generateComic(split));
                         }
                     } else {
-                        if(split[5].contains(searchTerm)) {
+                        if(split[5].toLowerCase().contains(searchTerm)) {
                            searchComics.add(generateComic(split));
                         }
                     }

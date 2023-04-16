@@ -64,11 +64,11 @@ public class SearchByIssueNumber implements CollectionSearcher{
             while((line = br.readLine()) != null) {
                 String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
                     if(exactMatch) {
-                        if(searchTerm.equals(split[1])) {
+                        if(searchTerm.equals(split[1].toLowerCase())) {
                             searchComics.add(generateComic(split));
                         }
                     } else {
-                        if(split[1].contains(searchTerm)) {
+                        if(split[1].toLowerCase().contains(searchTerm)) {
                            searchComics.add(generateComic(split));
                         }
                     }

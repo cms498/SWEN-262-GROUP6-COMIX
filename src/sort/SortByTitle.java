@@ -1,4 +1,5 @@
 package src.sort;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,10 @@ public class SortByTitle implements CollectionSorter{
      * @return List<Comic>
      */
     @Override
+    /**
+     * This is where the sorting will take place, this method is called by the Personal collection
+     * this is not done in place
+     */
     public List<Comic> sort(List<Comic> comics) {
         List<Comic> sorted = new ArrayList<Comic>();
 

@@ -12,7 +12,7 @@ import src.PersonalCollection;
  */
 public class XMLAdapter implements ExporterInterface{
 
-    PersonalCollection collection;
+    private PersonalCollection collection;
 
     /*
      * Constructor, gets all the comics from the current personal collection
@@ -44,6 +44,9 @@ public class XMLAdapter implements ExporterInterface{
                 write.write("\t\t<issueNumber>" + comic.getIssueNumber() + "</issueNumber>\n");
                 write.write("\t\t<isGraded>" + comic.getIsGraded() + "</isGraded>\n");
                 write.write("\t\t<isSlabbed>" + comic.getIsSlabbed() + "</isSlabbed>\n");
+                write.write("\t\t<isSigned>" + comic.getSignatures() + "</isSigned>\n");
+                write.write("\t\t<isAuthenticated>" + comic.getIsAuthenticated() + "</isAuthenticated>\n");
+                write.write("\t\t<gradeNumber>" + comic.getGradeNumber() + "</gradeNumber>\n");
                 write.write("\t</comic>\n");
             }
             write.write("</comics>");
@@ -51,5 +54,5 @@ public class XMLAdapter implements ExporterInterface{
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }    
+    }
 }

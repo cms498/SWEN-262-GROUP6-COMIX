@@ -11,6 +11,8 @@
 		<issueNumber>3</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -23,6 +25,8 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>true</isGraded>
 		<isSlabbed>true</isSlabbed>
+		<isSigned>[fake signature]</isSigned>
+		<isVariant>false</isVariant>
 	</comic>
 	<comic>
 		<publisher>Image Comics</publisher>
@@ -35,6 +39,8 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -47,6 +53,8 @@
 		<issueNumber>6</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
 	</comic>
 	<comic>
 		<publisher>DC Comics</publisher>
@@ -59,6 +67,8 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>true</isGraded>
 		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
 	</comic>
 	<comic>
 		<publisher>Image Comics</publisher>
@@ -71,6 +81,8 @@
 		<issueNumber>2</issueNumber>
 		<isGraded>true</isGraded>
 		<isSlabbed>true</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
 	</comic>
 	<comic>
 		<publisher>DC Comics</publisher>
@@ -83,6 +95,8 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>true</isVariant>
 	</comic>
 	<comic>
 		<publisher>Image Comics</publisher>
@@ -95,6 +109,8 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
 	</comic>
 	<comic>
 		<publisher>DC Comics</publisher>
@@ -107,6 +123,8 @@
 		<issueNumber>2</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
 	</comic>
 	<comic>
 		<publisher>Dark Horse Comics</publisher>
@@ -119,5 +137,245 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>true</isGraded>
 		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>DC Comics</publisher>
+		<seriesTitle>9-11</seriesTitle>
+		<storyTitle>Artists Respond</storyTitle>
+		<volumeNumber>0</volumeNumber>
+		<value>0.0</value>
+		<creators>[John K. Snyder III, Alan Moore, Terry Anderson]</creators>
+		<description></description>
+		<issueNumber>1</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Havoc At The Heart Of The Atom</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Len Wein, Sal Buscema, Joe Staton]</creators>
+		<description></description>
+		<issueNumber>202</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Assault On Psyklop!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Len Wein, Joe Staton, Sal Buscema]</creators>
+		<description></description>
+		<issueNumber>203</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Vicious Circle!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Len Wein, Herb Trimpe, Joe Staton]</creators>
+		<description></description>
+		<issueNumber>204</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Alone Against The Defenders!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Len Wein, Sal Buscema, Joe Staton]</creators>
+		<description></description>
+		<issueNumber>207</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Partners In Deception!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Roger Stern, Sal Buscema]</creators>
+		<description></description>
+		<issueNumber>241</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Now Somewhere In The Black Holes Of Sirius Major There Lived A Young Boy Name Of... Rocket Raccoon!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Bill Mantlo, Sal Buscema]</creators>
+		<description></description>
+		<issueNumber>271</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>He Flies By Night</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Bill Mantlo, Sal Buscema]</creators>
+		<description></description>
+		<issueNumber>264</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Weirdsong Of The Wendigo</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Bill Mantlo, Sal Buscema]</creators>
+		<description></description>
+		<issueNumber>272</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Once A Hulk, Always A Hulk!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Bill Mantlo, Sal Buscema]</creators>
+		<description></description>
+		<issueNumber>273</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>The Curing Of Dr. Banner!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Roger Stern, Sal Buscema, Joe Rubinstein]</creators>
+		<description></description>
+		<issueNumber>223</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Kill Or Be Killed!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Roger Stern, Sal Buscema, Mike Esposito]</creators>
+		<description></description>
+		<issueNumber>236</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Thunder Under The East River!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Bill Mantlo, Sal Buscema]</creators>
+		<description></description>
+		<issueNumber>255</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Power In The Promised Land!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Bill Mantlo, Sal Buscema]</creators>
+		<description></description>
+		<issueNumber>256</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Amnesty!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Bill Mantlo, Sal Buscema, Joe Sinnott]</creators>
+		<description></description>
+		<issueNumber>278</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>The Goliath, The Gargoyle And The Galaxy Master!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Bill Mantlo, Sal Buscema]</creators>
+		<description></description>
+		<issueNumber>270</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Everybody Loves A Parade, Right?</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Bill Mantlo, Greg LaRocque]</creators>
+		<description></description>
+		<issueNumber>279</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<isSigned>[]</isSigned>
+		<isVariant>false</isVariant>
 	</comic>
 </comics>

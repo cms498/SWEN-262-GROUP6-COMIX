@@ -6,13 +6,14 @@ package src;
 public class Publisher {
     private String name;
 
-    public Publisher(String name){
+    public Publisher(String name) {
         this.name = name;
     }
-    
-    /** 
-     * Gets the Name of the publisher
-     * @return String
+
+    /**
+     * Returns the name of the comic book publisher
+     * 
+     * @return name of publisher
      */
     public String getName() {
         return name;
@@ -24,9 +25,13 @@ public class Publisher {
      * @return boolean
      */
     @Override
+    /**
+     * This method is used to compared two publishers and see if they are equal
+     * to each other, they are equal if they have the same name
+     */
     public boolean equals(Object o) {
-        if(o instanceof Publisher) {
-            Publisher other = (Publisher)o;
+        if (o instanceof Publisher) {
+            Publisher other = (Publisher) o;
             return this.name.equals(other.name);
         }
         return false;
@@ -37,6 +42,9 @@ public class Publisher {
      * @return String
      */
     @Override
+    /**
+     * Used to print out a publisher to the console
+     */
     public String toString() {
         return name;
     }

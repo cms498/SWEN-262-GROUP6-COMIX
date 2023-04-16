@@ -66,6 +66,35 @@ public class PersonalCollectionProxy implements iPersonalCollection {
     }
 
     @Override
+    public Comic getComicInCollection2(String seriesTitle, int volumeNumber, String issueNumber) {
+        if(guestMode == false){
+            return collection.getComicInCollection2(seriesTitle, volumeNumber, issueNumber);
+        } else {
+            System.out.println("Log in to have access to this feature");
+            return null;
+        }
+    }
+
+    @Override
+    public void ungradeComic(Comic comic, double difference) {
+        if(guestMode == false){
+            collection.ungradeComic(comic, difference);
+        } else {
+            System.out.println("Log in to have access to this feature");
+        }
+        
+    }
+
+    @Override
+    public void unslabComic(Comic comic) {
+        if(guestMode == false){
+            collection.unslabComic(comic);
+        } else {
+            System.out.println("Log in to have access to this feature");
+        }
+        
+    }
+    @Override
     public void setSort(CollectionSorter sorter) {
         if (guestMode == false) {
             collection.setSort(sorter);
@@ -147,11 +176,12 @@ public class PersonalCollectionProxy implements iPersonalCollection {
     }
 
     @Override
-    public void editGrade(String storyTitle, int grade) {
+    public double editGrade(String storyTitle, int grade) {
         if (guestMode == false) {
-            collection.editGrade(storyTitle, grade);
+            return collection.editGrade(storyTitle, grade);
         } else {
             System.out.println("Log in to have access to this feature");
+            return 0.0;
         }
     }
 
@@ -224,11 +254,7 @@ public class PersonalCollectionProxy implements iPersonalCollection {
 
     @Override
     public void printDatabase(List<Comic> comics) {
-        if (guestMode == false) {
-            collection.printDatabase(comics);
-        } else {
-            System.out.println("Log in to have access to this feature");
-        }
+       collection.printDatabase(comics);
     }
 
     @Override
@@ -237,6 +263,8 @@ public class PersonalCollectionProxy implements iPersonalCollection {
             collection.addComic(comic);
         }
     }
+
+    @Override
     public void authenticate(String storyTitle){
         if(guestMode == false){
             collection.authenticate(storyTitle);
@@ -246,9 +274,27 @@ public class PersonalCollectionProxy implements iPersonalCollection {
     }
 
     @Override
+    public void unauthenticateComic(Comic comic){
+        if(guestMode == false){
+            collection.unauthenticateComic(comic);
+        } else {
+            System.out.println("Log in to have access to this feature");
+        }
+    }
+
+    @Override
     public void sign(String storyTitle, String signature){
         if(guestMode == false){
             collection.sign(storyTitle, signature);
+        } else {
+            System.out.println("Log in to have access to this feature");
+        }
+    }
+
+    @Override
+    public void unsignComic(Comic comic, String signature){
+        if(guestMode == false){
+            collection.unsignComic(comic, signature);
         } else {
             System.out.println("Log in to have access to this feature");
         }

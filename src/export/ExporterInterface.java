@@ -1,7 +1,9 @@
 package src.export;
 
-/*
- * Interface that all adapters of the personal collection and database will implement
+/**
+ * This is the interface all other exporters will inherit behavior from
+ * its only method is export() which is responsible for doing the conversion
+ * between json to any other type
  */
 public interface ExporterInterface {
 

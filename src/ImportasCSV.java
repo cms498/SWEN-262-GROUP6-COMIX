@@ -10,18 +10,9 @@ public class ImportasCSV implements ImporterInterface {
 
     public ImportasCSV() {
         this.collection = new PersonalCollection();
+        this.collection.setFlag(true);
         this.collection.initializeComics();
     }
-
-    /**
-     * 
-     * 
-     *     public Comic(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
-            String issueNumber, String publicationDate, List<Creator> creators,
-            String description, double value, boolean isGraded, boolean isSlabbed, 
-            List<String> signatures, boolean authenticated)
-     * @throws IOException
-     */
 
     @Override
     public void Import(String filename) throws IOException{
@@ -31,34 +22,29 @@ public class ImportasCSV implements ImporterInterface {
         File file = new File(filename);
         BufferedReader reader = new BufferedReader(new FileReader(file));
         reader.readLine();
+        reader.readLine();
+        reader.readLine();
         String line = reader.readLine();
         while (line != null) {
             
 
             String[] values = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
 
-            String seriesTitle = values[0].toString();
-            String issueNumber = values[1].toString();
-            String title = values[2].toString();
-            String description = values[3].toString();
-            String publisher = values[4].toString();
-            // Publisher publisher = new Publisher(values[4].toString());
-            String releaseDate= values[5].toString();
+            String seriesTitle = values[0].toString().replaceAll("\"", "");
+            String issueNumber = values[1].toString().replaceAll("\"", "");
+            String title = values[2].toString().replaceAll("\"", "");
+            String description = values[3].toString().replaceAll("\"", "");
+            String publisher = values[4].toString().replaceAll("\"", "");
+            String releaseDate= values[5].toString().replaceAll("\"", "");
             if(values.length==8){
-                collection.addComicManually(publisher, seriesTitle, title, 0, issueNumber, issueNumber, "", description, releaseDate);
-                // Comic comic = new Comic(publisher, seriesTitle, title, 0, issueNumber, releaseDate, null, description, 0, false, false, null, false);
-                // collection.addComic(comic);
+                collection.addComicManually(publisher, seriesTitle, title, 0, issueNumber, releaseDate, "", description, "0");
+                
             }
             else{
-                String creatorSplit = values[8].replace(" \\| ", ",");
-                // List<Creator> creators = new ArrayList<>();
-                // for(String c: creatorSplit){
-                //     Creator creator = new Creator(c);
-                //     creators.add(creator);
-                // }
-                collection.addComicManually(publisher, seriesTitle, title, 0, issueNumber, issueNumber, creatorSplit, description, releaseDate);
-                // Comic comic = new Comic(publisher, seriesTitle, title, 0, issueNumber, releaseDate, creators, description, 0, false, false, null, false);
-                // collection.addComic(comic);
+                String value = values[8].replaceAll("\"", "");
+                String creatorSplit = value.replace(" \\| ", ",");
+                collection.addComicManually(publisher, seriesTitle, title, 0, issueNumber, releaseDate, creatorSplit, description, "0");
+                System.out.println(title);
             }
    
             line = reader.readLine(); 
