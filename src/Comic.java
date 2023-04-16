@@ -3,15 +3,10 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-/*
- * Class that represents a single comic
-=======
 /**
  * This class is used to represent a basic comic, comics have a publisher,
  * series and story title, volume and issue number, they can be graded,
  * slabbed, signed, and authenticated to increase their overall value
->>>>>>> a08ebab22895633efcc7ee9a9c464a5cfd735f08
  */
 public class Comic {
 
@@ -42,7 +37,7 @@ public class Comic {
 
     public Comic(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
             String issueNumber, String publicationDate, List<Creator> creators,
-            String description, double value, boolean isGraded, boolean isSlabbed,
+            String description, double value, boolean isGraded, boolean isSlabbed, 
             ArrayList<String> signatures, boolean authenticated, int gradeNumber) {
         this.publisher = publisher;
         this.seriesTitle = seriesTitle;
@@ -60,12 +55,6 @@ public class Comic {
         this.gradeNumber = gradeNumber;
     }
 
-<<<<<<< HEAD
-    /*
-     * Overloaded constructor for if only series title, volume number, and issue range are given
-     */
-    public Comic(String seriesTitle, int volumeNumber, String issueRange){
-=======
     /**
      * Second constructor for a comic with limited fields, sets default values of
      * null
@@ -76,7 +65,6 @@ public class Comic {
      * @param issueRange
      */
     public Comic(String seriesTitle, int volumeNumber, String issueRange) {
->>>>>>> a08ebab22895633efcc7ee9a9c464a5cfd735f08
         this.publisher = null;
         this.seriesTitle = seriesTitle;
         this.storyTitle = null;
@@ -92,18 +80,7 @@ public class Comic {
         this.authenticated = false;
         this.gradeNumber = 0;
     }
-<<<<<<< HEAD
     
-    /** 
-     * @return Publisher
-=======
-
-    /**
-     * getter method for the comics publisher
-     * 
-     * @return comic publisher
->>>>>>> a08ebab22895633efcc7ee9a9c464a5cfd735f08
-     */
     public Publisher getPublisher() {
         return publisher;
     }
@@ -280,14 +257,21 @@ public class Comic {
         this.value = value;
     }
 
+    /*
+     * Compares a given object with this comic by 
+     * seeing if each of its fields matches
+     * If the object is not a Comic returns false
+     * 
+     * @return true if the objects are the same, false otherwise
+     */
     @Override
     /**
      * Determines if two comics are equal to each other
      * they are if all of their fields are the same
      */
     public boolean equals(Object o) {
-        if (o instanceof Comic) {
-            Comic other = (Comic) o;
+        if(o instanceof Comic) {
+            Comic other = (Comic)o;
             return this.publisher.equals(other.publisher) &&
                     this.seriesTitle.equals(other.seriesTitle) &&
                     this.storyTitle.equals(other.storyTitle) &&
@@ -370,7 +354,7 @@ public class Comic {
      * @param authenticated
      */
     public void authenticate(boolean authenticated) {
-        if (this.signatures.size() > 0) {
+        if(this.signatures.size() > 0) {
             this.authenticated = authenticated;
         }
     }
