@@ -270,7 +270,11 @@ public class PTUI {
                 }
 
                 else if (command.equals("undo")) {
-                    undoStack.execute();
+                    try {
+                        undoStack.execute();
+                    } catch (Exception e) {
+                        
+                    }
                 }
 
                 else if (command.equals("redo")) {
