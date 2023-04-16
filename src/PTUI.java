@@ -23,6 +23,9 @@ import src.search.SearchBySignedComics;
 import src.search.SearchBySlab;
 import src.search.SearchByStoryTitle;
 
+/*
+ * Manages the running of the entire programming, and all the interactions with the user
+ */
 public class PTUI {
 
     private static final String RED_COLOR_CODE = "\033[31m";

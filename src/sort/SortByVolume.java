@@ -6,8 +6,9 @@ import java.util.List;
 
 import src.Comic;
 
-
-
+/*
+ * Implements the Collection Sorter interface, and sorts the list of comics by their volume number
+ */
 public class SortByVolume implements CollectionSorter{
 
     @Override

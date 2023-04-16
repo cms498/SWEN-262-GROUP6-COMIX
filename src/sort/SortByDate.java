@@ -13,9 +13,18 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
-
+/*
+ * Implements the Collection Sorter interface, and sorts the collection by date
+ */
 public class SortByDate implements CollectionSorter{
 
+    /** 
+     * Compares the date between two objects
+     * @param obj1
+     * @param obj2
+     * @return int, 0 if theyre equal, 1 if date 1 is after date 2, and -1 for vice versa
+     * @throws ParseException
+     */
     public int compareDates(Object obj1, Object obj2) throws ParseException {
         
         String dateStr1 = getDateFromObject(obj1); // helper function to get date string from object
@@ -27,6 +36,11 @@ public class SortByDate implements CollectionSorter{
         return date1.compareTo(date2); // compare dates using compareTo method
     }
 
+    /** 
+     * Helper function that gets the date from an object
+     * @param obj
+     * @return String
+     */
     private String getDateFromObject(Object obj) {
         if (obj instanceof Date) {
             // If the object is already a date, simply format it to "yyyy-MM-dd" format
@@ -55,7 +69,12 @@ public class SortByDate implements CollectionSorter{
         return null;
     }
     
-    
+    /** 
+     * Helper function that parses the dates from a String and checks its format
+     * @param dateStr
+     * @return Date
+     * @throws ParseException
+     */
     private Date parseDate(String dateStr) throws ParseException {
         // helper function to parse date string into java.util.Date
         Date date = null;
@@ -72,8 +91,13 @@ public class SortByDate implements CollectionSorter{
         return date;
     }
     
+    /** 
+     * Sorts the given list of comics by dates
+     * @param comics
+     * @return List<Comic>
+     */
     @Override
-public List<Comic> sort(List<Comic> comics) {
+    public List<Comic> sort(List<Comic> comics) {
     List<Comic> sorted = new ArrayList<>(comics);
     
     // sort the list using a custom Comparator
@@ -92,7 +116,6 @@ public List<Comic> sort(List<Comic> comics) {
             return localDate1.compareTo(localDate2);
         }
     });
-    
     return sorted;
 }
 

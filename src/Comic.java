@@ -2,10 +2,19 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/*
+ * Class that represents a single comic
+ */
 public class Comic {
 
+    /*
+     * A Comic's value is boosted by 1.05 times for each signature
+     */
     public final double SIGNED_VALUE_BOOST = .05;
+
+    /*
+     * A Comic's value is boosted by 1.2 times if it is authenticated
+     */
     public final double AUTHENTICEATED_VALUE_BOOST = .2;
 
     private Publisher publisher;
@@ -41,6 +50,9 @@ public class Comic {
         this.authenticated = authenticated;
     }
 
+    /*
+     * Overloaded constructor for if only series title, volume number, and issue range are given
+     */
     public Comic(String seriesTitle, int volumeNumber, String issueRange){
         this.publisher = null;
         this.seriesTitle = seriesTitle;
@@ -56,7 +68,10 @@ public class Comic {
         this.signatures = null;
         this.authenticated = false;
     }
-
+    
+    /** 
+     * @return Publisher
+     */
     public Publisher getPublisher() {
         return publisher;
     }
