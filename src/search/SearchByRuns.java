@@ -12,6 +12,10 @@ import java.util.Map;
 import src.Comic;
 import src.ComicIssueRange;
 
+/*
+ * A implementation of Collection Searcher
+ * Searches comics by seeing if they have 12 or issues
+ */
 public class SearchByRuns implements CollectionSearcher{
 
     /* This searches the user's personal collection for any series with runs of 12 or more issues
