@@ -68,7 +68,6 @@ public class ComicIssueRange {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         return this.getMin() + " - " + this.getMax();
     }
 }

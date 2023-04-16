@@ -13,12 +13,6 @@ import src.Comic;
 import src.ComicIssueRange;
 
 public class SearchByRuns implements CollectionSearcher{
-    
-    private boolean exactMatch;
-
-    public SearchByRuns(boolean exactMatch){
-        this.exactMatch = exactMatch;
-    }
 
     /* This searches the user's personal collection for any series with runs of 12 or more issues
      * Parameters:
@@ -108,6 +102,5 @@ public class SearchByRuns implements CollectionSearcher{
 
     @Override
     public void setExactMatch(boolean exact) {
-        this.exactMatch = exact;
     }
 }

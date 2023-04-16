@@ -6,11 +6,6 @@ import java.util.List;
 import src.Comic;
 
 public class SearchByAuthenticated implements CollectionSearcher{
-    private boolean exactMatch;
-
-    public SearchByAuthenticated(boolean exactMatch) {
-        this.exactMatch = exactMatch;
-    }
 
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
@@ -32,6 +27,5 @@ public class SearchByAuthenticated implements CollectionSearcher{
 
     @Override
     public void setExactMatch(boolean exact) {
-        this.exactMatch = exact;
     }
 }

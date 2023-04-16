@@ -5,11 +5,10 @@ import java.util.List;
 
 import src.search.CollectionSearcher;
 import src.search.SearchByGaps;
-import src.search.SearchByRuns;
 
 public class PersonalCollectionCoversion {
     public static void main(String[] args) {
-        CollectionSearcher searcher = new SearchByGaps(false);
+        CollectionSearcher searcher = new SearchByGaps();
         PersonalCollection collection = new PersonalCollection();
         collection.initializeComics();
         collection.addComicByDataBase("The Incredible Hulk", 1, "202");

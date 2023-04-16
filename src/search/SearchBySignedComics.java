@@ -6,11 +6,6 @@ import java.util.List;
 import src.Comic;
 
 public class SearchBySignedComics implements CollectionSearcher{
-    private boolean exactMatch;
-
-    public SearchBySignedComics(boolean exactMatch) {
-        this.exactMatch = exactMatch;
-    }
 
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
@@ -28,11 +23,10 @@ public class SearchBySignedComics implements CollectionSearcher{
 
     @Override
     public List<Comic> databaseSearch(String searchTerm) {
-        throw new UnsupportedOperationException("Unimplemented method 'databaseSearch'");
+        return new ArrayList<Comic>();
     }
 
     @Override
     public void setExactMatch(boolean exact) {
-        this.exactMatch = exact;
     }
 }

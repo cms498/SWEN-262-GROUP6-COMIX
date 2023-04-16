@@ -15,12 +15,6 @@ import src.Comic;
 import src.ComicIssueRange;
 
 public class SearchByGaps implements CollectionSearcher{
-    
-    private boolean exactMatch;
-
-    public SearchByGaps(boolean exactMatch){
-        this.exactMatch = exactMatch;
-    }
 
     /* This searches the user's personal collection for any series with runs of 12 or more issues and any gaps in between the runs
      * Parameters:
@@ -119,12 +113,10 @@ public class SearchByGaps implements CollectionSearcher{
 
     @Override
     public List<Comic> databaseSearch(String searchTerm) {
-        throw new UnsupportedOperationException("Unimplemented method 'databaseSearch'");
     }
 
     @Override
     public void setExactMatch(boolean exact) {
-        this.exactMatch = exact;
     }
 }
 

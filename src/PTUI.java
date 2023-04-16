@@ -112,10 +112,10 @@ public class PTUI {
         searchOptions.put("creators", new SearchByCreators(false));
         searchOptions.put("graded", new SearchByGrade(false));
         searchOptions.put("slabbed", new SearchBySlab(false));
-        searchOptions.put("signed", new SearchBySignedComics(false));
-        searchOptions.put("authenticated", new SearchByAuthenticated(false));
-        searchOptions.put("runs", new SearchByRuns(false));
-        searchOptions.put("gaps", new SearchByGaps(false));
+        searchOptions.put("signed", new SearchBySignedComics());
+        searchOptions.put("authenticated", new SearchByAuthenticated());
+        searchOptions.put("runs", new SearchByRuns());
+        searchOptions.put("gaps", new SearchByGaps());
 
         HashMap<String, ExporterInterface> exportOptions = new HashMap<>();
         exportOptions.put("csv", new CSVAdapter());

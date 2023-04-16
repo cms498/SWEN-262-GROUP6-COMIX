@@ -264,6 +264,14 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
+    public void undoSlab(String storyTitle) {
+        Comic comic = getComicInCollection(storyTitle);
+        if(comic.getIsGraded() == true) {
+            
+        }
+
+    }
+    
     // adds comics from the database by user input (user inputs only the story title
     // here)
     public void addComicByDataBase(String seriesTitle, int volumeNumber, String issueNumber) {
