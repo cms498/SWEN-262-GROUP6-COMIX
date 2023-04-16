@@ -99,12 +99,12 @@ public class PTUI {
                     if(multiResult[1].equals("runs") || multiResult[1].equals("gaps")) {
                         StringBuilder sb = new StringBuilder();
                         sb.append("\033[1m"); // Bold formatting
-                        sb.append(String.format("%-20s | %-20s ", "Series Title", "Issue Number"));
+                        sb.append(String.format("%-20s | %-20s | %-20s", "Series Title", "Volume Number", "Issue Number"));
                         sb.append("\033[0m\n"); // Reset formatting to default and add new line
-                        sb.append("_".repeat(45)); // Underscores
+                        sb.append("_".repeat(60)); // Underscores
                         sb.append(System.lineSeparator());
                         for (Comic comic : listy) {
-                            sb.append(String.format("%-20s | %-20s ", comic.getSeriesTitle(), comic.getIssueNumber()));
+                            sb.append(String.format("%-20s | %-20s | %-20s", comic.getSeriesTitle(), comic.getVolumeNumber(), comic.getIssueNumber()));
                             sb.append(System.lineSeparator());
                         }
                         System.out.println(sb.toString());
