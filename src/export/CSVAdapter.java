@@ -8,23 +8,25 @@ import java.util.List;
 import src.Comic;
 import src.PersonalCollection;
 
-/**
- * This class represents the adapter for converting the personal collecton into
- * a csv file
+/*
+ * Class that implements the Exporter Interface to converts the
+ * personal collection to a csv file
  */
 public class CSVAdapter implements ExporterInterface {
 
     private PersonalCollection collection;
 
+    /*
+     * Constructor, gets all the comics from the current personal collection
+     */
     public CSVAdapter() {
         this.collection = new PersonalCollection();
         this.collection.initializeComics();
     }
 
-    /**
-     * This method is where the conversion happens between a list of comics into a
-     * csv file, the ptui will call this method when the user types in the export
-     * command
+    /*
+     * Gets the personal collection csv file, and writes all the
+     * current personal collection data to the file
      */
     @Override
     public void export() {

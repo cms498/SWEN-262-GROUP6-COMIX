@@ -17,6 +17,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
+/*
+ * Implements the Collection Sorter interface, and sorts the collection by date
+ */
 public class SortByDate implements CollectionSorter {
     /**
      * Converts a comic objects publication date into a date, there are three
@@ -53,7 +56,7 @@ public class SortByDate implements CollectionSorter {
         // Return null if the object is not a date or a string with a valid date format
         return null;
     }
-
+    
     @Override
     /**
      * sorts a list of comics by date, earlier dates will come first

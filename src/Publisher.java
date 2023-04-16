@@ -1,7 +1,7 @@
 package src;
 
-/**
- * This class represents a comic book publisher, each comic has one
+/*
+ * Represents a publisher for a comic
  */
 public class Publisher {
     private String name;
@@ -18,7 +18,12 @@ public class Publisher {
     public String getName() {
         return name;
     }
-
+    
+    /** 
+     * Compares a given object with this publisher object
+     * @param o
+     * @return boolean
+     */
     @Override
     /**
      * This method is used to compared two publishers and see if they are equal
@@ -31,7 +36,11 @@ public class Publisher {
         }
         return false;
     }
-
+    
+    /** 
+     * Returns the name of the publisher as a String
+     * @return String
+     */
     @Override
     /**
      * Used to print out a publisher to the console

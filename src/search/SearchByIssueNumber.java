@@ -9,6 +9,10 @@ import java.util.List;
 
 import src.Comic;
 
+/*
+ * A implementation of Collection Searcher
+ * Searches comics comparing the search term with the comic's issue number
+ */
 public class SearchByIssueNumber implements CollectionSearcher{
 
     private boolean exactMatch;
@@ -16,6 +20,14 @@ public class SearchByIssueNumber implements CollectionSearcher{
     public SearchByIssueNumber(boolean exactMatch) {
         this.exactMatch = exactMatch;
     }
+
+    /** 
+     * Searches through the list of given comics for any matches with a comic's
+     * issue number and the given search term
+     * @param comics
+     * @param searchTerm
+     * @return List<Comic>
+     */
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
         searchTerm = searchTerm.toLowerCase();
@@ -34,6 +46,13 @@ public class SearchByIssueNumber implements CollectionSearcher{
         return searchComics;
     }
 
+    /** 
+     * Searches the database for any comics having an issue number with
+     * the matching search term
+     * @param filename
+     * @param searchTerm
+     * @return List<Comic>
+     */
     @Override
     public List<Comic> databaseSearch(String searchTerm) {
         searchTerm = searchTerm.toLowerCase();

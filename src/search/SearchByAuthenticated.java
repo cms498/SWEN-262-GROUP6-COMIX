@@ -5,13 +5,18 @@ import java.util.List;
 
 import src.Comic;
 
+/*
+ * Searcher that looks for authenticated comics
+ */
 public class SearchByAuthenticated implements CollectionSearcher{
-    private boolean exactMatch;
 
-    public SearchByAuthenticated(boolean exactMatch) {
-        this.exactMatch = exactMatch;
-    }
-
+    
+    
+    /** 
+     * @param comics
+     * @param searchTerm
+     * @return List<Comic> of authenticated comics in personal collection
+     */
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
         searchTerm = searchTerm.toLowerCase();
@@ -25,6 +30,9 @@ public class SearchByAuthenticated implements CollectionSearcher{
         return searchComics;
     }
 
+    /*
+     * N/A
+     */
     @Override
     public List<Comic> databaseSearch(String searchTerm) {
         throw new UnsupportedOperationException("Unimplemented method 'databaseSearch'");
@@ -32,6 +40,5 @@ public class SearchByAuthenticated implements CollectionSearcher{
 
     @Override
     public void setExactMatch(boolean exact) {
-        this.exactMatch = exact;
     }
 }

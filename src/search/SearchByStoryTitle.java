@@ -9,6 +9,10 @@ import java.util.List;
 
 import src.Comic;
 
+/*
+ * A implementation of Collection Searcher
+ * Searches comics by comparing the story title and the search term
+ */
 public class SearchByStoryTitle implements CollectionSearcher {
 
     private boolean exactMatch;
@@ -17,11 +21,25 @@ public class SearchByStoryTitle implements CollectionSearcher {
         this.exactMatch = exactMatch;
     }
 
+    /** 
+     * Searches through the list of given comics for any matches with a comic's
+     * story title and the given search term
+     * @param comics
+     * @param searchTerm
+     * @return List<Comic>
+     */
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
         throw new UnsupportedOperationException("Unimplemented method 'search'");
     }
 
+    /** 
+     * Searches the database for any comics having a story title with
+     * the matching search term
+     * @param filename
+     * @param searchTerm
+     * @return List<Comic>
+     */
     @Override
     public List<Comic> databaseSearch(String searchTerm) {
         searchTerm = searchTerm.toLowerCase();

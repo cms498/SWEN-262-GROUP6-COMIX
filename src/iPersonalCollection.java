@@ -5,6 +5,9 @@ import java.util.List;
 import src.search.CollectionSearcher;
 import src.sort.CollectionSorter;
 
+/*
+ * Interface for the personal collection that the proxy and real subject will implement
+ */
 public interface iPersonalCollection {
     public void initializeComics();
     public void clearJson();
