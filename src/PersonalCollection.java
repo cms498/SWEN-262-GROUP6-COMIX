@@ -448,6 +448,11 @@ public class PersonalCollection implements iPersonalCollection {
 
     // add an underscore after the header of each column
     public void PrettyPrintDatabase() {
+        updateCollectionIssues();
+        updateCollectionValue();
+        System.out.println("Number of Issues: "+ numberOfIssues);
+        System.out.println("Collection Value: "+ value);
+
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
         sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-10s | %-10s  | %-20s | %-10s| %-10s| %-10s",
@@ -482,6 +487,11 @@ public class PersonalCollection implements iPersonalCollection {
     }
 
     public void prettyPrintHelper(String type) {
+        updateCollectionIssues();
+        updateCollectionValue();
+        System.out.println("\n\nNumber of Issues: "+ numberOfIssues);
+        System.out.println("Collection Value: "+ value);
+
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
         sb.append(String.format("%-20s", type));
@@ -637,7 +647,7 @@ public class PersonalCollection implements iPersonalCollection {
             }
         }
         sb.append("\033[0m\n"); // Reset formatting to default and add new line
-        sb.append("_".repeat(comic_attributes.size()*20)); // Underscores
+        sb.append("_".repeat(comic_attributes.size()*21)); // Underscores
         sb.append(System.lineSeparator());
 
         for (Comic comic : comics) {
@@ -687,7 +697,7 @@ public class PersonalCollection implements iPersonalCollection {
 
                 }
                 sb.append(System.lineSeparator());
-                sb.append("_".repeat(20 * comic_attributes.size())); // Underscores
+                sb.append("_".repeat(21 * comic_attributes.size())); // Underscores
                 sb.append(System.lineSeparator());
             }
         }
@@ -704,6 +714,7 @@ public class PersonalCollection implements iPersonalCollection {
         comic_attributes.add("Description");
         comic_attributes.add("Publisher");
         comic_attributes.add("Volume Number");
+        comic_attributes.add("Issue Number");
 
         dynamicPrettyPrint(comic_attributes, comic);
     }
