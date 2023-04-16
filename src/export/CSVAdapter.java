@@ -8,15 +8,26 @@ import java.util.List;
 import src.Comic;
 import src.PersonalCollection;
 
+/*
+ * Class that implements the Exporter Interface to converts the
+ * personal collection to a csv file
+ */
 public class CSVAdapter implements ExporterInterface {
 
     PersonalCollection collection;
 
+    /*
+     * Constructor, gets all the comics from the current personal collection
+     */
     public CSVAdapter() {
         this.collection = new PersonalCollection();
         this.collection.initializeComics();
     }
 
+    /*
+     * Gets the personal collection csv file, and writes all the
+     * current personal collection data to the file
+     */
     @Override
     public void export() {
        List<Comic> comics = collection.getComics();
@@ -24,7 +35,6 @@ public class CSVAdapter implements ExporterInterface {
          try {
               File file = new File("data/personalCollection.csv");
               FileWriter writer = new FileWriter(file);
-              //        return publisher + "," +seriesTitle + "," +storyTitle + "," +volumeNumber + "," +value + "," +creators + "," +description + "," +issueNumber + "," + isGraded + "," +isSlabbed;
                 writer.write("Publisher, Series Title, Story Title, Volume Number, Value, Creators, Description, Issue Number, Is Graded, Is Slabbed \n");
                 for (Comic comic : comics) {
                     String fixer = "";
