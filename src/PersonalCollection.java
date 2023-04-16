@@ -623,7 +623,7 @@ public class PersonalCollection implements iPersonalCollection {
         }
     }
 
-    public void dynamicPrettyPrint(List<String> comic_attributes, List<Comic> comics){
+    public static void dynamicPrettyPrint(List<String> comic_attributes, List<Comic> comics){
         int valueOfcollection = 0;
         System.out.println("\nNumber of issues: " + comics.size() + "\n" + "Value of collection: " + valueOfcollection);
         StringBuilder sb = new StringBuilder();
@@ -693,4 +693,19 @@ public class PersonalCollection implements iPersonalCollection {
         }
         System.out.println("\n\n" + sb.toString());
     }
+
+    public static void main(String[] args) {
+        SortTest test = new SortTest();
+        List<Comic> comic = test.setUp();
+
+        List<String> comic_attributes = new ArrayList<>();
+        comic_attributes.add("Series Title");
+        comic_attributes.add("Story Title");
+        comic_attributes.add("Description");
+        comic_attributes.add("Publisher");
+        comic_attributes.add("Volume Number");
+
+        dynamicPrettyPrint(comic_attributes, comic);
+    }
 }
+
