@@ -38,6 +38,7 @@ public class SearchByRuns implements CollectionSearcher{
             String key = mapElement.getKey();
             String[] ComicTitleAndVolume = key.split(", Vol. ");
             ComicIssueRange issueRange = mapElement.getValue();
+            issueRange.sortIssueNumbers();
             if(issueRange.getAmount() >= 12){
                 searchComics.add(new Comic(ComicTitleAndVolume[0], Integer.parseInt(ComicTitleAndVolume[1]), issueRange.toString()));
             }

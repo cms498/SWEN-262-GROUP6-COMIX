@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -8,10 +9,12 @@ import java.util.List;
  */
 public class ComicIssueRange {
     private List<String> allValidIssues;
+    private int rangeAmount;
 
     public ComicIssueRange(String issueNumber){
         this.allValidIssues = new ArrayList<>();
         this.allValidIssues.add(issueNumber);
+        this.rangeAmount = 0;
     }
 
     public void setAllValidIssues(List<String> allValidIssues) {
@@ -70,11 +73,38 @@ public class ComicIssueRange {
         return allValidIssues.get(minIndex);
     }
 
+    public void sortIssueNumbers(){
+        List<Integer> issueNumbers = new ArrayList<>();
+        for(int i = 0; i < allValidIssues.size(); i++){
+            String issueNumber = allValidIssues.get(i);
+            String number = "";
+            int j = 0;
+            while(j < issueNumber.length()){
+                if(!Character.isDigit(issueNumber.charAt(j))){
+                    break;
+                }
+               number = number + issueNumber.charAt(j);
+               j++;
+            }
+            issueNumbers.add(Integer.parseInt(number));
+        }
+        Collections.sort(issueNumbers);
+
+        for(int i = 0; i < issueNumbers.size()-1; i++){
+            if(issueNumbers.get(i) + 1 == issueNumbers.get(i+1)){
+                rangeAmount += 1;
+            }
+            else{
+                rangeAmount = 0;
+            }
+        }
+    }
+
     /*
      * Gets the amount of issues within the range
      */
     public int getAmount() {
-        return allValidIssues.size();
+        return rangeAmount;
     }
 
     @Override
