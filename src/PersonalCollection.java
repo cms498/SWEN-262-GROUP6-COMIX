@@ -483,6 +483,12 @@ public class PersonalCollection implements iPersonalCollection {
      * Add an underscore after the header of each column
      */
     public void PrettyPrintDatabase() {
+        updateCollectionIssues();
+        updateCollectionValue();
+
+        System.out.println("Number of comics in database: " + comics.size());
+        System.out.println("Value of comics in database: " + value);
+
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
         sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-10s | %-10s  | %-20s | %-10s| %-10s| %-10s",
@@ -517,6 +523,13 @@ public class PersonalCollection implements iPersonalCollection {
     }
 
     public void prettyPrintHelper(String type) {
+        
+        updateCollectionIssues();
+        updateCollectionValue();
+
+        System.out.println("Number of comics in database: " + comics.size());
+        System.out.println("Value of comics in database: " + value);
+
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
         sb.append(String.format("%-20s", type));
@@ -690,5 +703,11 @@ public class PersonalCollection implements iPersonalCollection {
 
     public List<Comic> getComics() {
         return comics;
+    }
+
+    @Override
+    public void dynamicPrettyPrint(List<String> comic_attributes, List<Comic> comics) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'dynamicPrettyPrint'");
     }
 }

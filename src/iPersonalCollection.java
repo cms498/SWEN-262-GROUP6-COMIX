@@ -45,4 +45,5 @@ public interface iPersonalCollection {
     public void unslabComic(Comic comic);
     public void unauthenticateComic(Comic comic);
     public void unsignComic(Comic comic, String signature);
+    public void dynamicPrettyPrint(List<String> comic_attributes, List<Comic> comics);
 }
