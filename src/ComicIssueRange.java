@@ -3,6 +3,9 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Represents a range of all the issues of a comic with the same title
+ */
 public class ComicIssueRange {
     private List<String> allValidIssues;
 
@@ -22,8 +25,10 @@ public class ComicIssueRange {
     public List<String> getAllValidIssues() {
         return allValidIssues;
     }
-
-
+    
+    /*
+     * Gets the highest issue number within the range
+     */
     public String getMax() {
         String currMax = "";
         int maxIndex = 0;
@@ -43,6 +48,9 @@ public class ComicIssueRange {
         return allValidIssues.get(maxIndex);
     }
 
+    /*
+     * Gets the lowest issue number within the range
+     */
     public String getMin() {
         String currMin = "";
         int minIndex = 0;
@@ -62,6 +70,9 @@ public class ComicIssueRange {
         return allValidIssues.get(minIndex);
     }
 
+    /*
+     * Gets the amount of issues within the range
+     */
     public int getAmount() {
         return allValidIssues.size();
     }

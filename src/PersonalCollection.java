@@ -49,7 +49,10 @@ public class PersonalCollection implements iPersonalCollection {
         sortOptions.put("title", new SortByTitle());
     }
 
-    // converts from JSON to a list of comics
+    /*
+     * From the personal collection JSON file, it converts all of the comics into a list
+     * so that it can be used while the program is running
+     */
     public void initializeComics() {
         this.comics = new ArrayList<>();
         try {
@@ -182,6 +185,9 @@ public class PersonalCollection implements iPersonalCollection {
 
     }
 
+    /*
+     * Retrives a comic from the list given a story title
+     */
     public Comic getComicInCollection(String comicName) {
         comicName = comicName.toLowerCase();
         for (Comic comicsInList : comics) {
@@ -192,15 +198,23 @@ public class PersonalCollection implements iPersonalCollection {
         return null;
     }
 
+    /*
+     * Sets the collection sorter for the personal collection
+     */
     public void setSort(CollectionSorter sorter) {
         this.sorter = sorter;
     }
 
+    /*
+     * Sets the collection searcher for the personal collection
+     */
     public void setSearch(CollectionSearcher searcher) {
         this.searcher = searcher;
     }
 
-    // updates the total collection value
+    /*
+     * Updates the value of the entire collection
+     */
     public void updateCollectionValue() {
         double tempValue = 0.0;
         for (Comic comic : comics) {
@@ -209,31 +223,27 @@ public class PersonalCollection implements iPersonalCollection {
         value = tempValue;
     }
 
-    // updates the total number of comics within the collection list
+    /*
+     * Updates the number of issues within the collection
+     */
     public void updateCollectionIssues() {
         numberOfIssues = comics.size();
     }
 
-    public double getValue() {
-        return value;
-    }
-
-    public int getNumberOfIssues() {
-        return numberOfIssues;
-    }
-
+    /*
+     * Searches the personal collection with a given search term and search type
+     */
     public List<Comic> doSearch(String searchTerm, String sortType) {
         List<Comic> searchComics = this.searcher.search(comics, searchTerm);
         setSort(sortOptions.get(sortType));
         return this.sorter.sort(searchComics);
     }
 
+    /*
+     * Searches the database with a given search term and type
+     */
     public List<Comic> doDatabaseSearch(String searchTerm) {
         return this.searcher.databaseSearch(searchTerm);
-    }
-
-    public List<Comic> getComics() {
-        return comics;
     }
 
     public void editSlab(String storyTitle) {
@@ -272,8 +282,10 @@ public class PersonalCollection implements iPersonalCollection {
 
     }
     
-    // adds comics from the database by user input (user inputs only the story title
-    // here)
+    /*
+     * Adds comics from the database to the personal collection through the main criteria:
+     * Comic's series title, Comic's volume number, and Comic's issue number
+     */
     public void addComicByDataBase(String seriesTitle, int volumeNumber, String issueNumber) {
         // initializes the 'searcher' variable to the SearchByTitle class. Also sets the
         // variable to only look for exact matches only
@@ -299,8 +311,9 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
-    // adds comics manually by user input (optional attributes can be passed in as
-    // null into this method if the user didn't input anything for them)
+    /*
+     * Adds a comic manually by providing all of its necessary fields
+     */
     public void addComicManually(String publisher, String seriesTitle, String storyTitle, int volumeNumber,
             String issueNumber, String publicationDate, String creators,
             String description, String value) {
@@ -333,8 +346,9 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
-    // removes comics from user's personal collection based on what story title they
-    // inputted
+    /*
+     * Removes a comic from the collection given its story title
+     */
     public void removeComic(String storyTitle) {
         Comic comic = getComicInCollection(storyTitle);
         // if there's a comic story title that exists within the users database, then
@@ -350,6 +364,9 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
+    /*
+     * Authenticates a given comic's signatures, has to be signed first
+     */
     public void authenticate(String storyTitle){
         Comic comic = getComicInCollection(storyTitle);
         if (comic != null) {
@@ -362,6 +379,9 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
+    /*
+     * Adds a signature to the list of signatures on a given comic
+     */
     public void sign(String storyTitle, String signature){
         Comic comic = getComicInCollection(storyTitle);
         if (comic != null) {
@@ -374,6 +394,9 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
+    /*
+     * Given a comic, and its field, changes that field to the provided new value
+     */
     public void editComic(String storyTitle, String field, String newValue) {
         Comic comic = getComicInCollection(storyTitle);
         String command = field.replaceAll("\\s", "").toLowerCase();
@@ -431,7 +454,9 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
-    // add an underscore after the header of each column
+    /*
+    * Add an underscore after the header of each column
+    */
     public void PrettyPrintDatabase() {
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
@@ -517,6 +542,9 @@ public class PersonalCollection implements iPersonalCollection {
         return false;
     }
     
+    /*
+     * Prints the database in a nice manner
+     */
     @Override
     public void printDatabase(List<Comic> comics) {
         StringBuilder sb = new StringBuilder();
@@ -558,10 +586,25 @@ public class PersonalCollection implements iPersonalCollection {
         System.out.println("\n\n" + sb.toString());
     }
 
+    /*
+     * Adds a comic to the list of comcis then updates the JSON
+     */
     @Override
     public void addComic(Comic comic) {
         comics.add(comic);
         System.out.println(comic.getStoryTitle() + " has been successfully added to your personal collection");
         this.convertBackToJson();
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public int getNumberOfIssues() {
+        return numberOfIssues;
+    }
+
+    public List<Comic> getComics() {
+        return comics;
     }
 }
