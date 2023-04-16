@@ -38,6 +38,7 @@ public class PersonalCollection implements iPersonalCollection {
     private CollectionSorter sorter;
     private CollectionSearcher searcher;
     private HashMap<String, CollectionSorter> sortOptions = new HashMap<>();
+    private boolean flag;
 
     public PersonalCollection() {
         value = 0.0;
@@ -47,6 +48,7 @@ public class PersonalCollection implements iPersonalCollection {
         sortOptions.put("date", new SortByDate());
         sortOptions.put("issue number", new SortByIssueNumber());
         sortOptions.put("series title", new SortByTitle());
+        flag = false;
     }
 
     // converts from JSON to a list of comics
@@ -315,6 +317,7 @@ public class PersonalCollection implements iPersonalCollection {
             String issueNumber, String publicationDate, String creators,
             String description, String value) {
 
+
         // Default parameters for optional attributes that aren't specified by user
         // input
         List<Creator> creatorsList = new ArrayList<>();
@@ -324,7 +327,10 @@ public class PersonalCollection implements iPersonalCollection {
         // format for creators should look something like this '[Harry,Sam,Tim]' as a
         // string
         if (creators != null) {
-            creators = creators.substring(1, creators.length() - 1);
+            if(flag==false){
+                creators = creators.substring(1, creators.length() - 1);
+            }
+            
             String[] creatorArr = creators.split(",");
             for (String creatorName : creatorArr) {
                 creatorsList.add(new Creator(creatorName));
@@ -620,5 +626,9 @@ public class PersonalCollection implements iPersonalCollection {
             System.out.println(comicInCollection.getStoryTitle() + "has been successfully unsigned");
             this.convertBackToJson();
         }
+    }
+
+    public void setFlag(Boolean flag){
+        this.flag = flag;
     }
 }
