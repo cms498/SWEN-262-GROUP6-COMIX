@@ -1,15 +1,9 @@
 package src.search;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import src.Comic;
 import src.ComicIssueRange;
@@ -39,14 +33,9 @@ public class SearchByGaps implements CollectionSearcher{
             String key = mapElement.getKey();
             String[] ComicTitleAndVolume = key.split(", Vol. ");
             ComicIssueRange issueRange = mapElement.getValue();
-            if(issueRange.getAmount() >= 12){
-                List<String> missingIssues = findMissingIssues(ComicTitleAndVolume[0], ComicTitleAndVolume[1], issueRange);
-                if(missingIssues.size() == 0){
-                    searchComics.add(new Comic(ComicTitleAndVolume[0], Integer.parseInt(ComicTitleAndVolume[1]), issueRange.toString()));
-                }
-                else{
-                    searchComics.add(new Comic(ComicTitleAndVolume[0], Integer.parseInt(ComicTitleAndVolume[1]), issueRange.toString() + ", Missing: " + missingIssues.toString()));
-                }
+            List<Integer> gapCount = issueRange.sortIssueNumbersWithGaps();
+            if(issueRange.getAmount() >= 12 && gapCount.size() < 3){
+                searchComics.add(new Comic(ComicTitleAndVolume[0], Integer.parseInt(ComicTitleAndVolume[1]), issueRange.toString() + ", Missing: " + gapCount.toString()));    
             }
         }
 
@@ -75,44 +64,6 @@ public class SearchByGaps implements CollectionSearcher{
         }
     }
 
-    /*  finds the missing issues of a comic series with runs (if it exists). Uses the databse to help find the missing issues
-     *  Parameters:
-     *  seiresTitle: series of the comic that is being passed in
-     *  volumeNumber: volume of the comic that is being passed in
-     *  issueRange: the "run" of the comic that is being passed in
-    */
-    private List<String> findMissingIssues(String seriesTitle, String volumeNumber, ComicIssueRange issueRange){
-        File file = new File(COMIC_DATABASE);
-        List<String> missingIssues = new ArrayList<>();
-        Set<String> validIssues = new HashSet<>();
-        double minIssueNumber = Double.parseDouble(issueRange.getMin().replaceAll("[^\\d.]+", ""));
-        double maxIssueNumber = Double.parseDouble(issueRange.getMax().replaceAll("[^\\d.]+", ""));
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line = br.readLine();
-            while((line = br.readLine()) != null) {
-                String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-                Comic comic = generateComic(split);
-                if(comic != null){
-                    if(comic.getSeriesTitle().equals(seriesTitle) && comic.getVolumeNumber() == Integer.parseInt(volumeNumber)){
-                        validIssues.add(comic.getIssueNumber());
-                    }
-                }
-            }
-            br.close();
-
-            for(String issueNumber: validIssues){
-                double tempIssueNumber = Double.parseDouble(issueNumber.replaceAll("[^\\d.]+", ""));
-                if(issueRange.getAllValidIssues().contains(issueNumber) == false && minIssueNumber <= tempIssueNumber && maxIssueNumber >= tempIssueNumber){
-                    missingIssues.add(issueNumber);
-                }
-            }
-            
-        }catch (IOException e){
-        System.out.println("Invalid filename.");
-        }
-        return missingIssues;
-    }
 
     /*
      * N/A
