@@ -11,8 +11,10 @@
 		<issueNumber>3</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Nov 2011</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -25,8 +27,10 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>true</isGraded>
 		<isSlabbed>true</isSlabbed>
-		<isSigned>[fake signature]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[fake signature]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Mar 1963</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Image Comics</publisher>
@@ -39,8 +43,10 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Oct 2003</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -53,8 +59,10 @@
 		<issueNumber>6</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Sep 1963</publicationDate>
 	</comic>
 	<comic>
 		<publisher>DC Comics</publisher>
@@ -67,8 +75,10 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>true</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Sep 1986</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Image Comics</publisher>
@@ -81,8 +91,10 @@
 		<issueNumber>2</issueNumber>
 		<isGraded>true</isGraded>
 		<isSlabbed>true</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Mar 2012</publicationDate>
 	</comic>
 	<comic>
 		<publisher>DC Comics</publisher>
@@ -95,8 +107,10 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>true</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>true</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Jan 1989</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Image Comics</publisher>
@@ -109,8 +123,10 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>May 1992</publicationDate>
 	</comic>
 	<comic>
 		<publisher>DC Comics</publisher>
@@ -123,8 +139,10 @@
 		<issueNumber>2</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Feb 1986</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Dark Horse Comics</publisher>
@@ -137,8 +155,10 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>true</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Mar 1994</publicationDate>
 	</comic>
 	<comic>
 		<publisher>DC Comics</publisher>
@@ -151,8 +171,10 @@
 		<issueNumber>1</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Jan 2002</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -162,11 +184,13 @@
 		<value>0.0</value>
 		<creators>[Len Wein, Sal Buscema, Joe Staton]</creators>
 		<description></description>
-		<issueNumber>202</issueNumber>
+		<issueNumber>220</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Aug 1976</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -176,25 +200,13 @@
 		<value>0.0</value>
 		<creators>[Len Wein, Joe Staton, Sal Buscema]</creators>
 		<description></description>
-		<issueNumber>203</issueNumber>
+		<issueNumber>221</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
-	</comic>
-	<comic>
-		<publisher>Marvel Comics</publisher>
-		<seriesTitle>The Incredible Hulk</seriesTitle>
-		<storyTitle>Vicious Circle!</storyTitle>
-		<volumeNumber>1</volumeNumber>
-		<value>0.0</value>
-		<creators>[Len Wein, Herb Trimpe, Joe Staton]</creators>
-		<description></description>
-		<issueNumber>204</issueNumber>
-		<isGraded>false</isGraded>
-		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Sep 1976</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -204,11 +216,13 @@
 		<value>0.0</value>
 		<creators>[Len Wein, Sal Buscema, Joe Staton]</creators>
 		<description></description>
-		<issueNumber>207</issueNumber>
+		<issueNumber>223</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Jan 1977</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -218,11 +232,13 @@
 		<value>0.0</value>
 		<creators>[Roger Stern, Sal Buscema]</creators>
 		<description></description>
-		<issueNumber>241</issueNumber>
+		<issueNumber>224</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Nov 1979</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -232,11 +248,13 @@
 		<value>0.0</value>
 		<creators>[Bill Mantlo, Sal Buscema]</creators>
 		<description></description>
-		<issueNumber>271</issueNumber>
+		<issueNumber>225</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>May 1982</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -246,11 +264,13 @@
 		<value>0.0</value>
 		<creators>[Bill Mantlo, Sal Buscema]</creators>
 		<description></description>
-		<issueNumber>264</issueNumber>
+		<issueNumber>226</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Oct 1981</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -260,11 +280,13 @@
 		<value>0.0</value>
 		<creators>[Bill Mantlo, Sal Buscema]</creators>
 		<description></description>
-		<issueNumber>272</issueNumber>
+		<issueNumber>227</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Jun 1982</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -274,11 +296,13 @@
 		<value>0.0</value>
 		<creators>[Bill Mantlo, Sal Buscema]</creators>
 		<description></description>
-		<issueNumber>273</issueNumber>
+		<issueNumber>228</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Jul 1982</publicationDate>
 	</comic>
 	<comic>
 		<publisher>Marvel Comics</publisher>
@@ -288,94 +312,12 @@
 		<value>0.0</value>
 		<creators>[Roger Stern, Sal Buscema, Joe Rubinstein]</creators>
 		<description></description>
-		<issueNumber>223</issueNumber>
+		<issueNumber>229</issueNumber>
 		<isGraded>false</isGraded>
 		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
-	</comic>
-	<comic>
-		<publisher>Marvel Comics</publisher>
-		<seriesTitle>The Incredible Hulk</seriesTitle>
-		<storyTitle>Kill Or Be Killed!</storyTitle>
-		<volumeNumber>1</volumeNumber>
-		<value>0.0</value>
-		<creators>[Roger Stern, Sal Buscema, Mike Esposito]</creators>
-		<description></description>
-		<issueNumber>236</issueNumber>
-		<isGraded>false</isGraded>
-		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
-	</comic>
-	<comic>
-		<publisher>Marvel Comics</publisher>
-		<seriesTitle>The Incredible Hulk</seriesTitle>
-		<storyTitle>Thunder Under The East River!</storyTitle>
-		<volumeNumber>1</volumeNumber>
-		<value>0.0</value>
-		<creators>[Bill Mantlo, Sal Buscema]</creators>
-		<description></description>
-		<issueNumber>255</issueNumber>
-		<isGraded>false</isGraded>
-		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
-	</comic>
-	<comic>
-		<publisher>Marvel Comics</publisher>
-		<seriesTitle>The Incredible Hulk</seriesTitle>
-		<storyTitle>Power In The Promised Land!</storyTitle>
-		<volumeNumber>1</volumeNumber>
-		<value>0.0</value>
-		<creators>[Bill Mantlo, Sal Buscema]</creators>
-		<description></description>
-		<issueNumber>256</issueNumber>
-		<isGraded>false</isGraded>
-		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
-	</comic>
-	<comic>
-		<publisher>Marvel Comics</publisher>
-		<seriesTitle>The Incredible Hulk</seriesTitle>
-		<storyTitle>Amnesty!</storyTitle>
-		<volumeNumber>1</volumeNumber>
-		<value>0.0</value>
-		<creators>[Bill Mantlo, Sal Buscema, Joe Sinnott]</creators>
-		<description></description>
-		<issueNumber>278</issueNumber>
-		<isGraded>false</isGraded>
-		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
-	</comic>
-	<comic>
-		<publisher>Marvel Comics</publisher>
-		<seriesTitle>The Incredible Hulk</seriesTitle>
-		<storyTitle>The Goliath, The Gargoyle And The Galaxy Master!</storyTitle>
-		<volumeNumber>1</volumeNumber>
-		<value>0.0</value>
-		<creators>[Bill Mantlo, Sal Buscema]</creators>
-		<description></description>
-		<issueNumber>270</issueNumber>
-		<isGraded>false</isGraded>
-		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
-	</comic>
-	<comic>
-		<publisher>Marvel Comics</publisher>
-		<seriesTitle>The Incredible Hulk</seriesTitle>
-		<storyTitle>Everybody Loves A Parade, Right?</storyTitle>
-		<volumeNumber>1</volumeNumber>
-		<value>0.0</value>
-		<creators>[Bill Mantlo, Greg LaRocque]</creators>
-		<description></description>
-		<issueNumber>279</issueNumber>
-		<isGraded>false</isGraded>
-		<isSlabbed>false</isSlabbed>
-		<isSigned>[]</isSigned>
-		<isVariant>false</isVariant>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>May 1978</publicationDate>
 	</comic>
 </comics>

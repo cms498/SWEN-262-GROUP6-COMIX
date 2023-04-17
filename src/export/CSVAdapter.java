@@ -35,7 +35,7 @@ public class CSVAdapter implements ExporterInterface {
         try {
             File file = new File("data/personalCollection.csv");
             FileWriter writer = new FileWriter(file);
-            writer.write("Publisher, Series Title, Story Title, Volume Number, Value, Creators, Description, Issue Number, Is Graded, Is Slabbed, Signatures, Authenticated, grade Number \n");
+            writer.write("Publisher, Series Title, Story Title, Volume Number, Value, Creators, Description, Issue Number, Is Graded, Is Slabbed, Signatures, Authenticated, grade Number, Publication Date. \n");
 
             for (Comic comic : comics) {
                 String fixer = "";
@@ -66,7 +66,7 @@ public class CSVAdapter implements ExporterInterface {
                 writer.write(comic.getPublisher() + "," + comic.getSeriesTitle() + "," + comic.getStoryTitle() + ","
                         + comic.getVolumeNumber() + "," + comic.getValue() + "," + fixer + "," + comic.getDescription()
                         + "," + comic.getIssueNumber() + "," + comic.getIsGraded() + "," + comic.getIsSlabbed() + ","
-                        + signatures + "," + comic.getIsAuthenticated() + "," + comic.getGradeNumber() + "\n");
+                        + signatures + "," + comic.getIsAuthenticated() + "," + comic.getGradeNumber() + "," + comic.getPublicationDate() +"\n");
             }
             writer.close();
         } catch (IOException e) {

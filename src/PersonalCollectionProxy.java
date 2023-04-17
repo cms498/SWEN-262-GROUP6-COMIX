@@ -1,5 +1,6 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import src.search.CollectionSearcher;
@@ -307,5 +308,12 @@ public class PersonalCollectionProxy implements iPersonalCollection {
     @Override
     public void setFlag(Boolean flag) {
         collection.setFlag(flag);
+    }
+
+    @Override
+    public void addComicAllFields(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
+            String issueNumber, String publicationDate, List<Creator> creators, String description, double value,
+            boolean isGraded, boolean isSlabbed, ArrayList<String> signatures, boolean authenticated, int gradeNumber) {
+        collection.addComicAllFields(publisher, seriesTitle, storyTitle, volumeNumber, issueNumber, publicationDate, creators, description, value, isGraded, isSlabbed, signatures, authenticated, gradeNumber);
     }
 }

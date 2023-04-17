@@ -707,7 +707,14 @@ public class PersonalCollection implements iPersonalCollection {
 
     @Override
     public void dynamicPrettyPrint(List<String> comic_attributes, List<Comic> comics) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'dynamicPrettyPrint'");
+    }
+
+    @Override
+    public void addComicAllFields(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber,
+            String issueNumber, String publicationDate, List<Creator> creators, String description, double value,
+            boolean isGraded, boolean isSlabbed, ArrayList<String> signatures, boolean authenticated, int gradeNumber) {
+        comics.add(new Comic(publisher, seriesTitle, storyTitle, volumeNumber, issueNumber, publicationDate, creators, description, value, isGraded, isSlabbed, signatures, authenticated, gradeNumber));
+        this.convertBackToJson();
     }
 }

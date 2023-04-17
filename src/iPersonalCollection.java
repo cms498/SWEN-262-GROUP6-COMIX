@@ -1,5 +1,6 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import src.search.CollectionSearcher;
@@ -26,6 +27,7 @@ public interface iPersonalCollection {
     public double editGrade(String storyTitle, int grade);
     public void addComicByDataBase(String storyTitle, int volumeNumber, String issueNumber);
     public void addComicManually(String publisher, String seriesTitle, String storyTitle, int volumeNumber, String issueNumber, String publicationDate, String creators, String description, String value);
+    public void addComicAllFields(Publisher publisher, String seriesTitle, String storyTitle, int volumeNumber, String issueNumber, String publicationDate, List<Creator> creators, String description, double value, boolean isGraded, boolean isSlabbed,  ArrayList<String> signatures, boolean authenticated, int gradeNumber);
     public void removeComic(String storyTitle);
     public void editComic(String storyTitle, String field, String newValue);
     public void PrettyPrintDatabase();

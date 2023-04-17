@@ -65,17 +65,19 @@ public class PTUIFormatting {
         String authenticateComic = ">> To authenticate a signed comic -> authenticate | <comic story title>";
         String export = ">> To export your personal collection -> export | <export format>";
         String exportType = "\t>> Personal collections can be formatted into [csv, xml]";
+        String importString= ">> To import your another file into your personal collection -> import | <filename>";
+        String importType ="\t>> Files can be imported using any of the file types [json, csv, xml]";
         String undo = ">> To undo a command done on the personal collection -> undo";
         String undoType = "\t>> You can undo the following commands [adding, removing, editing, grading, slabbing, signing, authenticating]";
         String redo = ">> To redo any previously undone commands -> redo";
 
         String commands = String.format(
-                "\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+                "\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
                 quit, login, command, viewComics, viewType, databaseSearch,
                 databaseSearchType, collectionSearch, collectionSearchType,
                 collectionSortType, collectionSearchNoExact, collectionSortType,
                 addFromDB, addManually, remove, edit, editOptions, gradeComic,
-                slabComic, signComic, authenticateComic, export, exportType, 
+                slabComic, signComic, authenticateComic, export, exportType, importString, importType,
                 undo, undoType, redo);
 
         System.out.println(commands);

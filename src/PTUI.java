@@ -66,6 +66,11 @@ public class PTUI {
         exportOptions.put("csv", new CSVAdapter());
         exportOptions.put("xml", new XMLAdapter());
 
+        HashMap<String, ImporterInterface> importOptions = new HashMap<>();
+        importOptions.put("data/importComic.xml", new ImportasXML(personalCollection));
+        importOptions.put("data/importComic.json", new ImportasJson(personalCollection));
+        importOptions.put("data/importComic.csv", new ImportasCSV(personalCollection));
+
         Undo undoStack = new Undo();
         Redo redoStack = new Redo();
         undoStack.setRedo(redoStack);
@@ -280,6 +285,14 @@ public class PTUI {
                         System.out.println("Log in to access feature");
                     } else {
                         exportOptions.get(multiResult[1].toLowerCase()).export();
+                    }
+                }
+
+                else if (command.equals("import")){
+                    if (personalCollection.isGuestMode()) {
+                        System.out.println("Log in to access feature");
+                    } else {
+                        importOptions.get(multiResult[1]).Import(multiResult[1]);;
                     }
                 }
 

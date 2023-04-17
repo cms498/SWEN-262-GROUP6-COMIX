@@ -15,14 +15,12 @@ import org.w3c.dom.Element;
 
 public class ImportasXML implements ImporterInterface{
 
-    iPersonalCollection collection;
+    private iPersonalCollection collection;
 
     public ImportasXML(iPersonalCollection personalCollection) {
         this.collection = personalCollection;
         // this.collection.initializeComics();
     }
-
-
 
     @Override
     public void Import(String filename) throws IOException {
@@ -59,10 +57,7 @@ public class ImportasXML implements ImporterInterface{
             } catch (SAXException e) {
             }
         } catch (ParserConfigurationException e) {
-        }
-        
             
+        }
     }
-
-    
 }
