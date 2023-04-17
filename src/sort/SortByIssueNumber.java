@@ -5,12 +5,16 @@ import java.util.List;
 
 import src.Comic;
 
-/**
- * This class is used to sort a personal collection of comics by issues numbers,
- * where lower issues numbers will come first
+/*
+ * Implements the Collection Sorter interface, and sorts the list of comics by issue number
  */
-public class SortByIssueNumber implements CollectionSorter {
+public class SortByIssueNumber implements CollectionSorter{
 
+    /** 
+     * Sorts the list of comics by volume number
+     * @param comics
+     * @return List<Comic>
+     */
     @Override
     /**
      * This is the method the personal collection will call when the user wants to sort a list
@@ -18,7 +22,6 @@ public class SortByIssueNumber implements CollectionSorter {
      */
     public List<Comic> sort(List<Comic> comics) {
         List<Comic> sorted = new ArrayList<Comic>();
-
         for (int i = 0; i < comics.size(); i++) {
             Comic comic = comics.get(i);
             if (sorted.size() == 0) {

@@ -12,13 +12,11 @@ import java.util.Map;
 import src.Comic;
 import src.ComicIssueRange;
 
+/*
+ * A implementation of Collection Searcher
+ * Searches comics by seeing if they have 12 or issues
+ */
 public class SearchByRuns implements CollectionSearcher{
-    
-    private boolean exactMatch;
-
-    public SearchByRuns(boolean exactMatch){
-        this.exactMatch = exactMatch;
-    }
 
     /* This searches the user's personal collection for any series with runs of 12 or more issues
      * Parameters:
@@ -40,6 +38,7 @@ public class SearchByRuns implements CollectionSearcher{
             String key = mapElement.getKey();
             String[] ComicTitleAndVolume = key.split(", Vol. ");
             ComicIssueRange issueRange = mapElement.getValue();
+            issueRange.sortIssueNumbers();
             if(issueRange.getAmount() >= 12){
                 searchComics.add(new Comic(ComicTitleAndVolume[0], Integer.parseInt(ComicTitleAndVolume[1]), issueRange.toString()));
             }
@@ -108,6 +107,5 @@ public class SearchByRuns implements CollectionSearcher{
 
     @Override
     public void setExactMatch(boolean exact) {
-        this.exactMatch = exact;
     }
 }

@@ -5,6 +5,11 @@ import java.util.List;
 import src.search.CollectionSearcher;
 import src.sort.CollectionSorter;
 
+/*
+ * Proxy that checks to see if the user is logged in before allowing them
+ * to alter data within the personal collection if they are logged in, they're
+ * provided with full functionality, if not they can only browse
+ */
 public class PersonalCollectionProxy implements iPersonalCollection {
 
     private boolean guestMode;
@@ -65,7 +70,6 @@ public class PersonalCollectionProxy implements iPersonalCollection {
         if(guestMode == false){
             return collection.getComicInCollection2(seriesTitle, volumeNumber, issueNumber);
         } else {
-            System.out.println("Log in to have access to this feature");
             return null;
         }
     }
@@ -293,5 +297,10 @@ public class PersonalCollectionProxy implements iPersonalCollection {
         } else {
             System.out.println("Log in to have access to this feature");
         }
+    }
+
+    @Override
+    public void dynamicPrettyPrint(List<String> comic_attributes, List<Comic> comics) {
+        collection.dynamicPrettyPrint(comic_attributes, comics);
     }
 }

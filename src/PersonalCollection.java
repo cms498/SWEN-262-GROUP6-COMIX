@@ -51,7 +51,11 @@ public class PersonalCollection implements iPersonalCollection {
         flag = false;
     }
 
-    // converts from JSON to a list of comics
+    /*
+     * From the personal collection JSON file, it converts all of the comics into a
+     * list
+     * so that it can be used while the program is running
+     */
     public void initializeComics() {
         this.comics = new ArrayList<>();
         try {
@@ -189,6 +193,9 @@ public class PersonalCollection implements iPersonalCollection {
 
     }
 
+    /*
+     * Retrives a comic from the list given a story title
+     */
     public Comic getComicInCollection(String comicName) {
         comicName = comicName.toLowerCase();
         for (Comic comicsInList : comics) {
@@ -199,26 +206,40 @@ public class PersonalCollection implements iPersonalCollection {
         return null;
     }
 
-    public Comic getComicInCollection2(String seriesTitle, int volumeNumber, String issueNumber){
+    /*
+     * Retrives a comic from the list given a story title, volume number, and issue
+     * number
+     */
+    public Comic getComicInCollection2(String seriesTitle, int volumeNumber, String issueNumber) {
         seriesTitle = seriesTitle.toLowerCase();
         issueNumber = issueNumber.toLowerCase();
         for (Comic comicsInList : comics) {
-            if (seriesTitle.equals(comicsInList.getSeriesTitle().toLowerCase()) && volumeNumber == comicsInList.getVolumeNumber() && issueNumber.equals(comicsInList.getIssueNumber())) {
+            if (seriesTitle.equals(comicsInList.getSeriesTitle().toLowerCase())
+                    && volumeNumber == comicsInList.getVolumeNumber()
+                    && issueNumber.equals(comicsInList.getIssueNumber())) {
                 return comicsInList;
             }
         }
         return null;
     }
 
+    /*
+     * Sets the collection sorter for the personal collection
+     */
     public void setSort(CollectionSorter sorter) {
         this.sorter = sorter;
     }
 
+    /*
+     * Sets the collection searcher for the personal collection
+     */
     public void setSearch(CollectionSearcher searcher) {
         this.searcher = searcher;
     }
 
-    // updates the total collection value
+    /*
+     * Updates the value of the entire collection
+     */
     public void updateCollectionValue() {
         double tempValue = 0.0;
         for (Comic comic : comics) {
@@ -227,31 +248,27 @@ public class PersonalCollection implements iPersonalCollection {
         value = tempValue;
     }
 
-    // updates the total number of comics within the collection list
+    /*
+     * Updates the number of issues within the collection
+     */
     public void updateCollectionIssues() {
         numberOfIssues = comics.size();
     }
 
-    public double getValue() {
-        return value;
-    }
-
-    public int getNumberOfIssues() {
-        return numberOfIssues;
-    }
-
+    /*
+     * Searches the personal collection with a given search term and search type
+     */
     public List<Comic> doSearch(String searchTerm, String sortType) {
         List<Comic> searchComics = this.searcher.search(comics, searchTerm);
         setSort(sortOptions.get(sortType));
         return this.sorter.sort(searchComics);
     }
 
+    /*
+     * Searches the database with a given search term and type
+     */
     public List<Comic> doDatabaseSearch(String searchTerm) {
         return this.searcher.databaseSearch(searchTerm);
-    }
-
-    public List<Comic> getComics() {
-        return comics;
     }
 
     public void editSlab(String storyTitle) {
@@ -284,8 +301,11 @@ public class PersonalCollection implements iPersonalCollection {
         return newValue;
     }
 
-    // adds comics from the database by user input (user inputs only the story title
-    // here)
+    /*
+     * Adds comics from the database to the personal collection through the main
+     * criteria:
+     * Comic's series title, Comic's volume number, and Comic's issue number
+     */
     public void addComicByDataBase(String seriesTitle, int volumeNumber, String issueNumber) {
         // initializes the 'searcher' variable to the SearchByTitle class. Also sets the
         // variable to only look for exact matches only
@@ -294,9 +314,9 @@ public class PersonalCollection implements iPersonalCollection {
         // if there's a comic that exists within the initialSearch list, then add it to
         // their personal collection list
         if (initialSearch.size() != 0) {
-            for(Comic comic: initialSearch){
-                if(comic != null){
-                    if(comic.getIssueNumber().equals(issueNumber) && comic.getVolumeNumber() == volumeNumber){
+            for (Comic comic : initialSearch) {
+                if (comic != null) {
+                    if (comic.getIssueNumber().equals(issueNumber) && comic.getVolumeNumber() == volumeNumber) {
                         comics.add(comic);
                         System.out.println(seriesTitle + " has been successfully added to your personal collection");
                     }
@@ -311,12 +331,12 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
-    // adds comics manually by user input (optional attributes can be passed in as
-    // null into this method if the user didn't input anything for them)
+    /*
+     * Adds a comic manually by providing all of its necessary fields
+     */
     public void addComicManually(String publisher, String seriesTitle, String storyTitle, int volumeNumber,
             String issueNumber, String publicationDate, String creators,
             String description, String value) {
-
 
         // Default parameters for optional attributes that aren't specified by user
         // input
@@ -327,10 +347,10 @@ public class PersonalCollection implements iPersonalCollection {
         // format for creators should look something like this '[Harry,Sam,Tim]' as a
         // string
         if (creators != null) {
-            if(flag==false){
+            if (flag == false) {
                 creators = creators.substring(1, creators.length() - 1);
             }
-            
+
             String[] creatorArr = creators.split(",");
             for (String creatorName : creatorArr) {
                 creatorsList.add(new Creator(creatorName));
@@ -349,8 +369,9 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
-    // removes comics from user's personal collection based on what story title they
-    // inputted
+    /*
+     * Removes a comic from the collection given its story title
+     */
     public void removeComic(String storyTitle) {
         Comic comic = getComicInCollection(storyTitle);
         // if there's a comic story title that exists within the users database, then
@@ -366,30 +387,37 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
-    public void authenticate(String storyTitle){
+    /*
+     * Authenticates a given comic's signatures, has to be signed first
+     */
+    public void authenticate(String storyTitle) {
         Comic comic = getComicInCollection(storyTitle);
-        if (!comic.getSignatures().isEmpty()) {
+        if (!comic.getSignatures().get(0).equals("")) {
             comic.authenticate(true);
             comic.setValue(comic.getValue() * 1.2);
-        }
-        else {
-            System.out.println(storyTitle + " doesn't exist within your personal collection");
+        } else {
+            System.out.println(storyTitle + " is not signed so it can't be authenticated");
         }
         this.convertBackToJson();
     }
 
-    public void sign(String storyTitle, String signature){
+    /*
+     * Adds a signature to the list of signatures on a given comic
+     */
+    public void sign(String storyTitle, String signature) {
         Comic comic = getComicInCollection(storyTitle);
         if (comic != null) {
             comic.sign(signature);
             comic.setValue(comic.getValue() * 1.05);
-        }
-        else {
+        } else {
             System.out.println(storyTitle + " doesn't exist within your personal collection");
         }
         this.convertBackToJson();
     }
 
+    /*
+     * Given a comic, and its field, changes that field to the provided new value
+     */
     public void editComic(String storyTitle, String field, String newValue) {
         Comic comic = getComicInCollection(storyTitle);
         String command = field.replaceAll("\\s", "").toLowerCase();
@@ -438,9 +466,9 @@ public class PersonalCollection implements iPersonalCollection {
                 }
                 break;
             case "slab":
-                if(comic.getIsSlabbed() == false){
+                if (comic.getIsSlabbed() == false) {
                     editSlab(storyTitle);
-                }else{
+                } else {
                     unslabComic(comic);
                 }
                 break;
@@ -451,8 +479,16 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
-    // add an underscore after the header of each column
+    /*
+     * Add an underscore after the header of each column
+     */
     public void PrettyPrintDatabase() {
+        updateCollectionIssues();
+        updateCollectionValue();
+
+        System.out.println("Number of comics in database: " + comics.size());
+        System.out.println("Value of comics in database: " + value);
+
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
         sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-10s | %-10s  | %-20s | %-10s| %-10s| %-10s",
@@ -487,6 +523,13 @@ public class PersonalCollection implements iPersonalCollection {
     }
 
     public void prettyPrintHelper(String type) {
+        
+        updateCollectionIssues();
+        updateCollectionValue();
+
+        System.out.println("Number of comics in database: " + comics.size());
+        System.out.println("Value of comics in database: " + value);
+
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
         sb.append(String.format("%-20s", type));
@@ -533,10 +576,13 @@ public class PersonalCollection implements iPersonalCollection {
         System.out.println("You are already logged in, end the program to logout");
     }
 
-    public boolean isGuestMode(){
+    public boolean isGuestMode() {
         return false;
     }
-    
+
+    /*
+     * Prints the database in a nice manner
+     */
     @Override
     public void printDatabase(List<Comic> comics) {
         StringBuilder sb = new StringBuilder();
@@ -549,7 +595,7 @@ public class PersonalCollection implements iPersonalCollection {
         sb.append(System.lineSeparator());
 
         for (Comic comic : comics) {
-            if(comic != null){
+            if (comic != null) {
                 if (comic.getSeriesTitle().length() > 20) {
                     comic.setSeriesTitle(comic.getSeriesTitle().substring(0, 17) + "...");
                 }
@@ -566,7 +612,8 @@ public class PersonalCollection implements iPersonalCollection {
                     comic.setPublisher(comic.getPublisher().toString().substring(0, 17) + "...");
                 }
 
-                sb.append(String.format("%-20s | %-20s | %-20s | %-20s |%-10s    | %-10s    | %-20s | %-10s| %-10s| %-10s",
+                sb.append(String.format(
+                        "%-20s | %-20s | %-20s | %-20s |%-10s    | %-10s    | %-20s | %-10s| %-10s| %-10s",
                         comic.getPublisher(), comic.getSeriesTitle(), comic.getStoryTitle(), comic.getDescription(),
                         comic.getVolumeNumber(), comic.getIssueNumber(), comic.getPublicationDate(), comic.getValue(),
                         comic.getIsGraded(), comic.getIsSlabbed()));
@@ -578,6 +625,9 @@ public class PersonalCollection implements iPersonalCollection {
         System.out.println("\n\n" + sb.toString());
     }
 
+    /*
+     * Adds a comic to the list of comcis then updates the JSON
+     */
     @Override
     public void addComic(Comic comic) {
         comics.add(comic);
@@ -585,11 +635,13 @@ public class PersonalCollection implements iPersonalCollection {
         this.convertBackToJson();
     }
 
-    public void ungradeComic(Comic comic, double difference){
-        if(comic.getIsGraded()){
+    /*
+     * Ungrades a comic
+     */
+    public void ungradeComic(Comic comic, double difference) {
+        if (comic.getIsGraded()) {
             Comic comicNew = getComicInCollection(comic.getStoryTitle());
             double oldValue = comicNew.getValue();
-            
             unslabComic(comicNew);
             comicNew.setValue(oldValue - difference);
             comicNew.setIsGraded(false);
@@ -598,18 +650,24 @@ public class PersonalCollection implements iPersonalCollection {
         }
     }
 
-    public void unslabComic(Comic comic){
-        if(comic.getIsSlabbed() && comic.getIsGraded()){
+    /*
+     * Unslabs a comic
+     */
+    public void unslabComic(Comic comic) {
+        if (comic.getIsSlabbed() && comic.getIsGraded()) {
             Comic comicInCollection = this.getComicInCollection(comic.getStoryTitle());
             comicInCollection.setIsSlabbed(false);
-            comicInCollection.setValue((comicInCollection.getValue()/2.0));
+            comicInCollection.setValue((comicInCollection.getValue() / 2.0));
             System.out.println(comicInCollection.getStoryTitle() + " has been successfully unslabbed");
             this.convertBackToJson();
         }
     }
 
-    public void unauthenticateComic(Comic comic){
-        if(!comic.getSignatures().isEmpty()){
+    /*
+     * Unauthenticates a comic
+     */
+    public void unauthenticateComic(Comic comic) {
+        if (!comic.getSignatures().isEmpty()) {
             Comic comicInCollection = this.getComicInCollection(comic.getStoryTitle());
             comicInCollection.setIsAuthenticated(false);
             comicInCollection.setValue(comicInCollection.getValue() / 1.2);
@@ -618,17 +676,38 @@ public class PersonalCollection implements iPersonalCollection {
         }
     }
 
-    public void unsignComic(Comic comic, String signature){
-        if(!comic.getSignatures().isEmpty()){
+    /*
+     * Removes a signature from the comic
+     */
+    public void unsignComic(Comic comic, String signature) {
+        if (!comic.getSignatures().isEmpty()) {
             Comic comicInCollection = this.getComicInCollection(comic.getStoryTitle());
             comicInCollection.getSignatures().remove(comicInCollection.getSignatures().size() - 1);
             comicInCollection.setValue(comicInCollection.getValue() / 1.05);
-            System.out.println(comicInCollection.getStoryTitle() + "has been successfully unsigned");
+            System.out.println(comicInCollection.getStoryTitle() + " has been successfully unsigned");
             this.convertBackToJson();
         }
     }
 
-    public void setFlag(Boolean flag){
+    public void setFlag(Boolean flag) {
         this.flag = flag;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public int getNumberOfIssues() {
+        return numberOfIssues;
+    }
+
+    public List<Comic> getComics() {
+        return comics;
+    }
+
+    @Override
+    public void dynamicPrettyPrint(List<String> comic_attributes, List<Comic> comics) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'dynamicPrettyPrint'");
     }
 }

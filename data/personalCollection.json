@@ -12,7 +12,8 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "Spider-Man",
@@ -27,7 +28,8 @@
         "isGraded": true,
         "isSlabbed": true,
         "signatures": "fake signature",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Walking Dead",
@@ -42,7 +44,8 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "X-Men",
@@ -57,7 +60,8 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "Watchmen",
@@ -72,7 +76,8 @@
         "isGraded": true,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "Saga",
@@ -87,7 +92,8 @@
         "isGraded": true,
         "isSlabbed": true,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "Sandman",
@@ -102,7 +108,8 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": true
+        "authenticated": true,
+        "gradenumber": 0
     },
     {
         "seriestitle": "Spawn",
@@ -117,7 +124,8 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "Batman: The Dark Knight Returns",
@@ -132,7 +140,8 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "Hellboy",
@@ -147,7 +156,8 @@
         "isGraded": true,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "9-11",
@@ -162,11 +172,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "202",
+        "issuenumber": "220",
         "storytitle": "Havoc At The Heart Of The Atom",
         "creators": "Len Wein,Sal Buscema,Joe Staton",
         "publisher": "Marvel Comics",
@@ -177,11 +188,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "203",
+        "issuenumber": "221",
         "storytitle": "Assault On Psyklop!",
         "creators": "Len Wein,Joe Staton,Sal Buscema",
         "publisher": "Marvel Comics",
@@ -192,26 +204,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "204",
-        "storytitle": "Vicious Circle!",
-        "creators": "Len Wein,Herb Trimpe,Joe Staton",
-        "publisher": "Marvel Comics",
-        "description": "",
-        "value": 0.0,
-        "volumenumber": 1,
-        "publicationdate": "Oct 1976",
-        "isGraded": false,
-        "isSlabbed": false,
-        "signatures": "",
-        "authenticated": false
-    },
-    {
-        "seriestitle": "The Incredible Hulk",
-        "issuenumber": "207",
+        "issuenumber": "223",
         "storytitle": "Alone Against The Defenders!",
         "creators": "Len Wein,Sal Buscema,Joe Staton",
         "publisher": "Marvel Comics",
@@ -222,11 +220,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "241",
+        "issuenumber": "224",
         "storytitle": "Partners In Deception!",
         "creators": "Roger Stern,Sal Buscema",
         "publisher": "Marvel Comics",
@@ -237,11 +236,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "271",
+        "issuenumber": "225",
         "storytitle": "Now Somewhere In The Black Holes Of Sirius Major There Lived A Young Boy Name Of... Rocket Raccoon!",
         "creators": "Bill Mantlo,Sal Buscema",
         "publisher": "Marvel Comics",
@@ -252,11 +252,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "264",
+        "issuenumber": "226",
         "storytitle": "He Flies By Night",
         "creators": "Bill Mantlo,Sal Buscema",
         "publisher": "Marvel Comics",
@@ -267,11 +268,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "272",
+        "issuenumber": "227",
         "storytitle": "Weirdsong Of The Wendigo",
         "creators": "Bill Mantlo,Sal Buscema",
         "publisher": "Marvel Comics",
@@ -282,11 +284,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "273",
+        "issuenumber": "228",
         "storytitle": "Once A Hulk, Always A Hulk!",
         "creators": "Bill Mantlo,Sal Buscema",
         "publisher": "Marvel Comics",
@@ -297,11 +300,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "223",
+        "issuenumber": "229",
         "storytitle": "The Curing Of Dr. Banner!",
         "creators": "Roger Stern,Sal Buscema,Joe Rubinstein",
         "publisher": "Marvel Comics",
@@ -312,11 +316,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "236",
+        "issuenumber": "230",
         "storytitle": "Kill Or Be Killed!",
         "creators": "Roger Stern,Sal Buscema,Mike Esposito",
         "publisher": "Marvel Comics",
@@ -327,11 +332,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "255",
+        "issuenumber": "231",
         "storytitle": "Thunder Under The East River!",
         "creators": "Bill Mantlo,Sal Buscema",
         "publisher": "Marvel Comics",
@@ -342,11 +348,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "256",
+        "issuenumber": "232",
         "storytitle": "Power In The Promised Land!",
         "creators": "Bill Mantlo,Sal Buscema",
         "publisher": "Marvel Comics",
@@ -357,11 +364,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "278",
+        "issuenumber": "233",
         "storytitle": "Amnesty!",
         "creators": "Bill Mantlo,Sal Buscema,Joe Sinnott",
         "publisher": "Marvel Comics",
@@ -372,11 +380,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "270",
+        "issuenumber": "235",
         "storytitle": "The Goliath, The Gargoyle And The Galaxy Master!",
         "creators": "Bill Mantlo,Sal Buscema",
         "publisher": "Marvel Comics",
@@ -387,11 +396,12 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     },
     {
         "seriestitle": "The Incredible Hulk",
-        "issuenumber": "279",
+        "issuenumber": "234",
         "storytitle": "Everybody Loves A Parade, Right?",
         "creators": "Bill Mantlo,Greg LaRocque",
         "publisher": "Marvel Comics",
@@ -402,21 +412,7 @@
         "isGraded": false,
         "isSlabbed": false,
         "signatures": "",
-        "authenticated": false
-    },
-    {
-        "seriestitle": "temp",
-        "issuenumber": "1A",
-        "storytitle": "temp2",
-        "creators": "sean",
-        "publisher": "nick",
-        "description": "jfhdafjkl",
-        "value": 2.0,
-        "volumenumber": 1,
-        "publicationdate": "Jan 1999",
-        "isGraded": false,
-        "isSlabbed": false,
-        "signatures": "",
-        "authenticated": false
+        "authenticated": false,
+        "gradenumber": 0
     }
  ]

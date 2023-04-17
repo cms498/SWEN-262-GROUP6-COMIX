@@ -12,10 +12,17 @@ import src.Publisher;
  */
 public interface CollectionSearcher {
 
+    /*
+     * Local location of the comic database
+     */
     public static final String COMIC_DATABASE = "data/comics.csv";
 
     public List<Comic> search(List<Comic> comics, String searchTerm);
     public List<Comic> databaseSearch(String searchTerm);
+
+    /*
+     * Sets the field of exact match if applicable in their search
+     */
     public void setExactMatch(boolean exact);
 
     /*
@@ -40,7 +47,6 @@ public interface CollectionSearcher {
             return new Comic(publisher, seriesAndVolume[0], comicData[2].replace("\"", ""), volumeNumber, comicData[1].replace("\"", ""), 
                 comicData[5].replace("\"", ""), creators, comicData[3].replace("\"", ""), 0, false, false, new ArrayList<>(), false, 0);
         } else {
-            //System.out.println("Faulty line String[] given.");
             return null;
         }
     }

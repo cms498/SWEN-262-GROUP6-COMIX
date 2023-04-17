@@ -10,7 +10,7 @@ import src.Comic;
 
 /*
  * A implementation of Collection Searcher
- * Searches comics by comparing titles and the search term
+ * Searches comics by comparing series titles and the search term
  */
 public class SearchBySeriesTitle implements CollectionSearcher{
 
@@ -19,7 +19,6 @@ public class SearchBySeriesTitle implements CollectionSearcher{
     public SearchBySeriesTitle(boolean exactMatch) {
         this.exactMatch = exactMatch;
     }
-    
     
     /** 
      * Searches through the list of given comics for any matches with a comic's
