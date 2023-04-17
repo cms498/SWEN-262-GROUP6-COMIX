@@ -46,4 +46,5 @@ public interface iPersonalCollection {
     public void unauthenticateComic(Comic comic);
     public void unsignComic(Comic comic, String signature);
     public void dynamicPrettyPrint(List<String> comic_attributes, List<Comic> comics);
+    public void setFlag(Boolean flag);
 }

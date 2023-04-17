@@ -303,4 +303,9 @@ public class PersonalCollectionProxy implements iPersonalCollection {
     public void dynamicPrettyPrint(List<String> comic_attributes, List<Comic> comics) {
         collection.dynamicPrettyPrint(comic_attributes, comics);
     }
+
+    @Override
+    public void setFlag(Boolean flag) {
+        collection.setFlag(flag);
+    }
 }

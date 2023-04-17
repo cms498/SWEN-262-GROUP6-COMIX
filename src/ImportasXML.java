@@ -15,10 +15,10 @@ import org.w3c.dom.Element;
 
 public class ImportasXML implements ImporterInterface{
 
-    PersonalCollection collection;
+    iPersonalCollection collection;
 
-    public ImportasXML() {
-        this.collection = new PersonalCollection();
+    public ImportasXML(iPersonalCollection personalCollection) {
+        this.collection = personalCollection;
         // this.collection.initializeComics();
     }
 
@@ -64,10 +64,5 @@ public class ImportasXML implements ImporterInterface{
             
     }
 
-    public static void main(String[] args) throws IOException {
-        ImportasXML imp = new ImportasXML();
-        imp.Import("data/personalCollection.xml");
-        
-    }
     
 }

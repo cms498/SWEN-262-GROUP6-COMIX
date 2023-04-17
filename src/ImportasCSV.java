@@ -6,10 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ImportasCSV implements ImporterInterface {
-    PersonalCollection collection;
+    iPersonalCollection collection;
 
-    public ImportasCSV() {
-        this.collection = new PersonalCollection();
+    public ImportasCSV(iPersonalCollection personalCollection) {
+        this.collection = personalCollection;
         this.collection.setFlag(true);
         // this.collection.initializeComics();
     }
@@ -51,11 +51,6 @@ public class ImportasCSV implements ImporterInterface {
 
         }
         reader.close();
-    }
-
-    public static void main(String[] args) throws IOException {
-        ImportasCSV importCSV = new ImportasCSV();
-        importCSV.Import("data/comics.csv");
     }
 
 }

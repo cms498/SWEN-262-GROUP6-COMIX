@@ -10,12 +10,11 @@ import org.json.simple.parser.JSONParser;
 
 public class ImportasJson implements ImporterInterface{
 
-    PersonalCollection collection;
+    iPersonalCollection collection;
 
-    public ImportasJson() {
-        this.collection = new PersonalCollection();
+    public ImportasJson(iPersonalCollection personalCollection) {
+        this.collection = personalCollection;
         this.collection.setFlag(true);
-        // this.collection.initializeComics();
     }
 
 
@@ -44,26 +43,6 @@ public class ImportasJson implements ImporterInterface{
 
                 collection.addComicManually(publisher, seriesTitle, storyTitle, volumeNumber, issueNumber, publicationDate, creators, description, value);
             }
-            // System.out.println(jsonArray.size());
-                
-
-
-
-            // FileReader filereader = new FileReader(filename);
-            // Object obj = parser.parse(filereader);
-            // JSONObject jsonObject = (JSONObject)obj;
-            // String publisher = (String)jsonObject.get("publisher");
-            // System.out.println(publisher);
-            // String seriesTitle = (String)jsonObject.get("seriestitle");
-            // String storyTitle = (String)jsonObject.get("storytitle");
-            // int volumeNumber = Integer.parseInt((String)jsonObject.get("volumenumber"));
-            // String issueNumber = (String)jsonObject.get("issueNumber");
-            // String publicationDate = (String)jsonObject.get("publicationdate");
-
-
-            // JSONArray subjects = (JSONArray)jsonObject.get("Subjects");
-            
-            //collection.addComicManually(publisher, seriesTitle, storyTitle, volumeNumber, issueNumber, "", creators, description, value);
 
         } 
         catch(Exception e) {
@@ -71,9 +50,5 @@ public class ImportasJson implements ImporterInterface{
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        ImportasJson imp = new ImportasJson();
-        imp.Import("data/personalCollection.json");
-    }
     
 }
