@@ -11,7 +11,7 @@ public class ImportasCSV implements ImporterInterface {
     public ImportasCSV() {
         this.collection = new PersonalCollection();
         this.collection.setFlag(true);
-        this.collection.initializeComics();
+        // this.collection.initializeComics();
     }
 
     @Override
@@ -44,7 +44,7 @@ public class ImportasCSV implements ImporterInterface {
                 String value = values[8].replaceAll("\"", "");
                 String creatorSplit = value.replace(" \\| ", ",");
                 collection.addComicManually(publisher, seriesTitle, title, 0, issueNumber, releaseDate, creatorSplit, description, "0");
-                System.out.println(title);
+                
             }
    
             line = reader.readLine(); 
