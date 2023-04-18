@@ -49,7 +49,7 @@ public class PTUIFormatting {
         String viewComics = ">> To view your personal collection -> view | <category>";
         String viewType = "\t>> Viewing categories include [publisher, series title, volume number, issue number, whole collection]";
         String databaseSearch = ">> To search the Database for a comic -> search database | <search type> | <search term> | <exact or partial> ";
-        String databaseSearchType = "\t>> Database search types include [series title, issue number, story title, publisher, release date, creators]";
+        String databaseSearchType = "\t>> Database search types include [series title, issue number, story title, publisher, release date, creators, description]";
         String collectionSearch = ">> To search your personal collection for a comic -> search collection | <search type> | <exact or partial> | <term> | <sort type>";
         String collectionSearchType = "\t>> Personal collection search types include [series title, creators, description, issue number, runs, gaps]";
         String collectionSearchNoExact = ">> To search your personal collection for comics that have been graded, slabbed, signed, or authenticated -> search collection | <search type> | <sort type>";
