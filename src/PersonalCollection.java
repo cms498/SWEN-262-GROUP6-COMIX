@@ -214,9 +214,7 @@ public class PersonalCollection implements iPersonalCollection {
         seriesTitle = seriesTitle.toLowerCase();
         issueNumber = issueNumber.toLowerCase();
         for (Comic comicsInList : comics) {
-            if (seriesTitle.equals(comicsInList.getSeriesTitle().toLowerCase())
-                    && volumeNumber == comicsInList.getVolumeNumber()
-                    && issueNumber.equals(comicsInList.getIssueNumber())) {
+            if (seriesTitle.equals(comicsInList.getSeriesTitle().toLowerCase()) && volumeNumber == comicsInList.getVolumeNumber() && issueNumber.equals(comicsInList.getIssueNumber().toLowerCase())) {
                 return comicsInList;
             }
         }
