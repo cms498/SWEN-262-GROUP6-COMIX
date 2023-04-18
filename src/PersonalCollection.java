@@ -486,8 +486,10 @@ public class PersonalCollection implements iPersonalCollection {
         updateCollectionIssues();
         updateCollectionValue();
 
+        String valueString = String.format("%.2f", value);
+
         System.out.println("Number of comics in database: " + comics.size());
-        System.out.println("Value of comics in database: " + value);
+        System.out.println("Value of comics in database: " + valueString);
 
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
@@ -527,8 +529,10 @@ public class PersonalCollection implements iPersonalCollection {
         updateCollectionIssues();
         updateCollectionValue();
 
+        String valueString = String.format("%.2f", value);
+
         System.out.println("Number of comics in database: " + comics.size());
-        System.out.println("Value of comics in database: " + value);
+        System.out.println("Value of comics in database: " + valueString);
 
         StringBuilder sb = new StringBuilder();
         sb.append("\033[1m"); // Bold formatting
