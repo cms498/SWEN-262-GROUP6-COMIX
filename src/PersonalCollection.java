@@ -276,6 +276,7 @@ public class PersonalCollection implements iPersonalCollection {
         if (comic.getIsGraded() == true && comic.getIsSlabbed() == false) {
             comic.setIsSlabbed(true);
             comic.setValue((comic.getValue() * 2));
+            System.out.println(storyTitle + " has been successfully slabbed");
         } else if (comic.getIsSlabbed() == true) {
             System.out.println("You can't slab a comic again");
         } else {
@@ -298,6 +299,7 @@ public class PersonalCollection implements iPersonalCollection {
         comic.setIsGraded(true);
         comic.setGradeNumber(grade);
         this.convertBackToJson();
+        System.out.println(storyTitle + " has been successfully graded");
         return newValue;
     }
 
@@ -395,6 +397,7 @@ public class PersonalCollection implements iPersonalCollection {
         if (!comic.getSignatures().get(0).equals("")) {
             comic.authenticate(true);
             comic.setValue(comic.getValue() * 1.2);
+            System.out.println(storyTitle + " has been successfully authenticated");
         } else {
             System.out.println(storyTitle + " is not signed so it can't be authenticated");
         }
@@ -409,6 +412,7 @@ public class PersonalCollection implements iPersonalCollection {
         if (comic != null) {
             comic.sign(signature);
             comic.setValue(comic.getValue() * 1.05);
+            System.out.println(storyTitle + " has been successfully signed");
         } else {
             System.out.println(storyTitle + " doesn't exist within your personal collection");
         }
@@ -651,6 +655,7 @@ public class PersonalCollection implements iPersonalCollection {
             comicNew.setIsGraded(false);
             comicNew.setGradeNumber(0);
             this.convertBackToJson();
+            System.out.println(comicNew.getStoryTitle() + " has been successfully ungraded");
         }
     }
 
