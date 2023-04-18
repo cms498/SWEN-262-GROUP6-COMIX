@@ -66,12 +66,14 @@ public class SearchByDescription implements CollectionSearcher{
             String line = br.readLine(); //skipping a line
             while((line = br.readLine()) != null) {
                 String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+                // System.out.println(split[3] + "___" + searchTerm);
+
                     if(exactMatch) {
-                        if(searchTerm.equals(split[3].toLowerCase())) {
+                        if(searchTerm.equals(split[3].toLowerCase().replaceAll("\"", ""))) {
                             searchComics.add(generateComic(split));
                         }
                     } else {
-                        if(split[3].toLowerCase().contains(searchTerm)) {
+                        if(split[3].toLowerCase().replaceAll("\"", "").contains(searchTerm)) {
                            searchComics.add(generateComic(split));
                         }
                     }
@@ -85,6 +87,13 @@ public class SearchByDescription implements CollectionSearcher{
 
     public void setExactMatch(boolean exactMatch) {
         this.exactMatch = exactMatch;
+    }
+
+
+    public static void main(String[] args) {
+        SearchByDescription search = new SearchByDescription(true);
+        List<Comic> comics = search.databaseSearch("Stephanie Hans Cover");
+        System.out.println(comics);
     }
     
 }
