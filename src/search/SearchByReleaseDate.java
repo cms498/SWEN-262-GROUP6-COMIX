@@ -49,9 +49,10 @@ public class SearchByReleaseDate implements CollectionSearcher{
         } else if (obj instanceof String) {
             // If the object is a string, parse the date based on its format
             String dateString = (String) obj;
+            //"Apr 1994"
             DateFormat dateFormat = null;
 
-            if(dateString != (null)){
+            if(dateString.length() != 0){
 
             String[] splitted = dateString.split(" ");
 
@@ -62,21 +63,17 @@ public class SearchByReleaseDate implements CollectionSearcher{
             } else if(splitted.length == 1) {
                 dateFormat = new SimpleDateFormat("yyyy");
             }
-
             try {
-                
-                java.util.Date date = dateFormat.parse(dateString.replaceAll("\"", ""));
-                if(!date.toString().equals("")) {
-                    dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    return dateFormat.format(date);
-                }
+                //remove the quotes 
+                dateString = dateString.replaceAll("\"", "");
+               return dateFormat.format(dateFormat.parse(dateString)).toLowerCase();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
         }
         // Return null if the object is not a date or a string with a valid date format
-        return null;
+        return "";
     }
 
     /** 
@@ -97,6 +94,7 @@ public class SearchByReleaseDate implements CollectionSearcher{
                 while ((line = br.readLine()) != null) {
                     line = br.readLine(); // Skip the first line
                     String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+                    // System.out.println(getDateFromObject(split[5]) + "___" + searchTerm);
 
                     if (exactMatch) {
                         if (searchTerm.equals(getDateFromObject(split[5]))) {
@@ -113,9 +111,8 @@ public class SearchByReleaseDate implements CollectionSearcher{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println(searchComics);
-            return searchComics;
-
+        // System.out.println(searchComics);
+        return searchComics;
     }
     
     @Override
@@ -126,10 +123,8 @@ public class SearchByReleaseDate implements CollectionSearcher{
 
     public static void main(String[] args) {
         SearchByReleaseDate search = new SearchByReleaseDate(true);
-        List<Comic> comics = search.databaseSearch("Jan 2002");
-        for (Comic comic : comics) {
-            System.out.println(comic);
-        }
+        List<Comic> comics = search.databaseSearch("jan 2002");
+        System.out.println(comics);
     }
     
 }
