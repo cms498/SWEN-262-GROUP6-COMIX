@@ -2,6 +2,8 @@ package src;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,7 +21,6 @@ public class ImportasXML implements ImporterInterface{
 
     public ImportasXML(iPersonalCollection personalCollection) {
         this.collection = personalCollection;
-        // this.collection.initializeComics();
     }
 
     @Override
@@ -37,22 +38,34 @@ public class ImportasXML implements ImporterInterface{
                     Node node = nodelist.item(i);
                     if(node.getNodeType() == node.ELEMENT_NODE){
                         Element element = (Element)node;
+
+                        Publisher publisher = new Publisher(element.getElementsByTagName("publisher").item(0).getTextContent());
                         String seriesTitle = element.getElementsByTagName("seriesTitle").item(0).getTextContent();
-                        // System.out.println(element.getElementsByTagName("publisher").item(0).getTextContent());
-                        String publisher = element.getElementsByTagName("publisher").item(0).getTextContent();
                         String storyTitle = element.getElementsByTagName("storyTitle").item(0).getTextContent();
                         int volumeNumber = Integer.parseInt(element.getElementsByTagName("volumeNumber").item(0).getTextContent());
                         String issueNumber = element.getElementsByTagName("issueNumber").item(0).getTextContent();
-                        String creators = element.getElementsByTagName("creators").item(0).getTextContent();
-                        creators = creators.substring(1, creators.length() - 1);
                         String description = element.getElementsByTagName("description").item(0).getTextContent();
-                        String value = element.getElementsByTagName("value").item(0).getTextContent();
+                        double value = Double.parseDouble(element.getElementsByTagName("value").item(0).getTextContent());
+                        boolean isGradded = Boolean.parseBoolean(element.getElementsByTagName("isGraded").item(0).getTextContent());
+                        boolean isSlabbed = Boolean.parseBoolean(element.getElementsByTagName("isSlabbed").item(0).getTextContent());
+                        boolean isAuthenticated = Boolean.parseBoolean(element.getElementsByTagName("isAuthenticated").item(0).getTextContent());
+                        int gradeNumber = Integer.parseInt(element.getElementsByTagName("gradeNumber").item(0).getTextContent());
+                        String publicationDate = element.getElementsByTagName("publicationDate").item(0).getTextContent();
+                        String creatorString = element.getElementsByTagName("creators").item(0).getTextContent();
+                        String[] creatorsArr = creatorString.strip().split(",");
+                        List<Creator> creatorsList = new ArrayList<>();
+                        for (String creator : creatorsArr) {
+                            creatorsList.add(new Creator(creator));
+                        }
+                        String signatures = element.getElementsByTagName("signatures").item(0).getTextContent();
+                        String[] signaturesArr = signatures.strip().split(",");
+                        ArrayList<String> signatureList = new ArrayList<>();
+                        for(String sign : signaturesArr){
+                            signatureList.add(sign);
+                        }
 
-
-                        collection.addComicManually(publisher, seriesTitle, storyTitle, volumeNumber, issueNumber, "", creators, description, value);
-
+                        collection.addComicAllFields(publisher, seriesTitle, storyTitle, volumeNumber, issueNumber, publicationDate, creatorsList, description, value, isGradded, isSlabbed, signatureList, isAuthenticated, gradeNumber);
                     }
-
                 }
             } catch (SAXException e) {
             }

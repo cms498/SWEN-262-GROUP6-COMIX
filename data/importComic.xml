@@ -1,0 +1,50 @@
+<comics>
+    <comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Weirdsong Of The Wendigo</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Bill Mantlo, Sal Buscema]</creators>
+		<description></description>
+		<issueNumber>227</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Jun 1982</publicationDate>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>Once A Hulk, Always A Hulk!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Bill Mantlo, Sal Buscema]</creators>
+		<description></description>
+		<issueNumber>228</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>Jul 1982</publicationDate>
+	</comic>
+	<comic>
+		<publisher>Marvel Comics</publisher>
+		<seriesTitle>The Incredible Hulk</seriesTitle>
+		<storyTitle>The Curing Of Dr. Banner!</storyTitle>
+		<volumeNumber>1</volumeNumber>
+		<value>0.0</value>
+		<creators>[Roger Stern, Sal Buscema, Joe Rubinstein]</creators>
+		<description></description>
+		<issueNumber>229</issueNumber>
+		<isGraded>false</isGraded>
+		<isSlabbed>false</isSlabbed>
+		<signatures>[]</signatures>
+		<isAuthenticated>false</isAuthenticated>
+		<gradeNumber>0</gradeNumber>
+		<publicationDate>May 1978</publicationDate>
+	</comic>
+</comics>

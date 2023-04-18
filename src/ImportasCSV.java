@@ -13,7 +13,6 @@ public class ImportasCSV implements ImporterInterface {
     public ImportasCSV(iPersonalCollection personalCollection) {
         this.collection = personalCollection;
         this.collection.setFlag(true);
-        // this.collection.initializeComics();
     }
 
     @Override
@@ -34,11 +33,12 @@ public class ImportasCSV implements ImporterInterface {
             String title = values[2].toString().replaceAll("\"", "");
             String description = values[6].toString().replaceAll("\"", "");
             String publisher = values[0].toString().replaceAll("\"", "");
-            String releaseDate= values[13].toString().replaceAll("\"", "");
             if(values.length==8){
+                String releaseDate= values[5].toString().replaceAll("\"", "");
                 collection.addComicManually(publisher, seriesTitle, title, 0, issueNumber, releaseDate, "", description, "0");
             }
             else{
+                String releaseDate= values[13].toString().replaceAll("\"", "");
                 Publisher p = new Publisher(publisher);
                 String valueCreator = values[5].replaceAll("\"", "");
                 valueCreator = valueCreator.substring(1, valueCreator.length() - 1);
