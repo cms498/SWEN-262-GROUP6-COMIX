@@ -69,6 +69,7 @@ public class CSVAdapter implements ExporterInterface {
                         + signatures + "," + comic.getIsAuthenticated() + "," + comic.getGradeNumber() + "," + comic.getPublicationDate() +"\n");
             }
             writer.close();
+            System.out.println("Export successfully");
         } catch (IOException e) {
             e.printStackTrace();
         }

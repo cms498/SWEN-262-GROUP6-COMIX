@@ -15,6 +15,10 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.w3c.dom.Element;
 
+/**
+ * This class represents the ability to convert a XML file into a comic object
+ * which is added to the personal collection
+ */
 public class ImportasXML implements ImporterInterface{
 
     private iPersonalCollection collection;

@@ -87,13 +87,5 @@ public class SearchByDescription implements CollectionSearcher{
 
     public void setExactMatch(boolean exactMatch) {
         this.exactMatch = exactMatch;
-    }
-
-
-    public static void main(String[] args) {
-        SearchByDescription search = new SearchByDescription(true);
-        List<Comic> comics = search.databaseSearch("Stephanie Hans Cover");
-        System.out.println(comics);
-    }
-    
+    }    
 }

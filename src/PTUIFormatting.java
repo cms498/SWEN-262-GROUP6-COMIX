@@ -2,6 +2,10 @@ package src;
 
 import java.util.Random;
 
+/**
+ * This is a helper class that is used by the PTUI to display the COMIX logo
+ * and display some helpful commands for the user
+ */
 public class PTUIFormatting {
     private static final String RED_COLOR_CODE = "\033[31m";
     private static final String GREEN_COLOR_CODE = "\033[32m";
@@ -10,6 +14,9 @@ public class PTUIFormatting {
     private static final String RESET_COLOR_CODE = "\033[0m";
     private static final String[] CODES = { RED_COLOR_CODE, GREEN_COLOR_CODE, BLUE_COLOR_CODE, YELLOW_COLOR_CODE };
 
+    /**
+     * Displays the COMIX logo
+     */
     public void formatting() {
 
         String[] comix = {
@@ -42,6 +49,9 @@ public class PTUIFormatting {
                         + "\033[0m");
     }
 
+    /**
+     * Displays all of the commands avaliable to the user
+     */
     public void commands() {
         String quit = ">> To end the application -> quit";
         String login = ">> To login and access more features -> login";

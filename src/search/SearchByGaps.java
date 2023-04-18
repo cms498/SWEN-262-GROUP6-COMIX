@@ -77,5 +77,3 @@ public class SearchByGaps implements CollectionSearcher{
     public void setExactMatch(boolean exact) {
     }
 }
-
-

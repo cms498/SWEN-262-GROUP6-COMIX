@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is responsible for importing a csv file, creating a comic
+ * object and adding it to the personal collection
+ */
 public class ImportasCSV implements ImporterInterface {
     private iPersonalCollection collection;
 

@@ -118,13 +118,5 @@ public class SearchByReleaseDate implements CollectionSearcher{
     @Override
     public void setExactMatch(boolean exact) {
         this.exactMatch = exact;
-    }
-
-
-    public static void main(String[] args) {
-        SearchByReleaseDate search = new SearchByReleaseDate(true);
-        List<Comic> comics = search.databaseSearch("jan 2002");
-        System.out.println(comics);
-    }
-    
+    }    
 }

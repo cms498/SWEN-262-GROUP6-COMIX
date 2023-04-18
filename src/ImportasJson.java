@@ -11,6 +11,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * This class imports a json file, it creates a comic object which
+ * is added to the personal collection
+ */
 public class ImportasJson implements ImporterInterface{
 
     private iPersonalCollection collection;

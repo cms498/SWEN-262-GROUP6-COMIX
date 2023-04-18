@@ -27,6 +27,4 @@ public class SortByVolume implements CollectionSorter {
         });
         return sorted;
     }
-    
-    
 }

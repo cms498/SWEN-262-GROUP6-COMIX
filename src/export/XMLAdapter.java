@@ -52,6 +52,7 @@ public class XMLAdapter implements ExporterInterface{
             }
             write.write("</comics>");
             write.close();
+            System.out.println("Export successfully");
         } catch (IOException e) {
             e.printStackTrace();
         }
