@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +31,52 @@ public class SearchByReleaseDate implements CollectionSearcher{
      * @param comics
      * @param searchTerm
      * @return List<Comic>
+     * 
+     * This method is a little more complicated than the others, because the release date is a string and not a number or date object like the other fields are.
+     * This method is also a little wrong, fix the bug! the searchComics list is not being populated correctly and it is empty when it is returned.
      */
     @Override
     public List<Comic> search(List<Comic> comics, String searchTerm) {
         throw new UnsupportedOperationException("Unimplemented method 'search'");
+    }
+
+    private String getDateFromObject(Object obj) {
+
+        if (obj instanceof Date) {
+            // If the object is already a date, simply format it to "yyyy-MM-dd" format
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            return dateFormat.format((Date) obj);
+        } else if (obj instanceof String) {
+            // If the object is a string, parse the date based on its format
+            String dateString = (String) obj;
+            DateFormat dateFormat = null;
+
+            if(dateString != (null)){
+
+            String[] splitted = dateString.split(" ");
+
+            if(splitted.length == 3) {
+                dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+            } else if(splitted.length == 2) {
+                dateFormat = new SimpleDateFormat("MMM yyyy");
+            } else if(splitted.length == 1) {
+                dateFormat = new SimpleDateFormat("yyyy");
+            }
+
+            try {
+                
+                java.util.Date date = dateFormat.parse(dateString.replaceAll("\"", ""));
+                if(!date.toString().equals("")) {
+                    dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    return dateFormat.format(date);
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        }
+        // Return null if the object is not a date or a string with a valid date format
+        return null;
     }
 
     /** 
@@ -42,34 +88,48 @@ public class SearchByReleaseDate implements CollectionSearcher{
      */
     @Override
     public List<Comic> databaseSearch(String searchTerm) {
-        searchTerm = searchTerm.toLowerCase();
-        List<Comic> searchComics = new ArrayList<>();
-        File file = new File(COMIC_DATABASE);
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line = br.readLine(); //skipping a line
-            while((line = br.readLine()) != null) {
-                String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-                    if(exactMatch) {
-                        if(searchTerm.equals(split[5].toLowerCase())) {
+       searchTerm = searchTerm.toLowerCase();
+         List<Comic> searchComics = new ArrayList<Comic>();
+            try {
+                File file = new File("data/comics.csv");
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                String line;
+                while ((line = br.readLine()) != null) {
+                    line = br.readLine(); // Skip the first line
+                    String[] split = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+
+                    if (exactMatch) {
+                        if (searchTerm.equals(getDateFromObject(split[5]))) {
                             searchComics.add(generateComic(split));
                         }
                     } else {
-                        if(split[5].toLowerCase().contains(searchTerm)) {
-                           searchComics.add(generateComic(split));
+                        if (getDateFromObject(split[5]).contains(searchTerm)) {
+                            searchComics.add(generateComic(split));
                         }
                     }
+
                 }
                 br.close();
-        } catch (IOException e){
-            System.out.println("Invalid filename.");
-        }
-        return searchComics;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println(searchComics);
+            return searchComics;
+
     }
     
     @Override
     public void setExactMatch(boolean exact) {
         this.exactMatch = exact;
+    }
+
+
+    public static void main(String[] args) {
+        SearchByReleaseDate search = new SearchByReleaseDate(true);
+        List<Comic> comics = search.databaseSearch("Jan 2002");
+        for (Comic comic : comics) {
+            System.out.println(comic);
+        }
     }
     
 }
